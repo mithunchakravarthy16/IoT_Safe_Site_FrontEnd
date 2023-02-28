@@ -18,7 +18,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.logoBg,
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -44,7 +44,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.logoBg,
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -70,7 +70,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.logoBg,
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -96,7 +96,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.logoBg,
       },
       dashboard: {
         white: colorCodes.colorWhite,

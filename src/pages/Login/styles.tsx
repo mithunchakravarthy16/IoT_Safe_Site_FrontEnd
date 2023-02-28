@@ -1,34 +1,15 @@
 import { makeStyles } from "@mui/styles";
-import logisticLogo from "../../assets/Login_BG.jpg";
-import loginPolygon from "../../assets/polygons.png";
+import safeSizeBg from "../../assets/login/Safe-Site-Login-Bg.jpg";
+import loginPolygon from "../../assets/login/polygons.png";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
   loginBannerSection: (props: any) => ({
-    backgroundImage: `url("${logisticLogo}")`,
+    backgroundImage: `url("${safeSizeBg}")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: "calc(100vh - 0px)",
     position: "relative",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      right: "0px",
-      bottom: "0px",
-      background: `url("${loginPolygon}")`,
-      width: "167px",
-      height: "89px",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      [muiTheme.breakpoints.down(1181)]: {
-        width: "124px",
-        height: "60px",
-      },
-      [muiTheme.breakpoints.down(1025)]: {
-        width: "124px",
-        height: "60px",
-      },
-    },
   }),
   loginWidth: () => ({
     width: 700,
@@ -55,7 +36,7 @@ const useStyles = makeStyles(() => ({
     background: props?.palette?.login?.loginBannerTitle,
     boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.05)",
     borderRadius: " 5px",
-    padding: `75px 81px 40px 81px`,
+    padding: `42px 81px 40px 81px`,
     [muiTheme.breakpoints.down(1601)]: {
       padding: "20px 50px 20px",
     },
@@ -123,8 +104,8 @@ const useStyles = makeStyles(() => ({
     },
   }),
   welcomeContent: (props: any) => ({
-    fontFamily: `"QualcommNext-Regular"`,
-    fontWeight: " 600",
+    fontFamily: `'Nunito Sans', sans-serif'`,
+    fontWeight: " 700",
     fontSize: "34px",
     lineHeight: "42px",
     color: props?.palette?.login?.welcomeContent,
@@ -134,7 +115,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   inputTitle: (props: any) => ({
-    fontFamily: `"QualcommNext-Regular"`,
+    fontFamily: `'Nunito Sans', sans-serif'`,
     fontWeight: " 400",
     fontSize: "18px",
     lineHeight: "22px",
@@ -152,7 +133,7 @@ const useStyles = makeStyles(() => ({
     },
 
     "& .MuiInputBase-input": {
-      fontFamily: `"QualcommNext-Regular"`,
+      fontFamily: `'Nunito Sans', sans-serif'`,
       fontWeight: " 500",
       fontSize: "18px",
       lineHeight: "24px",
@@ -168,6 +149,12 @@ const useStyles = makeStyles(() => ({
         padding: 10,
       },
     },
+  }),
+  zurichLogo: (props: any) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 16,
   }),
   radioButtonSection: (props: any) => ({
     marginBottom: 50,
@@ -192,7 +179,7 @@ const useStyles = makeStyles(() => ({
       },
     },
     "& .MuiFormControlLabel-label": {
-      fontFamily: `"QualcommNext-Regular"`,
+      fontFamily: `'Nunito Sans', sans-serif'`,
       fontWeight: " 500",
       fontSize: "16px",
       lineHeight: "24px",
@@ -204,7 +191,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   forgotPassword: (props: any) => ({
-    fontFamily: `"QualcommNext-Regular"`,
+    fontFamily: `'Nunito Sans', sans-serif'`,
     fontWeight: " 400",
     fontSize: "16px",
     lineHeight: "19px",
@@ -219,7 +206,7 @@ const useStyles = makeStyles(() => ({
     "& .MuiButtonBase-root": {
       background: props?.palette?.login?.loginButton,
       borderRadius: "5px",
-      fontFamily: `"QualcommNext-Regular"`,
+      fontFamily: `'Nunito Sans', sans-serif'`,
       fontWeight: "500",
       fontSize: "20px",
       lineHeight: "24px",
@@ -237,7 +224,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   formikErrorClass: (props: any) => ({
-    fontFamily: `"QualcommNext-Regular"`,
+    fontFamily: `'Nunito Sans', sans-serif'`,
     color: "red",
     padding: 0,
     margin: 0,
@@ -252,7 +239,7 @@ const useStyles = makeStyles(() => ({
     position: "relative",
   }),
   copyRights: (props: any) => ({
-    color: props?.palette?.login?.copyRight,
+    color: props?.palette?.login?.loginFormBg,
     position: "fixed",
     bottom: "0%",
     left: "50%",
@@ -260,10 +247,10 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     "& span": {
-      fontFamily: `"QualcommNext-Regular"`,
+      fontFamily: `'Nunito Sans', sans-serif'`,
       fontWeight: " 500",
       fontSize: "16px",
-      lineHeight: "24px",
+      lineHeight: "30px",
     },
     "& img": {
       margin: "0 8px",

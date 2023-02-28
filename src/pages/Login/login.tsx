@@ -8,6 +8,13 @@ import { OutlinedInput } from "@mui/material";
 import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import gdSafeSite from "../../assets/login/gd-save-site.svg";
+import zurich from "../../assets/login/Zurich-logo.svg";
+import EyeOff from "../../assets/login/lock.svg";
+import OpenEyeIcon from "../../assets/login/lock.svg";
+import AttherateIcon from "../../assets/login/atthirate.svg";
+import saveSiteLogo from "../../assets/login/gd-save-site.svg";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
@@ -44,9 +51,29 @@ const Login = () => {
     }
   }, [selectedTheme]);
 
-
-
   const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    loginBannerSection,
+    loginFormSection,
+    loginBannerContent,
+    logoSection,
+    welcomeSection,
+    welcomeContent,
+    inputTitle,
+    inputField,
+    loginButton,
+    innerForm,
+    formikErrorClass,
+    outlineInputField,
+    loginWidth,
+    eyeOff,
+    attherate,
+    radioButtonSection,
+    forgotPassword,
+    copyRights,
+    zurichLogo,
+  } = useStyles(appTheme);
 
   useEffect(() => {
     if (user && user?.userName) {
@@ -55,60 +82,150 @@ const Login = () => {
     }
   }, [user]);
 
-  const handleLogin = () =>{
+  const handleLogin = () => {
     let payload = {
-              userName: 'mikeross@qualcomm.com',
-              passWord: 'admin'
-            };
+      userName: "mikeross@qualcomm.com",
+      passWord: "admin",
+    };
     dispatch(getUserLogin(payload));
-  }
+  };
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     userid: "",
-  //     password: "",
-  //   },
-  //   validationSchema: Yup.object({
-  //     userid: Yup.string()
-  //       .min(2, "Mininum 2 characters")
-  //       .required(" Please enter the user email address"),
-  //     password: Yup.string()
-  //       .min(2, "Mininum 2 characters")
-  //       .max(15, "Maximum 15 characters")
-  //       .required("Please enter the password"),
-  //   }),
-  //   onSubmit: (values) => {
-  //     if (
-  //       ((values?.userid).toLowerCase() === "mikeross@qualcomm.com" &&
-  //         values?.password === "Mike@2023") ||
-  //       ((values?.userid).toLowerCase() === "jessica@qualcomm.com" &&
-  //         values?.password === "Jessica@2023") ||
-  //       ((values?.userid).toLowerCase() === "louislitt@qualcomm.com" &&
-  //         values?.password === "Louis@2023") ||
-  //       ((values?.userid).toLowerCase() === "emmapalmer@qualcomm.com" &&
-  //         values?.password === "Emma@2023") ||
-  //       ((values?.userid).toLowerCase() === "harveyspecter@qualcomm.com" &&
-  //         values?.password === "Harvey@2023")
-  //     ) {
-  //       let payload = {
-  //         userName: values.userid?.toLowerCase(),
-  //         passWord: values.password?.toLowerCase(),
-  //       };
-  //       dispatch(getUserLogin(payload));
-  //     } else {
-  //       alert("Incorrect User Credentials");
-  //     }
-  //   },
-  // });
+  const formik = useFormik({
+    initialValues: {
+      userid: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      userid: Yup.string()
+        .min(2, "Mininum 2 characters")
+        .required(" Please enter the user email address"),
+      password: Yup.string()
+        .min(2, "Mininum 2 characters")
+        .max(15, "Maximum 15 characters")
+        .required("Please enter the password"),
+    }),
+    onSubmit: (values) => {
+      if (
+        ((values?.userid).toLowerCase() === "mikeross@qualcomm.com" &&
+          values?.password === "Mike@2023") ||
+        ((values?.userid).toLowerCase() === "jessica@qualcomm.com" &&
+          values?.password === "Jessica@2023") ||
+        ((values?.userid).toLowerCase() === "louislitt@qualcomm.com" &&
+          values?.password === "Louis@2023") ||
+        ((values?.userid).toLowerCase() === "emmapalmer@qualcomm.com" &&
+          values?.password === "Emma@2023") ||
+        ((values?.userid).toLowerCase() === "harveyspecter@qualcomm.com" &&
+          values?.password === "Harvey@2023")
+      ) {
+        let payload = {
+          userName: values.userid?.toLowerCase(),
+          passWord: values.password?.toLowerCase(),
+        };
+        dispatch(getUserLogin(payload));
+      } else {
+        alert("Incorrect User Credentials");
+      }
+    },
+  });
 
-  // const handlePasswordVisibility = () => {
-  //   setShowPassword(!showPassword);
-  // };
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
+  const height: any = window.innerHeight;
+  const width: any = window.innerWidth;
 
   return (
     <>
-    <Button onClick={handleLogin}>Login</Button>
+      <Grid container className={loginBannerSection}>
+        <Grid item xs={12} className={loginFormSection}>
+          <div className={loginWidth}>
+            <Grid item xs={12} className={logoSection}>
+              <img src={gdSafeSite} />
+            </Grid>
+            <Grid item xs={12}>
+              <Box className={innerForm}>
+                <form onSubmit={formik.handleSubmit}>
+                  <div className={zurichLogo}>
+                    <img src={zurich} />
+                  </div>
+                  <div className={welcomeSection}>
+                    <p className={welcomeContent}>
+                      {/* Test Build ( {width} X {height} ) */}
+                      Welcome
+                    </p>
+                  </div>
+                  <div className={outlineInputField}>
+                    <p className={inputTitle}>Your Email</p>
+                    <OutlinedInput
+                      className={inputField}
+                      fullWidth
+                      placeholder="username@qualcom.com"
+                      type="text"
+                      name="userid"
+                      value={formik.values.userid}
+                      onChange={formik.handleChange}
+                      endAdornment={
+                        <img className={attherate} src={AttherateIcon} />
+                      }
+                    />
+                    {formik.errors.userid && formik.touched.userid && (
+                      <p className={formikErrorClass}>{formik.errors.userid}</p>
+                    )}
+                  </div>
+                  <div className={outlineInputField}>
+                    <p className={inputTitle}>Password</p>
+                    <OutlinedInput
+                      className={inputField}
+                      fullWidth
+                      placeholder="&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;"
+                      type="password"
+                      name="password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      endAdornment={
+                        <img
+                          className={eyeOff}
+                          src={showPassword ? OpenEyeIcon : EyeOff}
+                          onClick={handlePasswordVisibility}
+                        />
+                      }
+                    />
+                    {formik.errors.password && formik.touched.password && (
+                      <p className={formikErrorClass}>
+                        {formik.errors.password}
+                      </p>
+                    )}
+                  </div>
+                  <div className={radioButtonSection}>
+                    <FormControlLabel
+                      value="rememberMe"
+                      control={<Radio />}
+                      label="Remember me"
+                    />
+                    <p className={forgotPassword}>Forgot Password?</p>
+                  </div>
+                  <div className={loginButton}>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      type="submit"
+                      onClick={handleLogin}
+                    >
+                      Login
+                    </Button>
+                  </div>
+                </form>
+              </Box>
+            </Grid>
+          </div>
+        </Grid>
+        <div className={copyRights}>
+          <span>Powered by</span>
+          <img src={saveSiteLogo} />
+          <span>© 2023. All Rights Reserved</span>
+        </div>
+      </Grid>
     </>
   );
 };
