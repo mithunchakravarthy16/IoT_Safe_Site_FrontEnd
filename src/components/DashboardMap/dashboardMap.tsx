@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
+import Map from "elements/Map";
 import useStyles from "./styles";
 
 const DashboardMap: React.FC<any> = (props) => {
@@ -34,6 +35,10 @@ const DashboardMap: React.FC<any> = (props) => {
 
   const {} = useTranslation();
 
-  return <div className={dashboardMapContainer}>DashboardMap</div>;
+  return (
+    <div className={dashboardMapContainer}>
+      <Map />
+    </div>
+  );
 };
 export default DashboardMap;

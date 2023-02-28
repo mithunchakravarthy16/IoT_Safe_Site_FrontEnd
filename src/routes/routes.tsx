@@ -11,7 +11,7 @@ const SAFE_SITE_Routes = () => {
 
   return (
     <>
-      {"Header"}
+      {user?.userName && "Header"}
       <Routes>
         {/** Protected Routes */}
         <Route path="/" element={<ProtectedRoutes />}>
@@ -26,7 +26,7 @@ const SAFE_SITE_Routes = () => {
         {/** Permission denied route */}
         <Route path="/denied" element={<div>No permission</div>} />
       </Routes>
-      {"Footer"}
+      {user?.userName && "Footer"}
     </>
   );
 };
