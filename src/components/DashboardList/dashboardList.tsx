@@ -30,10 +30,10 @@ const DashboardList: React.FC<any> = (props) => {
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const [searchOpen, setSearchOpen] = useState<any>(false);
-  const [tablistData, setTablistData] = useState(equipmentData);
   const [dataList, setDataList] = useState(
     formattedCardListData(tabIndex, equipmentData)
   );
+  const [searchValue, setSearchValue] = useState<any>(dataList);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -66,34 +66,49 @@ const DashboardList: React.FC<any> = (props) => {
     customNotificationTabs,
   } = useStyles(appTheme);
 
-  const { dashboardListName } = useTranslation();
+  const {
+    dashboardListName,
+    tabsListName1,
+    tabsListName2,
+    tabsListName3,
+    search,
+    noResult,
+  } = useTranslation();
 
   useEffect(() => {
-    switch (tabIndex) {
-      case 0:
-        setDataList(formattedCardListData(tabIndex, equipmentData));
-        break;
-      case 1:
-        setDataList(formattedCardListData(tabIndex, equipmentData));
-        break;
-      case 2:
-        setDataList(formattedCardListData(tabIndex, equipmentData));
-        break;
-    }
+    setDataList(formattedCardListData(tabIndex, equipmentData));
+    setSearchValue(formattedCardListData(tabIndex, equipmentData));
   }, [tabIndex]);
 
   const handleSearch = (searchValue: any) => {
+    let searchResult = dataList?.filter((value: any) => {
+      return (
+        value?.title
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.area
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.name
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase())
+      );
+    });
+    setSearchValue(searchResult);
     setSearchOpen(true);
+    setSelectedNotification(-1);
   };
 
   const handleSearchClose = () => {
     setSearchOpen(false);
+    setSearchValue(dataList);
+    setSelectedNotification(-1);
   };
 
   const handleTabs = (index: number) => {
     setTabIndex(index);
     setSearchOpen(false);
-    // setSelectedNotification("");
+    setSelectedNotification(-1);
   };
 
   const handleExpandListItem = (id: number) => {
@@ -102,19 +117,23 @@ const DashboardList: React.FC<any> = (props) => {
 
   const tabsList = [
     {
-      name: "AI Cameras",
+      name: tabsListName1,
       val: 0,
       count: `(${dashboardEquipmentsMain?.aiCameras?.list?.length})`,
+      icon: tabIndex === 0 ? AICameraActive : AICameraInactive,
     },
     {
-      name: "Envr. Sensor",
+      name: tabsListName2,
       val: 1,
       count: `(${dashboardEquipmentsMain?.envrSensors?.list?.length})`,
+      icon:
+        tabIndex === 1 ? EnvironmentSensorActive : EnvironmentSensorInactive,
     },
     {
-      name: "Flood Sensor",
+      name: tabsListName3,
       val: 2,
       count: `(${dashboardEquipmentsMain?.floodSensors?.list?.length})`,
+      icon: tabIndex === 2 ? FloodSensorActive : FloodSensorInactive,
     },
   ];
 
@@ -128,10 +147,10 @@ const DashboardList: React.FC<any> = (props) => {
             ) : (
               <SearchBox
                 searchInput={searchClass}
-                // placeHolder={search}
+                placeHolder={search}
                 handleSearch={handleSearch}
                 searchIsOpen={true}
-                fontColor={appTheme?.palette?.dashboardList?.darkGrey3}
+                fontColor={appTheme?.palette?.dashboard?.grayShade3}
               />
             )}
           </div>
@@ -149,11 +168,11 @@ const DashboardList: React.FC<any> = (props) => {
             tabsList={tabsList}
             handleTabs={handleTabs}
             dashboardNotificationClassName={customNotificationTabs}
+            tabType={"listTab"}
           />
         </div>{" "}
-        {dataList &&
-          dataList?.length > 0 &&
-          dataList?.map((item: any, index: number) => {
+        {searchValue && searchValue?.length > 0 ? (
+          searchValue?.map((item: any, index: number) => {
             return (
               <DashboardListItems
                 data={item}
@@ -163,7 +182,10 @@ const DashboardList: React.FC<any> = (props) => {
                 handleExpandListItem={handleExpandListItem}
               />
             );
-          })}
+          })
+        ) : (
+          <div className={noResultStyle}>{noResult}</div>
+        )}
       </div>
     </>
   );

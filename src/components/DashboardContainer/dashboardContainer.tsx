@@ -12,11 +12,13 @@ const DashboardContainer: React.FC<any> = (props) => {
   const {} = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const { fullscreenMapStyle, fullscreenMapInnerStyle } = useStyles(appTheme);
+  const {} = useStyles(appTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
   const [selectedNotification, setSelectedNotification] = useState<number>(-1);
   const [equipmentData, setEquipmentData] = useState<any>();
   const dashboardData = dashboardEquipments;
+
+  const { dashboardRootContainer } = useStyles(appTheme);
 
   useEffect(() => {
     const { aiCameras, envrSensors, floodSensors } = dashboardEquipments;
@@ -70,7 +72,7 @@ const DashboardContainer: React.FC<any> = (props) => {
   return (
     <Fragment>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container>
+        <Grid container className={dashboardRootContainer}>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
             <DashboardMap />
           </Grid>

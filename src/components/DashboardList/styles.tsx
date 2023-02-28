@@ -4,7 +4,7 @@ import muiTheme from "../../theme/muiTheme";
 const useStyles = makeStyles({
   dashboardRightPanel: (props: any) => ({
     background: props?.palette?.dashboard?.white,
-    padding: "26px 17px 13px 17px",
+    padding: "26px 12px 13px 17px",
     borderLeft: `2px solid ${props?.palette?.dashboard?.lightGrey2}`,
   }),
   dashboarListTitle: (props: any) => ({
@@ -36,9 +36,9 @@ const useStyles = makeStyles({
     marginTop: 10,
   }),
   searchClass: (props: any) => ({
-    border: `1px solid ${props?.palette?.dashboard?.lightGrey}`,
+    border: `1px solid ${props?.palette?.dashboard?.grayShade3}`,
     background: props?.palette?.dashboard?.white,
-    color: props?.palette?.dashboard?.lightGrey3,
+    color: props?.palette?.dashboard?.grayShade3,
     borderRadius: 6,
     height: "40px",
     "& .MuiIconButton-root": {
@@ -53,13 +53,12 @@ const useStyles = makeStyles({
     margin: 10,
   }),
 
-  customNotificationTabs: {
+  customNotificationTabs: (props: any) => ({
     "& .MuiTabs-flexContainer": {
       // borderBottom: "2px solid #3e3e3e",
       justifyContent: "space-between",
     },
     "& .MuiButtonBase-root": {
-      fontFamily: "QualcommNext-Regular",
       fontSize: "15px !important",
       // marginBottom: "-0.5px !important",
       flex: "1 !important",
@@ -68,49 +67,54 @@ const useStyles = makeStyles({
     "& .MuiTab-root": {
       padding: "10px 12px",
       [muiTheme.breakpoints.down(1281)]: {
-        padding: "6px 12px",
+        padding: "0px 12px",
       },
       "&:first-child": {
-        color: "#38BCDB !important",
-        margin: "15px 20px 0px 0px",
-        border: "1px solid #38BCDB",
-        [muiTheme.breakpoints.down(1281)]: {
-          fontSize: 14,
-          margin: "10px 10px 0px 0px",
-        },
+        margin: "20px 10px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+        borderRadius: "5px 5px 0px 0px",
+        fontSize: 18,
+        background: props?.palette?.dashboard?.lightGrayWhiteShade,
       },
       "&:first-child.Mui-selected": {
-        color: "#ffffff !important",
-        background: "#38BCDB",
+        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+        background: props?.palette?.dashboard?.darkBlueBlackShade,
+        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+        fontSize: 14,
       },
+      "&:first-child.Mui-selected img": {},
       "&:nth-child(2)": {
-        color: "#E13827 !important",
-        margin: "15px 20px 0px 0px",
-        border: "1px solid #E13827",
-        [muiTheme.breakpoints.down(1281)]: {
-          fontSize: 14,
-          margin: "10px 10px 0px 0px",
-        },
+        margin: "20px 10px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+        borderRadius: "5px 5px 0px 0px",
+        fontSize: 18,
+        background: props?.palette?.dashboard?.lightGrayWhiteShade,
       },
       "&:nth-child(2).Mui-selected": {
-        color: "#ffffff !important",
-        background: "#E13827",
+        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+        background: props?.palette?.dashboard?.darkBlueBlackShade,
+        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+        fontSize: 14,
       },
       "&:nth-child(3)": {
-        color: "#E0791A !important",
-        margin: "15px 0px 0px 0px",
-        border: "1px solid #E0791A",
+        margin: "20px 0px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+        borderRadius: "5px 5px 0px 0px",
+        fontSize: 18,
+        background: props?.palette?.dashboard?.lightGrayWhiteShade,
       },
       "&:nth-child(3).Mui-selected": {
-        color: "#ffffff !important",
-        background: "#E0791A",
+        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+        background: props?.palette?.dashboard?.darkBlueBlackShade,
+        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+        fontSize: 14,
       },
     },
     "& .MuiTabs-root .MuiTabs-indicator": {
       width: "100% !important",
-      background: "#2B2B2B",
+      // background: "#2B2B2B",
       display: "none",
     },
-  },
+  }),
 });
 export default useStyles;

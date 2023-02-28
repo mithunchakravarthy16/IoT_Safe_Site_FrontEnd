@@ -84,7 +84,15 @@ const DashboardListItems: React.FC<any> = (props) => {
     spanTextValue,
   } = useStyles(appTheme);
 
-  const {} = useTranslation();
+  const {
+    listIconName1,
+    listIconName2,
+    listIconName3,
+    listItemConnectivityText,
+    listItemIconArrayName1,
+    listItemIconArrayName2,
+    listItemIconArrayName3,
+  } = useTranslation();
 
   const [listItemIconArray, setListItemIconArray] = useState<any>();
 
@@ -97,17 +105,17 @@ const DashboardListItems: React.FC<any> = (props) => {
             {
               icon: BellRingingIcon,
               value: incidentsObservation,
-              label: "Incidents",
+              label: listItemIconArrayName1,
             },
             {
               icon: OprAlertIcon,
               value: operationAlertObservation,
-              label: "Operation Alert",
+              label: listItemIconArrayName2,
             },
             {
               icon: MotionIcon,
               value: motionObservation,
-              label: "Motion",
+              label: listItemIconArrayName3,
             },
           ];
           break;
@@ -116,17 +124,17 @@ const DashboardListItems: React.FC<any> = (props) => {
             {
               icon: BellRingingIcon,
               value: incidentsObservation,
-              label: "Incidents",
+              label: listItemIconArrayName1,
             },
             {
               icon: OprAlertIcon,
               value: operationAlertObservation,
-              label: "Operation Alert",
+              label: listItemIconArrayName2,
             },
             {
               icon: MotionIcon,
               value: motionObservation,
-              label: "Motion",
+              label: listItemIconArrayName3,
             },
           ];
           break;
@@ -160,18 +168,18 @@ const DashboardListItems: React.FC<any> = (props) => {
               </div>{" "}
               <div className={expandedListButtonContainer}>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={"Raise alert"}>
-                    <img src={AlertButton} alt="Alert Button" />
+                  <Tooltip tooltipValue={listIconName1}>
+                    <img src={EyeButton} alt={listIconName1} />
                   </Tooltip>
                 </div>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={"Call"}>
-                    <img src={CallButton} alt="CallButton" />
+                  <Tooltip tooltipValue={listIconName2}>
+                    <img src={AlertButton} alt={listIconName2} />
                   </Tooltip>
                 </div>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={"Grok Eye"}>
-                    <img src={EyeButton} alt="DeleteButton" />
+                  <Tooltip tooltipValue={listIconName3}>
+                    <img src={CallButton} alt={listIconName3} />
                   </Tooltip>
                 </div>
               </div>
@@ -184,7 +192,7 @@ const DashboardListItems: React.FC<any> = (props) => {
                 className={locationIconStyle}
                 width={16}
               />
-              <span className={spanTextClass}>Connectivity or Celluar</span>
+              <span className={spanTextClass}>{listItemConnectivityText}</span>
               <span className={spanTextValue}>{connectivityPercentage}</span>
             </div>
             <div className={lineClass}></div>

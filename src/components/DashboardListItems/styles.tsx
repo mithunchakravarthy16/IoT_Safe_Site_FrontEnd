@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   listItemTitle: (props: any) => ({
     fontWeight: 500,
     fontSize: 16,
-    color: props?.palette?.dashboardList?.darkRedBlack, //darkRedBlack
     marginBottom: 10,
     [muiTheme.breakpoints.down(1281)]: {
       fontSize: 16,
@@ -18,8 +17,7 @@ const useStyles = makeStyles({
   listItemLocation: (props: any) => ({
     fontWeight: 400,
     fontSize: 14,
-    color: "rgba(134, 147, 168, 1)",
-    // color: props?.palette?.dashboardList?.lightRedBlack, // lightRedBlack
+    color: props?.palette?.dashboard?.blueGrayNewShade, // "rgba(134, 147, 168, 1)"
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -33,8 +31,7 @@ const useStyles = makeStyles({
   listItemTower: (props: any) => ({
     fontWeight: 400,
     fontSize: 14,
-    color: "rgba(134, 147, 168, 1)",
-    // color: props?.palette?.dashboardList?.lightRedBlack, // lightRedBlack
+    // color: props?.palette?.dashboard?.blueGrayNewShade,
     display: "flex",
     alignItems: "center",
     [muiTheme.breakpoints.down(1281)]: {
@@ -61,7 +58,7 @@ const useStyles = makeStyles({
     [muiTheme.breakpoints.down(1025)]: {
       fontSize: 14,
     },
-    background: "#324658",
+    background: props?.palette?.dashboard?.darkBlueGrayShade,
   }),
   collapsedListItem: (props: any) => ({
     padding: " 15px",
@@ -90,7 +87,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   }),
   listItemIconName: (props: any) => ({
-    color: "rgba(134, 147, 168, 1)",
+    color: props?.palette?.dashboard?.blueGrayNewShade,
     fontSize: "14px",
     letterSpacing: 0.35,
     // lineHeight: 1,
@@ -106,7 +103,7 @@ const useStyles = makeStyles({
     paddingBottom: 10,
   }),
   selectedButtonStyles: (props: any) => ({
-    backgroundColor: props?.palette?.dashboardList?.blue, // blue
+    // backgroundColor: props?.palette?.dashboardList?.blue, // blue
     borderRadius: "15px !important",
     fontSize: "12px !important",
     // lineHeight: "16px !important",
@@ -131,7 +128,6 @@ const useStyles = makeStyles({
     },
   }),
   listItemTimeStyle: (props: any) => ({
-    color: props?.palette?.dashboardList?.darkRedBlack2,
     fontSize: "12px",
     fontWeight: 400,
   }),
@@ -159,7 +155,6 @@ const useStyles = makeStyles({
     marginLeft: 5,
   }),
   expandedSubtitle: (props: any) => ({
-    color: "#5e5454b0",
     fontSize: "14px",
     fontWeight: 600,
   }),
@@ -172,7 +167,7 @@ const useStyles = makeStyles({
   }),
   spanTextValue: (props: any) => ({
     margin: "0px 10px",
-    background: "#6CF356",
+    background: props?.palette?.dashboard?.paleGreenShade,
     borderRadius: 40,
     padding: "3px 6px",
     color: props?.palette?.dashboard?.black,
