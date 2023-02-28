@@ -11,7 +11,7 @@ const DashboardListItems: React.FC<any> = (props) => {
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const [searchOpen, setSearchOpen] = useState<any>(false);
 
   useEffect(() => {

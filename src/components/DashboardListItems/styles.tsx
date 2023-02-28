@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     border: `1px solid ${props?.palette?.dashboardList?.lightBlue2}`, //lightBlue2
     borderRadius: "7px",
     cursor: "pointer",
-    fontFamily: `"QualcommNext-Regular"`,
     marginRight: 6,
     paddingBottom: 10,
     [muiTheme.breakpoints.down(1025)]: {

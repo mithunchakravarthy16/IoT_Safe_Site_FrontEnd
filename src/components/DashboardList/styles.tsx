@@ -5,7 +5,6 @@ const useStyles = makeStyles({
   dashboardRightPanel: (props: any) => ({
     background: props?.palette?.dashboardList?.lightGrey1,
     padding: "26px 17px 13px 17px",
-    fontFamily: `"QualcommNext-Regular"`,
     borderLeft: `2px solid ${props?.palette?.dashboardList?.lightGrey2}`,
   }),
   dashboarListTitle: (props: any) => ({
@@ -21,7 +20,6 @@ const useStyles = makeStyles({
     color: props?.palette?.dashboardList?.darkBlue2,
     width: "85%",
     fontWeight: 600,
-    fontFamily: `"QualcommNext-Regular"`,
     lineHeight: "24px",
     textTransform: "capitalize",
     [muiTheme.breakpoints.down(1281)]: {

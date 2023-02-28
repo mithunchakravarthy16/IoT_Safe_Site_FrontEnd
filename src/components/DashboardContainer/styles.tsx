@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   fullscreenMapInnerStyle: (props: any) => ({
     width: "80vw",
     height: "90vh",
-    backgroundColor: "#FFF",
+    backgroundColor: props?.palette?.dashboardList?.white,
   }),
 });
 export default useStyles;

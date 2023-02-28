@@ -10,7 +10,7 @@ import useStyles from "./styles";
 const DashboardContainer: React.FC<any> = (props) => {
   const {} = props;
 
-  const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const { fullscreenMapStyle, fullscreenMapInnerStyle } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(

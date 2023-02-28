@@ -12,7 +12,7 @@ const DashBoard = () => {
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
 
   //const { dashboardSection } = useStyles(appTheme);
 
