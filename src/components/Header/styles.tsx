@@ -22,7 +22,7 @@ const useStyles = makeStyles(
         },
       },
       "& span": {
-        fontFamily: `"QualcommNext-Regular"`,
+        fontFamily: `'Nunito Sans', sans-serif'`,
         fontWeight: 900,
         fontSize: "18px",
         lineHeight: "25px",
@@ -33,7 +33,7 @@ const useStyles = makeStyles(
     }),
     header: (props: any) => ({
       alignItems: "center",
-      background: "#0B2742",
+      background: props?.palette?.header?.headerBg,
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",
       zIndex: 1500,
       padding: "16px",
@@ -61,7 +61,7 @@ const useStyles = makeStyles(
     }),
     avatharBackground: (props: any) => ({
       backgroundColor: `${props?.palette?.header?.avatarBgColorViolet}!important`,
-      fontFamily: "QualcommNext-Regular !important",
+      fontFamily: `'Nunito Sans', sans-serif !important'`,
       lineHeight: "19px",
       fontSize: "16px !important",
     }),
@@ -77,7 +77,7 @@ const useStyles = makeStyles(
         margin: 0,
       },
       "& :first-child": {
-        fontFamily: `"QualcommNext-Regular"`,
+        fontFamily: `'Nunito Sans', sans-serif'`,
         fontWeight: 500,
         lineHeight: "17px",
         fontSize: "14px",
@@ -89,7 +89,7 @@ const useStyles = makeStyles(
         },
       },
       "& :last-child": {
-        fontFamily: `"QualcommNext-Regular"`,
+        fontFamily: `'Nunito Sans', sans-serif'`,
         fontSize: "12px",
         lineHeight: "14px",
         fontWeight: 400,
@@ -157,7 +157,7 @@ const useStyles = makeStyles(
       "& .MuiTab-root": {
         fontSize: "18px",
         color: props?.palette?.header?.lightSkyBlue1,
-        fontFamily: `"QualcommNext-Regular"`,
+        fontFamily: `'Nunito Sans', sans-serif'`,
         fontWeight: " 500",
         lineHeight: "60px",
         textTransform: "capitalize",
