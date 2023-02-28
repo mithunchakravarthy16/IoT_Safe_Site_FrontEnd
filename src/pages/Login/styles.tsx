@@ -153,7 +153,7 @@ const useStyles = makeStyles(() => ({
   zurichLogo: (props: any) => ({
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginBottom: 16,
   }),
   radioButtonSection: (props: any) => ({

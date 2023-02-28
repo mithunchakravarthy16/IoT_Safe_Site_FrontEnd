@@ -72,6 +72,7 @@ const Login = () => {
     radioButtonSection,
     forgotPassword,
     copyRights,
+    zurichLogo,
   } = useStyles(appTheme);
 
   useEffect(() => {
@@ -145,7 +146,7 @@ const Login = () => {
             <Grid item xs={12}>
               <Box className={innerForm}>
                 <form onSubmit={formik.handleSubmit}>
-                  <div>
+                  <div className={zurichLogo}>
                     <img src={zurich} />
                   </div>
                   <div className={welcomeSection}>
