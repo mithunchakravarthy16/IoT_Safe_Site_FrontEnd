@@ -22,6 +22,10 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+        whiteGrayShade: colorCodes.whiteGrayShade,
+        lightGrey2: colorCodes.lightGrey2,
+        lightBlue4: colorCodes.lightBlue4,
+        grayShade3: colorCodes.grayShade3,
       },
     },
     spacing: 5,
@@ -48,6 +52,10 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+        whiteGrayShade: colorCodes.whiteGrayShade,
+        lightGrey2: colorCodes.lightGrey2,
+        lightBlue4: colorCodes.lightBlue4,
+        grayShade3: colorCodes.grayShade3,
       },
     },
     spacing: 5,
@@ -74,6 +82,10 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+        whiteGrayShade: colorCodes.whiteGrayShade,
+        lightGrey2: colorCodes.lightGrey2,
+        lightBlue4: colorCodes.lightBlue4,
+        grayShade3: colorCodes.grayShade3,
       },
     },
     spacing: 5,
@@ -100,6 +112,10 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+        whiteGrayShade: colorCodes.whiteGrayShade,
+        lightGrey2: colorCodes.lightGrey2,
+        lightBlue4: colorCodes.lightBlue4,
+        grayShade3: colorCodes.grayShade3,
       },
     },
     spacing: 5,
