@@ -113,6 +113,6 @@ const dashboardEquipments = {
 			}
 		]
 	}
-};
+}; 
 
 export default dashboardEquipments;
