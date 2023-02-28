@@ -78,6 +78,10 @@ const DashboardListItems: React.FC<any> = (props) => {
     expandedListButtonStyle,
     lineClass,
     listIemDetails,
+    listItemTower,
+    listItemLocationAreaSection,
+    spanTextClass,
+    spanTextValue,
   } = useStyles(appTheme);
 
   const {} = useTranslation();
@@ -145,14 +149,15 @@ const DashboardListItems: React.FC<any> = (props) => {
             </div>
 
             <div className={listItemLocation}>
-              {" "}
-              <img
-                src={LocationIcon}
-                alt="location Icon"
-                className={locationIconStyle}
-                width={17}
-              />
-              {area}
+              <div className={listItemLocationAreaSection}>
+                <img
+                  src={LocationIcon}
+                  alt="location Icon"
+                  className={locationIconStyle}
+                  width={17}
+                />
+                {area}
+              </div>{" "}
               <div className={expandedListButtonContainer}>
                 <div className={expandedListButtonStyle}>
                   <Tooltip tooltipValue={"Raise alert"}>
@@ -171,7 +176,7 @@ const DashboardListItems: React.FC<any> = (props) => {
                 </div>
               </div>
             </div>
-            <div className={listItemLocation}>
+            <div className={listItemTower}>
               {" "}
               <img
                 src={TowerIcon}
@@ -179,7 +184,8 @@ const DashboardListItems: React.FC<any> = (props) => {
                 className={locationIconStyle}
                 width={16}
               />
-              Connectivity or Celluar{connectivityPercentage}
+              <span className={spanTextClass}>Connectivity or Celluar</span>
+              <span className={spanTextValue}>{connectivityPercentage}</span>
             </div>
             <div className={lineClass}></div>
             <div className={expandedListIconContainer}>

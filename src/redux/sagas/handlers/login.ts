@@ -14,16 +14,8 @@ export function* handleLogin(action: any): any {
       // const { fetchLogin } = fetchAPIServices;
       // const response = yield fetchLogin(loginApi, action.payload);
       const response =
-        action?.payload?.userName === "mikeross@qualcomm.com"
+        action?.payload?.userName === "john.smith@zurichna.com"
           ? userList[0]
-          : action?.payload?.userName === "jessica@qualcomm.com"
-          ? userList[1]
-          : action?.payload?.userName === "louislitt@qualcomm.com"
-          ? userList[2]
-          : action?.payload?.userName === "emmapalmer@qualcomm.com"
-          ? userList[3]
-          : action?.payload?.userName === "harveyspecter@qualcomm.com"
-          ? userList[4]
           : "";
 
       if (response) {

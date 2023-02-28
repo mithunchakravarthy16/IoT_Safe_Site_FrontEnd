@@ -4,12 +4,12 @@ import muiTheme from "../../theme/muiTheme";
 const useStyles = makeStyles({
   listItemContainer: (props: any) => ({}),
   listItemTitle: (props: any) => ({
-    // fontWeight: 600,
-    // fontSize: 18,
+    fontWeight: 500,
+    fontSize: 16,
     color: props?.palette?.dashboardList?.darkRedBlack, //darkRedBlack
     marginBottom: 10,
     [muiTheme.breakpoints.down(1281)]: {
-      fontSize: 15,
+      fontSize: 16,
     },
     [muiTheme.breakpoints.down(1025)]: {
       fontSize: 13,
@@ -17,8 +17,24 @@ const useStyles = makeStyles({
   }),
   listItemLocation: (props: any) => ({
     fontWeight: 400,
-    fontSize: 16,
-    color: props?.palette?.dashboardList?.lightRedBlack, // lightRedBlack
+    fontSize: 14,
+    color: "rgba(134, 147, 168, 1)",
+    // color: props?.palette?.dashboardList?.lightRedBlack, // lightRedBlack
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    [muiTheme.breakpoints.down(1281)]: {
+      fontSize: 14,
+    },
+    [muiTheme.breakpoints.down(1025)]: {
+      fontSize: 13,
+    },
+  }),
+  listItemTower: (props: any) => ({
+    fontWeight: 400,
+    fontSize: 14,
+    color: "rgba(134, 147, 168, 1)",
+    // color: props?.palette?.dashboardList?.lightRedBlack, // lightRedBlack
     display: "flex",
     alignItems: "center",
     [muiTheme.breakpoints.down(1281)]: {
@@ -28,8 +44,13 @@ const useStyles = makeStyles({
       fontSize: 13,
     },
   }),
+
+  listItemLocationAreaSection: (props: any) => ({
+    display: "flex",
+    alignItems: "center",
+  }),
   expandedListItem: (props: any) => ({
-    padding: " 15px",
+    padding: "13px 13px 9px",
     margin: "17px 0px",
     border: `1px solid ${props?.palette?.dashboard?.grayShade3}`, //lightBlue2
     borderRadius: "7px",
@@ -63,17 +84,19 @@ const useStyles = makeStyles({
     display: "flex",
     color: props?.palette?.dashboardList?.black,
     fontWeight: 700,
-    fontSize: 12,
+    fontSize: 14,
+    marginBottom: 5,
     // lineHeight: 2,
     alignItems: "center",
   }),
   listItemIconName: (props: any) => ({
-    color: props?.palette?.dashboardList?.darkGrey4, // darkGrey4
-    fontSize: "12px",
+    color: "rgba(134, 147, 168, 1)",
+    fontSize: "14px",
+    letterSpacing: 0.35,
     // lineHeight: 1,
   }),
   listIemIcon: (props: any) => ({
-    marginRight: 15,
+    marginRight: 10,
     display: "flex",
   }),
   expandedListIconContainer: (props: any) => ({
@@ -130,9 +153,10 @@ const useStyles = makeStyles({
   expandedListButtonContainer: (props: any) => ({
     display: "flex",
     justifyContent: "space-between",
+    margin: 0,
   }),
   expandedListButtonStyle: (props: any) => ({
-    marginLeft: 10,
+    marginLeft: 5,
   }),
   expandedSubtitle: (props: any) => ({
     color: "#5e5454b0",
@@ -142,6 +166,18 @@ const useStyles = makeStyles({
   lineClass: (props: any) => ({
     borderTop: `0.5px solid ${props?.palette?.dashboard?.grayShade3}`, //lightBlue2
     margin: "10px 0px",
+  }),
+  spanTextClass: (props: any) => ({
+    color: props?.palette?.dashboard?.white,
+  }),
+  spanTextValue: (props: any) => ({
+    margin: "0px 10px",
+    background: "#6CF356",
+    borderRadius: 40,
+    padding: "3px 6px",
+    color: props?.palette?.dashboard?.black,
+    fontSize: 14,
+    fontWeight: 800,
   }),
 });
 export default useStyles;
