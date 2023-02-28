@@ -35,6 +35,6 @@ const DashboardMap: React.FC<any> = (props) => {
 
   const {} = useTranslation();
 
-  return <div className={dashboardMapContainer}></div>;
+  return <div className={dashboardMapContainer}>DashboardMap</div>;
 };
 export default DashboardMap;

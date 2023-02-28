@@ -57,6 +57,7 @@ const DashboardList: React.FC<any> = (props) => {
   return (
     <>
       <div className={dashboardRightPanel}>
+        DashboardList
         <DashboardListItems />
       </div>
     </>

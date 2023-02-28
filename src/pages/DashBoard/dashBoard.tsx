@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import Profile from '../Profile';
+import Profile from "../Profile";
 import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
+import DashboardContainer from "components/DashboardContainer";
 import useStyles from "./styles";
 
 const DashBoard = () => {
-
   const { hello } = useTranslation();
 
   const [selectedTheme, setSelectedTheme] = useState(
@@ -38,9 +38,7 @@ const DashBoard = () => {
 
   return (
     <>
-      Dashboard 
-       {/* {hello}
-      <Profile /> */}
+      <DashboardContainer />
     </>
   );
 };
