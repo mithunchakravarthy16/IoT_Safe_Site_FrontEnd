@@ -5,13 +5,14 @@ import ProtectedRoutes from "./protectedRoutes";
 import Login from "../pages/Login";
 import DashBoard from "../pages/DashBoard";
 import Profile from "../pages/Profile";
+import Header from "../components/Header";
 
 const SAFE_SITE_Routes = () => {
   const user = useSelector((state: RootState) => state.login.loginData);
 
   return (
     <>
-      {user?.userName && "Header"}
+      {user?.userName && <Header />}
       <Routes>
         {/** Protected Routes */}
         <Route path="/" element={<ProtectedRoutes />}>

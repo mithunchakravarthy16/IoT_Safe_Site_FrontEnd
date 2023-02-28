@@ -23,6 +23,9 @@ let theme = {
       dashboard: {
         white: colorCodes.colorWhite,
       },
+      header: {
+        headerBg: colorCodes.headerBg,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -48,6 +51,9 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+      },
+      header: {
+        headerBg: colorCodes.headerBg,
       },
     },
     spacing: 5,
@@ -75,6 +81,9 @@ let theme = {
       dashboard: {
         white: colorCodes.colorWhite,
       },
+      header: {
+        headerBg: colorCodes.headerBg,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -100,6 +109,9 @@ let theme = {
       },
       dashboard: {
         white: colorCodes.colorWhite,
+      },
+      header: {
+        headerBg: colorCodes.headerBg,
       },
     },
     spacing: 5,
