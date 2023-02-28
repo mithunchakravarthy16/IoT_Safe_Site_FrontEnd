@@ -20,6 +20,9 @@ let theme = {
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.logoBg,
       },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -42,6 +45,9 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
       },
     },
     spacing: 5,
@@ -66,6 +72,9 @@ let theme = {
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.logoBg,
       },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -88,6 +97,9 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
       },
     },
     spacing: 5,
