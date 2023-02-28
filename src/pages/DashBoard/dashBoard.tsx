@@ -3,6 +3,7 @@ import Profile from '../Profile';
 import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
 import useStyles from "./styles";
+import {GrokList} from "elements";
 
 const DashBoard = () => {
 
@@ -39,6 +40,12 @@ const DashBoard = () => {
   return (
     <>
       Dashboard 
+      <div style={{display: "flex"}} >
+        <div style={{flex: 3}} ></div>
+        <div style={{flex: 1}} >
+          <GrokList />
+        </div>
+      </div>
        {/* {hello}
       <Profile /> */}
     </>
