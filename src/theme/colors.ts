@@ -35,9 +35,9 @@ let colorCodes = {
   darkGrey3: "#565656",
   darkGrey4: "#6B6B6B",
   //QualComm Color
-  blue: "#3253DC",
+  blue: "#1CA69E",
   lightBlue: "#0C1C5E",
-  darkBlack: "#212431",
+  logoBg: "linear-gradient(90.44deg, #1E7B99 -5.36%, #1C5C77 86.39%)",
   lightSkyBlue: "#4F69F1",
   darkQualcomBlue: "#212431",
   lightBlue1: "#68B5C7",

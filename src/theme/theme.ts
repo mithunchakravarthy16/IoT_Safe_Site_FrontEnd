@@ -18,8 +18,11 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
-      }
+        logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -41,8 +44,11 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
-      }
+        logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -64,8 +70,11 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
-      }
+        logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -87,8 +96,11 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
-      }
+        logoBg: colorCodes.logoBg,
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
