@@ -82,14 +82,6 @@ const Login = () => {
     }
   }, [user]);
 
-  const handleLogin = () => {
-    let payload = {
-      userName: "mikeross@qualcomm.com",
-      passWord: "admin",
-    };
-    dispatch(getUserLogin(payload));
-  };
-
   const formik = useFormik({
     initialValues: {
       userid: "",
@@ -106,16 +98,8 @@ const Login = () => {
     }),
     onSubmit: (values) => {
       if (
-        ((values?.userid).toLowerCase() === "mikeross@qualcomm.com" &&
-          values?.password === "Mike@2023") ||
-        ((values?.userid).toLowerCase() === "jessica@qualcomm.com" &&
-          values?.password === "Jessica@2023") ||
-        ((values?.userid).toLowerCase() === "louislitt@qualcomm.com" &&
-          values?.password === "Louis@2023") ||
-        ((values?.userid).toLowerCase() === "emmapalmer@qualcomm.com" &&
-          values?.password === "Emma@2023") ||
-        ((values?.userid).toLowerCase() === "harveyspecter@qualcomm.com" &&
-          values?.password === "Harvey@2023")
+        (values?.userid).toLowerCase() === "john.smith@zurichna.com" &&
+        values?.password === "John@2023"
       ) {
         let payload = {
           userName: values.userid?.toLowerCase(),
@@ -160,7 +144,7 @@ const Login = () => {
                     <OutlinedInput
                       className={inputField}
                       fullWidth
-                      placeholder="username@qualcom.com"
+                      placeholder="username@zurichna.com"
                       type="text"
                       name="userid"
                       value={formik.values.userid}
@@ -206,12 +190,7 @@ const Login = () => {
                     <p className={forgotPassword}>Forgot Password?</p>
                   </div>
                   <div className={loginButton}>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      type="submit"
-                      onClick={handleLogin}
-                    >
+                    <Button variant="contained" fullWidth type="submit">
                       Login
                     </Button>
                   </div>
