@@ -50,7 +50,7 @@ const Map = () => {
         <GoogleMap
           mapContainerStyle={mapContainerStyles}
           center={defaultCenter}
-          zoom={19}
+          zoom={20}
           tilt={45}
           mapTypeId={"satellite"}
           options={getMapTypeControls()}
