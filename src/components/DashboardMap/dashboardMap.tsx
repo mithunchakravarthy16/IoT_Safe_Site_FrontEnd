@@ -1,21 +1,17 @@
 import { useState, useEffect } from "react";
-import Profile from "../Profile";
 import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
-import DashboardContainer from "components/DashboardContainer";
+import Map from "elements/Map";
 import useStyles from "./styles";
-import {GrokList} from "elements";
 
-const DashBoard = () => {
-  const { hello } = useTranslation();
+const DashboardMap: React.FC<any> = (props) => {
+  const {} = props;
 
+  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
+  const { infoIconContainer, dashboardMapContainer } = useStyles(appTheme);
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
-
-  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-
-  //const { dashboardSection } = useStyles(appTheme);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -37,10 +33,12 @@ const DashBoard = () => {
     }
   }, [selectedTheme]);
 
+  const {} = useTranslation();
+
   return (
-    <>
-      <DashboardContainer />
-    </>
+    <div className={dashboardMapContainer}>
+      <Map />
+    </div>
   );
 };
-export default DashBoard;
+export default DashboardMap;

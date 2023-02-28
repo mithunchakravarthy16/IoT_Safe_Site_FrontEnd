@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
-import Profile from "../Profile";
 import theme from "../../theme/theme";
+import Button from "../../elements/Button";
 import useTranslation from "../../localization/translations";
-import DashboardContainer from "components/DashboardContainer";
 import useStyles from "./styles";
-import {GrokList} from "elements";
 
-const DashBoard = () => {
-  const { hello } = useTranslation();
+const DashboardListItems: React.FC<any> = (props) => {
+  const {} = props;
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-
-  //const { dashboardSection } = useStyles(appTheme);
+  const [searchOpen, setSearchOpen] = useState<any>(false);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -37,10 +34,31 @@ const DashBoard = () => {
     }
   }, [selectedTheme]);
 
+  const {
+    listItemContainer,
+    listItemTitle,
+    listItemLocation,
+    expandedListItem,
+    collapsedListItem,
+    locationIconStyle,
+    listItemIconDetails,
+    listIemIcon,
+    expandedListIconContainer,
+    selectedButtonStyles,
+    listItemFooterStyle,
+    listItemIconName,
+    listItemTimeStyle,
+    listItemSection,
+  } = useStyles(appTheme);
+
+  const {} = useTranslation();
+
+  const [listItemIconArray, setListItemIconArray] = useState<any>();
+
   return (
     <>
-      <DashboardContainer />
+      <div className={listItemContainer}>DashboardListItems</div>
     </>
   );
 };
-export default DashBoard;
+export default DashboardListItems;

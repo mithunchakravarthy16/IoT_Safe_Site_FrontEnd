@@ -36,7 +36,10 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
-      }
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -76,7 +79,10 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
-      }
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -116,7 +122,10 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
-      }
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -156,7 +165,10 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
-      }
+      },
+      dashboard: {
+        white: colorCodes.colorWhite,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
