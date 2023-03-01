@@ -16,6 +16,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tabs from "../../elements/Tabs";
 import { setUserLogin } from "../../redux/actions/loginActions";
+import DashboardActiveIcon from "../../assets/HeaderTabIcons/DashboardActive.svg";
+import DashboardInactiveIcon from "../../assets/HeaderTabIcons/DashboardInactive.svg";
+import AlertsInactiveIcon from "../../assets/HeaderTabIcons/AlertsInactive.svg";
+import AlertsActiveIcon from "../../assets/HeaderTabIcons/AlertsActive.svg";
+import GrokEyeInactiveIcon from "../../assets/HeaderTabIcons/GrokEyeInactive.svg";
+import GrokEyeActiveIcon from "../../assets/HeaderTabIcons/GrokEyeActive.svg";
 import useStyles from "./styles";
 
 interface UserName {
@@ -30,7 +36,7 @@ const Header: React.FC = (props: any) => {
   const dispatch = useDispatch();
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const [tabIndex, setTabIndex] = useState<number>();
+  const [tabIndex, setTabIndex] = useState<number>(0);
   const {
     logoImg,
     header,
@@ -45,14 +51,16 @@ const Header: React.FC = (props: any) => {
     logoutText,
     tabStyle,
     personIconClass,
+    customNotificationTabs,
+    avatharUserName,
+    avatharUserRole,
   } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  // const { dashboardTab, alertsTab, analyticsTab, configurationTab, logout } =
-  //   useTranslation();
+  const { logout, dashboard, alerts, grokEye } = useTranslation();
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -124,7 +132,7 @@ const Header: React.FC = (props: any) => {
     }
   }, [user]);
 
-  // const menuOptions = [logout];
+  const menuOptions = [logout];
   const handleOpenUserMenu = (event: any) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -156,12 +164,23 @@ const Header: React.FC = (props: any) => {
     localStorage.setItem("tabIndex", JSON.stringify(index));
   };
 
-  // const tabsList = [
-  //   { name: dashboardTab, val: 0 },
-  //   { name: alertsTab, val: 1 },
-  //   { name: analyticsTab, val: 2 },
-  //   { name: configurationTab, val: 3 },
-  // ];
+  const tabsList = [
+    {
+      name: dashboard,
+      val: 0,
+      icon: tabIndex === 0 ? DashboardActiveIcon : DashboardInactiveIcon,
+    },
+    {
+      name: alerts,
+      val: 1,
+      icon: tabIndex === 1 ? AlertsActiveIcon : AlertsInactiveIcon,
+    },
+    {
+      name: grokEye,
+      val: 2,
+      icon: tabIndex === 2 ? GrokEyeActiveIcon : GrokEyeInactiveIcon,
+    },
+  ];
 
   return (
     <Fragment>
@@ -174,18 +193,33 @@ const Header: React.FC = (props: any) => {
           </div>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
-          <div className={tabStyle}></div>
+          <div className={tabStyle}>
+            <Tabs
+              initialIndex={tabIndex}
+              tabsList={tabsList}
+              handleTabs={handleTabs}
+              dashboardNotificationClassName={customNotificationTabs}
+              tabType={"headerTab"}
+            />
+          </div>
         </Grid>
         <Grid className={headerRight} item xs={12} sm={12} md={3} lg={4} xl={4}>
           <div>
-            {/* <div className={avatharSection}>
+            <div className={avatharSection}>
               <Avatar className={avatharBackground}>{name.initials}</Avatar>
               <div className={avatharName}>
-                <p>{name?.firstName + " " + name?.lastName}</p>
-                <p>{name?.role}</p>
+                <div className={avatharUserName}>
+                  {name?.firstName + " " + name?.lastName}
+                </div>
+                <div className={avatharUserRole}>{name?.role}</div>
               </div>
               <IconButton onClick={handleOpenUserMenu} className={avatharIcon}>
-                <KeyboardArrowDownIcon sx={{ fontSize: 32 }} />
+                <KeyboardArrowDownIcon
+                  sx={{
+                    fontSize: 32,
+                    color: appTheme?.palette?.header?.white,
+                  }}
+                />
               </IconButton>
               <Menu
                 className={customMenu}
@@ -203,8 +237,8 @@ const Header: React.FC = (props: any) => {
                 onClose={handleCloseUserMenu}
               >
                 {menuOptions &&
-                  menuOptions.length > 0 &&
-                  menuOptions.map((menuOptions) => (
+                  menuOptions?.length > 0 &&
+                  menuOptions?.map((menuOptions: any) => (
                     <MenuItem
                       key={menuOptions}
                       onClick={() => handleCloseUserMenu(menuOptions)}
@@ -227,7 +261,7 @@ const Header: React.FC = (props: any) => {
                     </MenuItem>
                   ))}
               </Menu>
-            </div> */}
+            </div>
           </div>
         </Grid>
       </Grid>

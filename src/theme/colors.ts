@@ -99,5 +99,7 @@ let colorCodes = {
   blueGrayNewShade: "rgba(134, 147, 168, 1)",
   darkBlueGrayShade: "#324658",
   paleGreenShade: "#6CF356",
+  lightBlueGrayShade: "rgba(123, 149, 173, 1)",
+  darkGreenShade2: "#39B586",
 };
 export default colorCodes;

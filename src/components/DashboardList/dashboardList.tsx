@@ -66,14 +66,8 @@ const DashboardList: React.FC<any> = (props) => {
     customNotificationTabs,
   } = useStyles(appTheme);
 
-  const {
-    dashboardListName,
-    tabsListName1,
-    tabsListName2,
-    tabsListName3,
-    search,
-    noResult,
-  } = useTranslation();
+  const { equipment, aiCameras, envrSensor, floodSensor, search, noResult } =
+    useTranslation();
 
   useEffect(() => {
     setDataList(formattedCardListData(tabIndex, equipmentData));
@@ -117,20 +111,20 @@ const DashboardList: React.FC<any> = (props) => {
 
   const tabsList = [
     {
-      name: tabsListName1,
+      name: aiCameras,
       val: 0,
       count: `(${dashboardEquipmentsMain?.aiCameras?.list?.length})`,
       icon: tabIndex === 0 ? AICameraActive : AICameraInactive,
     },
     {
-      name: tabsListName2,
+      name: envrSensor,
       val: 1,
       count: `(${dashboardEquipmentsMain?.envrSensors?.list?.length})`,
       icon:
         tabIndex === 1 ? EnvironmentSensorActive : EnvironmentSensorInactive,
     },
     {
-      name: tabsListName3,
+      name: floodSensor,
       val: 2,
       count: `(${dashboardEquipmentsMain?.floodSensors?.list?.length})`,
       icon: tabIndex === 2 ? FloodSensorActive : FloodSensorInactive,
@@ -143,7 +137,7 @@ const DashboardList: React.FC<any> = (props) => {
         <div className={dashboarListTitle}>
           <div className={listTitleName}>
             {!searchOpen ? (
-              `${dashboardListName}`
+              `${equipment}`
             ) : (
               <SearchBox
                 searchInput={searchClass}
