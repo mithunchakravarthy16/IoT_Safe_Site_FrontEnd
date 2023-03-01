@@ -20,6 +20,7 @@ const defaultCenter = {
 const Map: React.FC<any> = (props) => {
   const { markers, marker, setSelectedNotification, setTabIndex } = props;
 
+  console.log("marker", marker);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: appData?.googleMapApiKey,
     libraries: ["places"],
@@ -31,6 +32,16 @@ const Map: React.FC<any> = (props) => {
   useEffect(() => {
     setCurrentMarker(marker);
   }, [marker]);
+
+  useEffect(() => {
+    if (currentMarker) {
+      const index = markers?.findIndex(
+        (marker: any) => marker.id === currentMarker
+      );
+
+      map?.panTo(markers[index]?.location);
+    }
+  }, [currentMarker]);
 
   const getMapTypeControls: any = () => {
     const defaultMapOptions = {
