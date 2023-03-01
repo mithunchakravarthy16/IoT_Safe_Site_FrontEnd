@@ -11,6 +11,11 @@ import MotionIcon from "assets/MotionIcon.svg";
 import OprAlertIcon from "assets/OprAlertIcon.svg";
 import TowerIcon from "assets/TowerIcon.svg";
 import CloseCalloutIcon from "assets/CloseCalloutIcon.svg";
+import TemperatureIcon from "assets/ListInfoIcons/TemperatureIcon.svg";
+import BatteryIcon from "assets/ListInfoIcons/BatteryIcon.svg";
+import CarbonMonoxideIcon from "assets/ListInfoIcons/CarbonMonoxideIcon.svg";
+import HumidityIcon from "assets/ListInfoIcons/HumidityIcon.svg";
+import WaterLevelIcon from "assets/ListInfoIcons/WaterLevelIcon.svg";
 import useStyles from "./styles";
 
 const InfoBox: React.FC<any> = (props) => {
@@ -25,6 +30,7 @@ const InfoBox: React.FC<any> = (props) => {
       operationAlertObservation,
       motionObservation,
       type,
+      infoIconList,
     },
     toggleInfoWindow,
     singleMarkerId,
@@ -60,64 +66,50 @@ const InfoBox: React.FC<any> = (props) => {
     spanTextClass,
     spanTextValue,
     listItemCloseIcon,
+    infoIconListContainer,
+    itemIconValueStyle,
+    itemValueStyle,
+    itemNameStyle,
   } = useStyles(appTheme);
 
   const {
-    listIconName1,
-    listIconName2,
-    listIconName3,
-    listItemConnectivityText,
-    listItemIconArrayName1,
-    listItemIconArrayName2,
-    listItemIconArrayName3,
+    grokEye,
+    raiseAlert,
+    call,
+    connectivity,
+    incidents,
+    operationAlert,
+    motion,
   } = useTranslation();
 
-  useEffect(() => {
-    let iconListArray: any = [];
-    if (data) {
-      switch (data.category) {
-        case "aiCameras":
-          iconListArray = [
-            {
-              icon: BellRingingIcon,
-              value: incidentsObservation,
-              label: listItemIconArrayName1,
-            },
-            {
-              icon: OprAlertIcon,
-              value: operationAlertObservation,
-              label: listItemIconArrayName2,
-            },
-            {
-              icon: MotionIcon,
-              value: motionObservation,
-              label: listItemIconArrayName3,
-            },
-          ];
-          break;
-        default:
-          iconListArray = [
-            {
-              icon: BellRingingIcon,
-              value: incidentsObservation,
-              label: listItemIconArrayName1,
-            },
-            {
-              icon: OprAlertIcon,
-              value: operationAlertObservation,
-              label: listItemIconArrayName2,
-            },
-            {
-              icon: MotionIcon,
-              value: motionObservation,
-              label: listItemIconArrayName3,
-            },
-          ];
-          break;
-      }
-      setListItemIconArray(iconListArray);
-    }
-  }, [data]);
+  const notificationIconArray = [
+    {
+      icon: BellRingingIcon,
+      value: incidentsObservation,
+      label: incidents,
+    },
+    {
+      icon: OprAlertIcon,
+      value: operationAlertObservation,
+      label: operationAlert,
+    },
+    {
+      icon: MotionIcon,
+      value: motionObservation,
+      label: motion,
+    },
+  ];
+
+  const infoListIconArray = [
+    { icon: TemperatureIcon },
+    { icon: HumidityIcon },
+    { icon: type === "envrSensors" ? CarbonMonoxideIcon : WaterLevelIcon },
+    { icon: BatteryIcon },
+  ];
+
+  const listItemDetails = infoIconList?.map((item: any, index: number) =>
+    Object.assign({}, item, infoListIconArray[index])
+  );
 
   const handleClose = () => {
     toggleInfoWindow(
@@ -151,18 +143,18 @@ const InfoBox: React.FC<any> = (props) => {
         </div>
         <div className={expandedListButtonContainer}>
           <div className={expandedListButtonStyle}>
-            <Tooltip tooltipValue={listIconName1}>
-              <img src={EyeButton} alt={listIconName1} />
+            <Tooltip tooltipValue={grokEye}>
+              <img src={EyeButton} alt={grokEye} />
             </Tooltip>
           </div>
           <div className={expandedListButtonStyle}>
-            <Tooltip tooltipValue={listIconName2}>
-              <img src={AlertButton} alt={listIconName2} />
+            <Tooltip tooltipValue={raiseAlert}>
+              <img src={AlertButton} alt={raiseAlert} />
             </Tooltip>
           </div>
           <div className={expandedListButtonStyle}>
-            <Tooltip tooltipValue={listIconName3}>
-              <img src={CallButton} alt={listIconName3} />
+            <Tooltip tooltipValue={call}>
+              <img src={CallButton} alt={call} />
             </Tooltip>
           </div>
         </div>
@@ -174,14 +166,14 @@ const InfoBox: React.FC<any> = (props) => {
           className={locationIconStyle}
           width={16}
         />
-        <span className={spanTextClass}>{listItemConnectivityText}</span>
+        <span className={spanTextClass}>{connectivity}</span>
         <span className={spanTextValue}>{connectivityPercentage}</span>
       </div>
       <div className={lineClass}></div>
       <div className={expandedListIconContainer}>
-        {listItemIconArray &&
-          listItemIconArray.length > 0 &&
-          listItemIconArray?.map((item: any, index: number) => {
+        {notificationIconArray &&
+          notificationIconArray.length > 0 &&
+          notificationIconArray?.map((item: any, index: number) => {
             return (
               <div className={listItemSection} key={index}>
                 <div className={listIemIcon}>
@@ -195,6 +187,28 @@ const InfoBox: React.FC<any> = (props) => {
             );
           })}
       </div>
+
+      {infoIconList && infoIconList?.length > 0 ? (
+        <div className={infoIconListContainer}>
+          {listItemDetails &&
+            listItemDetails.length > 0 &&
+            listItemDetails?.map((item: any, index: number) => {
+              return (
+                <div>
+                  <div className={itemIconValueStyle}>
+                    <div>
+                      <img src={item?.icon} alt="Icon" />
+                    </div>
+                    <div className={itemValueStyle}>{item?.value}</div>
+                  </div>
+                  <div className={itemNameStyle}>{item?.name}</div>
+                </div>
+              );
+            })}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

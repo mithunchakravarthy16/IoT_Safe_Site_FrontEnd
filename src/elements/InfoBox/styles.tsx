@@ -127,5 +127,29 @@ const useStyles = makeStyles({
   listItemCloseIcon: (props: any) => ({
     cursor: "pointer",
   }),
+  infoIconListContainer: (props: any) => ({
+    margin: 5,
+    borderRadius: 7,
+    padding: 15,
+    background: props?.palette?.dashboard?.darkBlueBlackShade2,
+    display: "flex",
+    justifyContent: "space-between",
+  }),
+  itemIconValueStyle: (props: any) => ({
+    display: "flex",
+  }),
+
+  itemValueStyle: (props: any) => ({
+    color: props?.palette?.dashboard?.white,
+    fontSize: 14,
+    fontWeight: 600,
+    marginLeft: 5,
+  }),
+  itemNameStyle: (props: any) => ({
+    color: props?.palette?.dashboard?.lightGrey,
+    fontSize: 12,
+    fontWeight: 600,
+    letterSpacing: 0.5,
+  }),
 });
 export default useStyles;
