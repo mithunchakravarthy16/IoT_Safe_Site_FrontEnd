@@ -23,7 +23,7 @@ const Footer: React.FC = (props: any) => {
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  // const { poweredBy, copyRight } = useTranslation();
+  const { poweredBy, copyRight } = useTranslation();
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -49,9 +49,9 @@ const Footer: React.FC = (props: any) => {
     <Fragment>
       <Grid container className={footer}>
         <Grid item xs={12} className={copyRights}>
-          <span>Powered by</span>
+          <span>{poweredBy}</span>
           <img src={saveSiteLogo} />
-          <span>© 2023. All Rights Reserved</span>
+          <span>{copyRight}</span>
         </Grid>
       </Grid>
     </Fragment>

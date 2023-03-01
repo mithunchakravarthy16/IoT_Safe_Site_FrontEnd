@@ -20,4 +20,6 @@ export default {
   logout: "Disconnettersi",
   dashboard: "Pannello Di Controllo",
   alerts: "Avvisi",
+  poweredBy: "Offerto da",
+  copyRight: "© 2023. Tutti i diritti riservati",
 };
