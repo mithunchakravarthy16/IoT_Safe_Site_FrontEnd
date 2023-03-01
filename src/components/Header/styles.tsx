@@ -14,6 +14,7 @@ const useStyles = makeStyles(
       "& :first-child": {
         cursor: "pointer",
         marginRight: "13px",
+        width: 212,
         [muiTheme.breakpoints.down(1537)]: {
           width: 212,
         },
@@ -36,7 +37,7 @@ const useStyles = makeStyles(
       background: props?.palette?.header?.headerBg,
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",
       zIndex: 1500,
-      padding: "16px",
+      padding: "0 16px",
       position: "fixed",
       top: 0,
     }),
@@ -60,10 +61,13 @@ const useStyles = makeStyles(
       },
     }),
     avatharBackground: (props: any) => ({
-      backgroundColor: `${props?.palette?.header?.avatarBgColorViolet}!important`,
+      backgroundColor: `${props?.palette?.header?.darkGreenShade2}!important`,
       fontFamily: `'Nunito Sans', sans-serif !important'`,
       lineHeight: "19px",
-      fontSize: "16px !important",
+      fontSize: "18px !important",
+      "&.MuiAvatar-root": {
+        borderRadius: "30%",
+      },
     }),
     logoSection: (props: any) => ({
       display: "flex",
@@ -73,17 +77,17 @@ const useStyles = makeStyles(
     avatharName: (props: any) => ({
       marginLeft: 20,
       marginRight: 26,
+
       "& p": {
         margin: 0,
       },
       "& :first-child": {
         fontFamily: `'Nunito Sans', sans-serif'`,
-        fontWeight: 500,
         lineHeight: "17px",
         fontSize: "14px",
-        color: props?.palette?.header?.colorWhite,
+        color: props?.palette?.header?.white,
         textTransform: "capitalize",
-        marginBottom: 3,
+        marginBottom: 5,
         [muiTheme.breakpoints.down(1025)]: {
           fontSize: "11px",
         },
@@ -92,8 +96,7 @@ const useStyles = makeStyles(
         fontFamily: `'Nunito Sans', sans-serif'`,
         fontSize: "12px",
         lineHeight: "14px",
-        fontWeight: 400,
-        color: props?.palette?.header?.colorWhite,
+        color: props?.palette?.header?.white,
         textTransform: "capitalize",
         [muiTheme.breakpoints.down(1025)]: {
           fontSize: "11px",
@@ -101,6 +104,7 @@ const useStyles = makeStyles(
       },
     }),
     avatharIcon: (props: any) => ({
+      cursor: "pointer",
       "&.MuiIconButton-root": {
         color: props?.palette?.header?.colorWhite,
         left: "0px",
@@ -118,8 +122,8 @@ const useStyles = makeStyles(
     customMenu: (props: any) => ({
       zIndex: "1500 !important",
       "& .MuiMenu-list": {
-        background: `${props?.palette?.header?.colorWhite}!important`,
-        marginTop: "10px !important",
+        background: `${props?.palette?.header?.lightGrayWhiteShade}!important`,
+        marginTop: "22px !important",
         border: `1px solid ${props?.palette?.header?.lightGrayLogoutText} !important`,
         borderRadius: "4px !important",
         marginLeft: 26,
@@ -136,7 +140,7 @@ const useStyles = makeStyles(
           content: '""',
           transform: "rotate(225deg)",
           boxSizing: "border-box",
-          backgroundColor: props?.palette?.header?.colorWhite,
+          backgroundColor: props?.palette?.header?.lightGrayWhiteShade,
           position: "absolute",
           right: 17,
           top: -6,
@@ -155,11 +159,11 @@ const useStyles = makeStyles(
 
     tabStyle: (props: any) => ({
       "& .MuiTab-root": {
-        fontSize: "18px",
+        fontSize: "16px",
         color: props?.palette?.header?.lightSkyBlue1,
         fontFamily: `'Nunito Sans', sans-serif'`,
         fontWeight: " 500",
-        lineHeight: "60px",
+        // lineHeight: "60px",
         textTransform: "capitalize",
         flex: 1,
         [muiTheme.breakpoints.down(1537)]: {
@@ -240,8 +244,98 @@ const useStyles = makeStyles(
         },
       },
     }),
+
+    customNotificationTabs: (props: any) => ({
+      "& .MuiTabs-flexContainer": {
+        // borderBottom: "2px solid #3e3e3e",
+        justifyContent: "space-between",
+        position: "relative",
+      },
+      "& .MuiTabs-root": {
+        minHeight: "84px !important",
+      },
+      "& .MuiButtonBase-root": {
+        fontSize: "15px !important",
+        // marginBottom: "-0.5px !important",
+        flex: "1 !important",
+        textTransform: "none",
+        marginTop: "14px",
+        lineHeight: "18px",
+      },
+      "& .MuiTab-root": {
+        padding: 0,
+        [muiTheme.breakpoints.down(1281)]: {
+          padding: "0px 12px",
+        },
+        "&:first-child": {
+          // margin: "20px 10px 0px 0px",
+          // border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+          // borderRadius: "5px 5px 0px 0px",
+          // fontSize: 18,
+          // background: props?.palette?.dashboard?.lightGrayWhiteShade,
+          color: `${props?.palette?.dashboard?.lightBlueGrayShade} !important`,
+        },
+        "&:first-child.Mui-selected": {
+          color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+          filter: `drop-shadow(0px 0px 14px ${props?.palette?.dashboard?.darkGreenShade} )`,
+          // background: props?.palette?.dashboard?.darkBlueBlackShade,
+          // borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+          // fontSize: 14,
+        },
+        "&:nth-child(2)": {
+          // margin: "20px 10px 0px 0px",
+          // border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+          // borderRadius: "5px 5px 0px 0px",
+          // fontSize: 18,
+          // background: props?.palette?.dashboard?.lightGrayWhiteShade,
+          color: `${props?.palette?.dashboard?.lightBlueGrayShade} !important`,
+        },
+        "&:nth-child(2).Mui-selected": {
+          color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+          filter: `drop-shadow(0px 0px 14px ${props?.palette?.dashboard?.darkGreenShade} )`,
+          // background: props?.palette?.dashboard?.darkBlueBlackShade,
+          // borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+          // fontSize: 14,
+        },
+        "&:nth-child(3)": {
+          color: `${props?.palette?.dashboard?.lightBlueGrayShade} !important`,
+          // margin: "20px 0px 0px 0px",
+          // border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
+          // borderRadius: "5px 5px 0px 0px",
+          // fontSize: 18,
+          // background: props?.palette?.dashboard?.lightGrayWhiteShade,
+        },
+        "&:nth-child(3).Mui-selected": {
+          color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
+          filter: `drop-shadow(0px 0px 14px ${props?.palette?.dashboard?.darkGreenShade} )`,
+          // background: props?.palette?.dashboard?.darkBlueBlackShade,
+          // borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
+          // fontSize: 14,
+        },
+      },
+      "& .MuiTabs-root .MuiTabs-indicator": {
+        // width: "100% !important",
+        // background: "#2B2B2B",
+        backgroundColor: props?.palette?.dashboard?.darkGreenShade,
+        borderRadius: "50px 50px 0px 0px !important",
+        height: 5,
+        position: "absolute",
+        bottom: 0,
+        transform: "translate(69px, 0px) !important",
+        margin: "0px 0px 0px 15px",
+      },
+    }),
     personIconClass: (props: any) => ({
       marginRight: "4px",
+    }),
+
+    avatharUserName: (props: any) => ({
+      fontWeight: 800,
+      letterSpacing: 0.5,
+    }),
+    avatharUserRole: (props: any) => ({
+      fontWeight: 500,
+      letterSpacing: 0.5,
     }),
   }),
   { index: 1 }
