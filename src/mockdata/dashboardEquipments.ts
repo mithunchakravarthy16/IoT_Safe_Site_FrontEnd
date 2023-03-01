@@ -1,5 +1,5 @@
 const dashboardEquipments = {
-  aiCamers: {
+  aiCameras: {
     id: "",
     img: "",
     title: "",
@@ -8,7 +8,7 @@ const dashboardEquipments = {
     list: [
       {
         id: "AI-Cam1",
-        category: "",
+        category: "aiCameras",
         title: "AI Camera #1",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
@@ -23,7 +23,7 @@ const dashboardEquipments = {
       },
       {
         id: "AI-Cam2",
-        category: "",
+        category: "aiCameras",
         title: "AI Camera #2",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
@@ -47,8 +47,8 @@ const dashboardEquipments = {
     list: [
       {
         id: "AI-Cam1",
-        category: "",
-        title: "AI Camera #1",
+        category: "envrSensors",
+        title: "Envr Sensors #1",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
@@ -62,8 +62,8 @@ const dashboardEquipments = {
       },
       {
         id: "AI-Cam2",
-        category: "",
-        title: "AI Camera #2",
+        category: "envrSensors",
+        title: "Envr Sensors #2",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
@@ -86,8 +86,8 @@ const dashboardEquipments = {
     list: [
       {
         id: "AI-Cam1",
-        category: "",
-        title: "AI Camera #1",
+        category: "floodSensors",
+        title: "Flood Sensor #1",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
@@ -101,8 +101,8 @@ const dashboardEquipments = {
       },
       {
         id: "AI-Cam2",
-        category: "",
-        title: "AI Camera #2",
+        category: "floodSensors",
+        title: "Flood Sensor #2",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",

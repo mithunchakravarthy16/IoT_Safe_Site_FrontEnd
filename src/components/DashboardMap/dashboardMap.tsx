@@ -8,7 +8,7 @@ const DashboardMap: React.FC<any> = (props) => {
   const {} = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const { infoIconContainer, dashboardMapContainer } = useStyles(appTheme);
+  const { dashboardMapContainer } = useStyles(appTheme);
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
