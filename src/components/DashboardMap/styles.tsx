@@ -5,7 +5,7 @@ const useStyles = makeStyles({
   dashboardMapContainer: (props: any) => ({
     width: "100%",
     position: "relative",
-    height: "calc(100vh - 60px)",
+    height: "calc(100vh - 119px)",
     "& .react-transform-wrapper": {
       height: "calc(100vh - 200px)",
     },

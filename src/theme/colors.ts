@@ -101,5 +101,6 @@ let colorCodes = {
   paleGreenShade: "#6CF356",
   lightBlueGrayShade: "rgba(123, 149, 173, 1)",
   darkGreenShade2: "#39B586",
+  footerBg: "#EEF7FF;",
 };
 export default colorCodes;

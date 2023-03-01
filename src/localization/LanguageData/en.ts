@@ -20,4 +20,6 @@ export default {
   logout: "Logout",
   dashboard: "Dashboard",
   alerts: "Alerts",
+  poweredBy: "Powered by",
+  copyRight: "© 2023. All Rights Reserved",
 };

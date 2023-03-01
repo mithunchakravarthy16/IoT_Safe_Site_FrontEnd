@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import DashBoard from "../pages/DashBoard";
 import Profile from "../pages/Profile";
 import Header from "../components/Header";
+import Footer from "components/Footer";
 
 const SAFE_SITE_Routes = () => {
   const user = useSelector((state: RootState) => state.login.loginData);
@@ -27,7 +28,7 @@ const SAFE_SITE_Routes = () => {
         {/** Permission denied route */}
         <Route path="/denied" element={<div>No permission</div>} />
       </Routes>
-      {user?.userName && "Footer"}
+      {user?.userName && <Footer />}
     </>
   );
 };
