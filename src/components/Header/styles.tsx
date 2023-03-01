@@ -14,6 +14,7 @@ const useStyles = makeStyles(
       "& :first-child": {
         cursor: "pointer",
         marginRight: "13px",
+        width: 212,
         [muiTheme.breakpoints.down(1537)]: {
           width: 212,
         },
@@ -36,7 +37,7 @@ const useStyles = makeStyles(
       background: props?.palette?.header?.headerBg,
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",
       zIndex: 1500,
-      padding: "10px 16px 0px 16px",
+      padding: "0 16px",
       position: "fixed",
       top: 0,
     }),
@@ -248,15 +249,21 @@ const useStyles = makeStyles(
       "& .MuiTabs-flexContainer": {
         // borderBottom: "2px solid #3e3e3e",
         justifyContent: "space-between",
+        position: "relative",
+      },
+      "& .MuiTabs-root": {
+        minHeight: "84px !important",
       },
       "& .MuiButtonBase-root": {
         fontSize: "15px !important",
         // marginBottom: "-0.5px !important",
         flex: "1 !important",
         textTransform: "none",
+        marginTop: "14px",
+        lineHeight: "18px",
       },
       "& .MuiTab-root": {
-        padding: "5px 10px 15px 7px",
+        padding: 0,
         [muiTheme.breakpoints.down(1281)]: {
           padding: "0px 12px",
         },
@@ -314,7 +321,7 @@ const useStyles = makeStyles(
         height: 5,
         position: "absolute",
         bottom: 0,
-        transform: "translate(55px, 0px) !important",
+        transform: "translate(69px, 0px) !important",
         margin: "0px 0px 0px 15px",
       },
     }),

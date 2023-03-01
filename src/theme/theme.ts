@@ -44,6 +44,9 @@ let theme = {
         darkGreenShade2: colorCodes.darkGreenShade2,
         darkGreenShade: colorCodes.darkGreenShade,
       },
+      footer: {
+        footerBg: colorCodes.footerBg,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -90,6 +93,9 @@ let theme = {
         lightGrayWhiteShade: colorCodes.lightGrayWhiteShade,
         darkGreenShade2: colorCodes.darkGreenShade2,
         darkGreenShade: colorCodes.darkGreenShade,
+      },
+      footer: {
+        footerBg: colorCodes.footerBg,
       },
     },
     spacing: 5,
@@ -138,6 +144,9 @@ let theme = {
         darkGreenShade2: colorCodes.darkGreenShade2,
         darkGreenShade: colorCodes.darkGreenShade,
       },
+      footer: {
+        footerBg: colorCodes.footerBg,
+      },
     },
     spacing: 5,
     typography: { fontFamily: "Arial" },
@@ -184,6 +193,9 @@ let theme = {
         lightGrayWhiteShade: colorCodes.lightGrayWhiteShade,
         darkGreenShade2: colorCodes.darkGreenShade2,
         darkGreenShade: colorCodes.darkGreenShade,
+      },
+      footer: {
+        footerBg: colorCodes.footerBg,
       },
     },
     spacing: 5,
