@@ -4,7 +4,7 @@ import muiTheme from "../../theme/muiTheme";
 const useStyles = makeStyles(
   () => ({
     footer: (props: any) => ({
-      background: "#E9ECEE",
+      background: props?.palette?.footer?.footerBg,
       boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.05)",
       height: "35px",
       position: "fixed",
