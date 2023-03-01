@@ -11,6 +11,11 @@ import BellRingingIcon from "../../assets/BellRingingIcon.svg";
 import MotionIcon from "../../assets/MotionIcon.svg";
 import OprAlertIcon from "../../assets/OprAlertIcon.svg";
 import TowerIcon from "../../assets/TowerIcon.svg";
+import TemperatureIcon from "../../assets/ListInfoIcons/TemperatureIcon.svg";
+import BatteryIcon from "../../assets/ListInfoIcons/BatteryIcon.svg";
+import CarbonMonoxideIcon from "../../assets/ListInfoIcons/CarbonMonoxideIcon.svg";
+import HumidityIcon from "../../assets/ListInfoIcons/HumidityIcon.svg";
+import WaterLevelIcon from "../../assets/ListInfoIcons/WaterLevelIcon.svg";
 import useStyles from "./styles";
 
 const DashboardListItems: React.FC<any> = (props) => {
@@ -25,6 +30,7 @@ const DashboardListItems: React.FC<any> = (props) => {
       operationAlertObservation,
       motionObservation,
       type,
+      infoIconList,
     },
     selectedNotification,
     setSelectedNotification,
@@ -82,6 +88,10 @@ const DashboardListItems: React.FC<any> = (props) => {
     listItemLocationAreaSection,
     spanTextClass,
     spanTextValue,
+    infoIconListContainer,
+    itemIconValueStyle,
+    itemValueStyle,
+    itemNameStyle,
   } = useStyles(appTheme);
 
   const {
@@ -94,54 +104,35 @@ const DashboardListItems: React.FC<any> = (props) => {
     motion,
   } = useTranslation();
 
-  const [listItemIconArray, setListItemIconArray] = useState<any>();
+  const notificationIconArray = [
+    {
+      icon: BellRingingIcon,
+      value: incidentsObservation,
+      label: incidents,
+    },
+    {
+      icon: OprAlertIcon,
+      value: operationAlertObservation,
+      label: operationAlert,
+    },
+    {
+      icon: MotionIcon,
+      value: motionObservation,
+      label: motion,
+    },
+  ];
 
-  useEffect(() => {
-    let iconListArray: any = [];
-    if (data) {
-      switch (data.category) {
-        case "aiCameras":
-          iconListArray = [
-            {
-              icon: BellRingingIcon,
-              value: incidentsObservation,
-              label: incidents,
-            },
-            {
-              icon: OprAlertIcon,
-              value: operationAlertObservation,
-              label: operationAlert,
-            },
-            {
-              icon: MotionIcon,
-              value: motionObservation,
-              label: motion,
-            },
-          ];
-          break;
-        default:
-          iconListArray = [
-            {
-              icon: BellRingingIcon,
-              value: incidentsObservation,
-              label: incidents,
-            },
-            {
-              icon: OprAlertIcon,
-              value: operationAlertObservation,
-              label: operationAlert,
-            },
-            {
-              icon: MotionIcon,
-              value: motionObservation,
-              label: motion,
-            },
-          ];
-          break;
-      }
-      setListItemIconArray(iconListArray);
-    }
-  }, [selectedNotification]);
+  const infoListIconArray = [
+    { icon: TemperatureIcon },
+    { icon: HumidityIcon },
+    { icon: type === "envrSensors" ? CarbonMonoxideIcon : WaterLevelIcon },
+    { icon: BatteryIcon },
+  ];
+
+  const listItemDetails = infoIconList?.map((item: any, index: number) =>
+    Object.assign({}, item, infoListIconArray[index])
+  );
+
   return (
     <>
       <div
@@ -197,9 +188,9 @@ const DashboardListItems: React.FC<any> = (props) => {
             </div>
             <div className={lineClass}></div>
             <div className={expandedListIconContainer}>
-              {listItemIconArray &&
-                listItemIconArray.length > 0 &&
-                listItemIconArray?.map((item: any, index: number) => {
+              {notificationIconArray &&
+                notificationIconArray.length > 0 &&
+                notificationIconArray?.map((item: any, index: number) => {
                   return (
                     <div className={listItemSection} key={index}>
                       <div className={listIemIcon}>
@@ -214,6 +205,28 @@ const DashboardListItems: React.FC<any> = (props) => {
                   );
                 })}
             </div>
+
+            {infoIconList && infoIconList?.length > 0 ? (
+              <div className={infoIconListContainer}>
+                {listItemDetails &&
+                  listItemDetails.length > 0 &&
+                  listItemDetails?.map((item: any, index: number) => {
+                    return (
+                      <div>
+                        <div className={itemIconValueStyle}>
+                          <div>
+                            <img src={item?.icon} alt="Icon" />
+                          </div>
+                          <div className={itemValueStyle}>{item?.value}</div>
+                        </div>
+                        <div className={itemNameStyle}>{item?.name}</div>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           <div className={collapsedListItem}>
