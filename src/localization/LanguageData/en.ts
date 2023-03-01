@@ -7,7 +7,7 @@ export default {
   equipment: "Equipment",
   aiCameras: "AI Cameras",
   envrSensor: "Envr. Sensor",
-  floodSensor: "Floor Sensor",
+  floodSensor: "Flood Sensor",
   search: "Search",
   noResult: "No Result Found",
   grokEye: "Grok Eye",

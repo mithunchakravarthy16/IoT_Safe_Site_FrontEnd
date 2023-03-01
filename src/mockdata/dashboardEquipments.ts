@@ -25,7 +25,7 @@ const dashboardEquipments = {
         id: "AI-Cam2",
         category: "aiCameras",
         title: "AI Camera #2",
-        area: "Construction Area, Zone 1",
+        area: "Construction Area, Zone 2",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
         operationAlertObservation: "3 days ago",
@@ -46,11 +46,11 @@ const dashboardEquipments = {
     category: "",
     list: [
       {
-        id: "AI-Cam1",
+        id: "envrSensor1",
         category: "envrSensors",
-        title: "Envr Sensors #1",
+        title: "Environmental Sensor#1",
         area: "Construction Area, Zone 1",
-        connectivityPercentage: "79%",
+        connectivityPercentage: "59%",
         incidentsObservation: "32 min ago",
         operationAlertObservation: "3 days ago",
         motionObservation: "5 sec ago",
@@ -59,13 +59,31 @@ const dashboardEquipments = {
           lat: "",
           lng: "",
         },
+        infoIconList: [
+          {
+            name: "Temperature",
+            value: "25°C",
+          },
+          {
+            name: "Humidity",
+            value: "40%",
+          },
+          {
+            name: "Carbon Monoxide",
+            value: "36Kg",
+          },
+          {
+            name: "Battery",
+            value: "75%",
+          },
+        ],
       },
       {
-        id: "AI-Cam2",
+        id: "envrSensor2",
         category: "envrSensors",
-        title: "Envr Sensors #2",
-        area: "Construction Area, Zone 1",
-        connectivityPercentage: "79%",
+        title: "Environmental Sensor#2",
+        area: "Construction Area, Zone 2",
+        connectivityPercentage: "49%",
         incidentsObservation: "32 min ago",
         operationAlertObservation: "3 days ago",
         motionObservation: "5 sec ago",
@@ -74,6 +92,24 @@ const dashboardEquipments = {
           lat: "",
           lng: "",
         },
+        infoIconList: [
+          {
+            name: "Temperature",
+            value: "25°C",
+          },
+          {
+            name: "Humidity",
+            value: "40%",
+          },
+          {
+            name: "Carbon Monoxide",
+            value: "36Kg",
+          },
+          {
+            name: "Battery",
+            value: "75%",
+          },
+        ],
       },
     ],
   },
@@ -85,7 +121,25 @@ const dashboardEquipments = {
     category: "",
     list: [
       {
-        id: "AI-Cam1",
+        infoIconList: [
+          {
+            name: "Temperature",
+            value: "25°C",
+          },
+          {
+            name: "Humidity",
+            value: "40%",
+          },
+          {
+            name: "Water Level",
+            value: "0.58mm",
+          },
+          {
+            name: "Battery",
+            value: "75%",
+          },
+        ],
+        id: "floorSensor1",
         category: "floodSensors",
         title: "Flood Sensor #1",
         area: "Construction Area, Zone 1",
@@ -100,10 +154,28 @@ const dashboardEquipments = {
         },
       },
       {
-        id: "AI-Cam2",
+        infoIconList: [
+          {
+            name: "Temperature",
+            value: "25°C",
+          },
+          {
+            name: "Humidity",
+            value: "40%",
+          },
+          {
+            name: "Water Level",
+            value: "0.58mm",
+          },
+          {
+            name: "Battery",
+            value: "75%",
+          },
+        ],
+        id: "floorSensor2",
         category: "floodSensors",
         title: "Flood Sensor #2",
-        area: "Construction Area, Zone 1",
+        area: "Construction Area, Zone 2",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
         operationAlertObservation: "3 days ago",
