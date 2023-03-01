@@ -74,7 +74,12 @@ const DashboardContainer: React.FC<any> = (props) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={dashboardRootContainer}>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <DashboardMap />
+            <DashboardMap
+              equipmentData={equipmentData}
+              selectedNotification={selectedNotification}
+              setSelectedNotification={setSelectedNotification}
+              setTabIndex={setTabIndex}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
             {equipmentData?.length > 0 ? (
