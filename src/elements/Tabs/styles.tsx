@@ -28,5 +28,10 @@ const useStyles = makeStyles({
       fontWeight: 400,
     },
   },
+  tabHeadingText: {
+    fontSize: 16,
+    fontWeight: 700,
+    marginTop: 10,
+  },
 });
 export default useStyles;

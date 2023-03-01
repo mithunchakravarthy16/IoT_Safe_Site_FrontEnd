@@ -21,7 +21,8 @@ const INF_Tabs = (props: TabProps) => {
     tabType,
   } = props;
 
-  const { itemCount, itemText, tabsRoot, tabRoot } = useStyles();
+  const { itemCount, itemText, tabsRoot, tabRoot, tabHeadingText } =
+    useStyles();
 
   const [value, setValue] = useState<number>(initialIndex);
 
@@ -42,17 +43,18 @@ const INF_Tabs = (props: TabProps) => {
             value={value !== undefined && value}
             onChange={handleChange}
             indicatorColor="secondary"
-            classes={{ root: !tabsList[0].count ? tabsRoot : "" }}
+            // classes={{ root: !tabsList[0].count ? tabsRoot : "" }}
           >
-            {tabsList.map((item: any, index: number) => (
+            {tabsList?.map((item: any, index: number) => (
               <Tab
-                classes={{ root: !item?.count ? tabsRoot : "" }}
+                // classes={{ root: !item?.count ? tabsRoot : "" }}
+                classes={{ root: tabsRoot }}
                 key={index}
                 value={index}
                 label={
                   item?.count ? (
                     <div>
-                      <img src={item.icon} alt="icon" />
+                      <img src={item?.icon} alt="icon" />
                       <div className={itemCount}></div>
                       <div className={itemText}>
                         {item?.name}
@@ -60,7 +62,10 @@ const INF_Tabs = (props: TabProps) => {
                       </div>
                     </div>
                   ) : (
-                    <div>{item?.name}</div>
+                    <>
+                      <img src={item?.icon} alt="icon" />
+                      <div className={tabHeadingText}>{item?.name}</div>
+                    </>
                   )
                 }
               />
