@@ -7,10 +7,21 @@ import CloseIcon from "../../assets/closeIcon.svg";
 import SearchBox from "../../elements/SearchBox";
 import useTranslation from "../../localization/translations";
 import AlertsListItem from "components/AlertsListItem";
+import { formattedAlertListData } from "../../utils.ts/utils";
 import useStyles from "./styles";
 
 const AlertsList: React.FC<any> = (props) => {
-  const {} = props;
+  const {
+    alertsData,
+    consolidatedData,
+    selectedMarker,
+    setSelectedNotification,
+    selectedNotification,
+    tabIndex,
+    setTabIndex,
+    setNotificationTimeStamp,
+    alertsMainList,
+  } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const {
@@ -33,25 +44,26 @@ const AlertsList: React.FC<any> = (props) => {
   const [selectedRefId, setSelectedRefId] = useState("");
   const [searchOpen, setSearchOpen] = useState<any>(false);
 
-  // const [alertsDataList, setAlertsDataList] = useState(
-  //   formattedCardListData(tabIndex, consolidatedData)
-  // );
-  // const [searchValue, setSearchValue] = useState<any>(alertsDataList);
+  const [alertsDataList, setAlertsDataList] = useState(
+    formattedAlertListData(tabIndex, alertsData)
+  );
+
+  const [searchValue, setSearchValue] = useState<any>(alertsDataList);
   const handleTabs = (index: number) => {
-    // setTabIndex(index);
-    // setSearchOpen(false);
-    // setSelectedNotification("");
+    setTabIndex(index);
+    setSearchOpen(false);
+    setSelectedNotification("");
   };
 
-  // useEffect(() => {
-  //   setAlertsDataList(formattedCardListData(tabIndex, consolidatedData));
-  //   setSearchValue(formattedCardListData(tabIndex, consolidatedData));
-  // }, [tabIndex]);
+  useEffect(() => {
+    setAlertsDataList(formattedAlertListData(tabIndex, alertsData));
+    setSearchValue(formattedAlertListData(tabIndex, alertsData));
+  }, [tabIndex]);
 
-  // useEffect(() => {
-  //   setAlertsDataList(formattedCardListData(tabIndex, consolidatedData));
-  //   setSearchValue(formattedCardListData(tabIndex, consolidatedData));
-  // }, []);
+  useEffect(() => {
+    setAlertsDataList(formattedAlertListData(tabIndex, alertsData));
+    setSearchValue(formattedAlertListData(tabIndex, alertsData));
+  }, []);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -77,52 +89,46 @@ const AlertsList: React.FC<any> = (props) => {
     {
       name: events,
       val: 0,
-      count: 2,
-      // count: alertsData?.events?.length,
+      count: alertsMainList?.events?.length,
     },
     {
       name: alerts,
       val: 1,
-      count: 2,
-      // count: alertsData?.alerts?.length,
+      count: alertsMainList?.alerts?.length,
     },
     {
       name: operations,
       val: 2,
-      count: 2,
-      // count: alertsData?.operations?.length,
+      count: alertsMainList?.operations?.length,
     },
   ];
 
   const handleSearch = (searchValue: any) => {
-    // let searchResult = alertsDataList?.filter((value: any) => {
-    //   return (
-    //     value?.title
-    //       ?.toLowerCase()
-    //       .includes(searchValue?.toString()?.toLowerCase()) ||
-    //     value?.area
-    //       ?.toLowerCase()
-    //       .includes(searchValue?.toString()?.toLowerCase()) ||
-    //     value?.name
-    //       ?.toLowerCase()
-    //       .includes(searchValue?.toString()?.toLowerCase())
-    //   );
-    // });
-    // setSearchValue(searchResult);
+    let searchResult = alertsDataList?.filter((value: any) => {
+      return (
+        value?.observation
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.name
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase())
+      );
+    });
+    setSearchValue(searchResult);
     setSearchOpen(true);
-    // setSelectedNotification(-1);
+    setSelectedNotification("");
   };
 
   const handleSearchClose = () => {
     setSearchOpen(false);
-    // setSearchValue(alertsDataList);
-    // setSelectedNotification(-1);
+    setSearchValue(alertsDataList);
+    setSelectedNotification("");
   };
 
   const handleExpandListItem = (index: number, id: any, dateTime: any) => {
-    // setSelectedNotification(selectedNotification === id ? -1 : id);
+    setSelectedNotification(selectedNotification === id ? -1 : id);
     // setSelectedRefId(id);
-    // setNotificationTimeStamp(dateTime);
+    setNotificationTimeStamp(dateTime);
   };
 
   return (
@@ -160,12 +166,11 @@ const AlertsList: React.FC<any> = (props) => {
         />
       </div>
       <div className={dashboardListSection}>
-        <AlertsListItem />
-        {/* {searchValue && searchValue.length > 0
+        {searchValue && searchValue.length > 0
           ? searchValue?.map((item: any, index: number) => {
               return (
                 <AlertsListItem
-                  refs={refs}
+                  // refs={refs}
                   data={item}
                   key={index}
                   handleExpandListItem={handleExpandListItem}
@@ -175,7 +180,7 @@ const AlertsList: React.FC<any> = (props) => {
                 />
               );
             })
-          : "No Result Found"} */}
+          : "No Result Found"}
       </div>
     </div>
   );
