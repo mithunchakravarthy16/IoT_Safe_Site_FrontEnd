@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import theme from "theme/theme";
 import {
   GoogleMap,
   OverlayViewF,
@@ -11,6 +12,7 @@ import AICameraIcon from "assets/aiCameraIcon.svg";
 import EnvSensorsIcon from "assets/envSensorIcon.svg";
 import FloodSensorsIcon from "assets/floodSensorIcon.svg";
 import InfoBox from "elements/InfoBox";
+import useStyles from "./styles";
 
 const defaultCenter = {
   lat: 39.954772903926305,
@@ -18,6 +20,12 @@ const defaultCenter = {
 };
 
 const Map: React.FC<any> = (props) => {
+  const [selectedTheme, setSelectedTheme] = useState(
+    JSON.parse(localStorage.getItem("theme")!)
+  );
+  const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
+  const { overlayViewBox } = useStyles(appTheme);
+
   const { markers, marker, setSelectedNotification, setTabIndex } = props;
 
   console.log("marker", marker);
