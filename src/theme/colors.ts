@@ -106,5 +106,6 @@ let colorCodes = {
   skyBlueColor: "#38BCDB",
   darkRedColor: "#E13827",
   goldenOrangeColor: "#E0791A",
+  lightGrayShade5 : "rgba(157, 160, 171, 1)"
 };
 export default colorCodes;

@@ -39,6 +39,8 @@ let theme = {
         skyBlueColor: colorCodes.skyBlueColor,
         darkRedColor: colorCodes.darkRedColor,
         goldenOrangeColor: colorCodes.goldenOrangeColor,
+        lightGrayShade5: colorCodes.lightGrayShade5,
+        grayShade: colorCodes.grayShade,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -92,6 +94,8 @@ let theme = {
         skyBlueColor: colorCodes.skyBlueColor,
         darkRedColor: colorCodes.darkRedColor,
         goldenOrangeColor: colorCodes.goldenOrangeColor,
+        lightGrayShade5: colorCodes.lightGrayShade5,
+        grayShade: colorCodes.grayShade,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -145,6 +149,8 @@ let theme = {
         skyBlueColor: colorCodes.skyBlueColor,
         darkRedColor: colorCodes.darkRedColor,
         goldenOrangeColor: colorCodes.goldenOrangeColor,
+        lightGrayShade5: colorCodes.lightGrayShade5,
+        grayShade: colorCodes.grayShade,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -198,6 +204,8 @@ let theme = {
         skyBlueColor: colorCodes.skyBlueColor,
         darkRedColor: colorCodes.darkRedColor,
         goldenOrangeColor: colorCodes.goldenOrangeColor,
+        lightGrayShade5: colorCodes.lightGrayShade5,
+        grayShade: colorCodes.grayShade,
       },
       header: {
         headerBg: colorCodes.headerBg,

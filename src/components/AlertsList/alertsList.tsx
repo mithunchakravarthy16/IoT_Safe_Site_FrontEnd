@@ -28,7 +28,7 @@ const AlertsList: React.FC<any> = (props) => {
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  const { search, noResult } = useTranslation();
+  const { search, noResult, alerts, events, operations } = useTranslation();
 
   const [selectedRefId, setSelectedRefId] = useState("");
   const [searchOpen, setSearchOpen] = useState<any>(false);
@@ -75,19 +75,19 @@ const AlertsList: React.FC<any> = (props) => {
 
   const tabsList = [
     {
-      name: "Events",
+      name: events,
       val: 0,
       count: 2,
       // count: alertsData?.events?.length,
     },
     {
-      name: "Alerts",
+      name: alerts,
       val: 1,
       count: 2,
       // count: alertsData?.alerts?.length,
     },
     {
-      name: "Operations",
+      name: operations,
       val: 2,
       count: 2,
       // count: alertsData?.operations?.length,
@@ -130,7 +130,7 @@ const AlertsList: React.FC<any> = (props) => {
       <div className={dashboarListTitle}>
         <div className={listTitleName}>
           {!searchOpen ? (
-            "Alerts"
+            alerts
           ) : (
             <SearchBox
               searchInput={searchClass}

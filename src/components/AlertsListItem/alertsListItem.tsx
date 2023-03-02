@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import theme from "../../theme/theme";
-import LocationIcon from "../../assets/locationIcon.svg";
+import GrayLocationIcon from "../../assets/GrayLocationIcon.svg";
 import AlertButton from "../../assets/alertsButton.svg";
 import CallButton from "../../assets/callButton.svg";
 import DeleteButton from "../../assets/deleteButton.svg";
@@ -64,7 +64,6 @@ const AlertsListItem: React.FC<any> = (props) => {
         // onClick={() => handleExpandListItem(id, index, currentTimeStamp)}
         // ref={refs[id]}
       >
-        Alert List Item
         {/* {selectedNotification === index ? (
           <div className={expandedListItem}>
             <div className={expandedListHeaderStyle}>
@@ -130,6 +129,22 @@ const AlertsListItem: React.FC<any> = (props) => {
             </div>
           </div>
         )} */}
+        <div className={collapsedListItem}>
+          <div className={listItemTitle}>Loitering detected</div>
+          <div className={listItemLocation}>
+            <img
+              src={GrayLocationIcon}
+              alt="location Icon"
+              className={locationIconStyle}
+              width={16}
+            />
+            Zone 1
+          </div>
+          <div className={listItemFooterStyle}>
+            Construction Area
+            <span className={listItemTimeStyle}>02-14-2023 | 10:00 AM</span>
+          </div>
+        </div>
       </div>
     </>
   );

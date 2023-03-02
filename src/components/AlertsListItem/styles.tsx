@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     // lineHeight: "35px",
     background: props?.palette?.dashboard?.white,
     margin: "17px 0px",
-    border: `1px solid ${props?.palette?.dashboard?.lightBlue2}`, //lightBlue2
+    border: `1px solid ${props?.palette?.dashboard?.lightGrayShade5}`, //lightBlue2
     borderRadius: "7px",
     cursor: "pointer",
     marginRight: 6,
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     margin: "10px 0px",
-    borderBottom: "1px solid #dadcdf",
+    borderBottom: `1px solid ${props?.palette?.dashboard?.lightGrayShade5}`,
     paddingBottom: 10,
   }),
   selectedButtonStyles: (props: any) => ({
@@ -74,7 +74,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    borderTop: `1px solid ${props?.palette?.dashboard?.whiteGrayShade}`, //whiteGrayShade
+    borderTop: `1px solid ${props?.palette?.dashboard?.grayShade}`, //whiteGrayShade
     padding: "10px 0px 5px 0px",
     fontSize: 14,
     [muiTheme.breakpoints.down(1601)]: {
