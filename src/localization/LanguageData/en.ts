@@ -22,4 +22,6 @@ export default {
   alerts: "Alerts",
   poweredBy: "Powered by",
   copyRight: "© 2023. All Rights Reserved",
+  events : "Events",
+  operations : "Operations"
 };

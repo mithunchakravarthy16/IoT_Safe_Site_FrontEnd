@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles({
-  dashboardRightPanel: (props: any) => ({
+  alertsRightPanel: (props: any) => ({
     background: props?.palette?.dashboard?.whiteGrayShade,
     padding: "26px 12px 13px 17px",
     borderLeft: `2px solid ${props?.palette?.dashboard?.lightGrey2}`,
@@ -30,15 +30,15 @@ const useStyles = makeStyles({
     cursor: "pointer",
   }),
   dashboardListSection: (props: any) => ({
-    height: "calc(100vh - 216px)",
+    height: "calc(100vh - 263px)",
     overflow: "auto",
     marginRight: "-12px",
     marginTop: 10,
   }),
   searchClass: (props: any) => ({
-    border: `1px solid ${props?.palette?.dashboard?.grayShade3}`,
-    background: props?.palette?.dashboard?.white,
-    color: props?.palette?.dashboard?.grayShade3,
+    border: `1px solid ${props?.palette?.dashboard?.lightGrey}`,
+    background: props?.palette?.dashboardList?.white,
+    color: props?.palette?.dashboardList?.lightGrey3,
     borderRadius: 6,
     height: "40px",
     "& .MuiIconButton-root": {
@@ -67,52 +67,47 @@ const useStyles = makeStyles({
     "& .MuiTab-root": {
       padding: "10px 12px",
       [muiTheme.breakpoints.down(1281)]: {
-        padding: "0px 12px",
+        padding: "6px 12px",
       },
       "&:first-child": {
-        margin: "20px 10px 0px 0px",
-        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
-        borderRadius: "5px 5px 0px 0px",
-        fontSize: 18,
-        background: props?.palette?.dashboard?.lightGrayWhiteShade,
+        color: `${props?.palette?.dashboard?.skyBlueColor} !important`,
+        margin: "15px 20px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.skyBlueColor}`,
+        [muiTheme.breakpoints.down(1281)]: {
+          fontSize: 14,
+          margin: "10px 10px 0px 0px",
+        },
       },
       "&:first-child.Mui-selected": {
-        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
-        background: props?.palette?.dashboard?.darkBlueBlackShade,
-        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
-        fontSize: 14,
+        color: `${props?.palette?.dashboard?.white} !important`,
+        background: props?.palette?.dashboard?.skyBlueColor,
       },
-      "&:first-child.Mui-selected img": {},
       "&:nth-child(2)": {
-        margin: "20px 10px 0px 0px",
-        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
-        borderRadius: "5px 5px 0px 0px",
-        fontSize: 18,
-        background: props?.palette?.dashboard?.lightGrayWhiteShade,
+        color: `${props?.palette?.dashboard?.darkRedColor} !important`,
+        margin: "15px 20px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.darkRedColor}`,
+        [muiTheme.breakpoints.down(1281)]: {
+          fontSize: 14,
+          margin: "10px 10px 0px 0px",
+        },
       },
       "&:nth-child(2).Mui-selected": {
-        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
-        background: props?.palette?.dashboard?.darkBlueBlackShade,
-        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
-        fontSize: 14,
+        color: `${props?.palette?.dashboard?.white} !important`,
+        background: props?.palette?.dashboard?.darkRedColor,
       },
       "&:nth-child(3)": {
-        margin: "20px 0px 0px 0px",
-        border: `1px solid ${props?.palette?.dashboard?.lightGrayWhiteShade}`,
-        borderRadius: "5px 5px 0px 0px",
-        fontSize: 18,
-        background: props?.palette?.dashboard?.lightGrayWhiteShade,
+        color: `${props?.palette?.dashboard?.goldenOrangeColor} !important`,
+        margin: "15px 0px 0px 0px",
+        border: `1px solid ${props?.palette?.dashboard?.goldenOrangeColor}`,
       },
       "&:nth-child(3).Mui-selected": {
-        color: `${props?.palette?.dashboard?.darkGreenShade} !important`,
-        background: props?.palette?.dashboard?.darkBlueBlackShade,
-        borderBottom: `5px solid ${props?.palette?.dashboard?.darkGreenShade}`,
-        fontSize: 14,
+        color: `${props?.palette?.dashboard?.white} !important`,
+        background: props?.palette?.dashboard?.goldenOrangeColor,
       },
     },
     "& .MuiTabs-root .MuiTabs-indicator": {
       width: "100% !important",
-      // background: "#2B2B2B",
+      background: props?.palette?.dashboard?.goldenOrangeColor,
       display: "none",
     },
   }),

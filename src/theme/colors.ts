@@ -103,5 +103,9 @@ let colorCodes = {
   darkGreenShade2: "#39B586",
   darkBlueBlackShade2: "#142230",
   footerBg: "#EEF7FF",
+  skyBlueColor: "#38BCDB",
+  darkRedColor: "#E13827",
+  goldenOrangeColor: "#E0791A",
+  lightGrayShade5 : "rgba(157, 160, 171, 1)"
 };
 export default colorCodes;
