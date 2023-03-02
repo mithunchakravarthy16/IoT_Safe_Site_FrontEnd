@@ -54,12 +54,23 @@ const INF_Tabs = (props: TabProps) => {
                 label={
                   item?.count ? (
                     <div>
-                      <img src={item?.icon} alt="icon" />
-                      <div className={itemCount}></div>
-                      <div className={itemText}>
-                        {item?.name}
-                        {item?.count}
-                      </div>
+                      {item?.icon ? (
+                        <>
+                          {" "}
+                          <img src={item?.icon} alt="icon" />{" "}
+                          <div className={itemCount}></div>
+                          <div className={itemText}>
+                            {item?.name}
+                            {item?.count}
+                          </div>{" "}
+                        </>
+                      ) : (
+                        <>
+                          {" "}
+                          <div className={itemCount}> {item?.count}</div>
+                          <div className={itemText}>{item?.name}</div>{" "}
+                        </>
+                      )}
                     </div>
                   ) : (
                     <>

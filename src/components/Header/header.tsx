@@ -153,12 +153,10 @@ const Header: React.FC = (props: any) => {
   const handleTabs = (index: number) => {
     if (index === 0) {
       navigate("/dashboard");
-    } else if (index === 2) {
-      navigate("/analytics");
     } else if (index === 1) {
       navigate("/alerts");
-    } else if (index === 3) {
-      navigate("/configuration");
+    } else if (index === 2) {
+      navigate("/grokEye");
     }
     setTabIndex(index);
     localStorage.setItem("tabIndex", JSON.stringify(index));

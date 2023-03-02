@@ -102,11 +102,11 @@ const DashboardList: React.FC<any> = (props) => {
   const handleTabs = (index: number) => {
     setTabIndex(index);
     setSearchOpen(false);
-    setSelectedNotification(-1);
+    setSelectedNotification("");
   };
 
   const handleExpandListItem = (id: number) => {
-    setSelectedNotification(selectedNotification === id ? -1 : id);
+    setSelectedNotification(selectedNotification === id ? "" : id);
   };
 
   const tabsList = [
