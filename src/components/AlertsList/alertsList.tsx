@@ -180,7 +180,7 @@ const AlertsList: React.FC<any> = (props) => {
                 />
               );
             })
-          : "No Result Found"}
+          : noResult}
       </div>
     </div>
   );
