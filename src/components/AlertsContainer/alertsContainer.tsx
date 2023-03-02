@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import theme from "../../theme/theme";
 import AlertsList from "components/AlertsList";
+import AlertsMap from "components/AlertsMap";
 import useStyles from "./styles";
 
 const AlertsContainer: React.FC<any> = (props) => {
@@ -61,7 +62,7 @@ const AlertsContainer: React.FC<any> = (props) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={alertsContainerMain}>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <div className={floorMapContainerStyle}>Map</div>
+            <AlertsMap />
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
             <AlertsList />
