@@ -18,7 +18,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.darkBlack2,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -36,6 +36,7 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
+        instrumentItemSectionLabel: "#D8D8D8",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -61,7 +62,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.darkBlack2,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -79,6 +80,7 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
+        instrumentItemSectionLabel: "#D8D8D8",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -104,7 +106,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.darkBlack2,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -122,6 +124,7 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
+        instrumentItemSectionLabel: "#D8D8D8",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -147,7 +150,7 @@ let theme = {
         copyRight: colorCodes.darkBlack1,
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
-        logoBg: colorCodes.darkBlack,
+        logoBg: colorCodes.darkBlack2,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -165,6 +168,7 @@ let theme = {
         eventsFill: "#71FF3F",
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
+        instrumentItemSectionLabel: "#D8D8D8",
       },
       dashboard: {
         white: colorCodes.colorWhite,

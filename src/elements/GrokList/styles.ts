@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import theme from "theme/theme";
+import {Icon} from "elements";
 
 export const RootContainer = styled("div")`
     width: 100%;
@@ -37,6 +38,19 @@ export const ZoneHeader = styled("div")`
     justify-content: flex-start;
 `;
 
+export const ZoneActionButtons = styled(Icon)`
+    cursor: pointer;
+    margin-right: 12px;
+
+    &:last-child {
+        margin-right: 0px;
+    }
+`;
+
+ZoneActionButtons.defaultProps = {
+    size: 30
+}
+
 export const ZoneContent = styled("div")`
     padding: 15px 12px;
 `;
@@ -45,7 +59,7 @@ export const InstrumentContainer = styled("div")`
     border-radius: 3px;
     width: calc(100% - 24px);
     margin-bottom: 10px;
-    background-color: ${theme.defaultTheme.palette.grokList.instrumentCollapsedBackground};
+    background-color: ${theme.defaultTheme.palette.grokList.instrumentExpandedBackground};
 
     &:last-child {
         margin-bottom: 0px;
@@ -69,12 +83,23 @@ export const InstrumentHeader = styled("div")<{highlighted?: boolean}>`
     }
 `;
 
+export const InstrumentExpandIcon = styled(Icon)<{expanded: boolean}>`
+    transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    margin-left: 10px;
+    transform: rotateZ(${({expanded}) => expanded?"0deg":"-90deg"});
+`;
+
+InstrumentExpandIcon.defaultProps = {
+    size: 10
+}
+
 export const InstrumentContent = styled("div")`
     padding: 15px;
 `;
 
 export const InstrumentItemContainer = styled("div")`
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 14px;
 `;
 
 export const InstrumentItemHeader = styled("div")`
@@ -92,5 +117,47 @@ export const InstrumentItemHeader = styled("div")`
 `;
 
 export const FlexSpace = styled("div")`
-    flex: 1
+    flex: 1;
+`;
+
+export const InstrumentItemBody = styled("div")`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
+
+export const InstrumentItemBodySection = styled("div")`
+    flex: 1 0 21%;
+    padding: 20px 0px;
+    margin-right: 10px;
+
+    &:nth-child(4n) {
+        margin-right: 0px;
+    }
+`;
+
+export const InstrumentItemSectionLabel = styled("div")`
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: ${theme.defaultTheme.palette.grokList.instrumentItemSectionLabel};
+`;
+
+export const InstrumentItemSectionValueContainer = styled("div")`
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+
+    span {
+        margin-left: 5px;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        color: ${theme.defaultTheme.palette.grokList.defaultFontColor};
+    }
 `;
