@@ -1,15 +1,35 @@
 import { useState, useEffect } from "react";
 import theme from "../../theme/theme";
 import GrayLocationIcon from "../../assets/GrayLocationIcon.svg";
+import LocationIcon from "../../assets/LocationIcon.svg";
 import AlertButton from "../../assets/alertsButton.svg";
-import CallButton from "../../assets/callButton.svg";
+import CallButton from "../../assets/CallButton.svg";
+import EyeButton from "../../assets/EyeButton.svg";
 import DeleteButton from "../../assets/deleteButton.svg";
 import useTranslation from "../../localization/translations";
 import Tooltip from "elements/Tooltip";
 import useStyles from "./styles";
 
 const AlertsListItem: React.FC<any> = (props) => {
-  const {} = props;
+  const {
+    data,
+    data: {
+      title,
+      area,
+      id,
+      currentTimeStamp,
+      subTitle,
+      name,
+      index,
+      observation,
+      zone,
+    },
+    handleExpandListItem,
+    selectedNotification,
+    handleViewDialogue,
+    refs,
+    notificationTimeStamp,
+  } = props;
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -53,6 +73,7 @@ const AlertsListItem: React.FC<any> = (props) => {
     expandedListButtonContainer,
     expandedListButtonStyle,
     expandedSubtitle,
+    lineClass,
   } = useStyles(appTheme);
 
   const {} = useTranslation();
@@ -61,21 +82,21 @@ const AlertsListItem: React.FC<any> = (props) => {
     <>
       <div
         className={listItemContainer}
-        // onClick={() => handleExpandListItem(id, index, currentTimeStamp)}
+        onClick={() => handleExpandListItem(id, index, currentTimeStamp)}
         // ref={refs[id]}
       >
-        {/* {selectedNotification === index ? (
+        {selectedNotification === index ? (
           <div className={expandedListItem}>
             <div className={expandedListHeaderStyle}>
               <div>
-                <div className={listItemTitle}>{title}</div>
-                {subTitle ? (
-                  <div className={expandedSubtitle}>{subTitle}</div>
-                ) : (
-                  ""
-                )}
+                <div className={listItemTitle}>{observation}</div>
               </div>
               <div className={expandedListButtonContainer}>
+                <div className={expandedListButtonStyle}>
+                  <Tooltip tooltipValue={"Grok Eye"}>
+                    <img src={EyeButton} alt="Grok Eye" />
+                  </Tooltip>
+                </div>
                 <div className={expandedListButtonStyle}>
                   <Tooltip tooltipValue={"Raise alert"}>
                     <img src={AlertButton} alt="Alert Button" />
@@ -101,9 +122,9 @@ const AlertsListItem: React.FC<any> = (props) => {
                 className={locationIconStyle}
                 width={16}
               />
-              {area}
+              {area}, {zone}
             </div>
-
+            <div className={lineClass}></div>
             <div className={listItemFooterStyle}>
               {name}
 
@@ -112,39 +133,24 @@ const AlertsListItem: React.FC<any> = (props) => {
           </div>
         ) : (
           <div className={collapsedListItem}>
-            <div className={listItemTitle}>{title}</div>
+            <div className={listItemTitle}>{observation}</div>
             <div className={listItemLocation}>
               <img
-                src={LocationIcon}
+                src={GrayLocationIcon}
                 alt="location Icon"
                 className={locationIconStyle}
                 width={16}
               />
-              {area}
+              {zone}
             </div>
-            <div className={listItemFooterStyle}>
-              {name}
+            <div className={lineClass}></div>
 
+            <div className={listItemFooterStyle}>
+              {area}
               <span className={listItemTimeStyle}>{currentTimeStamp}</span>
             </div>
           </div>
-        )} */}
-        <div className={collapsedListItem}>
-          <div className={listItemTitle}>Loitering detected</div>
-          <div className={listItemLocation}>
-            <img
-              src={GrayLocationIcon}
-              alt="location Icon"
-              className={locationIconStyle}
-              width={16}
-            />
-            Zone 1
-          </div>
-          <div className={listItemFooterStyle}>
-            Construction Area
-            <span className={listItemTimeStyle}>02-14-2023 | 10:00 AM</span>
-          </div>
-        </div>
+        )}
       </div>
     </>
   );

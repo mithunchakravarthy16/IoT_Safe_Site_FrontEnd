@@ -2,17 +2,7 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles({
-  listItemContainer: (props: any) => ({
-    padding: " 15px",
-    // lineHeight: "35px",
-    background: props?.palette?.dashboard?.white,
-    margin: "17px 0px",
-    border: `1px solid ${props?.palette?.dashboard?.lightGrayShade5}`, //lightBlue2
-    borderRadius: "7px",
-    cursor: "pointer",
-    marginRight: 6,
-    paddingBottom: 10,
-  }),
+  listItemContainer: (props: any) => ({}),
   listItemTitle: (props: any) => ({
     fontWeight: 600,
     fontSize: 18,
@@ -26,15 +16,45 @@ const useStyles = makeStyles({
   listItemLocation: (props: any) => ({
     fontWeight: 400,
     fontSize: 16,
-    lineHeight: "40px",
-    color: props?.palette?.dashboard?.lightRedBlack, // lightRedBlack
+    color: props?.palette?.dashboard?.blueGrayNewShade,
     display: "flex",
     [muiTheme.breakpoints.down(1281)]: {
       fontSize: 14,
     },
   }),
-  expandedListItem: (props: any) => ({}),
-  collapsedListItem: (props: any) => ({}),
+  expandedListItem: (props: any) => ({
+    padding: "13px 13px 9px",
+    margin: "17px 0px",
+    border: `1px solid ${props?.palette?.dashboard?.grayShade3}`, //lightBlue2
+    borderRadius: "7px",
+    cursor: "pointer",
+    marginRight: 6,
+    paddingBottom: 10,
+    color: props?.palette?.dashboard?.white,
+    [muiTheme.breakpoints.down(1025)]: {
+      fontSize: 14,
+    },
+    background: props?.palette?.dashboard?.darkBlueGrayShade,
+  }),
+
+  lineClass: (props: any) => ({
+    borderTop: `0.5px solid ${props?.palette?.dashboard?.grayShade3}`, //lightBlue2
+    margin: "10px 0px",
+  }),
+  collapsedListItem: (props: any) => ({
+    padding: " 15px",
+    // lineHeight: "35px",
+    background: props?.palette?.dashboard?.white,
+    margin: "17px 0px",
+    border: `1px solid ${props?.palette?.dashboard?.grayShade3}`, //lightBlue2
+    borderRadius: "7px",
+    cursor: "pointer",
+    marginRight: 6,
+    paddingBottom: 10,
+    [muiTheme.breakpoints.down(1025)]: {
+      fontSize: 14,
+    },
+  }),
   locationIconStyle: (props: any) => ({
     marginRight: 10,
   }),
@@ -74,8 +94,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    borderTop: `1px solid ${props?.palette?.dashboard?.grayShade}`, //whiteGrayShade
-    padding: "10px 0px 5px 0px",
+
     fontSize: 14,
     [muiTheme.breakpoints.down(1601)]: {
       fontSize: 13,
@@ -85,7 +104,7 @@ const useStyles = makeStyles({
     },
   }),
   listItemTimeStyle: (props: any) => ({
-    color: props?.palette?.dashboard?.darkRedBlack2,
+    color: props?.palette?.dashboard?.lightBlue4,
     fontSize: "12px",
     fontWeight: 400,
   }),
