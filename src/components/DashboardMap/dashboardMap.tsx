@@ -10,6 +10,8 @@ const DashboardMap: React.FC<any> = (props) => {
     selectedNotification,
     setSelectedNotification,
     setTabIndex,
+    searchOpen,
+    setSearchOpen,
   } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
@@ -47,6 +49,8 @@ const DashboardMap: React.FC<any> = (props) => {
         marker={selectedNotification}
         setSelectedNotification={setSelectedNotification}
         setTabIndex={setTabIndex}
+        searchOpen={searchOpen}
+        setSearchOpen={setSearchOpen}
       />
     </div>
   );

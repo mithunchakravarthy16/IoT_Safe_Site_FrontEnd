@@ -23,13 +23,14 @@ const DashboardList: React.FC<any> = (props) => {
     dashboardEquipmentsMain,
     selectedNotification,
     setSelectedNotification,
+    searchOpen,
+    setSearchOpen,
   } = props;
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const [searchOpen, setSearchOpen] = useState<any>(false);
   const [dataList, setDataList] = useState(
     formattedCardListData(tabIndex, equipmentData)
   );
@@ -90,13 +91,13 @@ const DashboardList: React.FC<any> = (props) => {
     });
     setSearchValue(searchResult);
     setSearchOpen(true);
-    setSelectedNotification(-1);
+    setSelectedNotification("");
   };
 
   const handleSearchClose = () => {
     setSearchOpen(false);
     setSearchValue(dataList);
-    setSelectedNotification(-1);
+    setSelectedNotification("");
   };
 
   const handleTabs = (index: number) => {
