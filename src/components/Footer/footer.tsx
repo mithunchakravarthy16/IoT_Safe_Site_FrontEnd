@@ -6,6 +6,7 @@ import theme from "../../theme/theme";
 import { Grid } from "@mui/material";
 import useStyles from "./styles";
 import saveSiteLogo from "../../assets/login/gd-save-site.svg";
+import FooterLogo from "../../assets/login/FooterLogo.svg";
 
 interface UserName {
   firstName: string | undefined;
@@ -50,7 +51,7 @@ const Footer: React.FC = (props: any) => {
       <Grid container className={footer}>
         <Grid item xs={12} className={copyRights}>
           <span>{poweredBy}</span>
-          <img src={saveSiteLogo} />
+          <img src={FooterLogo} />
           <span>{copyRight}</span>
         </Grid>
       </Grid>

@@ -77,7 +77,7 @@ const AlertsListItem: React.FC<any> = (props) => {
     lineClass,
   } = useStyles(appTheme);
 
-  const {} = useTranslation();
+  const { call911, viewDetails, raiseAlert } = useTranslation();
 
   return (
     <>
@@ -93,20 +93,23 @@ const AlertsListItem: React.FC<any> = (props) => {
                 <div className={listItemTitle}>{observation}</div>
               </div>
               <div className={expandedListButtonContainer}>
-                <div className={expandedListButtonStyle} 
-                onClick={()=>{handleInfoDialogue(observation)}}
+                <div
+                  className={expandedListButtonStyle}
+                  onClick={() => {
+                    handleInfoDialogue(observation);
+                  }}
                 >
-                  <Tooltip tooltipValue={"Grok Eye"}>
+                  <Tooltip tooltipValue={viewDetails}>
                     <img src={EyeButton} alt="Grok Eye" />
                   </Tooltip>
                 </div>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={"Raise alert"}>
+                  <Tooltip tooltipValue={raiseAlert}>
                     <img src={AlertButton} alt="Alert Button" />
                   </Tooltip>
                 </div>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={"Call"}>
+                  <Tooltip tooltipValue={call911}>
                     <img src={CallButton} alt="CallButton" />
                   </Tooltip>
                 </div>

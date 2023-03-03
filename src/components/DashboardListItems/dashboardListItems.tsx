@@ -104,6 +104,8 @@ const DashboardListItems: React.FC<any> = (props) => {
     incidents,
     operationAlert,
     motion,
+    call911,
+    viewDetails,
   } = useTranslation();
 
   const notificationIconArray = [
@@ -160,8 +162,13 @@ const DashboardListItems: React.FC<any> = (props) => {
                 {area}
               </div>{" "}
               <div className={expandedListButtonContainer}>
-                <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(type, id)}}>
-                  <Tooltip tooltipValue={grokEye} >
+                <div
+                  className={expandedListButtonStyle}
+                  onClick={() => {
+                    handleInfoDialogue(type, id);
+                  }}
+                >
+                  <Tooltip tooltipValue={viewDetails}>
                     <img src={EyeButton} alt={grokEye} />
                   </Tooltip>
                 </div>
@@ -171,7 +178,7 @@ const DashboardListItems: React.FC<any> = (props) => {
                   </Tooltip>
                 </div>
                 <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={call}>
+                  <Tooltip tooltipValue={call911}>
                     <img src={CallButton} alt={call} />
                   </Tooltip>
                 </div>

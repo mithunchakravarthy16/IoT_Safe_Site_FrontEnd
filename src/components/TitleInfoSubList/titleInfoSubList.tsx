@@ -9,6 +9,7 @@ import {
   AlertOrangeIcon,
   CallIconBlue,
 } from "../../assets/InfoDialogueIcons";
+import Tooltip from "elements/Tooltip";
 import {
   RootContainer,
   ItemContainer,
@@ -65,7 +66,8 @@ const TitleInfoSubList: React.FC<any> = ({
       title: "Connectivity or Cellular",
     },
   ];
-  const [updatedInfoItems, setUpdatedInfoItems] = useState<any>(infoSubListdata);
+  const [updatedInfoItems, setUpdatedInfoItems] =
+    useState<any>(infoSubListdata);
 
   useEffect(() => {
     if (infoSubListdata) {
@@ -97,7 +99,6 @@ const TitleInfoSubList: React.FC<any> = ({
               });
               break;
             default:
-             
               break;
           }
         });
@@ -105,16 +106,14 @@ const TitleInfoSubList: React.FC<any> = ({
     }
   }, [infoSubListdata]);
 
-  
-
   return (
     <RootContainer>
-      {updatedInfoItems && updatedInfoItems?.length > 0 &&
+      {updatedInfoItems &&
+        updatedInfoItems?.length > 0 &&
         updatedInfoItems?.map((item: any) => {
-        
           return (
             <ItemContainer
-            infoDialogueType={infoDialogueType === "videoInfo" ? true : false}
+              infoDialogueType={infoDialogueType === "videoInfo" ? true : false}
               // paletteColor={"#fff"}
               // key={item?.title + item?.value}
             >
@@ -130,12 +129,17 @@ const TitleInfoSubList: React.FC<any> = ({
           );
         })}
       <ItemContainer
-      infoDialogueType={infoDialogueType === "videoInfo" ? true : false}>
+        infoDialogueType={infoDialogueType === "videoInfo" ? true : false}
+      >
         <ItemSubContainer2>
-          <img src={AlertOrangeIcon} alt="Icon" />
+          <Tooltip tooltipValue={"Raise Alert"}>
+            <img src={AlertOrangeIcon} alt="Icon" />
+          </Tooltip>
         </ItemSubContainer2>
         <ItemSubContainer2>
-          <img src={CallIconBlue} alt="Icon" />
+          <Tooltip tooltipValue={"Call 911"}>
+            <img src={CallIconBlue} alt="Icon" />
+          </Tooltip>
         </ItemSubContainer2>
       </ItemContainer>
     </RootContainer>

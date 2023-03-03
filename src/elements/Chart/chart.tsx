@@ -230,17 +230,17 @@ const INF_Chart: React.FC<any> = (props) => {
               return ` <table>
           <tr>
             <td style="text-align: center;">
+              
                 ${
-                  graphSequence === "graph1"
-                    ? 
-                       `${value}°C`
-                    : graphSequence === "graph2"
-                    ?  `${value}%`
-                    : graphSequence === "graph3"
-                    ?  `${value}Kgs`
-                    : graphSequence === "graph4"
-                    ?  `${value}`                    
-                    : null
+                  graphTitle === "temperature"
+                    ? `${value}°C`
+                    : graphTitle === "humidity"
+                    ? `${value}%`
+                    : graphTitle === "carbonMonoxide"
+                    ? `${value}Kg`
+                    : graphTitle === "waterLevel" || graphTitle === "rainFall"
+                    ? `${value}mm`
+                    : value
                 }
             </td>
           </tr>
