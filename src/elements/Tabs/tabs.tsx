@@ -9,7 +9,8 @@ interface TabProps {
   tabsList: any;
   handleTabs: any;
   dashboardNotificationClassName?: any;
-  tabType: any;
+  tabType?: any;
+  pageName?: any,
 }
 
 const INF_Tabs = (props: TabProps) => {
@@ -19,6 +20,7 @@ const INF_Tabs = (props: TabProps) => {
     handleTabs,
     dashboardNotificationClassName,
     tabType,
+    pageName,
   } = props;
 
   const { itemCount, itemText, tabsRoot, tabRoot, tabHeadingText } =
@@ -52,7 +54,7 @@ const INF_Tabs = (props: TabProps) => {
                 key={index}
                 value={index}
                 label={
-                  item?.count ? (
+                  item?.count ? 
                     <div>
                       {item?.icon ? (
                         <>
@@ -72,12 +74,15 @@ const INF_Tabs = (props: TabProps) => {
                         </>
                       )}
                     </div>
-                  ) : (
+                  : 
+                  pageName && pageName === "infoDialogue"?
+                  
+                  <div>{item?.name}</div>
+                  :
                     <>
                       <img src={item?.icon} alt="icon" />
                       <div className={tabHeadingText}>{item?.name}</div>
                     </>
-                  )
                 }
               />
             ))}

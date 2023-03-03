@@ -31,10 +31,12 @@ const DashboardListItems: React.FC<any> = (props) => {
       motionObservation,
       type,
       infoIconList,
+      id,
     },
     selectedNotification,
     setSelectedNotification,
     handleExpandListItem,
+    handleInfoDialogue,
   } = props;
 
   const [selectedTheme, setSelectedTheme] = useState(
@@ -158,8 +160,8 @@ const DashboardListItems: React.FC<any> = (props) => {
                 {area}
               </div>{" "}
               <div className={expandedListButtonContainer}>
-                <div className={expandedListButtonStyle}>
-                  <Tooltip tooltipValue={grokEye}>
+                <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(type, id)}}>
+                  <Tooltip tooltipValue={grokEye} >
                     <img src={EyeButton} alt={grokEye} />
                   </Tooltip>
                 </div>
