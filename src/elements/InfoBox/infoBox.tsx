@@ -45,6 +45,7 @@ const InfoBox: React.FC<any> = (props) => {
     singleCategory,
     key,
     pageName,
+    handleInfoDialogue,
   } = props;
 
   const [selectedTheme, setSelectedTheme] = useState(
@@ -155,7 +156,7 @@ const InfoBox: React.FC<any> = (props) => {
               {area}
             </div>
             <div className={expandedListButtonContainer}>
-              <div className={expandedListButtonStyle}>
+              <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(type, id)}}>
                 <Tooltip tooltipValue={grokEye}>
                   <img src={EyeButton} alt={grokEye} />
                 </Tooltip>
@@ -229,8 +230,8 @@ const InfoBox: React.FC<any> = (props) => {
             <div>
               <div className={listItemTitle}>{observation}</div>
             </div>
-            <div className={expandedListButtonContainer}>
-              <div className={expandedListButtonStyle}>
+            <div className={expandedListButtonContainer} >
+              <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(observation)}}>
                 <Tooltip tooltipValue={"Grok Eye"}>
                   <img src={EyeButton} alt="Grok Eye" />
                 </Tooltip>

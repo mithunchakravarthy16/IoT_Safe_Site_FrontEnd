@@ -29,6 +29,7 @@ const AlertsListItem: React.FC<any> = (props) => {
     handleViewDialogue,
     refs,
     notificationTimeStamp,
+    handleInfoDialogue,
   } = props;
 
   const [selectedTheme, setSelectedTheme] = useState(
@@ -92,7 +93,9 @@ const AlertsListItem: React.FC<any> = (props) => {
                 <div className={listItemTitle}>{observation}</div>
               </div>
               <div className={expandedListButtonContainer}>
-                <div className={expandedListButtonStyle}>
+                <div className={expandedListButtonStyle} 
+                onClick={()=>{handleInfoDialogue(observation)}}
+                >
                   <Tooltip tooltipValue={"Grok Eye"}>
                     <img src={EyeButton} alt="Grok Eye" />
                   </Tooltip>

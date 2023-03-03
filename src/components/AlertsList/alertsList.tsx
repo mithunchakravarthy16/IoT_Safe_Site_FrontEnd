@@ -9,6 +9,7 @@ import useTranslation from "../../localization/translations";
 import AlertsListItem from "components/AlertsListItem";
 import { formattedAlertListData } from "../../utils.ts/utils";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 
 const AlertsList: React.FC<any> = (props) => {
   const {
@@ -127,12 +128,23 @@ const AlertsList: React.FC<any> = (props) => {
   };
 
   const handleExpandListItem = (index: any, dateTime: any) => {
-    setSelectedNotification(selectedNotification === index ? -1 : index);
+    setSelectedNotification(selectedNotification === index ? "" : index);
     // setSelectedRefId(id);
     setNotificationTimeStamp(dateTime);
   };
 
+  const [showInfoDialogue, setShowInfoDialogue] = useState<boolean>(false);
+  const [selectedTitle, setSelectedTitle] = useState<string>();
+
+  const handleInfoDialogue = (title: string)=>{
+    
+    setShowInfoDialogue(true);
+    setSelectedTitle(title);
+    
+  }
+
   return (
+    <>
     <div className={alertsRightPanel}>
       <div className={dashboarListTitle}>
         <div className={listTitleName}>
@@ -175,15 +187,24 @@ const AlertsList: React.FC<any> = (props) => {
                   data={item}
                   key={index}
                   handleExpandListItem={handleExpandListItem}
-                  selectedNotification={selectedNotification}
-                  // handleViewDialogue={handleViewDialogue}
+                  selectedNotification={selectedNotification}                  
                   notificationTimeStamp={""}
+                  handleInfoDialogue={handleInfoDialogue}
                 />
               );
             })
           : noResult}
       </div>
     </div>
+    {showInfoDialogue && (
+      <InfoDialog      
+      setShowInfoDialogue={setShowInfoDialogue}
+      pageName={"alerts"}
+      selectedTitle={selectedTitle}
+        
+      />
+    )}
+    </>
   );
 };
 export default AlertsList;

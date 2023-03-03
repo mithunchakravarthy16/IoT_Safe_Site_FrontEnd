@@ -14,6 +14,7 @@ import EnvironmentSensorInactive from "../../assets/TabIcons/EnvironmentSensorIn
 import FloodSensorActive from "../../assets/TabIcons/FloodSensorActive.svg";
 import FloodSensorInactive from "../../assets/TabIcons/FloodSensorInactive.svg";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 
 const DashboardList: React.FC<any> = (props) => {
   const {
@@ -29,6 +30,8 @@ const DashboardList: React.FC<any> = (props) => {
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
+
+ 
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const [dataList, setDataList] = useState(
@@ -132,6 +135,16 @@ const DashboardList: React.FC<any> = (props) => {
     },
   ];
 
+  const [showInfoDialogue, setShowInfoDialogue] = useState<boolean>(false);
+  const [selectedType, setSelectedType] = useState<string>();
+  const [selectedId, setSelectedId] = useState<any>();
+
+  const handleInfoDialogue = (type: string, id: any)=>{
+    setShowInfoDialogue(true);
+    setSelectedType(type);
+    setSelectedId(id);
+  }
+
   return (
     <>
       <div className={dashboardRightPanel}>
@@ -175,12 +188,23 @@ const DashboardList: React.FC<any> = (props) => {
                 selectedNotification={selectedNotification}
                 setSelectedNotification={setSelectedNotification}
                 handleExpandListItem={handleExpandListItem}
+                handleInfoDialogue={handleInfoDialogue}
               />
             );
           })
         ) : (
           <div className={noResultStyle}>{noResult}</div>
         )}
+      </div>
+      <div>
+      {showInfoDialogue && (
+        <InfoDialog
+        selectedType={selectedType}
+        selectedId={selectedId}
+        setShowInfoDialogue={setShowInfoDialogue}
+          
+        />
+      )}
       </div>
     </>
   );
