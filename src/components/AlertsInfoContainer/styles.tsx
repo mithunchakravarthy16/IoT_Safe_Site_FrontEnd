@@ -5,10 +5,9 @@ const useStyles = makeStyles({
   alertSubListRow1: (props: any) => ({
     marginBottom: "12px !important",
     marginTop: "20px !important",
-   
+
     display: "flex",
     justifyContent: "space-between",
-    
   }),
 
   alertCustomNotificationTabs: (props: any) => ({
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
     },
 
     "& .MuiTab-root": {
-      fontFamily: `"QualcommNext-Regular"`,
+      // fontFamily: `"QualcommNext-Regular"`,
       fontSize: "20px",
       lineHeight: "24px",
       padding: 0,
@@ -36,8 +35,8 @@ const useStyles = makeStyles({
         maxWidth: "600px !important",
         color: "#fff !important",
         alignItems: "center",
-          display: "flex",
-          justifyContent: "center",
+        display: "flex",
+        justifyContent: "center",
       },
       "&:first-child.Mui-selected": {
         color: "#fff !important",
@@ -48,16 +47,13 @@ const useStyles = makeStyles({
         maxWidth: "600px !important",
         color: "#fff !important",
         alignItems: "center",
-          display: "flex",
-          justifyContent: "center",
-        
-        
+        display: "flex",
+        justifyContent: "center",
       },
       "&:nth-child(2).Mui-selected": {
         color: "#ffffff !important",
         background: "#1F1E1E",
       },
-      
     },
     "& .MuiTabs-root .MuiTabs-indicator": {
       marginLeft: "10%",
@@ -65,29 +61,26 @@ const useStyles = makeStyles({
       background: "#39B586 !important",
       height: "2px",
       border: "1px solid #39B586",
-      borderRadius: "1.5px"
+      borderRadius: "1.5px",
     },
   }),
 
-  alertSubListRightSide: (props: any) => ({   
-   
+  alertSubListRightSide: (props: any) => ({
     display: "flex",
     marginRight: "10px",
     // justifyContent: "flex-end",
-    
   }),
 
-  alertRightIcons: (props: any) => ({   
-   
-  
+  alertRightIcons: (props: any) => ({
+    cursor: "pointer",
+
     marginRight: "15px",
     // justifyContent: "flex-end",
-    
   }),
 
   iframVideoContainer: (props: any) => ({
     height: "calc(100vh - 355px)",
-    
+
     // border: "1px solid #fff",
   }),
 
@@ -95,7 +88,5 @@ const useStyles = makeStyles({
     height: "calc(100vh - 350px)",
     objectFit: "cover",
   }),
-
-
 });
 export default useStyles;

@@ -92,6 +92,8 @@ const InfoBox: React.FC<any> = (props) => {
     incidents,
     operationAlert,
     motion,
+    viewDetails,
+    call911,
   } = useTranslation();
 
   const notificationIconArray = [
@@ -156,8 +158,13 @@ const InfoBox: React.FC<any> = (props) => {
               {area}
             </div>
             <div className={expandedListButtonContainer}>
-              <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(type, id)}}>
-                <Tooltip tooltipValue={grokEye}>
+              <div
+                className={expandedListButtonStyle}
+                onClick={() => {
+                  handleInfoDialogue(type, id);
+                }}
+              >
+                <Tooltip tooltipValue={viewDetails}>
                   <img src={EyeButton} alt={grokEye} />
                 </Tooltip>
               </div>
@@ -167,7 +174,7 @@ const InfoBox: React.FC<any> = (props) => {
                 </Tooltip>
               </div>
               <div className={expandedListButtonStyle}>
-                <Tooltip tooltipValue={call}>
+                <Tooltip tooltipValue={call911}>
                   <img src={CallButton} alt={call} />
                 </Tooltip>
               </div>
@@ -230,19 +237,24 @@ const InfoBox: React.FC<any> = (props) => {
             <div>
               <div className={listItemTitle}>{observation}</div>
             </div>
-            <div className={expandedListButtonContainer} >
-              <div className={expandedListButtonStyle} onClick={()=>{handleInfoDialogue(observation)}}>
-                <Tooltip tooltipValue={"Grok Eye"}>
+            <div className={expandedListButtonContainer}>
+              <div
+                className={expandedListButtonStyle}
+                onClick={() => {
+                  handleInfoDialogue(observation);
+                }}
+              >
+                <Tooltip tooltipValue={viewDetails}>
                   <img src={EyeButton} alt="Grok Eye" />
                 </Tooltip>
               </div>
               <div className={expandedListButtonStyle}>
-                <Tooltip tooltipValue={"Raise alert"}>
+                <Tooltip tooltipValue={raiseAlert}>
                   <img src={AlertButton} alt="Alert Button" />
                 </Tooltip>
               </div>
               <div className={expandedListButtonStyle}>
-                <Tooltip tooltipValue={"Call"}>
+                <Tooltip tooltipValue={call911}>
                   <img src={CallButton} alt="CallButton" />
                 </Tooltip>
               </div>

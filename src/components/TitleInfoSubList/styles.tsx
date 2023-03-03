@@ -3,37 +3,31 @@ import { styled } from "@mui/material/styles";
 export const RootContainer = styled("div")`
   display: flex;
   align-items: center;
-  
-  
 
   // @media (max-width: 767px) {
   //   flex-wrap: wrap;
   // }
 `;
 
-export const ItemSubContainer1 = styled("div")`
-
-`;
+export const ItemSubContainer1 = styled("div")``;
 
 export const ItemSubContainer2 = styled("div")`
-height: 100%;
-display: flex;
-align-items: center;
-margin-right: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
-
-
-export const ItemContainer = styled("div")<{infoDialogueType : boolean}>`
-  
+export const ItemContainer = styled("div")<{ infoDialogueType: boolean }>`
   background: #060606;
   align-items: center;
   justify-content: flex-start;
   display: flex;
   // flex: 1;
-  padding: ${(props) => (props?.infoDialogueType ? "12px 15px 19px 15px" : "0px 15px 19px 15px")}; 
-  
-  
+  padding: ${(props) =>
+    props?.infoDialogueType ? "12px 15px 19px 15px" : "0px 15px 19px 15px"};
+
   // @media (max-width: 1537px) : {
   //   height: 60px;
   // }

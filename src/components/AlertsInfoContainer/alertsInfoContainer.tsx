@@ -2,28 +2,21 @@ import { useState, useEffect, Fragment, createRef } from "react";
 import Grid from "@mui/material/Grid";
 import ReactPlayer from "react-player";
 import theme from "../../theme/theme";
-
+import Tooltip from "elements/Tooltip";
 import useStyles from "./styles";
 import Tabs from "elements/Tabs";
-import {  
-    AlertOrangeIcon,
-    CallIconBlue,
-    DeleteIcon,
-  } from "../../assets/InfoDialogueIcons";
+import {
+  AlertOrangeIcon,
+  CallIconBlue,
+  DeleteIcon,
+} from "../../assets/InfoDialogueIcons";
 
-  import {  
-    SampleVideo,
-  } from "../../assets/AlertsInfoVideo/video";
-  import {  
-    SampleImage,
-  } from "../../assets/AlertsInfoVideo/image";
+import { SampleVideo } from "../../assets/AlertsInfoVideo/video";
+import { SampleImage } from "../../assets/AlertsInfoVideo/image";
 // import HazardousAQI from "../../assets/AlertsInfoVideo/video/HazardousAQI.mp4";
 
-
 const AlertsInfoContainer: React.FC<any> = (props) => {
-  const {
-    
-  } = props;
+  const {} = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const {
@@ -75,59 +68,62 @@ const AlertsInfoContainer: React.FC<any> = (props) => {
     setTabIndex(index);
   };
 
-  
-
   return (
     <>
-    <Grid item xs={12} className={alertSubListRow1}>
-      <div>
-    <Tabs
-      initialIndex={0}
-      tabsList={alertSubtabsList}
-      handleTabs={handleTabs}
-      dashboardNotificationClassName={alertCustomNotificationTabs} 
-      pageName={"infoDialogue"}
-      />
-      </div>
-      <div className={alertSubListRightSide}>
-        <div className={alertRightIcons}><img src={AlertOrangeIcon} /></div>
-        <div className={alertRightIcons}><img src={CallIconBlue} /></div>
-        <div className={alertRightIcons}><img src={DeleteIcon} /></div>
-      </div>
+      <Grid item xs={12} className={alertSubListRow1}>
+        <div>
+          <Tabs
+            initialIndex={0}
+            tabsList={alertSubtabsList}
+            handleTabs={handleTabs}
+            dashboardNotificationClassName={alertCustomNotificationTabs}
+            pageName={"infoDialogue"}
+          />
+        </div>
+        <div className={alertSubListRightSide}>
+          <div className={alertRightIcons}>
+            <Tooltip tooltipValue={"Raise Alert"}>
+              <img src={AlertOrangeIcon} />
+            </Tooltip>
+          </div>
+          <div className={alertRightIcons}>
+            <Tooltip tooltipValue={"Call 911"}>
+              <img src={CallIconBlue} />
+            </Tooltip>
+          </div>
+          <div className={alertRightIcons}>
+            <Tooltip tooltipValue={"Delete"}>
+              <img src={DeleteIcon} />
+            </Tooltip>
+          </div>
+        </div>
       </Grid>
-      
+
       <Grid item xs={12} className={iframVideoContainer}>
-        {
-          tabIndex === 0 ?
-         <ReactPlayer
-          playing
-          muted
-          controls={true}
-          // className={videoPlayerClass}
-          url={SampleVideo}
-          width="100%"
-          height="100%"
-          config={{
-            file: {
-              attributes: {
-                controlsList: "nodownload nofullscreen",
+        {tabIndex === 0 ? (
+          <ReactPlayer
+            playing
+            muted
+            controls={true}
+            // className={videoPlayerClass}
+            url={SampleVideo}
+            width="100%"
+            height="100%"
+            config={{
+              file: {
+                attributes: {
+                  controlsList: "nodownload nofullscreen",
+                },
               },
-            },
-          }}
-        /> 
-        :
-        <div className={carImageClass}>
-        <img 
-        src={SampleImage} 
-        width={"100%"}
-        className={carImageClass}
-        /> 
-        </div>    
-        }
-        
-               
+            }}
+          />
+        ) : (
+          <div className={carImageClass}>
+            <img src={SampleImage} width={"100%"} className={carImageClass} />
+          </div>
+        )}
       </Grid>
-      </>
+    </>
   );
 };
 export default AlertsInfoContainer;

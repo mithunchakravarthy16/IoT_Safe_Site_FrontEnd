@@ -52,47 +52,57 @@ const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
   }, [selectedTheme]);
 
   let infoIconListItems: any = [];
-   const [updatedInfoItems, setUpdatedInfoItems] = useState<any>(infoSubList && [...infoSubList]);
+  const [updatedInfoItems, setUpdatedInfoItems] = useState<any>(
+    infoSubList && [...infoSubList]
+  );
 
-  useEffect(()=>{
-    if(infoSubList){
+  useEffect(() => {
+    if (infoSubList) {
       infoIconListItems = [...infoSubList];
-      infoIconListItems && infoIconListItems?.map((item: any)=>{
-        switch(item?.title){
-          case "temperature" : Object.assign(item, {icon: TempIconSubInfo});
-          break;
-          case "humidity" : Object.assign(item, {icon: HumidityIconSubInfo});
-          break;
-          case "carbonMonoxide" : Object.assign(item, {icon: CarbonMonoxideIconSubInfo});
-          break;
-          case "voc" : Object.assign(item, {icon: VocsIconSubInfo});
-          break;
-          case "particulate" : Object.assign(item, {icon: ParticulateIconSubInfo});
-          break;
-          case "noise" : Object.assign(item, {icon: NoiseIconSubInfo});
-          break;
-          case "pressure" : Object.assign(item, {icon: PressureIconSubInfo});
-          break;
-          case "light" : Object.assign(item, {icon: LightIconSubInfo});
-          break;
-          case "waterLevel" : Object.assign(item, {icon: WaterFallIcon});
-          break;
-          case "rainFall" : Object.assign(item, {icon: RainFallIcon});
-          break;
-          case "battery" : Object.assign(item, {icon: BatteryIcon});
-          break;
-          default : Object.assign(item, {icon: TempIconSubInfo});
-          break;
-        }
-        
-      })
+      infoIconListItems &&
+        infoIconListItems?.map((item: any) => {
+          switch (item?.title) {
+            case "Temperature":
+              Object.assign(item, { icon: TempIconSubInfo });
+              break;
+            case "Humidity":
+              Object.assign(item, { icon: HumidityIconSubInfo });
+              break;
+            case "Carbon Monoxide":
+              Object.assign(item, { icon: CarbonMonoxideIconSubInfo });
+              break;
+            case "VOC's":
+              Object.assign(item, { icon: VocsIconSubInfo });
+              break;
+            case "Particulate":
+              Object.assign(item, { icon: ParticulateIconSubInfo });
+              break;
+            case "Noise":
+              Object.assign(item, { icon: NoiseIconSubInfo });
+              break;
+            case "Pressure":
+              Object.assign(item, { icon: PressureIconSubInfo });
+              break;
+            case "Light":
+              Object.assign(item, { icon: LightIconSubInfo });
+              break;
+            case "Water Level":
+              Object.assign(item, { icon: WaterFallIcon });
+              break;
+            case "Rainfall":
+              Object.assign(item, { icon: RainFallIcon });
+              break;
+            case "Battery":
+              Object.assign(item, { icon: BatteryIcon });
+              break;
+            default:
+              Object.assign(item, { icon: TempIconSubInfo });
+              break;
+          }
+        });
       setUpdatedInfoItems(infoIconListItems);
     }
-  },[infoSubList])
-
-  
-
-
+  }, [infoSubList]);
 
   // const [items, setItems] = useState<any>([]);
 
@@ -120,35 +130,28 @@ const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
 
   return (
     <RootContainer>
-      {updatedInfoItems && updatedInfoItems?.map((item: any) => {
-        return (
-          <ItemContainer
-            paletteColor={"#fff"}
-            key={item?.title + item?.value}
-          >
-            <ItemSubContainer1>
-            <ItemValue
+      {updatedInfoItems &&
+        updatedInfoItems?.map((item: any) => {
+          return (
+            <ItemContainer
               paletteColor={"#fff"}
+              key={item?.title + item?.value}
             >
-              {item?.title === "Predictive Maintenance" ? moment().add(5, "d").format("DD-MM-YYYY") : item.value}
-            </ItemValue>
-            <ItemLabel
-              paletteColor={
-                "#C7C7C7"
-              }
-            >
-              {item?.title}
-            </ItemLabel>
-            </ItemSubContainer1>
+              <ItemSubContainer1>
+                <ItemValue paletteColor={"#fff"}>
+                  {item?.title === "Predictive Maintenance"
+                    ? moment().add(5, "d").format("DD-MM-YYYY")
+                    : item.value}
+                </ItemValue>
+                <ItemLabel paletteColor={"#C7C7C7"}>{item?.title}</ItemLabel>
+              </ItemSubContainer1>
 
-            <ItemSubContainer2>
-            <img src={item?.icon && item?.icon}  alt="Icon"/>
-            </ItemSubContainer2>
-
-          </ItemContainer>
-          
-        );
-      })}
+              <ItemSubContainer2>
+                <img src={item?.icon && item?.icon} alt="Icon" />
+              </ItemSubContainer2>
+            </ItemContainer>
+          );
+        })}
     </RootContainer>
   );
 };

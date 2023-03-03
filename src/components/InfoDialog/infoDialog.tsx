@@ -6,7 +6,7 @@ import useTranslation from "../../localization/translations";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoSubList from "../InfoSubList";
-
+import Tooltip from "elements/Tooltip";
 import dashboardInfoWindow from "../../mockdata/dashboardInfoWindow";
 import Tabs from "../../elements/Tabs";
 
@@ -21,15 +21,7 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import TitleInfoSubList from "components/TitleInfoSubList";
 import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
-import {  
-  SampleVideo,
-} from "../../assets/AlertsInfoVideo/video";
-
-
-
-
-
-
+import { SampleVideo } from "../../assets/AlertsInfoVideo/video";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -60,7 +52,13 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
 }));
 
 const InfoDialog: React.FC<any> = (props) => {
-  const { selectedType, selectedId, setShowInfoDialogue, pageName, selectedTitle} = props;
+  const {
+    selectedType,
+    selectedId,
+    setShowInfoDialogue,
+    pageName,
+    selectedTitle,
+  } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const {
@@ -68,33 +66,26 @@ const InfoDialog: React.FC<any> = (props) => {
     headerRightContentStyle,
     tripsSection1,
     tripsSection,
-   
+
     tripsSection2,
     subListRow,
     subListRow1,
-    
+
     subListSection,
-    
+
     customNotificationTabs,
     incomeCurrentSection,
     incomeText,
-    
+
     iframVideoContainer,
-    
-    
-    
   } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  // const {
-  //   infoDialogueNotifications,
-  //   chipButtonEvents,
-  //   chipButtonIncidents,
-  //   chipButtonOprAlerts,
-  // } = useTranslation();
+  const { temperature, humidity, carbonMonoxide, voc, waterLevel, rainfall } =
+    useTranslation();
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -116,18 +107,13 @@ const InfoDialog: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
- 
-
-  
-
-  const [equipmentViewDetailsItem, setEquipmentViewDetailsItem] = useState<any>(    
+  const [equipmentViewDetailsItem, setEquipmentViewDetailsItem] = useState<any>(
     dashboardInfoWindow?.envrSensorInfoData?.map((item: any) => {
       if (item?.id === selectedId) {
         return item;
       }
     })
   );
-
 
   const { width, height } = useWindowDimensions();
   const [chartWidth, setChartWidth] = useState<number>(100);
@@ -209,33 +195,26 @@ const InfoDialog: React.FC<any> = (props) => {
   // }, [width, height]);
 
   useEffect(() => {
-    
-    if(selectedType === "aiCameras"){
+    if (selectedType === "aiCameras") {
       dashboardInfoWindow?.aiCamerasInfoData?.map((item: any) => {
         if (item?.id === selectedId) {
-         setEquipmentViewDetailsItem(item);
-         
-       }
-     });
-    }else if(selectedType === "envrSensors"){
+          setEquipmentViewDetailsItem(item);
+        }
+      });
+    } else if (selectedType === "envrSensors") {
       dashboardInfoWindow?.envrSensorInfoData?.map((item: any) => {
         if (item?.id === selectedId) {
-         setEquipmentViewDetailsItem(item);
-         
-       }
-     });
-    }else if(selectedType === "floodSensors"){
+          setEquipmentViewDetailsItem(item);
+        }
+      });
+    } else if (selectedType === "floodSensors") {
       dashboardInfoWindow?.floodSensorInfoData?.map((item: any) => {
         if (item?.id === selectedId) {
-         setEquipmentViewDetailsItem(item);
-         
-       }
-     });
+          setEquipmentViewDetailsItem(item);
+        }
+      });
     }
-   
   }, [selectedType, selectedId, dashboardInfoWindow]);
-
- 
 
   const [open, setOpen] = useState(!false);
 
@@ -244,25 +223,22 @@ const InfoDialog: React.FC<any> = (props) => {
     setShowInfoDialogue(false);
   };
 
- 
-
   const [infoSubList, setInfoSubList] = useState<any>(
     equipmentViewDetailsItem?.infoIconList
   );
 
   const tabsList = [
     {
-      name: 
+      name:
         equipmentViewDetailsItem?.title && equipmentViewDetailsItem?.area
           ? `${equipmentViewDetailsItem?.title} - ${equipmentViewDetailsItem?.area}`
-          : selectedTitle ? selectedTitle : "",
+          : selectedTitle
+          ? selectedTitle
+          : "",
       val: 0,
     },
   ];
 
-
-
-  
   const [tabIndex, setTabIndex] = useState<number>(0);
   const handleTabs = (index: number) => {
     setTabIndex(index);
@@ -291,10 +267,8 @@ const InfoDialog: React.FC<any> = (props) => {
   const [graphFourTitle, setGraphFourTitle] = useState<string>();
 
   useEffect(() => {
-    
     setInfoSubList(equipmentViewDetailsItem?.infoIconList);
-   
-    
+
     equipmentViewDetailsItem?.analytics?.map((data: any, index: number) => {
       switch (index) {
         case 0:
@@ -355,8 +329,7 @@ const InfoDialog: React.FC<any> = (props) => {
       {
         data: graphDataManipulation(tempratureGraphDataStateUpdates),
 
-        color: "#20E89C"
-            
+        color: "#20E89C",
       },
     ];
 
@@ -718,38 +691,32 @@ const InfoDialog: React.FC<any> = (props) => {
     }
   };
 
-
-
-
-
-  
-
+  const capitalizeFirstLetter = (string: any) => {
+    return string?.charAt(0)?.toUpperCase() + string?.slice(1);
+  };
   return (
     <>
       <DialogWrapper open={open}>
         <div className={headerStyle}>
           <div>
-          <Tabs
-            initialIndex={0}
-            tabsList={tabsList}
-            handleTabs={handleTabs}
-            dashboardNotificationClassName={customNotificationTabs} 
-            pageName={"infoDialogue"}
+            <Tabs
+              initialIndex={0}
+              tabsList={tabsList}
+              handleTabs={handleTabs}
+              dashboardNotificationClassName={customNotificationTabs}
+              pageName={"infoDialogue"}
             />
-            </div>
-            {selectedType === "aiCameras" ?
+          </div>
+          {selectedType === "aiCameras" ? (
             <div className={headerRightContentStyle}>
-            <TitleInfoSubList
-                  highlighted={"safetyScore"}
-                  infoSubListdata={equipmentViewDetailsItem}
-                  infoDialogueType={"videoInfo"}
-                />
+              <TitleInfoSubList
+                highlighted={"safetyScore"}
+                infoSubListdata={equipmentViewDetailsItem}
+                infoDialogueType={"videoInfo"}
+              />
+            </div>
+          ) : null}
         </div>
-        :
-        null
-          }
-        </div>
-        
 
         <div>
           <IconButton
@@ -766,39 +733,33 @@ const InfoDialog: React.FC<any> = (props) => {
           </IconButton>
         </div>
         <Grid container>
-
-        {pageName === "alerts" ? 
-            <AlertsInfoContainer/>
-            :
-            null}
+          {pageName === "alerts" ? <AlertsInfoContainer /> : null}
 
           {selectedType === "aiCameras" ? (
             <>
-            
-            <Grid item xs={12} className={iframVideoContainer}>
-              
-              <ReactPlayer
-                playing
-                muted
-                controls={true}
-                // className={videoPlayerClass}
-                url={SampleVideo}
-                width="100%"
-                height="100%"
-                config={{
-                  file: {
-                    attributes: {
-                      controlsList: "nodownload nofullscreen",
+              <Grid item xs={12} className={iframVideoContainer}>
+                <ReactPlayer
+                  playing
+                  muted
+                  controls={true}
+                  // className={videoPlayerClass}
+                  url={SampleVideo}
+                  width="100%"
+                  height="100%"
+                  config={{
+                    file: {
+                      attributes: {
+                        controlsList: "nodownload nofullscreen",
+                      },
                     },
-                  },
-                }}
-              />             
-            </Grid>
+                  }}
+                />
+              </Grid>
             </>
-          ) : (
-            selectedType === "envrSensors" || selectedType === "floodSensors" ? 
+          ) : selectedType === "envrSensors" ||
+            selectedType === "floodSensors" ? (
             <>
-            <Grid item xs={12} className={subListRow1}>
+              <Grid item xs={12} className={subListRow1}>
                 <TitleInfoSubList
                   highlighted={"safetyScore"}
                   infoSubListdata={equipmentViewDetailsItem}
@@ -817,7 +778,9 @@ const InfoDialog: React.FC<any> = (props) => {
                       <Grid item xs={6}>
                         <div className={tripsSection1}>
                           <div className={incomeCurrentSection}>
-                            <p className={incomeText}>{graphOneTitle}</p>
+                            <p className={incomeText}>
+                              {capitalizeFirstLetter(graphOneTitle)}
+                            </p>
                             <div
                             // className={customSelectButton}
                             >
@@ -827,40 +790,41 @@ const InfoDialog: React.FC<any> = (props) => {
                                 customWidth={"98px"}
                                 customHeight={"30px"}
                                 graphName={"graph1"}
-                                selectedAnalyticsTitle={""
+                                selectedAnalyticsTitle={
+                                  ""
                                   // equipmentViewDetailsItem?.title
                                 }
                                 graphTitle={graphOneTitle}
-                                
                               />
                             </div>
                           </div>
-                          
-                            <Chart
-                              type={"spline"}
-                              minWidth={chartWidth}
-                              height={chartHeight}
-                              dataPoints={updatedTempratureGraphData}
-                              format={formatGraph1}
-                              toolTipShared={false}
-                              splineWidth={2}
-                              graphSequence={"graph1"}
-                              tooltipShow={true}
-                              isCrosshair={true}
-                              dataLabels={false}
-                              tabIdentity={"drivers"}
-                              xAxisArray={xAxisChartDataGraph1}
-                              xAxisInterval={xAxisIntervalGraph1}
-                              pageName={"infoDialogue"}
-                              graphTitle={graphOneTitle}
-                            />
-                          
+
+                          <Chart
+                            type={"spline"}
+                            minWidth={chartWidth}
+                            height={chartHeight}
+                            dataPoints={updatedTempratureGraphData}
+                            format={formatGraph1}
+                            toolTipShared={false}
+                            splineWidth={2}
+                            graphSequence={"graph1"}
+                            tooltipShow={true}
+                            isCrosshair={true}
+                            dataLabels={false}
+                            tabIdentity={"drivers"}
+                            xAxisArray={xAxisChartDataGraph1}
+                            xAxisInterval={xAxisIntervalGraph1}
+                            pageName={"infoDialogue"}
+                            graphTitle={graphOneTitle}
+                          />
                         </div>
                       </Grid>
                       <Grid item xs={6}>
                         <div className={tripsSection2}>
                           <div className={incomeCurrentSection}>
-                            <p className={incomeText}>{graphTwoTitle}</p>
+                            <p className={incomeText}>
+                              {capitalizeFirstLetter(graphTwoTitle)}
+                            </p>
                             <div
                             // className={customSelectButton}
                             >
@@ -897,7 +861,11 @@ const InfoDialog: React.FC<any> = (props) => {
                       <Grid item xs={6}>
                         <div className={tripsSection}>
                           <div className={incomeCurrentSection}>
-                            <p className={incomeText}>{graphThreeTitle}</p>
+                            <p className={incomeText}>
+                              {graphThreeTitle === "carbonMonoxide"
+                                ? carbonMonoxide
+                                : waterLevel}
+                            </p>
                             <div
                             // className={customSelectButton}
                             >
@@ -934,7 +902,9 @@ const InfoDialog: React.FC<any> = (props) => {
                       <Grid item xs={6}>
                         <div className={tripsSection}>
                           <div className={incomeCurrentSection}>
-                            <p className={incomeText}>{graphFourTitle}</p>
+                            <p className={incomeText}>
+                              {graphFourTitle === "voc" ? voc : rainfall}
+                            </p>
                             <div
                             // className={customSelectButton}
                             >
@@ -972,11 +942,8 @@ const InfoDialog: React.FC<any> = (props) => {
                   </Grid>
                 </Grid>
               </Grid>
-              
             </>
-            :
-            null
-          )}
+          ) : null}
         </Grid>
       </DialogWrapper>
     </>

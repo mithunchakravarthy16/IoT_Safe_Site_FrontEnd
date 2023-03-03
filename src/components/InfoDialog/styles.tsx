@@ -2,18 +2,15 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
-
   iframVideoContainer: (props: any) => ({
     height: "calc(100vh - 355px)",
-    
+
     // border: "1px solid #fff",
   }),
 
   reactPlayerSection: (props: any) => ({
     margin: "0 auto",
   }),
-
-  
 
   searchClass: (props: any) => ({
     marginTop: "5px",
@@ -33,7 +30,7 @@ const useStyles = makeStyles(() => ({
       padding: "0 12px",
     },
     "& .MuiButtonBase-root": {
-      fontFamily: "QualcommNext-Regular",
+      // fontFamily: "QualcommNext-Regular",
       fontSize: "15px !important",
       marginBottom: "-0.5px !important",
       flex: "1 !important",
@@ -85,7 +82,7 @@ const useStyles = makeStyles(() => ({
     padding: "26px",
     color: props?.palette?.infoDialogueComponent?.colorWhite,
     minHeight: "66px",
-    fontFamily: `"QualcommNext-Regular"`,
+    // fontFamily: `"QualcommNext-Regular"`,
     fontWeight: 500,
     fontSize: 22,
     [muiTheme.breakpoints.down(1601)]: {
@@ -198,7 +195,7 @@ const useStyles = makeStyles(() => ({
     },
 
     "& .MuiTab-root": {
-      fontFamily: `"QualcommNext-Regular"`,
+      // fontFamily: `"QualcommNext-Regular"`,
       fontSize: "20px",
       lineHeight: "24px",
       padding: 0,
@@ -214,17 +211,13 @@ const useStyles = makeStyles(() => ({
       "&:first-child.Mui-selected": {
         color: "#fff !important",
       },
-      
     },
     "& .MuiTabs-root .MuiTabs-indicator": {
       marginLeft: "0px !important",
-      width: "8% !important",
+      width: "30px !important",
       background: "#39B586 !important",
     },
   }),
-
-  
-
 
   chipButtonSection: (props: any) => ({
     display: "flex",
@@ -247,7 +240,6 @@ const useStyles = makeStyles(() => ({
   headerRightContentStyle: (props: any) => ({
     marginRight: "20px",
   }),
-
 
   tripsElementSection: (props: any) => ({
     display: "flex",
@@ -325,7 +317,7 @@ const useStyles = makeStyles(() => ({
   }),
 
   incomeText: (props: any) => ({
-    fontfamily: `"QualcommNext-Regular"`,
+    // fontfamily: `"QualcommNext-Regular"`,
     fontSize: 16,
     lineHeight: "22px",
     // color: theme.palette.blue,
@@ -523,20 +515,12 @@ const useStyles = makeStyles(() => ({
     marginRight: "20px !important",
     display: "flex",
     justifyContent: "flex-end",
-    
   }),
 
-  
- 
-
-  alertRightIcons: (props: any) => ({   
-   
-  
+  alertRightIcons: (props: any) => ({
     marginRight: "15px",
     // justifyContent: "flex-end",
-    
   }),
-
 
   subListSection: (props: any) => ({}),
   infoVideoTitle: (props: any) => ({

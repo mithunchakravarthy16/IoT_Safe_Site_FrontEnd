@@ -22,6 +22,14 @@ export default {
   alerts: "Alerts",
   poweredBy: "Powered by",
   copyRight: "© 2023. All Rights Reserved",
-  events : "Events",
-  operations : "Operations"
+  events: "Events",
+  operations: "Operations",
+  temperature: "Temperature",
+  humidity: "Humidity",
+  carbonMonoxide: "Carbon Monoxide (Kg)",
+  voc: "VOC",
+  waterLevel: "Water Level",
+  rainfall: "Rainfall",
+  call911: "Call 911",
+  viewDetails: "View Details",
 };

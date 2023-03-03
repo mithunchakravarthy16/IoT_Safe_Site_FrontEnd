@@ -24,4 +24,12 @@ export default {
   copyRight: "© 2023. Tutti i diritti riservati",
   events: "Eventi",
   operations: "Operazioni",
+  temperature: "Temperatura",
+  humidity: "Umidità",
+  carbonMonoxide: "Monossido Di Carbonio (Kg)",
+  voc: "VOC",
+  waterLevel: "Livello Dell'acqua",
+  rainfall: "Pioggia",
+  call911: "Chiamata 911",
+  viewDetails: "Visualizza Dettagli",
 };
