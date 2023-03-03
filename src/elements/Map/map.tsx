@@ -27,8 +27,15 @@ const Map: React.FC<any> = (props) => {
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const { overlayViewBox } = useStyles(appTheme);
 
-  const { markers, marker, setSelectedNotification, setTabIndex, pageName } =
-    props;
+  const {
+    markers,
+    marker,
+    setSelectedNotification,
+    setTabIndex,
+    searchOpen,
+    setSearchOpen,
+    pageName,
+  } = props;
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: appData?.googleMapApiKey,
@@ -45,7 +52,7 @@ const Map: React.FC<any> = (props) => {
   useEffect(() => {
     if (currentMarker) {
       const index = markers?.findIndex(
-        (marker: any) => marker.id === currentMarker
+        (marker: any) => marker.index === currentMarker
       );
 
       map?.panTo(markers[index]?.location);
@@ -111,6 +118,7 @@ const Map: React.FC<any> = (props) => {
     setSelectedNotification((prev: any) => {
       return prev && prev == markerId ? "" : markerId;
     });
+    setSearchOpen(false);
   };
 
   const getMarkerIcon = (category: string, subCategory: string) => {
@@ -182,14 +190,14 @@ const Map: React.FC<any> = (props) => {
             if (!window.google) return null;
             return (
               <>
-                {singleMarker.id ? (
+                {singleMarker?.index ? (
                   <Marker
                     position={singleMarker?.location}
                     onClick={() => {
                       toggleInfoWindow(
-                        singleMarker.id,
+                        singleMarker?.index,
                         singleMarker?.location,
-                        singleMarker.category,
+                        singleMarker?.category,
                         false
                       );
                     }}
@@ -200,23 +208,23 @@ const Map: React.FC<any> = (props) => {
                       ),
                       scaledSize: new window.google.maps.Size(38.5, 45.5),
                     }}
-                    key={singleMarker.id}
-                    zIndex={currentMarker === singleMarker.id ? 1000 : 1}
+                    key={singleMarker?.index}
+                    zIndex={currentMarker === singleMarker?.index ? 1000 : 1}
                   ></Marker>
                 ) : null}
-                {currentMarker === singleMarker.id ? (
+                {currentMarker === singleMarker?.index ? (
                   <OverlayViewF
                     position={singleMarker?.location}
                     mapPaneName={"overlayMouseTarget"}
-                    key={singleMarker.id}
+                    key={singleMarker?.index}
                   >
                     <InfoBox
                       data={singleMarker}
                       toggleInfoWindow={toggleInfoWindow}
-                      singleMarkerId={singleMarker.id}
+                      singleMarkerId={singleMarker?.index}
                       singleMarkerLocation={singleMarker?.location}
-                      singleCategory={singleMarker.category}
-                      key={singleMarker.id}
+                      singleCategory={singleMarker?.category}
+                      key={singleMarker?.index}
                       pageName={pageName}
                     />
                   </OverlayViewF>

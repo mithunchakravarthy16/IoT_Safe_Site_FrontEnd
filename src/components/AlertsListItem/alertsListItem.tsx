@@ -82,7 +82,7 @@ const AlertsListItem: React.FC<any> = (props) => {
     <>
       <div
         className={listItemContainer}
-        onClick={() => handleExpandListItem(id, index, currentTimeStamp)}
+        onClick={() => handleExpandListItem(index, currentTimeStamp)}
         // ref={refs[id]}
       >
         {selectedNotification === index ? (

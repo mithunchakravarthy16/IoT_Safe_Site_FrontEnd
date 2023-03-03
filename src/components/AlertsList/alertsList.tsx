@@ -21,6 +21,8 @@ const AlertsList: React.FC<any> = (props) => {
     setTabIndex,
     setNotificationTimeStamp,
     alertsMainList,
+    searchOpen,
+    setSearchOpen,
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -42,7 +44,6 @@ const AlertsList: React.FC<any> = (props) => {
   const { search, noResult, alerts, events, operations } = useTranslation();
 
   const [selectedRefId, setSelectedRefId] = useState("");
-  const [searchOpen, setSearchOpen] = useState<any>(false);
 
   const [alertsDataList, setAlertsDataList] = useState(
     formattedAlertListData(tabIndex, alertsData)
@@ -125,8 +126,8 @@ const AlertsList: React.FC<any> = (props) => {
     setSelectedNotification("");
   };
 
-  const handleExpandListItem = (index: number, id: any, dateTime: any) => {
-    setSelectedNotification(selectedNotification === id ? -1 : id);
+  const handleExpandListItem = (index: any, dateTime: any) => {
+    setSelectedNotification(selectedNotification === index ? -1 : index);
     // setSelectedRefId(id);
     setNotificationTimeStamp(dateTime);
   };
