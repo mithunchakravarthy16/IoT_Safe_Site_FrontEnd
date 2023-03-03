@@ -6,6 +6,7 @@ const useStyles = makeStyles({
     background: props?.palette?.dashboard?.whiteGrayShade,
     padding: "26px 12px 13px 17px",
     borderLeft: `2px solid ${props?.palette?.dashboard?.lightGrey2}`,
+    height: "calc(100vh - 124px)",
   }),
   dashboarListTitle: (props: any) => ({
     display: "flex",
