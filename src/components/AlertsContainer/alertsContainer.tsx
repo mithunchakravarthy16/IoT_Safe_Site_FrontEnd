@@ -19,6 +19,7 @@ const AlertsContainer: React.FC<any> = (props) => {
   const [selectedNotification, setSelectedNotification] = useState<any>(-1);
   const [alertsMainData, setAlertsMainData] = useState();
   const [tabIndex, setTabIndex] = useState<number>(1);
+  const [searchOpen, setSearchOpen] = useState<any>(false);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -63,7 +64,7 @@ const AlertsContainer: React.FC<any> = (props) => {
 
     const dataValue: any = combinedNotifications?.map(
       (value: any, index: number) => {
-        return { ...value, id: index + 1, index: index + 1 };
+        return { ...value, index: index + 1 };
       }
     );
 
@@ -104,6 +105,8 @@ const AlertsContainer: React.FC<any> = (props) => {
                 setNotificationTimeStamp={setNotificationTimeStamp}
                 alertsData={alertsData}
                 alertsMainList={alertsMainList}
+                searchOpen={searchOpen}
+                setSearchOpen={setSearchOpen}
               />
             ) : (
               ""
