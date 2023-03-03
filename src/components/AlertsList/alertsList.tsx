@@ -187,8 +187,7 @@ const AlertsList: React.FC<any> = (props) => {
                   data={item}
                   key={index}
                   handleExpandListItem={handleExpandListItem}
-                  selectedNotification={selectedNotification}
-                  // handleViewDialogue={handleViewDialogue}
+                  selectedNotification={selectedNotification}                  
                   notificationTimeStamp={""}
                   handleInfoDialogue={handleInfoDialogue}
                 />
