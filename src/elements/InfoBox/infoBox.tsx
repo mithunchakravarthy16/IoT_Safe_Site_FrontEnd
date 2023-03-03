@@ -251,6 +251,9 @@ const InfoBox: React.FC<any> = (props) => {
                 </Tooltip>
               </div>
             </div>
+            <div className={listItemCloseIcon} onClick={handleClose}>
+              <img src={CloseCalloutIcon} />
+            </div>
           </div>
 
           <div className={listItemLocationArea}>
