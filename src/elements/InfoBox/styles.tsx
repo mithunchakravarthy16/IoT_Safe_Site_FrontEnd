@@ -165,5 +165,32 @@ const useStyles = makeStyles({
     fontWeight: 600,
     letterSpacing: 0.5,
   }),
+  listItemFooterStyle: (props: any) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    fontSize: 14,
+    [muiTheme.breakpoints.down(1601)]: {
+      fontSize: 13,
+    },
+    [muiTheme.breakpoints.down(1025)]: {
+      fontSize: 13,
+    },
+  }),
+  listItemTimeStyle: (props: any) => ({
+    color: props?.palette?.dashboard?.lightBlue4,
+    fontSize: "12px",
+    fontWeight: 400,
+  }),
+  listItemLocationArea: (props: any) => ({
+    fontWeight: 400,
+    fontSize: 16,
+    color: props?.palette?.dashboard?.blueGrayNewShade,
+    display: "flex",
+    [muiTheme.breakpoints.down(1281)]: {
+      fontSize: 14,
+    },
+  }),
 });
 export default useStyles;

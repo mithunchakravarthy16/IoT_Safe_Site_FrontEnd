@@ -93,7 +93,13 @@ const AlertsContainer: React.FC<any> = (props) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={alertsContainerMain}>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <AlertsMap />
+            <AlertsMap
+              alertsData={alertsData}
+              selectedNotification={selectedNotification}
+              setSelectedNotification={setSelectedNotification}
+              setTabIndex={setTabIndex}
+              pageName={"Alerts"}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
             {alertsData && alertsData?.length > 0 ? (

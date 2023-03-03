@@ -5,7 +5,13 @@ import Map from "elements/Map";
 import useStyles from "./styles";
 
 const AlertsMap: React.FC<any> = (props) => {
-  const {} = props;
+  const {
+    alertsData,
+    selectedNotification,
+    setSelectedNotification,
+    setTabIndex,
+    pageName,
+  } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const { alertMapContainer } = useStyles(appTheme);
@@ -37,7 +43,13 @@ const AlertsMap: React.FC<any> = (props) => {
 
   return (
     <div className={alertMapContainer}>
-      <Map />
+      <Map
+        markers={alertsData}
+        marker={selectedNotification}
+        setSelectedNotification={setSelectedNotification}
+        setTabIndex={setTabIndex}
+        pageName={pageName}
+      />
     </div>
   );
 };

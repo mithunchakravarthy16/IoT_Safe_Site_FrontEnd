@@ -10,6 +10,7 @@ const DashboardMap: React.FC<any> = (props) => {
     selectedNotification,
     setSelectedNotification,
     setTabIndex,
+    pageName,
   } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
@@ -47,6 +48,7 @@ const DashboardMap: React.FC<any> = (props) => {
         marker={selectedNotification}
         setSelectedNotification={setSelectedNotification}
         setTabIndex={setTabIndex}
+        pageName={pageName}
       />
     </div>
   );
