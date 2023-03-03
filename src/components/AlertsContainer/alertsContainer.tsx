@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import theme from "../../theme/theme";
 import AlertsList from "components/AlertsList";
+import AlertsMap from "components/AlertsMap";
 import alerts from "mockdata/alerts";
 import useStyles from "./styles";
 
@@ -93,7 +94,15 @@ const AlertsContainer: React.FC<any> = (props) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={alertsContainerMain}>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <div className={floorMapContainerStyle}>Map</div>
+            <AlertsMap
+              alertsData={alertsData}
+              selectedNotification={selectedNotification}
+              setSelectedNotification={setSelectedNotification}
+              setTabIndex={setTabIndex}
+              pageName={"Alerts"}
+              searchOpen={searchOpen}
+              setSearchOpen={setSearchOpen}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
             {alertsData && alertsData?.length > 0 ? (

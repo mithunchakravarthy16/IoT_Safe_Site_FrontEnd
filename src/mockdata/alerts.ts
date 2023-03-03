@@ -1,100 +1,154 @@
 const alerts = {
-    "events": [
-        {
-            "id": "",
-            "category": "",
-            "observation": "Loitering Detected",
-            "name": "AI Camera #3",
-            "zone": "Zone 3",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        },
-        {
-            "id": "",
-            "category": "",
-            "observation": "Intrution Detected",
-            "name": "AI Camera #2",
-            "zone": "Zone 2",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        }
-    ],
-    "alerts": [
-        {
-            "id": "",
-            "category": "",
-            "observation": "Loitering Detected",
-            "name": "AI Camera #3",
-            "zone": "Zone 3",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        },
-        {
-            "id": "",
-            "category": "",
-            "observation": "Intrution Detected",
-            "name": "AI Camera #2",
-            "zone": "Zone 2",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        }
-    ],
-    "operations": [
-        {
-            "id": "",
-            "category": "",
-            "observation": "Loitering Detected",
-            "name": "AI Camera #3",
-            "zone": "Zone 3",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        },
-        {
-            "id": "",
-            "category": "",
-            "observation": "Intrution Detected",
-            "name": "AI Camera #2",
-            "zone": "Zone 2",
-            "area": "Construction Area",
-            "img": "",
-            "video": "",
-            "timeStamp": "12-15-2022 | 09:00 AM",
-            "location": {
-                "lat": 39.95467066644549,
-                "lng": -75
-            }
-        }
-    ]
+  events: [
+    {
+      id: "",
+      category: "events",
+      subCategory: "aiCameras",
+      observation: "Loitering Detected",
+      name: "AI Camera #3",
+      zone: "Zone 3",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.95479636747346,
+        lng: -75.19125340481472,
+      },
+    },
+    {
+      id: "",
+      category: "events",
+      subCategory: "envSensors",
+      observation: "Intrution Detected",
+      name: "ENV Sensor #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.95465062495,
+        lng: -75.19156122272521,
+      },
+    },
+    {
+      id: "",
+      category: "events",
+      subCategory: "floodSensors",
+      observation: "Intrution Detected",
+      name: "Flood Sensor #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.9546330296282,
+        lng: -75.19113445372379,
+      },
+    },
+  ],
+  alerts: [
+    {
+      id: "",
+      category: "alerts",
+      subCategory: "aiCameras",
+      observation: "Loitering Detected",
+      name: "AI Camera #3",
+      zone: "Zone 3",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.954578508318264,
+        lng: -75.19128690426808,
+      },
+    },
+    {
+      id: "",
+      category: "alerts",
+      subCategory: "envSensors",
+      observation: "Intrution Detected",
+      name: "Env Sensor #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.954615329581706,
+        lng: -75.19096743022074,
+      },
+    },
+    {
+      id: "",
+      category: "alerts",
+      subCategory: "floodSensors",
+      observation: "Intrution Detected",
+      name: "Flood Sensor #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.954410384145454,
+        lng: -75.19068198826204,
+      },
+    },
+  ],
+  operations: [
+    {
+      id: "",
+      category: "operations",
+      subCategory: "aiCameras",
+      observation: "Loitering Detected",
+      name: "AI Camera #3",
+      zone: "Zone 3",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.95450484541658,
+        lng: -75.19080822968087,
+      },
+    },
+    {
+      id: "",
+      category: "operations",
+      subCategory: "envSensors",
+      observation: "Intrution Detected",
+      name: "AI Camera #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.9543583199674,
+        lng: -75.19043868202611,
+      },
+    },
+    {
+      id: "",
+      category: "operations",
+      subCategory: "floodSensors",
+      observation: "Intrution Detected",
+      name: "Flood Sensor #2",
+      zone: "Zone 2",
+      area: "Construction Area",
+      img: "",
+      video: "",
+      timeStamp: "12-15-2022 | 09:00 AM",
+      location: {
+        lat: 39.95438562602149,
+        lng: -75.1915065814789,
+      },
+    },
+  ],
 };
 
 export default alerts;

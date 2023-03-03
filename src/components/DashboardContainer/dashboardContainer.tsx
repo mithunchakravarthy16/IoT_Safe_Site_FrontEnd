@@ -81,6 +81,7 @@ const DashboardContainer: React.FC<any> = (props) => {
               selectedNotification={selectedNotification}
               setSelectedNotification={setSelectedNotification}
               setTabIndex={setTabIndex}
+              pageName={"Dashboard"}
               searchOpen={searchOpen}
               setSearchOpen={setSearchOpen}
             />

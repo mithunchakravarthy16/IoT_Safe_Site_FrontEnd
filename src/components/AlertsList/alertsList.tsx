@@ -159,7 +159,7 @@ const AlertsList: React.FC<any> = (props) => {
       <div>
         <Tabs
           // initialIndex={tabIndex}
-          initialIndex={1}
+          initialIndex={tabIndex}
           tabsList={tabsList}
           handleTabs={handleTabs}
           dashboardNotificationClassName={customNotificationTabs}

@@ -11,6 +11,7 @@ import { mapContainerStyles, RootContainer, mapStyleWidth } from "./styles";
 import AICameraIcon from "assets/aiCameraIcon.svg";
 import EnvSensorsIcon from "assets/envSensorIcon.svg";
 import FloodSensorsIcon from "assets/floodSensorIcon.svg";
+import AlertIcons from "assets/AlertsIcons";
 import InfoBox from "elements/InfoBox";
 import useStyles from "./styles";
 
@@ -33,6 +34,7 @@ const Map: React.FC<any> = (props) => {
     setTabIndex,
     searchOpen,
     setSearchOpen,
+    pageName,
   } = props;
 
   const { isLoaded } = useLoadScript({
@@ -99,7 +101,19 @@ const Map: React.FC<any> = (props) => {
       }
     });
     setTabIndex(
-      category === "aiCameras" ? 0 : category === "envrSensors" ? 1 : 2
+      pageName === "Dashboard"
+        ? category === "aiCameras"
+          ? 0
+          : category === "envrSensors"
+          ? 1
+          : 2
+        : pageName === "Alerts"
+        ? category === "events"
+          ? 0
+          : category === "alerts"
+          ? 1
+          : 2
+        : ""
     );
     setSelectedNotification((prev: any) => {
       return prev && prev == markerId ? "" : markerId;
@@ -107,16 +121,56 @@ const Map: React.FC<any> = (props) => {
     setSearchOpen(false);
   };
 
-  const getMarkerIcon = (category: string) => {
-    switch (category) {
-      case "aiCameras":
-        return AICameraIcon;
-      case "envrSensors":
-        return EnvSensorsIcon;
-      case "floodSensors":
-        return FloodSensorsIcon;
-      default:
-        return AICameraIcon;
+  const getMarkerIcon = (category: string, subCategory: string) => {
+    if (pageName === "Dashboard") {
+      switch (category) {
+        case "aiCameras":
+          return AICameraIcon;
+        case "envrSensors":
+          return EnvSensorsIcon;
+        case "floodSensors":
+          return FloodSensorsIcon;
+        default:
+          return AICameraIcon;
+      }
+    } else {
+      switch (category) {
+        case "events":
+          switch (subCategory) {
+            case "aiCameras":
+              return AlertIcons?.eventsAICamera;
+            case "envSensors":
+              return AlertIcons?.eventsEnvSensor;
+            case "floodSensors":
+              return AlertIcons?.eventsFloodSensor;
+            default:
+              return AlertIcons?.eventsAICamera;
+          }
+        case "alerts":
+          switch (subCategory) {
+            case "aiCameras":
+              return AlertIcons?.alertsAICamera;
+            case "envSensors":
+              return AlertIcons?.alertsEnvSensor;
+            case "floodSensors":
+              return AlertIcons?.alertsFloodSensor;
+            default:
+              return AlertIcons?.alertsAICamera;
+          }
+        case "operations":
+          switch (subCategory) {
+            case "aiCameras":
+              return AlertIcons?.operationsAICamera;
+            case "envSensors":
+              return AlertIcons?.operationsEnvSensor;
+            case "floodSensors":
+              return AlertIcons?.operationsFloodSensor;
+            default:
+              return AlertIcons?.operationsAICamera;
+          }
+        default:
+          return AlertIcons?.eventsAICamera;
+      }
     }
   };
 
@@ -148,7 +202,10 @@ const Map: React.FC<any> = (props) => {
                       );
                     }}
                     icon={{
-                      url: getMarkerIcon(singleMarker?.category),
+                      url: getMarkerIcon(
+                        singleMarker.category,
+                        singleMarker.subCategory
+                      ),
                       scaledSize: new window.google.maps.Size(38.5, 45.5),
                     }}
                     key={singleMarker?.index}
@@ -168,6 +225,7 @@ const Map: React.FC<any> = (props) => {
                       singleMarkerLocation={singleMarker?.location}
                       singleCategory={singleMarker?.category}
                       key={singleMarker?.index}
+                      pageName={pageName}
                     />
                   </OverlayViewF>
                 ) : null}

@@ -4,9 +4,9 @@ import useTranslation from "../../localization/translations";
 import Map from "elements/Map";
 import useStyles from "./styles";
 
-const DashboardMap: React.FC<any> = (props) => {
+const AlertsMap: React.FC<any> = (props) => {
   const {
-    equipmentData,
+    alertsData,
     selectedNotification,
     setSelectedNotification,
     setTabIndex,
@@ -16,7 +16,7 @@ const DashboardMap: React.FC<any> = (props) => {
   } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const { dashboardMapContainer } = useStyles(appTheme);
+  const { alertMapContainer } = useStyles(appTheme);
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
@@ -44,9 +44,9 @@ const DashboardMap: React.FC<any> = (props) => {
   const {} = useTranslation();
 
   return (
-    <div className={dashboardMapContainer}>
+    <div className={alertMapContainer}>
       <Map
-        markers={equipmentData}
+        markers={alertsData}
         marker={selectedNotification}
         setSelectedNotification={setSelectedNotification}
         setTabIndex={setTabIndex}
@@ -57,4 +57,4 @@ const DashboardMap: React.FC<any> = (props) => {
     </div>
   );
 };
-export default DashboardMap;
+export default AlertsMap;
