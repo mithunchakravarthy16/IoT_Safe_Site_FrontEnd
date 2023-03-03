@@ -16,6 +16,8 @@ const DashboardContainer: React.FC<any> = (props) => {
   const [tabIndex, setTabIndex] = useState<number>(0);
   const [selectedNotification, setSelectedNotification] = useState<number>(-1);
   const [equipmentData, setEquipmentData] = useState<any>();
+  const [searchOpen, setSearchOpen] = useState<any>(false);
+
   const dashboardData = dashboardEquipments;
 
   const { dashboardRootContainer } = useStyles(appTheme);
@@ -38,7 +40,7 @@ const DashboardContainer: React.FC<any> = (props) => {
 
     const dataValue: any = combinedNotifications?.map(
       (value: any, index: number) => {
-        return { ...value, id: index + 1, index: index + 1 };
+        return { ...value, index: index + 1 };
       }
     );
 
@@ -79,6 +81,8 @@ const DashboardContainer: React.FC<any> = (props) => {
               selectedNotification={selectedNotification}
               setSelectedNotification={setSelectedNotification}
               setTabIndex={setTabIndex}
+              searchOpen={searchOpen}
+              setSearchOpen={setSearchOpen}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
@@ -90,6 +94,8 @@ const DashboardContainer: React.FC<any> = (props) => {
                 dashboardEquipmentsMain={dashboardEquipments}
                 selectedNotification={selectedNotification}
                 setSelectedNotification={setSelectedNotification}
+                searchOpen={searchOpen}
+                setSearchOpen={setSearchOpen}
               />
             ) : (
               ""
