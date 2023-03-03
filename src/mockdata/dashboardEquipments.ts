@@ -7,7 +7,7 @@ const dashboardEquipments = {
     category: "",
     list: [
       {
-        id: "AI-Cam1",
+        id: "aiCamera1",
         category: "aiCameras",
         title: "AI Camera #1",
         area: "Construction Area, Zone 1",
@@ -22,7 +22,7 @@ const dashboardEquipments = {
         },
       },
       {
-        id: "AI-Cam2",
+        id: "aiCamera2",
         category: "aiCameras",
         title: "AI Camera #2",
         area: "Construction Area, Zone 2",
@@ -139,7 +139,7 @@ const dashboardEquipments = {
             value: "75%",
           },
         ],
-        id: "floorSensor1",
+        id: "floodSensor1",
         category: "floodSensors",
         title: "Flood Sensor #1",
         area: "Construction Area, Zone 1",
@@ -172,7 +172,7 @@ const dashboardEquipments = {
             value: "75%",
           },
         ],
-        id: "floorSensor2",
+        id: "floodSensor2",
         category: "floodSensors",
         title: "Flood Sensor #2",
         area: "Construction Area, Zone 2",

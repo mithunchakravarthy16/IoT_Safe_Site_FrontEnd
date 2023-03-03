@@ -14,6 +14,7 @@ import FloodSensorsIcon from "assets/floodSensorIcon.svg";
 import AlertIcons from "assets/AlertsIcons";
 import InfoBox from "elements/InfoBox";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 
 const defaultCenter = {
   lat: 39.954772903926305,
@@ -36,6 +37,24 @@ const Map: React.FC<any> = (props) => {
     setSearchOpen,
     pageName,
   } = props;
+
+  const [showInfoDialogue, setShowInfoDialogue] = useState<boolean>(false);
+  const [selectedType, setSelectedType] = useState<string>();
+  const [selectedId, setSelectedId] = useState<any>();
+  const [selectedTitle, setSelectedTitle] = useState<string>();
+
+  const handleInfoDialogue = (type: string, id: any)=>{
+    if(pageName === "Dashboard"){
+      setShowInfoDialogue(true);
+      setSelectedType(type);
+      setSelectedId(id);
+    }else if(pageName === "Alerts"){
+      setSelectedTitle(type)
+      setShowInfoDialogue(true);
+    }
+    
+  }
+
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: appData?.googleMapApiKey,
@@ -226,6 +245,7 @@ const Map: React.FC<any> = (props) => {
                       singleCategory={singleMarker?.category}
                       key={singleMarker?.index}
                       pageName={pageName}
+                      handleInfoDialogue={handleInfoDialogue}
                     />
                   </OverlayViewF>
                 ) : null}
@@ -233,6 +253,15 @@ const Map: React.FC<any> = (props) => {
             );
           })}
         </GoogleMap>
+      )}
+      {showInfoDialogue && (
+        <InfoDialog
+        selectedType={pageName === "Dashboard" ? selectedType : ""}
+        selectedId={pageName === "Dashboard" ? selectedId : ""}
+        setShowInfoDialogue={setShowInfoDialogue}
+        pageName={pageName === "Alerts" ? "alerts" : ""} 
+        selectedTitle={pageName === "Alerts" ? selectedTitle : ""}
+        />
       )}
     </RootContainer>
   );

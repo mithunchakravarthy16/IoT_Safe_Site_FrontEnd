@@ -4,6 +4,7 @@ import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
 import DashboardContainer from "components/DashboardContainer";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 
 const DashBoard = () => {
   const { hello } = useTranslation();
@@ -39,6 +40,7 @@ const DashBoard = () => {
   return (
     <>
       <DashboardContainer />
+      
     </>
   );
 };
