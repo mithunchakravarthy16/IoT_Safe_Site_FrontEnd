@@ -11,6 +11,8 @@ const AlertsMap: React.FC<any> = (props) => {
     setSelectedNotification,
     setTabIndex,
     pageName,
+    searchOpen,
+    setSearchOpen,
   } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
@@ -49,6 +51,8 @@ const AlertsMap: React.FC<any> = (props) => {
         setSelectedNotification={setSelectedNotification}
         setTabIndex={setTabIndex}
         pageName={pageName}
+        searchOpen={searchOpen}
+        setSearchOpen={setSearchOpen}
       />
     </div>
   );
