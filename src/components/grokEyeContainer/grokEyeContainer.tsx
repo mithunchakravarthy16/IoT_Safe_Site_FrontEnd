@@ -41,54 +41,6 @@ const GrokEyeContainer: React.FC<any> = (props) => {
         break;
     }
   }, [selectedTheme]);
-
-  const alertsMainList = alerts;
-
-  const [notifications, setNotifications] = useState([]);
-  const [notificationTimeStamp, setNotificationTimeStamp] = useState();
-
-  useEffect(() => {
-    const { events, alerts, operations } = alertsMainList;
-    const combinedNotifications: any = [];
-
-    events?.forEach((event, index) => {
-      combinedNotifications.push({ ...event, type: "events" });
-    });
-
-    alerts?.forEach((alerts, index) => {
-      combinedNotifications.push({ ...alerts, type: "alerts" });
-    });
-
-    operations?.forEach((operations, index) => {
-      combinedNotifications.push({ ...operations, type: "operations" });
-    });
-
-    const dataValue: any = combinedNotifications?.map(
-      (value: any, index: number) => {
-        return { ...value, index: index + 1 };
-      }
-    );
-
-    setNotifications(dataValue);
-  }, []);
-
-  let currentTimeStampValue;
-  let timeArrayNew: any = [];
-  for (let i = 0; i < notifications?.length; i++) {
-    currentTimeStampValue = moment()
-      .subtract({
-        hours: i === 0 ? i : i > 20 ? 20 : i + 1,
-        minutes: i + 59,
-        seconds: i + 39,
-      })
-      .format("MM-DD-YYYY | h:mm A");
-    timeArrayNew.push({ currentTimeStamp: currentTimeStampValue });
-  }
-
-  let alertsData = timeArrayNew?.map((item: any, i: any) =>
-    Object.assign({}, item, notifications[i])
-  );
-
   return (
     <Fragment>
       <Box sx={{ flexGrow: 1 }}>
@@ -100,21 +52,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
             Test2
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-            {alertsData && alertsData?.length > 0 ? (
-              <AlertsList
-                setSelectedNotification={setSelectedNotification}
-                selectedNotification={selectedNotification}
-                tabIndex={tabIndex}
-                setTabIndex={setTabIndex}
-                setNotificationTimeStamp={setNotificationTimeStamp}
-                alertsData={alertsData}
-                alertsMainList={alertsMainList}
-                searchOpen={searchOpen}
-                setSearchOpen={setSearchOpen}
-              />
-            ) : (
-              ""
-            )}
+            Test 3
           </Grid>
         </Grid>
       </Box>
