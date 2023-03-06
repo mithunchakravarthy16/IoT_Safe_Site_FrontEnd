@@ -4,6 +4,7 @@ import theme from "../../theme/theme";
 import useTranslation from "../../localization/translations";
 import DashboardContainer from "components/DashboardContainer";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 import {GrokList} from "elements";
 
 const DashBoard = () => {
@@ -40,6 +41,7 @@ const DashBoard = () => {
   return (
     <>
       <DashboardContainer />
+      
     </>
   );
 };

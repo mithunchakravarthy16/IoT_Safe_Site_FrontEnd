@@ -91,5 +91,22 @@ let colorCodes = {
   darkBlackRgba1: "rgba(21, 21, 21, 0.9)",
   lightWhiteRgba2: "rgba(0, 0, 0, 0.1)",
   darkBlackRgba2: "rgba(6, 6, 6, 0.9)",
+  whiteGrayShade: "#FCFDFF",
+  grayShade3: "#9DA0AB",
+  headerBg: "#0B2742",
+  darkBlueBlackShade: "#213242",
+  darkGreenShade: "rgba(29, 228, 152, 1)",
+  lightGrayWhiteShade: "rgba(238, 238, 239, 1)",
+  blueGrayNewShade: "rgba(134, 147, 168, 1)",
+  darkBlueGrayShade: "#324658",
+  paleGreenShade: "#6CF356",
+  lightBlueGrayShade: "rgba(123, 149, 173, 1)",
+  darkGreenShade2: "#39B586",
+  darkBlueBlackShade2: "#142230",
+  footerBg: "#EEF7FF",
+  skyBlueColor: "#38BCDB",
+  darkRedColor: "#E13827",
+  goldenOrangeColor: "#E0791A",
+  lightGrayShade5 : "rgba(157, 160, 171, 1)"
 };
 export default colorCodes;

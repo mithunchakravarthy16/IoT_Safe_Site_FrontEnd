@@ -5,26 +5,33 @@ const useStyles = makeStyles({
   tabsRoot: {
     "@media (max-height: 650px)": {
       minHeight: "30px",
-      height: "30px"
-    }
+      height: "30px",
+    },
   },
   tabRoot: {
     "@media (max-height: 650px)": {
       minHeight: "30px",
-      height: "30px"
-    }
+      height: "30px",
+    },
   },
   itemCount: {
-    fontSize: 14,
+    fontSize: 13,
     [muiTheme.breakpoints.down(1281)]: {
       fontSize: 12,
     },
   },
   itemText: {
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: 600,
     [muiTheme.breakpoints.down(1281)]: {
-      fontSize: 10,
+      fontSize: 13,
+      fontWeight: 400,
     },
+  },
+  tabHeadingText: {
+    fontSize: 16,
+    fontWeight: 700,
+    marginTop: 10,
   },
 });
 export default useStyles;

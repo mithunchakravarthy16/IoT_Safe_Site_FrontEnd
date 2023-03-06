@@ -1,28 +1,43 @@
 import { useState, useEffect, createRef } from "react";
 import theme from "../../theme/theme";
 import DashboardListItems from "../DashboardListItems";
+import Tabs from "elements/Tabs";
+import useTranslation from "../../localization/translations";
+import SearchBox from "../../elements/SearchBox";
+import { formattedCardListData } from "utils.ts/utils";
 import SearchIcon from "../../assets/searchIcon.svg";
 import CloseIcon from "../../assets/closeIcon.svg";
-import SearchBox from "../../elements/SearchBox";
-import useTranslation from "../../localization/translations";
+import AICameraActive from "../../assets/TabIcons/AICameraActive.svg";
+import AICameraInactive from "../../assets/TabIcons/AICameraInActive.svg";
+import EnvironmentSensorActive from "../../assets/TabIcons/EnvironmentSensorActive.svg";
+import EnvironmentSensorInactive from "../../assets/TabIcons/EnvironmentSensorInactive.svg";
+import FloodSensorActive from "../../assets/TabIcons/FloodSensorActive.svg";
+import FloodSensorInactive from "../../assets/TabIcons/FloodSensorInactive.svg";
 import useStyles from "./styles";
+import InfoDialog from "components/InfoDialog";
 
 const DashboardList: React.FC<any> = (props) => {
   const {
-    dashboardData,
-    setSelectedMarker,
-    selectedMarker,
-    setSelectedNotification,
+    tabIndex,
+    setTabIndex,
+    equipmentData,
+    dashboardEquipmentsMain,
     selectedNotification,
-    notificationTimeStamp,
-    handleViewDialogue,
+    setSelectedNotification,
+    searchOpen,
+    setSearchOpen,
   } = props;
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
+ 
+
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const [searchOpen, setSearchOpen] = useState<any>(false);
+  const [dataList, setDataList] = useState(
+    formattedCardListData(tabIndex, equipmentData)
+  );
+  const [searchValue, setSearchValue] = useState<any>(dataList);
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -52,13 +67,83 @@ const DashboardList: React.FC<any> = (props) => {
     dashboardListSection,
     searchClass,
     noResultStyle,
+    customNotificationTabs,
   } = useStyles(appTheme);
 
-  const { dashboardListName } = useTranslation();
+  const { equipment, aiCameras, envrSensor, floodSensor, search, noResult } =
+    useTranslation();
 
-  const handleSearch = (searchValue: any) => {};
+  useEffect(() => {
+    setDataList(formattedCardListData(tabIndex, equipmentData));
+    setSearchValue(formattedCardListData(tabIndex, equipmentData));
+  }, [tabIndex]);
 
-  const handleSearchClose = () => {};
+  const handleSearch = (searchValue: any) => {
+    let searchResult = dataList?.filter((value: any) => {
+      return (
+        value?.title
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.area
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.name
+          ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase())
+      );
+    });
+    setSearchValue(searchResult);
+    setSearchOpen(true);
+    setSelectedNotification("");
+  };
+
+  const handleSearchClose = () => {
+    setSearchOpen(false);
+    setSearchValue(dataList);
+    setSelectedNotification("");
+  };
+
+  const handleTabs = (index: number) => {
+    setTabIndex(index);
+    setSearchOpen(false);
+    setSelectedNotification("");
+  };
+
+  const handleExpandListItem = (id: number) => {
+    setSelectedNotification(selectedNotification === id ? "" : id);
+  };
+
+  const tabsList = [
+    {
+      name: aiCameras,
+      val: 0,
+      count: `(${dashboardEquipmentsMain?.aiCameras?.list?.length})`,
+      icon: tabIndex === 0 ? AICameraActive : AICameraInactive,
+    },
+    {
+      name: envrSensor,
+      val: 1,
+      count: `(${dashboardEquipmentsMain?.envrSensors?.list?.length})`,
+      icon:
+        tabIndex === 1 ? EnvironmentSensorActive : EnvironmentSensorInactive,
+    },
+    {
+      name: floodSensor,
+      val: 2,
+      count: `(${dashboardEquipmentsMain?.floodSensors?.list?.length})`,
+      icon: tabIndex === 2 ? FloodSensorActive : FloodSensorInactive,
+    },
+  ];
+
+  const [showInfoDialogue, setShowInfoDialogue] = useState<boolean>(false);
+  const [selectedType, setSelectedType] = useState<string>();
+  const [selectedId, setSelectedId] = useState<any>();
+
+  const handleInfoDialogue = (type: string, id: any)=>{
+    setShowInfoDialogue(true);
+    setSelectedType(type);
+    setSelectedId(id);
+  }
 
   return (
     <>
@@ -66,14 +151,14 @@ const DashboardList: React.FC<any> = (props) => {
         <div className={dashboarListTitle}>
           <div className={listTitleName}>
             {!searchOpen ? (
-              `${dashboardListName}`
+              `${equipment}`
             ) : (
               <SearchBox
                 searchInput={searchClass}
-                // placeHolder={search}
-                // handleSearch={handleSearch}
+                placeHolder={search}
+                handleSearch={handleSearch}
                 searchIsOpen={true}
-                fontColor={appTheme?.palette?.dashboardList?.darkGrey3}
+                fontColor={appTheme?.palette?.dashboard?.grayShade3}
               />
             )}
           </div>
@@ -85,7 +170,41 @@ const DashboardList: React.FC<any> = (props) => {
             />
           </div>
         </div>
-        <DashboardListItems />
+        <div>
+          <Tabs
+            initialIndex={tabIndex}
+            tabsList={tabsList}
+            handleTabs={handleTabs}
+            dashboardNotificationClassName={customNotificationTabs}
+            tabType={"listTab"}
+          />
+        </div>{" "}
+        {searchValue && searchValue?.length > 0 ? (
+          searchValue?.map((item: any, index: number) => {
+            return (
+              <DashboardListItems
+                data={item}
+                key={index}
+                selectedNotification={selectedNotification}
+                setSelectedNotification={setSelectedNotification}
+                handleExpandListItem={handleExpandListItem}
+                handleInfoDialogue={handleInfoDialogue}
+              />
+            );
+          })
+        ) : (
+          <div className={noResultStyle}>{noResult}</div>
+        )}
+      </div>
+      <div>
+      {showInfoDialogue && (
+        <InfoDialog
+        selectedType={selectedType}
+        selectedId={selectedId}
+        setShowInfoDialogue={setShowInfoDialogue}
+          
+        />
+      )}
       </div>
     </>
   );

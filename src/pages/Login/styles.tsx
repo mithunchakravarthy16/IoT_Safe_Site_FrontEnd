@@ -1,6 +1,5 @@
 import { makeStyles } from "@mui/styles";
 import safeSizeBg from "../../assets/login/Safe-Site-Login-Bg.jpg";
-import loginPolygon from "../../assets/login/polygons.png";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({

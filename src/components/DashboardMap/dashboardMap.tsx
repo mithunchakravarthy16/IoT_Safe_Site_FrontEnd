@@ -5,10 +5,18 @@ import Map from "elements/Map";
 import useStyles from "./styles";
 
 const DashboardMap: React.FC<any> = (props) => {
-  const {} = props;
+  const {
+    equipmentData,
+    selectedNotification,
+    setSelectedNotification,
+    setTabIndex,
+    pageName,
+    searchOpen,
+    setSearchOpen,
+  } = props;
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
-  const { infoIconContainer, dashboardMapContainer } = useStyles(appTheme);
+  const { dashboardMapContainer } = useStyles(appTheme);
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
@@ -37,7 +45,15 @@ const DashboardMap: React.FC<any> = (props) => {
 
   return (
     <div className={dashboardMapContainer}>
-      <Map />
+      <Map
+        markers={equipmentData}
+        marker={selectedNotification}
+        setSelectedNotification={setSelectedNotification}
+        setTabIndex={setTabIndex}
+        pageName={pageName}
+        searchOpen={searchOpen}
+        setSearchOpen={setSearchOpen}
+      />
     </div>
   );
 };
