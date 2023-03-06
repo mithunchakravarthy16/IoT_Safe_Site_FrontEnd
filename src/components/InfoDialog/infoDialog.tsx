@@ -21,7 +21,7 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import TitleInfoSubList from "components/TitleInfoSubList";
 import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
-import { SampleVideo } from "../../assets/AlertsInfoVideo/video";
+import  SampleVideoContent  from "../../assets/AlertsInfoVideo/video";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -52,6 +52,8 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
 }));
 
 const InfoDialog: React.FC<any> = (props) => {
+
+  let {SampleVideo} = SampleVideoContent;
   const {
     selectedType,
     selectedId,
