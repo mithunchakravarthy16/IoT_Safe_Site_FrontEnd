@@ -8,6 +8,7 @@ import Alerts from "pages/Alerts";
 import Profile from "../pages/Profile";
 import Header from "../components/Header";
 import Footer from "components/Footer";
+import GrokEye from "pages/grokEye";
 
 const SAFE_SITE_Routes = () => {
   const user = useSelector((state: RootState) => state.login.loginData);
@@ -21,6 +22,7 @@ const SAFE_SITE_Routes = () => {
           <Route path="/" element={<Navigate replace to="login" />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/alerts" element={<Alerts />} />
+          <Route path="/grokeye" element={<GrokEye />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
 
