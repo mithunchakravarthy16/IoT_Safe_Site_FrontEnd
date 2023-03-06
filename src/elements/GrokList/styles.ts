@@ -38,18 +38,9 @@ export const ZoneHeader = styled("div")`
     justify-content: flex-start;
 `;
 
-export const ZoneActionButtons = styled(Icon)`
-    cursor: pointer;
-    margin-right: 12px;
-
-    &:last-child {
-        margin-right: 0px;
-    }
+export const HorizontalSpace = styled("div")<{count: number}>`
+    width: ${({count}) => count}px;
 `;
-
-ZoneActionButtons.defaultProps = {
-    size: 30
-}
 
 export const ZoneContent = styled("div")`
     padding: 15px 12px;
@@ -82,16 +73,6 @@ export const InstrumentHeader = styled("div")<{highlighted?: boolean}>`
         line-height: 22px;
     }
 `;
-
-export const InstrumentExpandIcon = styled(Icon)<{expanded: boolean}>`
-    transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-    margin-left: 10px;
-    transform: rotateZ(${({expanded}) => expanded?"0deg":"-90deg"});
-`;
-
-InstrumentExpandIcon.defaultProps = {
-    size: 10
-}
 
 export const InstrumentContent = styled("div")`
     padding: 15px;

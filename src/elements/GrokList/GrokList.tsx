@@ -15,11 +15,11 @@ import {
     InstrumentItemBodySection,
     InstrumentItemSectionLabel,
     InstrumentItemSectionValueContainer,
-    ZoneActionButtons,
-    InstrumentExpandIcon,
+    HorizontalSpace,
 } from "./styles"
 import IndicatorLED from "./IndicatorLed";
 import {Icon} from "elements";
+import { useTransition, animated } from "react-spring";
 
 const bodySectionItems = [
     {
@@ -65,65 +65,92 @@ const bodySectionItems = [
 ]
 
 const GrokList = () => {
+    const [selectedInstrument, setSelectedInstrument] = useState("");
+
+    const transitions = useTransition(selectedInstrument, {
+        from: { opacity: 0, height: "0px" },
+        enter: { opacity: 1, height: "auto" },
+        leave: { opacity: 0, height: "0px" },
+    });
+
+    const onInstrumentClick = (id: string) => {
+        setSelectedInstrument(prev => !prev?id:"")
+    }
+
     return (
         <RootContainer>
             <ZoneContainer>
                 <ZoneHeader>
                     <ZoneTitle>Zone 1</ZoneTitle>
                     <FlexSpace />
-                    <ZoneActionButtons icon="raise-alert" />
-                    <ZoneActionButtons icon="call" />
+                    <Icon size={30} icon="raise-alert" />
+                    <HorizontalSpace count={10} />
+                    <Icon size={30} icon="call" />
                 </ZoneHeader>
                 <ZoneContent>
                     <InstrumentContainer>
-                        <InstrumentHeader highlighted={true} >
+                        <InstrumentHeader highlighted={true} onClick={() => onInstrumentClick("ins-01")} >
                             <span>Environment Sensors (2)</span>
                             <FlexSpace />
                             <IndicatorLED type='alert' />
-                            <InstrumentExpandIcon expanded={false} icon="chevron-down" />
+                            <Icon size={15} style={{transform: `rotateZ(${selectedInstrument === "ins-01"?"0deg":"-90deg"})`, transition: "all 0.3s ease"}} icon="chevron-down" />
                         </InstrumentHeader>
-                        <InstrumentContent>
-                            <InstrumentItemContainer>
-                                <InstrumentItemHeader>
-                                    <span>Environmental Sensor#1</span>
-                                    <FlexSpace />
-                                    <IndicatorLED />
-                                </InstrumentItemHeader>
-                                <InstrumentItemBody>
-                                    {
-                                        bodySectionItems.map((item: any) => (
-                                            <InstrumentItemBodySection>
-                                                <InstrumentItemSectionValueContainer>
-                                                    <Icon icon={item.icon} size={20} />
-                                                    <span>{item.value}</span>
-                                                </InstrumentItemSectionValueContainer>
-                                                <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
-                                            </InstrumentItemBodySection>
-                                        ))
-                                    }
-                                </InstrumentItemBody>
-                            </InstrumentItemContainer>
-                            <InstrumentItemContainer>
-                                <InstrumentItemHeader>
-                                    <span>Environmental Sensor#1</span>
-                                    <FlexSpace />
-                                    <IndicatorLED />
-                                </InstrumentItemHeader>
-                                <InstrumentItemBody>
-                                    {
-                                        bodySectionItems.map((item: any) => (
-                                            <InstrumentItemBodySection>
-                                                <InstrumentItemSectionValueContainer>
-                                                    <Icon icon={item.icon} size={20} />
-                                                    <span>{item.value}</span>
-                                                </InstrumentItemSectionValueContainer>
-                                                <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
-                                            </InstrumentItemBodySection>
-                                        ))
-                                    }
-                                </InstrumentItemBody>
-                            </InstrumentItemContainer>
-                        </InstrumentContent>
+                        {
+                            selectedInstrument === "ins-01"
+                            ?
+                            transitions((style, show) => (
+                                show
+                                ?
+                                <animated.div style={style} >
+                                    <InstrumentContent>
+                                        <InstrumentItemContainer>
+                                            <InstrumentItemHeader>
+                                                <span>Environmental Sensor#1</span>
+                                                <FlexSpace />
+                                                <IndicatorLED />
+                                            </InstrumentItemHeader>
+                                            <InstrumentItemBody>
+                                                {
+                                                    bodySectionItems.map((item: any) => (
+                                                        <InstrumentItemBodySection>
+                                                            <InstrumentItemSectionValueContainer>
+                                                                <Icon icon={item.icon} size={20} />
+                                                                <span>{item.value}</span>
+                                                            </InstrumentItemSectionValueContainer>
+                                                            <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
+                                                        </InstrumentItemBodySection>
+                                                    ))
+                                                }
+                                            </InstrumentItemBody>
+                                        </InstrumentItemContainer>
+                                        <InstrumentItemContainer>
+                                            <InstrumentItemHeader>
+                                                <span>Environmental Sensor#1</span>
+                                                <FlexSpace />
+                                                <IndicatorLED />
+                                            </InstrumentItemHeader>
+                                            <InstrumentItemBody>
+                                                {
+                                                    bodySectionItems.map((item: any) => (
+                                                        <InstrumentItemBodySection>
+                                                            <InstrumentItemSectionValueContainer>
+                                                                <Icon icon={item.icon} size={20} />
+                                                                <span>{item.value}</span>
+                                                            </InstrumentItemSectionValueContainer>
+                                                            <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
+                                                        </InstrumentItemBodySection>
+                                                    ))
+                                                }
+                                            </InstrumentItemBody>
+                                        </InstrumentItemContainer>
+                                    </InstrumentContent>
+                                </animated.div>
+                                :
+                                null
+                            ))
+                            :
+                            null
+                        }
                     </InstrumentContainer>
                 </ZoneContent>
             </ZoneContainer>
