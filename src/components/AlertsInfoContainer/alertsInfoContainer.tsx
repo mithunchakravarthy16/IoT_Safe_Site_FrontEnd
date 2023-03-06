@@ -11,13 +11,14 @@ import {
   DeleteIcon,
 } from "../../assets/InfoDialogueIcons";
 
-import { SampleVideo } from "../../assets/AlertsInfoVideo/video";
+import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
 import { SampleImage } from "../../assets/AlertsInfoVideo/image";
 // import HazardousAQI from "../../assets/AlertsInfoVideo/video/HazardousAQI.mp4";
 
 const AlertsInfoContainer: React.FC<any> = (props) => {
   const {} = props;
 
+  let {SampleVideo}= SampleVideoContent;
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const {
     alertSubListRow1,
