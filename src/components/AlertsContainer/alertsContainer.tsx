@@ -1,15 +1,30 @@
 import { useState, useEffect, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import theme from "../../theme/theme";
 import AlertsList from "components/AlertsList";
 import AlertsMap from "components/AlertsMap";
-import alerts from "mockdata/alerts";
+// import alerts from "mockdata/alerts";
 import useStyles from "./styles";
 
 const AlertsContainer: React.FC<any> = (props) => {
   const {} = props;
+
+  const dispatch: any = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALERTS_DATA",
+    });
+  }, []);
+
+  const alertsAPIData = useSelector(
+    (state: any) => state?.alertsResponse?.alertsDataValue
+  );
+
+  useEffect(() => {}, [alertsAPIData]);
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
@@ -42,7 +57,7 @@ const AlertsContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
-  const alertsMainList = alerts;
+  const alertsMainList = alertsAPIData;
 
   const [notifications, setNotifications] = useState([]);
   const [notificationTimeStamp, setNotificationTimeStamp] = useState();
@@ -51,15 +66,15 @@ const AlertsContainer: React.FC<any> = (props) => {
     const { events, alerts, operations } = alertsMainList;
     const combinedNotifications: any = [];
 
-    events?.forEach((event, index) => {
+    events?.forEach((event: any, index: number) => {
       combinedNotifications.push({ ...event, type: "events" });
     });
 
-    alerts?.forEach((alerts, index) => {
+    alerts?.forEach((alerts: any, index: number) => {
       combinedNotifications.push({ ...alerts, type: "alerts" });
     });
 
-    operations?.forEach((operations, index) => {
+    operations?.forEach((operations: any, index: number) => {
       combinedNotifications.push({ ...operations, type: "operations" });
     });
 
