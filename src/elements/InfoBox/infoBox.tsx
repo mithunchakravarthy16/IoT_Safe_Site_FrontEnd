@@ -82,6 +82,7 @@ const InfoBox: React.FC<any> = (props) => {
     listItemFooterStyle,
     listItemTimeStyle,
     listItemLocationArea,
+    expandedListHeaderAlertsStyle,
   } = useStyles(appTheme);
 
   const {
@@ -233,7 +234,7 @@ const InfoBox: React.FC<any> = (props) => {
         </div>
       ) : (
         <div className={expandedListItemCallout}>
-          <div className={expandedListHeaderStyle}>
+          <div className={expandedListHeaderAlertsStyle}>
             <div>
               <div className={listItemTitle}>{observation}</div>
             </div>
