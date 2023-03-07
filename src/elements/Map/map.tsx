@@ -43,18 +43,16 @@ const Map: React.FC<any> = (props) => {
   const [selectedId, setSelectedId] = useState<any>();
   const [selectedTitle, setSelectedTitle] = useState<string>();
 
-  const handleInfoDialogue = (type: string, id: any)=>{
-    if(pageName === "Dashboard"){
+  const handleInfoDialogue = (type: string, id: any) => {
+    if (pageName === "Dashboard") {
       setShowInfoDialogue(true);
       setSelectedType(type);
       setSelectedId(id);
-    }else if(pageName === "Alerts"){
-      setSelectedTitle(type)
+    } else if (pageName === "Alerts") {
+      setSelectedTitle(type);
       setShowInfoDialogue(true);
     }
-    
-  }
-
+  };
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: appData?.googleMapApiKey,
@@ -74,13 +72,19 @@ const Map: React.FC<any> = (props) => {
         (marker: any) => marker.index === currentMarker
       );
 
-      map?.panTo(markers[index]?.location);
+      if (
+        markers &&
+        markers[index]?.location?.lat &&
+        markers[index]?.location?.lng
+      ) {
+        map?.panTo(markers[index]?.location);
+      }
     }
   }, [currentMarker]);
 
   const getMapTypeControls: any = () => {
     const defaultMapOptions = {
-      mapTypeId: "satellite",
+      mapTypeId: "roadmap",
       disableDefaultUI: true,
       styles: mapContainerStyles,
     };
@@ -201,7 +205,7 @@ const Map: React.FC<any> = (props) => {
           center={defaultCenter}
           zoom={20}
           tilt={45}
-          mapTypeId={"satellite"}
+          mapTypeId={"roadmap"}
           onLoad={setMap}
           options={getMapTypeControls()}
         >
@@ -209,7 +213,11 @@ const Map: React.FC<any> = (props) => {
             if (!window.google) return null;
             return (
               <>
-                {singleMarker?.index ? (
+                {singleMarker?.location?.lat !== "" &&
+                singleMarker?.location?.lat !== undefined &&
+                singleMarker?.location?.lng !== "" &&
+                singleMarker?.location?.lat !== undefined &&
+                singleMarker?.index ? (
                   <Marker
                     position={singleMarker?.location}
                     onClick={() => {
@@ -231,7 +239,11 @@ const Map: React.FC<any> = (props) => {
                     zIndex={currentMarker === singleMarker?.index ? 1000 : 1}
                   ></Marker>
                 ) : null}
-                {currentMarker === singleMarker?.index ? (
+                {singleMarker?.location?.lat !== "" &&
+                singleMarker?.location?.lat !== undefined &&
+                singleMarker?.location.lng !== "" &&
+                singleMarker?.location?.lat !== undefined &&
+                currentMarker === singleMarker?.index ? (
                   <OverlayViewF
                     position={singleMarker?.location}
                     mapPaneName={"overlayMouseTarget"}
@@ -256,11 +268,11 @@ const Map: React.FC<any> = (props) => {
       )}
       {showInfoDialogue && (
         <InfoDialog
-        selectedType={pageName === "Dashboard" ? selectedType : ""}
-        selectedId={pageName === "Dashboard" ? selectedId : ""}
-        setShowInfoDialogue={setShowInfoDialogue}
-        pageName={pageName === "Alerts" ? "alerts" : ""} 
-        selectedTitle={pageName === "Alerts" ? selectedTitle : ""}
+          selectedType={pageName === "Dashboard" ? selectedType : ""}
+          selectedId={pageName === "Dashboard" ? selectedId : ""}
+          setShowInfoDialogue={setShowInfoDialogue}
+          pageName={pageName === "Alerts" ? "alerts" : ""}
+          selectedTitle={pageName === "Alerts" ? selectedTitle : ""}
         />
       )}
     </RootContainer>
