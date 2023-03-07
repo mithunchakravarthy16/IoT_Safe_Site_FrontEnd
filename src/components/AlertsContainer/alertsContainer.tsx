@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import theme from "../../theme/theme";
 import AlertsList from "components/AlertsList";
 import AlertsMap from "components/AlertsMap";
-// import alerts from "mockdata/alerts";
+import alerts from "mockdata/alerts";
 import useStyles from "./styles";
 
 const AlertsContainer: React.FC<any> = (props) => {
@@ -17,14 +17,13 @@ const AlertsContainer: React.FC<any> = (props) => {
   useEffect(() => {
     dispatch({
       type: "GET_ALERTS_DATA",
+      payload: {},
     });
   }, []);
 
   const alertsAPIData = useSelector(
     (state: any) => state?.alertsResponse?.alertsDataValue
   );
-
-  useEffect(() => {}, [alertsAPIData]);
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
@@ -57,7 +56,7 @@ const AlertsContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
-  const alertsMainList = alertsAPIData;
+  const alertsMainList = alerts;
 
   const [notifications, setNotifications] = useState([]);
   const [notificationTimeStamp, setNotificationTimeStamp] = useState();
