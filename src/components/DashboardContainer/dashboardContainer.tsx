@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import theme from "../../theme/theme";
 import DashboardMap from "components/DashboardMap";
 import DashboardList from "../DashboardList";
-import dashboardEquipments from "../../mockdata/dashboardEquipments";
+// import dashboardEquipments from "../../mockdata/dashboardEquipments";
 import useStyles from "./styles";
 
 const DashboardContainer: React.FC<any> = (props) => {
@@ -32,7 +32,7 @@ const DashboardContainer: React.FC<any> = (props) => {
   const [equipmentData, setEquipmentData] = useState<any>();
   const [searchOpen, setSearchOpen] = useState<any>(false);
 
-  const dashboardData = dashboardEquipments;
+  const dashboardData = dashboardApiData;
 
   const { dashboardRootContainer } = useStyles(appTheme);
 
@@ -59,7 +59,7 @@ const DashboardContainer: React.FC<any> = (props) => {
     );
 
     setEquipmentData(dataValue);
-  }, []);
+  }, [dashboardData]);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)

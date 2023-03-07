@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import theme from "../../theme/theme";
 import AlertsList from "components/AlertsList";
 import AlertsMap from "components/AlertsMap";
-import alerts from "mockdata/alerts";
+// import alerts from "mockdata/alerts";
 import useStyles from "./styles";
 
 const AlertsContainer: React.FC<any> = (props) => {
@@ -56,7 +56,7 @@ const AlertsContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
-  const alertsMainList = alerts;
+  const alertsMainList = alertsAPIData;
 
   const [notifications, setNotifications] = useState([]);
   const [notificationTimeStamp, setNotificationTimeStamp] = useState();
@@ -84,7 +84,7 @@ const AlertsContainer: React.FC<any> = (props) => {
     );
 
     setNotifications(dataValue);
-  }, []);
+  }, [alertsAPIData]);
 
   let currentTimeStampValue;
   let timeArrayNew: any = [];
@@ -127,7 +127,7 @@ const AlertsContainer: React.FC<any> = (props) => {
                 setTabIndex={setTabIndex}
                 setNotificationTimeStamp={setNotificationTimeStamp}
                 alertsData={alertsData}
-                alertsMainList={alertsMainList}
+                alertsMainList={alertsAPIData}
                 searchOpen={searchOpen}
                 setSearchOpen={setSearchOpen}
               />
