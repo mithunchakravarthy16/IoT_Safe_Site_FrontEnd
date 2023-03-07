@@ -13,6 +13,7 @@ import {
 
 import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
 import { SampleImage } from "../../assets/AlertsInfoVideo/image";
+import useTranslation from "localization/translations";
 // import HazardousAQI from "../../assets/AlertsInfoVideo/video/HazardousAQI.mp4";
 
 const AlertsInfoContainer: React.FC<any> = (props) => {
@@ -53,13 +54,15 @@ const AlertsInfoContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
+  const {video, image,}= useTranslation()
+
   const alertSubtabsList = [
     {
-      name: "Video",
+      name: video,
       val: 0,
     },
     {
-      name: "Image",
+      name: image,
       val: 1,
     },
   ];

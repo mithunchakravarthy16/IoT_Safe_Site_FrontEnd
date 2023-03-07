@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Dialog from "@mui/material/Dialog";
@@ -21,7 +21,8 @@ import useWindowDimensions from "hooks/useWindowDimensions";
 import TitleInfoSubList from "components/TitleInfoSubList";
 import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
-import  SampleVideoContent  from "../../assets/AlertsInfoVideo/video";
+import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
+import RealTimeChart from "elements/RealTimeChart";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -38,7 +39,7 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
     maxHeight: "calc(100% - 96px)",
     width: "100vw",
     maxWidth: "1722px",
-    background: `#000 !important`,
+    background: `${colorCodes.colorBlack} !important`,
     color: colorCodes.colorWhite,
     padding: 24,
     borderRadius: "15px",
@@ -51,9 +52,91 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const InfoDialog: React.FC<any> = (props) => {
+interface ChildComponentProps {
+  widthMemo: number;
+  heightMemo: number;
+  selectedRealTimeGraph: string;
+  graphTitle: string | undefined;
+}
 
-  let {SampleVideo} = SampleVideoContent;
+const RealTimeGraph1 = React.memo<ChildComponentProps>(
+  ({
+    widthMemo: chartWidth,
+    heightMemo: chartHeight,
+    selectedRealTimeGraph: selectedRealTimeGraph1,
+    graphTitle: graphOneTitle,
+  }) => {
+    return (
+      <RealTimeChart
+        minWidth={chartWidth}
+        height={chartHeight}
+        pageName={"infoDialogue"}
+        // selectedRealTimeGraph1={selectedRealTimeGraph1}
+        graphTitle={graphOneTitle}
+      />
+    );
+  }
+);
+
+const RealTimeGraph2 = React.memo<ChildComponentProps>(
+  ({
+    widthMemo: chartWidth,
+    heightMemo: chartHeight,
+    selectedRealTimeGraph: selectedRealTimeGraph1,
+    graphTitle: graphTwoTitle,
+  }) => {
+    return (
+      <RealTimeChart
+        minWidth={chartWidth}
+        height={chartHeight}
+        pageName={"infoDialogue"}
+        // selectedRealTimeGraph1={selectedRealTimeGraph1}
+        graphTitle={graphTwoTitle}
+      />
+    );
+  }
+);
+
+const RealTimeGraph3 = React.memo<ChildComponentProps>(
+  ({
+    widthMemo: chartWidth,
+    heightMemo: chartHeight,
+    selectedRealTimeGraph: selectedRealTimeGraph1,
+    graphTitle: graphThreeTitle,
+  }) => {
+    return (
+      <RealTimeChart
+        minWidth={chartWidth}
+        height={chartHeight}
+        pageName={"infoDialogue"}
+        // selectedRealTimeGraph1={selectedRealTimeGraph1}
+        graphTitle={graphThreeTitle}
+      />
+    );
+  }
+);
+
+const RealTimeGraph4 = React.memo<ChildComponentProps>(
+  ({
+    widthMemo: chartWidth,
+    heightMemo: chartHeight,
+    selectedRealTimeGraph: selectedRealTimeGraph1,
+    graphTitle: graphFourTitle,
+  }) => {
+    return (
+      <RealTimeChart
+        minWidth={chartWidth}
+        height={chartHeight}
+        pageName={"infoDialogue"}
+        // selectedRealTimeGraph1={selectedRealTimeGraph1}
+        graphTitle={graphFourTitle}
+      />
+    );
+  }
+);
+
+const InfoDialog: React.FC<any> = (props) => {
+  let { SampleVideo } = SampleVideoContent;
   const {
     selectedType,
     selectedId,
@@ -331,7 +414,7 @@ const InfoDialog: React.FC<any> = (props) => {
       {
         data: graphDataManipulation(tempratureGraphDataStateUpdates),
 
-        color: "#20E89C",
+        color: appTheme.palette.infoDialogue.greenShades,
       },
     ];
 
@@ -343,7 +426,7 @@ const InfoDialog: React.FC<any> = (props) => {
       {
         data: graphDataManipulation(humidityGraphDataStateUpdates),
 
-        color: "#3C81EF",
+        color: appTheme.palette.infoDialogue.blueShades,
       },
     ];
     setUpdatedHumidityGraphData(data);
@@ -354,7 +437,7 @@ const InfoDialog: React.FC<any> = (props) => {
       {
         data: graphDataManipulation(hoursOfOperationGraphDataStateUpdates),
 
-        color: "#CD5959",
+        color: appTheme.palette.infoDialogue.indianRed,
       },
     ];
     setUpdatedHoursOfOperationGraphData(data);
@@ -365,7 +448,7 @@ const InfoDialog: React.FC<any> = (props) => {
       {
         data: graphDataManipulation(tripsGraphDataStateUpdates),
 
-        color: "#EDA230",
+        color: appTheme.palette.infoDialogue.yellowShades,
       },
     ];
 
@@ -521,14 +604,20 @@ const InfoDialog: React.FC<any> = (props) => {
   const [formatGraph2, setFormatGraph2] = useState(monthFomrat);
   const [formatGraph3, setFormatGraph3] = useState(monthFomrat);
   const [formatGraph4, setFormatGraph4] = useState(monthFomrat);
-  const [selectedRealTimeGraph, setSelectedRealTimeGraph] =
+  const [selectedRealTimeGraph1, setSelectedRealTimeGraph1] =
+    useState("Real Time");
+  const [selectedRealTimeGraph2, setSelectedRealTimeGraph2] =
+    useState("Real Time");
+  const [selectedRealTimeGraph3, setSelectedRealTimeGraph3] =
+    useState("Real Time");
+  const [selectedRealTimeGraph4, setSelectedRealTimeGraph4] =
     useState("Real Time");
 
   const handleSelect = (val: string, graphName: string) => {
     if (graphName === "graph1") {
       switch (val) {
         case "Real Time":
-          setSelectedRealTimeGraph("Real Time");
+          setSelectedRealTimeGraph1("Real Time");
           break;
         case "Day":
           setFormatGraph1(dayFormat);
@@ -537,7 +626,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph1(xAxisNewtime);
           setXAxisIntervalGraph1(4);
-          setSelectedRealTimeGraph("");
+          setSelectedRealTimeGraph1("");
 
           break;
         case "Week":
@@ -547,7 +636,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph1(xAxisNewValueWeek);
           setXAxisIntervalGraph1(0);
-          setSelectedRealTimeGraph("");
+          setSelectedRealTimeGraph1("");
           break;
         case "Month":
           setFormatGraph1(monthFomrat);
@@ -556,7 +645,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph1(xAxisNewValueMonth);
           setXAxisIntervalGraph1(5);
-          setSelectedRealTimeGraph("");
+          setSelectedRealTimeGraph1("");
           break;
         case "Year":
           setFormatGraph1(yearFormat);
@@ -565,7 +654,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph1(xAxisValueYear);
           setXAxisIntervalGraph1(1);
-          setSelectedRealTimeGraph("");
+          setSelectedRealTimeGraph1("");
           break;
         default:
           setFormatGraph1(dayFormat);
@@ -577,6 +666,9 @@ const InfoDialog: React.FC<any> = (props) => {
     }
     if (graphName === "graph2") {
       switch (val) {
+        case "Real Time":
+          setSelectedRealTimeGraph2("Real Time");
+          break;
         case "Day":
           setFormatGraph2(dayFormat);
           setHumidityGraphDataStateUpdates(
@@ -584,6 +676,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph2(xAxisNewtime);
           setXAxisIntervalGraph2(4);
+          setSelectedRealTimeGraph2("");
           break;
         case "Week":
           setFormatGraph2(monthFomrat);
@@ -592,6 +685,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph2(xAxisNewValueWeek);
           setXAxisIntervalGraph2(0);
+          setSelectedRealTimeGraph2("");
           break;
         case "Month":
           setFormatGraph2(monthFomrat);
@@ -600,6 +694,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph2(xAxisNewValueMonth);
           setXAxisIntervalGraph2(5);
+          setSelectedRealTimeGraph2("");
           break;
         case "Year":
           setFormatGraph2(yearFormat);
@@ -608,6 +703,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph2(xAxisValueYear);
           setXAxisIntervalGraph2(1);
+          setSelectedRealTimeGraph2("");
           break;
         default:
           setFormatGraph2(dayFormat);
@@ -619,6 +715,9 @@ const InfoDialog: React.FC<any> = (props) => {
     }
     if (graphName === "graph3") {
       switch (val) {
+        case "Real Time":
+          setSelectedRealTimeGraph3("Real Time");
+          break;
         case "Day":
           setFormatGraph3(dayFormat);
           setHoursOfOperationGraphDataStateUpdates(
@@ -626,6 +725,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph3(xAxisNewtime);
           setXAxisIntervalGraph3(4);
+          setSelectedRealTimeGraph3("");
           break;
         case "Week":
           setFormatGraph3(monthFomrat);
@@ -634,6 +734,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph3(xAxisNewValueWeek);
           setXAxisIntervalGraph3(0);
+          setSelectedRealTimeGraph3("");
           break;
         case "Month":
           setFormatGraph3(monthFomrat);
@@ -642,6 +743,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph3(xAxisNewValueMonth);
           setXAxisIntervalGraph3(5);
+          setSelectedRealTimeGraph3("");
           break;
         case "Year":
           setFormatGraph3(yearFormat);
@@ -650,6 +752,7 @@ const InfoDialog: React.FC<any> = (props) => {
           );
           setXAxisChartDataGraph3(xAxisValueYear);
           setXAxisIntervalGraph3(1);
+          setSelectedRealTimeGraph3("");
           break;
         default:
           setFormatGraph3(dayFormat);
@@ -661,29 +764,36 @@ const InfoDialog: React.FC<any> = (props) => {
     }
     if (graphName === "graph4") {
       switch (val) {
+        case "Real Time":
+          setSelectedRealTimeGraph4("Real Time");
+          break;
         case "Day":
           setFormatGraph4(dayFormat);
           setTripsGraphDataStateUpdates(tripsGraphData?.day?.analyticsData);
           setXAxisChartDataGraph4(xAxisNewtime);
           setXAxisIntervalGraph4(4);
+          setSelectedRealTimeGraph4("");
           break;
         case "Week":
           setFormatGraph4(monthFomrat);
           setTripsGraphDataStateUpdates(tripsGraphData?.weekly?.analyticsData);
           setXAxisChartDataGraph4(xAxisNewValueWeek);
           setXAxisIntervalGraph4(0);
+          setSelectedRealTimeGraph4("");
           break;
         case "Month":
           setFormatGraph4(monthFomrat);
           setTripsGraphDataStateUpdates(tripsGraphData?.monthly?.analyticsData);
           setXAxisChartDataGraph4(xAxisNewValueMonth);
           setXAxisIntervalGraph4(5);
+          setSelectedRealTimeGraph4("");
           break;
         case "Year":
           setFormatGraph4(yearFormat);
           setTripsGraphDataStateUpdates(tripsGraphData?.yearly?.analyticsData);
           setXAxisChartDataGraph4(xAxisValueYear);
           setXAxisIntervalGraph4(1);
+          setSelectedRealTimeGraph4("");
           break;
         default:
           setFormatGraph4(dayFormat);
@@ -696,6 +806,7 @@ const InfoDialog: React.FC<any> = (props) => {
   const capitalizeFirstLetter = (string: any) => {
     return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   };
+
   return (
     <>
       <DialogWrapper open={open}>
@@ -781,7 +892,9 @@ const InfoDialog: React.FC<any> = (props) => {
                         <div className={tripsSection1}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
-                              {capitalizeFirstLetter(graphOneTitle)}
+                              {graphOneTitle === "temperature"
+                                ? temperature
+                                : capitalizeFirstLetter(graphOneTitle)}
                             </p>
                             <div
                             // className={customSelectButton}
@@ -797,35 +910,52 @@ const InfoDialog: React.FC<any> = (props) => {
                                   // equipmentViewDetailsItem?.title
                                 }
                                 graphTitle={graphOneTitle}
+                                selectedRealTimeGraph={selectedRealTimeGraph1}
                               />
                             </div>
                           </div>
 
-                          <Chart
-                            type={"spline"}
-                            minWidth={chartWidth}
-                            height={chartHeight}
-                            dataPoints={updatedTempratureGraphData}
-                            format={formatGraph1}
-                            toolTipShared={false}
-                            splineWidth={2}
-                            graphSequence={"graph1"}
-                            tooltipShow={true}
-                            isCrosshair={true}
-                            dataLabels={false}
-                            tabIdentity={"drivers"}
-                            xAxisArray={xAxisChartDataGraph1}
-                            xAxisInterval={xAxisIntervalGraph1}
-                            pageName={"infoDialogue"}
-                            graphTitle={graphOneTitle}
-                          />
+                          {selectedRealTimeGraph1 === "Real Time" ? (
+                            <RealTimeGraph1
+                              widthMemo={chartWidth}
+                              heightMemo={chartHeight}
+                              selectedRealTimeGraph={selectedRealTimeGraph1}
+                              graphTitle={graphOneTitle}
+                            />
+                          ) : (
+                            // <RealTimeChart
+                            //   minWidth={chartWidth}
+                            //   height={chartHeight}
+                            //   pageName={"infoDialogue"}
+                            // />
+                            <Chart
+                              type={"spline"}
+                              minWidth={chartWidth}
+                              height={chartHeight}
+                              dataPoints={updatedTempratureGraphData}
+                              format={formatGraph1}
+                              toolTipShared={false}
+                              splineWidth={2}
+                              graphSequence={"graph1"}
+                              tooltipShow={true}
+                              isCrosshair={true}
+                              dataLabels={false}
+                              tabIdentity={"drivers"}
+                              xAxisArray={xAxisChartDataGraph1}
+                              xAxisInterval={xAxisIntervalGraph1}
+                              pageName={"infoDialogue"}
+                              graphTitle={graphOneTitle}
+                            />
+                          )}
                         </div>
                       </Grid>
                       <Grid item xs={6}>
                         <div className={tripsSection2}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
-                              {capitalizeFirstLetter(graphTwoTitle)}
+                              {graphTwoTitle === "humidity"
+                                ? humidity
+                                : capitalizeFirstLetter(graphTwoTitle)}
                             </p>
                             <div
                             // className={customSelectButton}
@@ -836,28 +966,43 @@ const InfoDialog: React.FC<any> = (props) => {
                                 customWidth={"98px"}
                                 customHeight={"30px"}
                                 graphName={"graph2"}
+                                selectedRealTimeGraph={selectedRealTimeGraph2}
                               />
                             </div>
                           </div>
+                          {selectedRealTimeGraph2 === "Real Time" ? (
+                            <RealTimeGraph2
+                              widthMemo={chartWidth}
+                              heightMemo={chartHeight}
+                              selectedRealTimeGraph={selectedRealTimeGraph2}
+                              graphTitle={graphTwoTitle}
+                            />
+                          ) : (
+                            //   <RealTimeChart
+                            //   minWidth={chartWidth}
+                            //   height={chartHeight}
+                            //   pageName={"infoDialogue"}
+                            // />
 
-                          <Chart
-                            type={"spline"}
-                            minWidth={chartWidth}
-                            height={chartHeight}
-                            dataPoints={updatedHumidityGraphData}
-                            format={formatGraph2}
-                            toolTipShared={false}
-                            splineWidth={2}
-                            graphSequence={"graph2"}
-                            tooltipShow={true}
-                            isCrosshair={true}
-                            dataLabels={false}
-                            tabIdentity={"drivers"}
-                            xAxisArray={xAxisChartDataGraph2}
-                            xAxisInterval={xAxisIntervalGraph2}
-                            pageName={"infoDialogue"}
-                            graphTitle={graphTwoTitle}
-                          />
+                            <Chart
+                              type={"spline"}
+                              minWidth={chartWidth}
+                              height={chartHeight}
+                              dataPoints={updatedHumidityGraphData}
+                              format={formatGraph2}
+                              toolTipShared={false}
+                              splineWidth={2}
+                              graphSequence={"graph2"}
+                              tooltipShow={true}
+                              isCrosshair={true}
+                              dataLabels={false}
+                              tabIdentity={"drivers"}
+                              xAxisArray={xAxisChartDataGraph2}
+                              xAxisInterval={xAxisIntervalGraph2}
+                              pageName={"infoDialogue"}
+                              graphTitle={graphTwoTitle}
+                            />
+                          )}
                         </div>
                       </Grid>
                       <Grid item xs={6}>
@@ -877,28 +1022,42 @@ const InfoDialog: React.FC<any> = (props) => {
                                 customWidth={"98px"}
                                 customHeight={"30px"}
                                 graphName={"graph3"}
+                                selectedRealTimeGraph={selectedRealTimeGraph3}
                               />
                             </div>
                           </div>
-
-                          <Chart
-                            type={"spline"}
-                            minWidth={chartWidth}
-                            height={chartHeight}
-                            dataPoints={updatedHoursOfOperationGraphData}
-                            format={formatGraph3}
-                            toolTipShared={false}
-                            splineWidth={2}
-                            graphSequence={"graph3"}
-                            tooltipShow={true}
-                            isCrosshair={true}
-                            dataLabels={false}
-                            tabIdentity={"drivers"}
-                            xAxisArray={xAxisChartDataGraph3}
-                            xAxisInterval={xAxisIntervalGraph3}
-                            pageName={"infoDialogue"}
-                            graphTitle={graphThreeTitle}
-                          />
+                          {selectedRealTimeGraph3 === "Real Time" ? (
+                            <RealTimeGraph3
+                              widthMemo={chartWidth}
+                              heightMemo={chartHeight}
+                              selectedRealTimeGraph={selectedRealTimeGraph3}
+                              graphTitle={graphThreeTitle}
+                            />
+                          ) : (
+                            // <RealTimeChart
+                            //   minWidth={chartWidth}
+                            //   height={chartHeight}
+                            //   pageName={"infoDialogue"}
+                            // />
+                            <Chart
+                              type={"spline"}
+                              minWidth={chartWidth}
+                              height={chartHeight}
+                              dataPoints={updatedHoursOfOperationGraphData}
+                              format={formatGraph3}
+                              toolTipShared={false}
+                              splineWidth={2}
+                              graphSequence={"graph3"}
+                              tooltipShow={true}
+                              isCrosshair={true}
+                              dataLabels={false}
+                              tabIdentity={"drivers"}
+                              xAxisArray={xAxisChartDataGraph3}
+                              xAxisInterval={xAxisIntervalGraph3}
+                              pageName={"infoDialogue"}
+                              graphTitle={graphThreeTitle}
+                            />
+                          )}
                         </div>
                       </Grid>
                       <Grid item xs={6}>
@@ -916,28 +1075,42 @@ const InfoDialog: React.FC<any> = (props) => {
                                 customWidth={"98px"}
                                 customHeight={"30px"}
                                 graphName={"graph4"}
+                                selectedRealTimeGraph={selectedRealTimeGraph4}
                               />
                             </div>
                           </div>
-
-                          <Chart
-                            type={"spline"}
-                            minWidth={chartWidth}
-                            height={chartHeight}
-                            dataPoints={updatedTripsGraphData}
-                            format={formatGraph4}
-                            toolTipShared={false}
-                            splineWidth={2}
-                            graphSequence={"graph4"}
-                            tooltipShow={true}
-                            isCrosshair={true}
-                            dataLabels={false}
-                            tabIdentity={"drivers"}
-                            xAxisArray={xAxisChartDataGraph4}
-                            xAxisInterval={xAxisIntervalGraph4}
-                            pageName={"infoDialogue"}
-                            graphTitle={graphFourTitle}
-                          />
+                          {selectedRealTimeGraph4 === "Real Time" ? (
+                            <RealTimeGraph4
+                              widthMemo={chartWidth}
+                              heightMemo={chartHeight}
+                              selectedRealTimeGraph={selectedRealTimeGraph4}
+                              graphTitle={graphFourTitle}
+                            />
+                          ) : (
+                            // <RealTimeChart
+                            //   minWidth={chartWidth}
+                            //   height={chartHeight}
+                            //   pageName={"infoDialogue"}
+                            // />
+                            <Chart
+                              type={"spline"}
+                              minWidth={chartWidth}
+                              height={chartHeight}
+                              dataPoints={updatedTripsGraphData}
+                              format={formatGraph4}
+                              toolTipShared={false}
+                              splineWidth={2}
+                              graphSequence={"graph4"}
+                              tooltipShow={true}
+                              isCrosshair={true}
+                              dataLabels={false}
+                              tabIdentity={"drivers"}
+                              xAxisArray={xAxisChartDataGraph4}
+                              xAxisInterval={xAxisIntervalGraph4}
+                              pageName={"infoDialogue"}
+                              graphTitle={graphFourTitle}
+                            />
+                          )}
                         </div>
                       </Grid>
                     </Grid>

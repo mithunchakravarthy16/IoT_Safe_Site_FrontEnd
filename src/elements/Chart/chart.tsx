@@ -94,13 +94,13 @@ const INF_Chart: React.FC<any> = (props) => {
           trackBackgroundColor: "none",
           trackBorderWidth: 1,
           trackBorderRadius: 8,
-          trackBorderColor: "#000",
+          trackBorderColor: appTheme.palette.chartElement.colorBlack,
         },
         title: false,
         legend: false,
 
         xAxis: {
-          lineColor: "#fff",
+          lineColor: appTheme.palette.chartElement.colorWhite,
           min: type === "spline" || type === "areaspline" ? 0.49 : 0,
           categories: xAxisArray,
           tickWidth: 0,
@@ -143,52 +143,42 @@ const INF_Chart: React.FC<any> = (props) => {
         yAxis: {
           title: false,
           visible: true,
-          min:
-            selectedAnalyticListItem === "Overall Analytics"
-              ? graphTitle === "Equipment Efficiency (%)"
-                ? 50
-                : 20
-              : 10,
+          min: 10,
           max: maxValue,
-          tickInterval:
-            selectedAnalyticListItem === "Overall Analytics"
-              ? graphTitle === "Equipment Efficiency (%)"
-                ? 25
-                : 20
-              : 20,
+          tickInterval: 20,
           startOnTick: false,
-          lineColor: "#fff",
+          lineColor: appTheme.palette.chartElement.colorWhite,
           lineWidth: 1,
-          gridLineWidth: pageName === "infoDialogue" ? 0 : 1,
+          gridLineWidth:  0,
           minorGridLineWidth: 1,
           gridLineDashStyle: "LongDash",
-          plotLines:
-            pageName !== "infoDialogue"
-              ? [
-                  {
-                    value: maxValue,
-                    zIndex: 2,
-                    width: 0.8,
-                    dashStyle: "Dash",
-                    color: "#F00C0C",
-                  },
-                  {
-                    value: minValue,
-                    zIndex: 2,
-                    width: 0.8,
-                    dashStyle: "Dash",
-                    color: "#F00C0C",
-                  },
-                ]
-              : [
-                  {
-                    value: 0,
-                    zIndex: 2,
-                    width: 0.8,
-                    dashStyle: "Dash",
-                    color: "#C4C4C4",
-                  },
-                ],
+          // plotLines:
+          //   pageName !== "infoDialogue"
+          //     ? [
+          //         {
+          //           value: maxValue,
+          //           zIndex: 2,
+          //           width: 0.8,
+          //           dashStyle: "Dash",
+          //           color: "#F00C0C",
+          //         },
+          //         {
+          //           value: minValue,
+          //           zIndex: 2,
+          //           width: 0.8,
+          //           dashStyle: "Dash",
+          //           color: "#F00C0C",
+          //         },
+          //       ]
+          //     : [
+          //         {
+          //           value: 0,
+          //           zIndex: 2,
+          //           width: 0.8,
+          //           dashStyle: "Dash",
+          //           color: "#C4C4C4",
+          //         },
+          //       ],
         },
 
         tooltip: {
@@ -199,7 +189,7 @@ const INF_Chart: React.FC<any> = (props) => {
           padding: 4,
           className: "tooltipStyle",
           style: {
-            color: "#fff",
+            color: appTheme.palette.chartElement.colorWhite,
             fontWeight: "bold",
           },
           formatter: function (
@@ -210,20 +200,20 @@ const INF_Chart: React.FC<any> = (props) => {
 
               switch (graphSequence) {
                 case "graph1":
-                  setToolTipBg("#20E89C");
-                  setTBorder("#20E89C");
+                  setToolTipBg(appTheme.palette.chartElement.greenShades);
+                  setTBorder(appTheme.palette.chartElement.greenShades);
                   break;
                 case "graph2":
-                  setToolTipBg("#3C81EF");
-                  setTBorder("#3C81EF");
+                  setToolTipBg(appTheme.palette.chartElement.blueShades);
+                  setTBorder(appTheme.palette.chartElement.blueShades);
                   break;
                 case "graph3":
-                  setToolTipBg("#CD5959");
-                  setTBorder("#CD5959");
+                  setToolTipBg(appTheme.palette.chartElement.indianRed);
+                  setTBorder(appTheme.palette.chartElement.indianRed);
                   break;
                 case "graph4":
-                  setToolTipBg("#EDA230");
-                  setTBorder("#EDA230");
+                  setToolTipBg(appTheme.palette.chartElement.yellowShades);
+                  setTBorder(appTheme.palette.chartElement.yellowShades);
                   break;
               }
 
@@ -280,28 +270,28 @@ const INF_Chart: React.FC<any> = (props) => {
           //   },
           // },
           series: {
-            fillColor:
-              graphTitle === "No. of Pallets"
-                ? {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                      [0, "#7979D7"],
-                      [1, Highcharts.color("#fff").setOpacity(0).get("rgba")],
-                    ],
-                  }
-                : graphTitle === "Energy Consumed (kWh)"
-                ? {
-                    linearGradient: [0, 0, 0, 300],
+            // fillColor:
+            //   graphTitle === "No. of Pallets"
+            //     ? {
+            //         linearGradient: [0, 0, 0, 300],
+            //         stops: [
+            //           [0, "#7979D7"],
+            //           [1, Highcharts.color("#fff").setOpacity(0).get("rgba")],
+            //         ],
+            //       }
+            //     : graphTitle === "Energy Consumed (kWh)"
+            //     ? {
+            //         linearGradient: [0, 0, 0, 300],
 
-                    stops: [
-                      [0, "#fff"],
-                      [
-                        1,
-                        Highcharts.color("#765DFF").setOpacity(0).get("rgba"),
-                      ],
-                    ],
-                  }
-                : "",
+            //         stops: [
+            //           [0, "#fff"],
+            //           [
+            //             1,
+            //             Highcharts.color("#765DFF").setOpacity(0).get("rgba"),
+            //           ],
+            //         ],
+            //       }
+            //     : "",
             borderColor: "transparent",
             marker: {
               enabled: false,
