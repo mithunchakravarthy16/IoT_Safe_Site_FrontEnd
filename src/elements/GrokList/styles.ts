@@ -4,7 +4,7 @@ import {Icon} from "elements";
 
 export const RootContainer = styled("div")`
     width: 100%;
-    height: 100%;
+    height: calc(100% - 24px);
     padding: 12px 20px;
     overflow: scroll;
 `;

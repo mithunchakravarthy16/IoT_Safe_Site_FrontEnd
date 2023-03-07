@@ -21,139 +21,413 @@ import IndicatorLED from "./IndicatorLed";
 import {Icon} from "elements";
 import { useTransition, animated } from "react-spring";
 
-const bodySectionItems = [
+const sampleMock = [
     {
-        label: "Temperature",
-        value: "25°C",
-        icon: "temperature"
+        id: "zone-01",
+        name: "Zone 1",
+        instruments: [
+            {
+                id: "instrument-01",
+                indicator: "alert",
+                name: "Environmental Sensors",
+                sensors: [
+                    {
+                        indicator: "alert",
+                        name: "Environmental Sensor #1",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    },
+                    {
+                        indicator: "alert",
+                        name: "Environmental Sensor #2",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "instrument-02",
+                indicator: "alert",
+                name: "Flood Sensors",
+                sensors: [
+                    {
+                        indicator: "alert",
+                        name: "Flood Sensor #1",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-        label: "Humidity",
-        value: "40%",
-        icon: "humidity"
-    },
-    {
-        label: "Carbon Monoxide",
-        value: "36Kg",
-        icon: "co2"
-    },
-    {
-        label: "VOC ‘S",
-        value: "551",
-        icon: "voc"
-    },
-    {
-        label: "Particulates",
-        value: "136µg/m³",
-        icon: "particulates"
-    },
-    {
-        label: "Noise",
-        value: "70dBA",
-        icon: "noise"
-    },
-    {
-        label: "Pressure",
-        value: "10Pa",
-        icon: "pressure"
-    },
-    {
-        label: "Light",
-        value: "60%",
-        icon: "light"
-    },
+        id: "zone-02",
+        name: "Zone 2",
+        instruments: [
+            {
+                id: "instrument-03",
+                indicator: "alert",
+                name: "Environmental Sensors",
+                sensors: [
+                    {
+                        indicator: "alert",
+                        name: "Environmental Sensor #1",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    },
+                    {
+                        indicator: "alert",
+                        name: "Environmental Sensor #2",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "instrument-04",
+                indicator: "alert",
+                name: "Flood Sensors",
+                sensors: [
+                    {
+                        indicator: "alert",
+                        name: "Flood Sensor #1",
+                        bodySectionItems: [
+                            {
+                                label: "Temperature",
+                                value: "25°C",
+                                icon: "temperature"
+                            },
+                            {
+                                label: "Humidity",
+                                value: "40%",
+                                icon: "humidity"
+                            },
+                            {
+                                label: "Carbon Monoxide",
+                                value: "36Kg",
+                                icon: "co2"
+                            },
+                            {
+                                label: "VOC ‘S",
+                                value: "551",
+                                icon: "voc"
+                            },
+                            {
+                                label: "Particulates",
+                                value: "136µg/m³",
+                                icon: "particulates"
+                            },
+                            {
+                                label: "Noise",
+                                value: "70dBA",
+                                icon: "noise"
+                            },
+                            {
+                                label: "Pressure",
+                                value: "10Pa",
+                                icon: "pressure"
+                            },
+                            {
+                                label: "Light",
+                                value: "60%",
+                                icon: "light"
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 ]
 
 const GrokList = () => {
     const [selectedInstrument, setSelectedInstrument] = useState("");
 
     const transitions = useTransition(selectedInstrument, {
-        from: { opacity: 0, height: "0px" },
-        enter: { opacity: 1, height: "auto" },
-        leave: { opacity: 0, height: "0px" },
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
     });
 
     const onInstrumentClick = (id: string) => {
-        setSelectedInstrument(prev => !prev?id:"")
+        setSelectedInstrument(prev => {
+            if(prev === id) {
+                return ""
+            }
+
+            return id
+        })
     }
 
     return (
         <RootContainer>
-            <ZoneContainer>
-                <ZoneHeader>
-                    <ZoneTitle>Zone 1</ZoneTitle>
-                    <FlexSpace />
-                    <Icon size={30} icon="raise-alert" />
-                    <HorizontalSpace count={10} />
-                    <Icon size={30} icon="call" />
-                </ZoneHeader>
-                <ZoneContent>
-                    <InstrumentContainer>
-                        <InstrumentHeader highlighted={true} onClick={() => onInstrumentClick("ins-01")} >
-                            <span>Environment Sensors (2)</span>
+            {
+                sampleMock.map(zone => (
+                    <ZoneContainer>
+                        <ZoneHeader>
+                            <ZoneTitle>{zone.name}</ZoneTitle>
                             <FlexSpace />
-                            <IndicatorLED type='alert' />
-                            <Icon size={15} style={{transform: `rotateZ(${selectedInstrument === "ins-01"?"0deg":"-90deg"})`, transition: "all 0.3s ease"}} icon="chevron-down" />
-                        </InstrumentHeader>
-                        {
-                            selectedInstrument === "ins-01"
-                            ?
-                            transitions((style, show) => (
-                                show
-                                ?
-                                <animated.div style={style} >
-                                    <InstrumentContent>
-                                        <InstrumentItemContainer>
-                                            <InstrumentItemHeader>
-                                                <span>Environmental Sensor#1</span>
-                                                <FlexSpace />
-                                                <IndicatorLED />
-                                            </InstrumentItemHeader>
-                                            <InstrumentItemBody>
-                                                {
-                                                    bodySectionItems.map((item: any) => (
-                                                        <InstrumentItemBodySection>
-                                                            <InstrumentItemSectionValueContainer>
-                                                                <Icon icon={item.icon} size={20} />
-                                                                <span>{item.value}</span>
-                                                            </InstrumentItemSectionValueContainer>
-                                                            <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
-                                                        </InstrumentItemBodySection>
-                                                    ))
-                                                }
-                                            </InstrumentItemBody>
-                                        </InstrumentItemContainer>
-                                        <InstrumentItemContainer>
-                                            <InstrumentItemHeader>
-                                                <span>Environmental Sensor#1</span>
-                                                <FlexSpace />
-                                                <IndicatorLED />
-                                            </InstrumentItemHeader>
-                                            <InstrumentItemBody>
-                                                {
-                                                    bodySectionItems.map((item: any) => (
-                                                        <InstrumentItemBodySection>
-                                                            <InstrumentItemSectionValueContainer>
-                                                                <Icon icon={item.icon} size={20} />
-                                                                <span>{item.value}</span>
-                                                            </InstrumentItemSectionValueContainer>
-                                                            <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
-                                                        </InstrumentItemBodySection>
-                                                    ))
-                                                }
-                                            </InstrumentItemBody>
-                                        </InstrumentItemContainer>
-                                    </InstrumentContent>
-                                </animated.div>
-                                :
-                                null
-                            ))
-                            :
-                            null
-                        }
-                    </InstrumentContainer>
-                </ZoneContent>
-            </ZoneContainer>
+                            <Icon size={30} icon="raise-alert" />
+                            <HorizontalSpace count={10} />
+                            <Icon size={30} icon="call" />
+                        </ZoneHeader>
+                        <ZoneContent>
+                            {
+                                zone.instruments.map(instrument => (
+                                    <InstrumentContainer>
+                                        <InstrumentHeader highlighted={true} onClick={() => onInstrumentClick(instrument.id)} >
+                                            <span>{instrument.name} ({instrument.sensors.length})</span>
+                                            <FlexSpace />
+                                            <IndicatorLED type={instrument.indicator} />
+                                            <Icon size={15} style={{transform: `rotateZ(${selectedInstrument === instrument.id?"0deg":"-90deg"})`, transition: "all 0.3s ease"}} icon="chevron-down" />
+                                        </InstrumentHeader>
+                                        {
+                                            selectedInstrument === instrument.id
+                                            ?
+                                            transitions((style, show) => (
+                                                show
+                                                ?
+                                                <animated.div style={style} >
+                                                    <InstrumentContent>
+                                                        {
+                                                            instrument.sensors.map(sensor => (
+                                                                <InstrumentItemContainer>
+                                                                    <InstrumentItemHeader>
+                                                                        <span>{sensor.name}</span>
+                                                                        <FlexSpace />
+                                                                        <IndicatorLED />
+                                                                    </InstrumentItemHeader>
+                                                                    <InstrumentItemBody>
+                                                                        {
+                                                                            sensor.bodySectionItems.map((item: any) => (
+                                                                                <InstrumentItemBodySection>
+                                                                                    <InstrumentItemSectionValueContainer>
+                                                                                        <Icon icon={item.icon} size={20} />
+                                                                                        <span>{item.value}</span>
+                                                                                    </InstrumentItemSectionValueContainer>
+                                                                                    <InstrumentItemSectionLabel>{item.label}</InstrumentItemSectionLabel>
+                                                                                </InstrumentItemBodySection>
+                                                                            ))
+                                                                        }
+                                                                    </InstrumentItemBody>
+                                                                </InstrumentItemContainer>
+                                                            ))
+                                                        }
+                                                    </InstrumentContent>
+                                                </animated.div>
+                                                :
+                                                null
+                                            ))
+                                            :
+                                            null
+                                        }
+                                    </InstrumentContainer>
+                                ))
+                            }
+                        </ZoneContent>
+                    </ZoneContainer>
+                ))
+            }
         </RootContainer>
     )
 }
