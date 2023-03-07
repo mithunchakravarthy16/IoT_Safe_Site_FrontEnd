@@ -13,7 +13,7 @@ export default {
   grokEye: "Grok Eye",
   raiseAlert: "Raise Alert",
   call: "Call",
-  connectivity: "Connectivity or Celluar",
+  connectivity: "Connectivity or Cellular",
   incidents: "Incidents",
   operationAlert: "Operation Alert",
   motion: "Motion",
@@ -24,14 +24,28 @@ export default {
   copyRight: "© 2023. All Rights Reserved",
   events: "Events",
   operations: "Operations",
+
   temperature: "Temperature",
   humidity: "Humidity",
-  carbonMonoxide: "Carbon Monoxide (Kg)",
-  voc: "VOC",
+  carbonMonoxideWithoutUnit: "Carbon Monoxide",
+  vocs: "VOC's",
+  particulate: "Particulate",
+  noise: "Noise",
+  pressure: "Pressure",
+  light: "Light",
   waterLevel: "Water Level",
   rainfall: "Rainfall",
+  battery: "Battery",
+
+
+  carbonMonoxide: "Carbon Monoxide (Kg)",
+  voc: "VOC",
   call911: "Call 911",
   viewDetails: "View Details",
   aiCamera: "AI CAMERA",
   zone: "Zone",
+
+  video: "Video",
+  image: "Image",
+  
 };

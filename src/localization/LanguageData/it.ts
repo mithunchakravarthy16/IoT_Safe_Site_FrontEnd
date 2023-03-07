@@ -24,14 +24,28 @@ export default {
   copyRight: "© 2023. Tutti i diritti riservati",
   events: "Eventi",
   operations: "Operazioni",
+
+
   temperature: "Temperatura",
-  humidity: "Umidità",
-  carbonMonoxide: "Monossido Di Carbonio (Kg)",
-  voc: "VOC",
+  humidity: "Umidità",  
+  carbonMonoxideWithoutUnit: "Monossido Di Carbonio",
+  vocs: "VOC's",
+  particulate: "Particolato",
+  noise: "Rumore",
+  pressure: "Pressione",
+  light: "Leggero",
   waterLevel: "Livello Dell'acqua",
   rainfall: "Pioggia",
+  battery: "batteria",
+
+
+  carbonMonoxide: "Monossido Di Carbonio (Kg)",
+  voc: "VOC",  
   call911: "Chiamata 911",
   viewDetails: "Visualizza Dettagli",
   aiCamera: "Telecamere AI",
   zone: "Zona",
+
+  video: "video",
+  image: "Immagine",
 };

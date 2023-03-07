@@ -19,6 +19,7 @@ import {
   ItemSubContainer1,
   ItemSubContainer2,
 } from "./styles";
+import useTranslation from "localization/translations";
 
 const TitleInfoSubList: React.FC<any> = ({
   highlighted,
@@ -52,18 +53,20 @@ const TitleInfoSubList: React.FC<any> = ({
     }
   }, [selectedTheme]);
 
+  const { connectivity, incidents, operationAlert, motion } = useTranslation();
+
   let infoIconListItems: any = [
     {
-      title: "Incidents",
+      title: incidents,
     },
     {
-      title: "Operation Alert",
+      title: operationAlert,
     },
     {
-      title: "Motion",
+      title: motion,
     },
     {
-      title: "Connectivity or Cellular",
+      title: connectivity,
     },
   ];
   const [updatedInfoItems, setUpdatedInfoItems] =
@@ -74,25 +77,25 @@ const TitleInfoSubList: React.FC<any> = ({
       infoIconListItems &&
         infoIconListItems?.map((item: any) => {
           switch (item?.title) {
-            case "Incidents":
+            case incidents:
               Object.assign(item, {
                 value: infoSubListdata?.incidentsObservation,
                 icon: IncidentBellIcon,
               });
               break;
-            case "Operation Alert":
+            case operationAlert:
               Object.assign(item, {
                 value: infoSubListdata?.operationAlertObservation,
                 icon: OprAlertIcon,
               });
               break;
-            case "Motion":
+            case motion:
               Object.assign(item, {
                 value: infoSubListdata?.motionObservation,
                 icon: MotionIcon,
               });
               break;
-            case "Connectivity or Cellular":
+            case connectivity:
               Object.assign(item, {
                 value: infoSubListdata?.connectivityPercentage,
                 icon: CelluarIcon,
@@ -114,7 +117,7 @@ const TitleInfoSubList: React.FC<any> = ({
           return (
             <ItemContainer
               infoDialogueType={infoDialogueType === "videoInfo" ? true : false}
-              // paletteColor={"#fff"}
+              paletteColor={appTheme.palette.titleInfoSubList.darkBlack2}
               // key={item?.title + item?.value}
             >
               <ItemSubContainer2>
@@ -122,14 +125,15 @@ const TitleInfoSubList: React.FC<any> = ({
               </ItemSubContainer2>
 
               <ItemSubContainer1>
-                <ItemValue paletteColor={"#fff"}>{item?.value}</ItemValue>
-                <ItemLabel paletteColor={"#C7C7C7"}>{item?.title}</ItemLabel>
+                <ItemValue paletteColor={appTheme.palette.titleInfoSubList.colorWhite}>{item?.value}</ItemValue>
+                <ItemLabel paletteColor={appTheme.palette.titleInfoSubList.darkGray}>{item?.title}</ItemLabel>
               </ItemSubContainer1>
             </ItemContainer>
           );
         })}
       <ItemContainer
         infoDialogueType={infoDialogueType === "videoInfo" ? true : false}
+        paletteColor={appTheme.palette.titleInfoSubList.darkBlack2}
       >
         <ItemSubContainer2>
           <Tooltip tooltipValue={"Raise Alert"}>
