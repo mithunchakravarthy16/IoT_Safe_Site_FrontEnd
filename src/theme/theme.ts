@@ -41,6 +41,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -96,6 +97,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -151,6 +153,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -206,6 +209,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,

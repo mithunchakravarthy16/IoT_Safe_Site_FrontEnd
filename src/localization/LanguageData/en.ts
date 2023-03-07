@@ -32,4 +32,6 @@ export default {
   rainfall: "Rainfall",
   call911: "Call 911",
   viewDetails: "View Details",
+  aiCamera: "AI CAMERA",
+  zone: "Zone",
 };

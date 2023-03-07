@@ -32,4 +32,6 @@ export default {
   rainfall: "Pioggia",
   call911: "Chiamata 911",
   viewDetails: "Visualizza Dettagli",
+  aiCamera: "Telecamere AI",
+  zone: "Zona",
 };
