@@ -110,6 +110,11 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   }),
+  expandedListHeaderAlertsStyle: (props: any) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }),
   expandedListButtonContainer: (props: any) => ({
     display: "flex",
     justifyContent: "space-between",
