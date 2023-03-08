@@ -37,6 +37,7 @@ let theme = {
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
         instrumentItemSectionLabel: "#D8D8D8",
+        grokBg: "#F0F0F0",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -147,6 +148,7 @@ let theme = {
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
         instrumentItemSectionLabel: "#D8D8D8",
+        grokBg: "#F0F0F0",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -257,6 +259,7 @@ let theme = {
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
         instrumentItemSectionLabel: "#D8D8D8",
+        grokBg: "#F0F0F0",
       },
       dashboard: {
         white: colorCodes.colorWhite,
@@ -367,6 +370,7 @@ let theme = {
         eventsStroke: "#D2F9C4",
         defaultStroke: "#636567",
         instrumentItemSectionLabel: "#D8D8D8",
+        grokBg: "#F0F0F0",
       },
       dashboard: {
         white: colorCodes.colorWhite,
