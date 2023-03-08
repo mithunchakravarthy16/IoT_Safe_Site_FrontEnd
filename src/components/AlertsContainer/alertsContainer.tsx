@@ -17,14 +17,13 @@ const AlertsContainer: React.FC<any> = (props) => {
   useEffect(() => {
     dispatch({
       type: "GET_ALERTS_DATA",
+      payload: {},
     });
   }, []);
 
   const alertsAPIData = useSelector(
     (state: any) => state?.alertsResponse?.alertsDataValue
   );
-
-  useEffect(() => {}, [alertsAPIData]);
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
@@ -85,7 +84,7 @@ const AlertsContainer: React.FC<any> = (props) => {
     );
 
     setNotifications(dataValue);
-  }, []);
+  }, [alertsAPIData]);
 
   let currentTimeStampValue;
   let timeArrayNew: any = [];
@@ -128,7 +127,7 @@ const AlertsContainer: React.FC<any> = (props) => {
                 setTabIndex={setTabIndex}
                 setNotificationTimeStamp={setNotificationTimeStamp}
                 alertsData={alertsData}
-                alertsMainList={alertsMainList}
+                alertsMainList={alertsAPIData}
                 searchOpen={searchOpen}
                 setSearchOpen={setSearchOpen}
               />
