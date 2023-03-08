@@ -2,14 +2,26 @@ import { useState, useEffect, Fragment } from "react";
 import moment from "moment";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
 import theme from "../../theme/theme";
 import DashboardMap from "components/DashboardMap";
 import DashboardList from "../DashboardList";
-import dashboardEquipments from "../../mockdata/dashboardEquipments";
+// import dashboardEquipments from "../../mockdata/dashboardEquipments";
 import useStyles from "./styles";
+import { getDashboardData } from "redux/actions/dashboardActions";
 
 const DashboardContainer: React.FC<any> = (props) => {
   const {} = props;
+
+  const dispatch: any = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDashboardData({}));
+  }, []);
+
+  const dashboardApiData = useSelector(
+    (state: any) => state?.dashboardResponse?.dashboardDataValue
+  );
 
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const {} = useStyles(appTheme);
@@ -18,23 +30,23 @@ const DashboardContainer: React.FC<any> = (props) => {
   const [equipmentData, setEquipmentData] = useState<any>();
   const [searchOpen, setSearchOpen] = useState<any>(false);
 
-  const dashboardData = dashboardEquipments;
+  const dashboardData = dashboardApiData;
 
   const { dashboardRootContainer } = useStyles(appTheme);
 
   useEffect(() => {
-    const { aiCameras, envrSensors, floodSensors } = dashboardEquipments;
+    const { aiCameras, envrSensors, floodSensors } = dashboardData;
     const combinedNotifications: any = [];
 
-    aiCameras?.list?.forEach((aiCameras, index) => {
+    aiCameras?.list?.forEach((aiCameras: any, index: number) => {
       combinedNotifications.push({ ...aiCameras, type: "aiCameras" });
     });
 
-    envrSensors?.list?.forEach((envrSensors, index) => {
+    envrSensors?.list?.forEach((envrSensors: any, index: number) => {
       combinedNotifications.push({ ...envrSensors, type: "envrSensors" });
     });
 
-    floodSensors?.list?.forEach((floodSensors, index) => {
+    floodSensors?.list?.forEach((floodSensors: any, index: number) => {
       combinedNotifications.push({ ...floodSensors, type: "floodSensors" });
     });
 
@@ -45,7 +57,7 @@ const DashboardContainer: React.FC<any> = (props) => {
     );
 
     setEquipmentData(dataValue);
-  }, []);
+  }, [dashboardData]);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -92,7 +104,7 @@ const DashboardContainer: React.FC<any> = (props) => {
                 setTabIndex={setTabIndex}
                 tabIndex={tabIndex}
                 equipmentData={equipmentData}
-                dashboardEquipmentsMain={dashboardEquipments}
+                dashboardEquipmentsMain={dashboardData}
                 selectedNotification={selectedNotification}
                 setSelectedNotification={setSelectedNotification}
                 searchOpen={searchOpen}
