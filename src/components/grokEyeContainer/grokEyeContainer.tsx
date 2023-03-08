@@ -8,6 +8,7 @@ import AlertsMap from "components/AlertsMap";
 import alerts from "mockdata/alerts";
 import VideoDragDrop from "elements/Draggable";
 import useTranslation from "../../localization/translations";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useStyles from "./styles";
 import { GrokList } from "elements";
 
@@ -103,6 +104,117 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     { cameraName: `${aiCamera} C# 3459`, zone: `${zone} 6` },
   ];
 
+  const { width, height } = useWindowDimensions();
+  const [chartWidth, setChartWidth] = useState<number>(480);
+  const [chartHeight, setChartHeight] = useState<number>(275);
+  console.log(chartHeight, chartWidth);
+
+  useEffect(() => {
+    if (width <= 1024) {
+      setChartWidth(410);
+      setChartHeight(135);
+    } else if (height <= 600) {
+      setChartWidth(410);
+      setChartHeight(80);
+    } else if (height <= 633) {
+      setChartWidth(410);
+      setChartHeight(100);
+    } else if (height <= 720) {
+      setChartWidth(410);
+      setChartHeight(118);
+    } else if (height <= 768) {
+      setChartWidth(410);
+      setChartHeight(140);
+    } else if (height <= 800) {
+      setChartWidth(410);
+      setChartHeight(150);
+    } else if (height <= 820) {
+      setChartWidth(410);
+      setChartHeight(160);
+    } else if (height <= 820) {
+      setChartWidth(410);
+      setChartHeight(160);
+    } else if (height <= 881) {
+      setChartWidth(410);
+      setChartHeight(160);
+    } else if (height <= 900) {
+      setChartWidth(410);
+      setChartHeight(176);
+    } else if (height <= 937) {
+      setChartWidth(410);
+      setChartHeight(176);
+    } else if (height <= 960) {
+      setChartWidth(410);
+      setChartHeight(204);
+    } else if (height <= 1024) {
+      setChartWidth(410);
+      setChartHeight(183);
+    } else if (height <= 1050) {
+      setChartWidth(410);
+      setChartHeight(215);
+    } else if (height <= 1080) {
+      setChartWidth(410);
+      setChartHeight(220);
+    } else if (height <= 1201) {
+      setChartWidth(410);
+      setChartHeight(260);
+    } else if (height <= 1280) {
+      setChartWidth(410);
+      setChartHeight(280);
+    } else if (height <= 1600) {
+      setChartWidth(410);
+      setChartHeight(392);
+    } else if (width <= 1152) {
+      setChartWidth(410);
+      setChartHeight(142);
+    } else if (width <= 1280) {
+      setChartWidth(410);
+      setChartHeight(210);
+    } else if (width <= 1280) {
+      setChartWidth(410);
+      setChartHeight(210);
+    } else if (width <= 1280) {
+      setChartWidth(410);
+      setChartHeight(210);
+    } else if (width <= 1366) {
+      setChartWidth(410);
+      setChartHeight(94);
+    } else if (width <= 1536) {
+      setChartWidth(410);
+      setChartHeight(150);
+    } else if (width <= 1600) {
+      setChartWidth(410);
+      setChartHeight(158);
+    } else if (width <= 1680) {
+      setChartWidth(410);
+      setChartHeight(200);
+    } else if (width <= 1792) {
+      setChartWidth(410);
+      setChartHeight(230);
+    } else if (width <= 1792) {
+      setChartWidth(410);
+      setChartHeight(230);
+    } else if (width <= 2560) {
+      setChartWidth(410);
+      setChartHeight(170);
+    } else if (width <= 2732) {
+      setChartWidth(410);
+      setChartHeight(540);
+    } else if (width <= 3072) {
+      setChartWidth(410);
+      setChartHeight(622);
+    } else if (width <= 3840) {
+      setChartWidth(410);
+      setChartHeight(575);
+    } else if (width <= 5120) {
+      setChartWidth(410);
+      setChartHeight(750);
+    } else if (width <= 5760) {
+      setChartWidth(410);
+      setChartHeight(930);
+    }
+  }, [width, height]);
+
   return (
     <Fragment>
       <Box sx={{ flexGrow: 1 }}>
@@ -110,8 +222,8 @@ const GrokEyeContainer: React.FC<any> = (props) => {
           <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
             <VideoDragDrop
               videoList={videoList}
-              width={480}
-              height={275}
+              width={chartWidth}
+              height={chartHeight}
               rowSize={2}
             />
           </Grid>
