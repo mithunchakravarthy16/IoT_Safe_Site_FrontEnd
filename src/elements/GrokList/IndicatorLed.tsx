@@ -61,7 +61,6 @@ const IndicatorLED = (props: Props) => {
         <RootContainer>
             {
                 indicatorListEmpty.map((empty: any, index: number) => {
-                    console.log("EXECUTED", index)
                     if(index === indicatorColors?.index) {
                         return <Box key={index} fill={indicatorColors.fill} stroke={indicatorColors.stroke} />
                     }
