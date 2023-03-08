@@ -24,6 +24,7 @@ const SAFE_SITE_Routes = () => {
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/grokeye" element={<GrokEye />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/grokeye" element={<GrokEye />} />
         </Route>
 
         {/** Public Routes */}

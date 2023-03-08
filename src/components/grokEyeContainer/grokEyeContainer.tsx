@@ -9,6 +9,7 @@ import alerts from "mockdata/alerts";
 import VideoDragDrop from "elements/Draggable";
 import useTranslation from "../../localization/translations";
 import useStyles from "./styles";
+import { GrokList } from "elements";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
@@ -115,7 +116,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-            Test2
+            <GrokList />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             {alertsData && alertsData?.length > 0 ? (
