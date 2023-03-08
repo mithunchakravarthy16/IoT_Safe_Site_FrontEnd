@@ -8,6 +8,7 @@ import DashboardMap from "components/DashboardMap";
 import DashboardList from "../DashboardList";
 // import dashboardEquipments from "../../mockdata/dashboardEquipments";
 import useStyles from "./styles";
+import { getDashboardData } from "redux/actions/dashboardActions";
 
 const DashboardContainer: React.FC<any> = (props) => {
   const {} = props;
@@ -15,10 +16,7 @@ const DashboardContainer: React.FC<any> = (props) => {
   const dispatch: any = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: "GET_DASHBOARD_DATA",
-      payload: {},
-    });
+    dispatch(getDashboardData({}));
   }, []);
 
   const dashboardApiData = useSelector(
