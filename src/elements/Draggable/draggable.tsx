@@ -11,6 +11,7 @@ import useStyles from "./styles";
 
 const VideoDragDrop: React.FC<any> = (props) => {
   const { videoList, width, height, rowSize } = props;
+  console.log(height, width);
   let { SampleVideo } = SampleVideoContent;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
