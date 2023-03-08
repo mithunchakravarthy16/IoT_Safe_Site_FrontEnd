@@ -81,6 +81,10 @@ export const InstrumentContent = styled("div")`
 export const InstrumentItemContainer = styled("div")`
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 14px;
+
+    &:last-child {
+        border-bottom: none;
+    }
 `;
 
 export const InstrumentItemHeader = styled("div")`

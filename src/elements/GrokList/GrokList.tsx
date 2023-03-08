@@ -20,6 +20,7 @@ import {
 import IndicatorLED from "./IndicatorLed";
 import {Icon} from "elements";
 import { useTransition, animated } from "react-spring";
+import mockData from "mockdata/grokEyeZonesList";
 
 const sampleMock = [
     {
@@ -78,7 +79,7 @@ const sampleMock = [
                         ]
                     },
                     {
-                        indicator: "alert",
+                        indicator: "null",
                         name: "Environmental Sensor #2",
                         bodySectionItems: [
                             {
@@ -362,7 +363,7 @@ const GrokList = () => {
     return (
         <RootContainer>
             {
-                sampleMock.map(zone => (
+                mockData.map(zone => (
                     <ZoneContainer>
                         <ZoneHeader>
                             <ZoneTitle>{zone.name}</ZoneTitle>
