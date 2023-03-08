@@ -23,9 +23,23 @@ import {
   ItemSubContainer1,
   ItemSubContainer2,
 } from "./styles";
+import useTranslation from "localization/translations";
 
 const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+
+  const {   
+  temperature,
+  humidity,
+  carbonMonoxideWithoutUnit,
+  vocs,
+  particulate,
+  noise,
+  pressure,
+  light,
+  waterLevel,
+  rainfall,
+  battery, } = useTranslation();
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -62,41 +76,52 @@ const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
       infoIconListItems &&
         infoIconListItems?.map((item: any) => {
           switch (item?.title) {
-            case "Temperature":
-              Object.assign(item, { icon: TempIconSubInfo });
+            case "Temperature" :
+            case temperature:
+              Object.assign(item, {title:temperature, icon: TempIconSubInfo });
               break;
             case "Humidity":
-              Object.assign(item, { icon: HumidityIconSubInfo });
+              case humidity:
+              Object.assign(item, {title:humidity, icon: HumidityIconSubInfo });
               break;
             case "Carbon Monoxide":
-              Object.assign(item, { icon: CarbonMonoxideIconSubInfo });
+              case carbonMonoxideWithoutUnit:
+              Object.assign(item, {title:carbonMonoxideWithoutUnit, icon: CarbonMonoxideIconSubInfo });
               break;
             case "VOC's":
-              Object.assign(item, { icon: VocsIconSubInfo });
+              case vocs:
+              Object.assign(item, {title:vocs, icon: VocsIconSubInfo });
               break;
             case "Particulate":
-              Object.assign(item, { icon: ParticulateIconSubInfo });
+              case particulate:
+              Object.assign(item, {title:particulate, icon: ParticulateIconSubInfo });
               break;
             case "Noise":
-              Object.assign(item, { icon: NoiseIconSubInfo });
+              case noise:
+              Object.assign(item, {title:noise, icon: NoiseIconSubInfo });
               break;
             case "Pressure":
-              Object.assign(item, { icon: PressureIconSubInfo });
+              case pressure:
+              Object.assign(item, {title:pressure, icon: PressureIconSubInfo });
               break;
             case "Light":
-              Object.assign(item, { icon: LightIconSubInfo });
+              case light:
+              Object.assign(item, {title:light, icon: LightIconSubInfo });
               break;
             case "Water Level":
-              Object.assign(item, { icon: WaterFallIcon });
+              case waterLevel:
+              Object.assign(item, {title:waterLevel, icon: WaterFallIcon });
               break;
             case "Rainfall":
-              Object.assign(item, { icon: RainFallIcon });
+              case rainfall:
+              Object.assign(item, {title:rainfall, icon: RainFallIcon });
               break;
             case "Battery":
-              Object.assign(item, { icon: BatteryIcon });
+              case battery:
+              Object.assign(item, {title:battery, icon: BatteryIcon });
               break;
             default:
-              Object.assign(item, { icon: TempIconSubInfo });
+              Object.assign(item, {title:temperature, icon: TempIconSubInfo });
               break;
           }
         });
@@ -131,19 +156,18 @@ const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
   return (
     <RootContainer>
       {updatedInfoItems &&
-        updatedInfoItems?.map((item: any) => {
+        updatedInfoItems?.map((item: any, index: number) => {
           return (
             <ItemContainer
-              paletteColor={"#fff"}
-              key={item?.title + item?.value}
+              paletteColor={appTheme.palette.infoSubList.colorWhite}
+              paletteColorBg={appTheme.palette.infoSubList.darkBlack2}
+              key={index}
             >
               <ItemSubContainer1>
-                <ItemValue paletteColor={"#fff"}>
-                  {item?.title === "Predictive Maintenance"
-                    ? moment().add(5, "d").format("DD-MM-YYYY")
-                    : item.value}
+                <ItemValue paletteColor={appTheme.palette.infoSubList.colorWhite}>
+                  { item.value}
                 </ItemValue>
-                <ItemLabel paletteColor={"#C7C7C7"}>{item?.title}</ItemLabel>
+                <ItemLabel paletteColor={appTheme.palette.infoSubList.darkGray}>{item?.title}</ItemLabel>
               </ItemSubContainer1>
 
               <ItemSubContainer2>

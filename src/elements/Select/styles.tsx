@@ -15,20 +15,20 @@ const useStyles = makeStyles(
         textAlign: "center",
         fontWeight: "bold",
         position: "relative",
-        color: "#fff",
+        color: props?.palette?.selectElement?.colorWhite,
         "& .MuiSvgIcon-root": {
           position: "absolute",
           right: "10px",
         },
         
         "& .MuiOutlinedInput-notchedOutline": {
-          color: "#fff",
-          border: `1px solid #fff !important`,
+          color: props?.palette?.selectElement?.colorWhite,
+          border: `1px solid ${props?.palette?.selectElement?.colorWhite} !important`,
         },
       },
 
       "& .MuiSelect-iconOutlined": {
-        color: `#fff !important`,
+        color: `${props?.palette?.selectElement?.colorWhite} !important`,
       },
     }),
 

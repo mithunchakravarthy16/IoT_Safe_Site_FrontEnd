@@ -22,11 +22,11 @@ align-items: center;
 
 
 
-export const ItemContainer = styled("div")<{ paletteColor: string }>`
+export const ItemContainer = styled("div")<{ paletteColor: string, paletteColorBg: string}>`
   border: ${(props) =>
     props?.paletteColor ? `1px solid ${props?.paletteColor}` : null};
   border-radius: 6px;
-  background: #060606;
+  background: ${(props) => (props?.paletteColorBg ? props?.paletteColorBg : null)};
   align-items: center;
   justify-content: space-between;
   display: flex;

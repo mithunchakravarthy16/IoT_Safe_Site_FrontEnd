@@ -59,6 +59,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -69,6 +70,42 @@ let theme = {
       },
       footer: {
         footerBg: colorCodes.footerBg,
+      },
+      infoDialogue: {
+        TabBgColor: colorCodes.darkGreenShade2,
+        whiteColor: colorCodes.colorWhite,
+        blackShades: colorCodes.blackShades,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
+      },
+      titleInfoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      infoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      alertsInfoContainer: {
+        darkGreenShade2: colorCodes.darkGreenShade2,
+        blackShades1: colorCodes.blackShades1,
+        colorWhite: colorCodes.colorWhite,
+      },
+      selectElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+      },
+      chartElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
       },
     },
     spacing: 5,
@@ -132,6 +169,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -142,6 +180,42 @@ let theme = {
       },
       footer: {
         footerBg: colorCodes.footerBg,
+      },
+      infoDialogue: {
+        TabBgColor: colorCodes.darkGreenShade2,
+        whiteColor: colorCodes.colorWhite,
+        blackShades: colorCodes.blackShades,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
+      },
+      titleInfoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      infoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      alertsInfoContainer: {
+        darkGreenShade2: colorCodes.darkGreenShade2,
+        blackShades1: colorCodes.blackShades1,
+        colorWhite: colorCodes.colorWhite,
+      },
+      selectElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+      },
+      chartElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
       },
     },
     spacing: 5,
@@ -205,6 +279,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -215,6 +290,42 @@ let theme = {
       },
       footer: {
         footerBg: colorCodes.footerBg,
+      },
+      infoDialogue: {
+        TabBgColor: colorCodes.darkGreenShade2,
+        whiteColor: colorCodes.colorWhite,
+        blackShades: colorCodes.blackShades,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
+      },
+      titleInfoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      infoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      alertsInfoContainer: {
+        darkGreenShade2: colorCodes.darkGreenShade2,
+        blackShades1: colorCodes.blackShades1,
+        colorWhite: colorCodes.colorWhite,
+      },
+      selectElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+      },
+      chartElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
       },
     },
     spacing: 5,
@@ -278,6 +389,7 @@ let theme = {
         goldenOrangeColor: colorCodes.goldenOrangeColor,
         lightGrayShade5: colorCodes.lightGrayShade5,
         grayShade: colorCodes.grayShade,
+        blackGrayWhite: colorCodes.blackGrayWhite,
       },
       header: {
         headerBg: colorCodes.headerBg,
@@ -288,6 +400,42 @@ let theme = {
       },
       footer: {
         footerBg: colorCodes.footerBg,
+      },
+      infoDialogue: {
+        TabBgColor: colorCodes.darkGreenShade2,
+        whiteColor: colorCodes.colorWhite,
+        blackShades: colorCodes.blackShades,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
+      },
+      titleInfoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      infoSubList: {
+        darkBlack2: colorCodes.darkBlack2,
+        darkGray: colorCodes.darkGray,
+        colorWhite: colorCodes.colorWhite,
+      },
+      alertsInfoContainer: {
+        darkGreenShade2: colorCodes.darkGreenShade2,
+        blackShades1: colorCodes.blackShades1,
+        colorWhite: colorCodes.colorWhite,
+      },
+      selectElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+      },
+      chartElement: {
+        colorBlack: colorCodes.colorBlack,
+        colorWhite: colorCodes.colorWhite,
+        greenShades: colorCodes.greenShades,
+        blueShades: colorCodes.blueShades,
+        indianRed: colorCodes.indianRed,
+        yellowShades: colorCodes.yellowShades,
       },
     },
     spacing: 5,

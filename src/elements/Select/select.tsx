@@ -64,7 +64,7 @@ const INF_Select: React.FC<any> = (props) => {
 
   const [selectedValue, setselectedValue] = useState(
     
-    selectList && selectList[2]?.value
+    selectList && selectList[0]?.value
   );
 
   // const [selectedIndex, setSelectedIndex] = useState(0);
@@ -84,50 +84,50 @@ const INF_Select: React.FC<any> = (props) => {
   };
 
   useEffect(() => {
-    if (
-      (selectedAnalyticsTitle === "Equipment #1" ||
-        selectedAnalyticsTitle === "Equipment #2" ||
-        selectedAnalyticsTitle === "Equipment #3") &&
-      graphTitle === "Temperature (°C)"
-    ) {
+    // if (
+    //   (selectedAnalyticsTitle === "Equipment #1" ||
+    //     selectedAnalyticsTitle === "Equipment #2" ||
+    //     selectedAnalyticsTitle === "Equipment #3") &&
+    //   graphTitle === "Temperature (°C)"
+    // ) {
       if (selectList && selectList[0] && selectList[0].value !== "Real Time") {
         setselectedValue(selectList && selectList[0]?.value);
       }
-    } else if (
-      (selectedAnalyticsTitle === "Equipment#1" ||
-        selectedAnalyticsTitle === "Equipment#2" ||
-        selectedAnalyticsTitle === "Equipment#3") &&
-      graphTitle === "Temperature"
-    ) {
-      if (selectList && selectList[0] && selectList[0].value !== "Real Time") {
-        setselectedValue(selectList && selectList[0]?.value);
-      }
-    } else {
-      if (selectList && selectList[1] && selectList[1].value !== "Day") {
-        setselectedValue(selectList && selectList[1]?.value);
-      }
-    }
+    // } else if (
+    //   (selectedAnalyticsTitle === "Equipment#1" ||
+    //     selectedAnalyticsTitle === "Equipment#2" ||
+    //     selectedAnalyticsTitle === "Equipment#3") &&
+    //   graphTitle === "Temperature"
+    // ) {
+    //   if (selectList && selectList[0] && selectList[0].value !== "Real Time") {
+    //     setselectedValue(selectList && selectList[0]?.value);
+    //   }
+    // } else {
+    //   if (selectList && selectList[1] && selectList[1].value !== "Day") {
+    //     setselectedValue(selectList && selectList[1]?.value);
+    //   }
+    // }
   }, []);
 
-  useEffect(() => {
-    if (pageName === "analyticsPage") {
-      if (
-        (selectedAnalyticsTitle === "Equipment #1" ||
-          selectedAnalyticsTitle === "Equipment #2" ||
-          selectedAnalyticsTitle === "Equipment #3") &&
-        graphTitle === "Temperature (°C)"
-      ) {
-        setselectedValue("Real Time");
-        handleSelect("Real Time", graphName);
-      } else if (!isGraphDayDataAvailable) {
-        setselectedValue("Week");
-        handleSelect("Week", graphName);
-      } else if (selectedValue === "Real Time") {
-        setselectedValue("Week");
-        handleSelect("Week", graphName);
-      }
-    }
-  }, [isGraphDayDataAvailable, selectedAnalyticsTitle, graphTitle]);
+  // useEffect(() => {
+  //   if (pageName === "analyticsPage") {
+  //     if (
+  //       (selectedAnalyticsTitle === "Equipment #1" ||
+  //         selectedAnalyticsTitle === "Equipment #2" ||
+  //         selectedAnalyticsTitle === "Equipment #3") &&
+  //       graphTitle === "Temperature (°C)"
+  //     ) {
+  //       setselectedValue("Real Time");
+  //       handleSelect("Real Time", graphName);
+  //     } else if (!isGraphDayDataAvailable) {
+  //       setselectedValue("Week");
+  //       handleSelect("Week", graphName);
+  //     } else if (selectedValue === "Real Time") {
+  //       setselectedValue("Week");
+  //       handleSelect("Week", graphName);
+  //     }
+  //   }
+  // }, [isGraphDayDataAvailable, selectedAnalyticsTitle, graphTitle]);
 
 
   useEffect(()=>{
@@ -245,50 +245,50 @@ const INF_Select: React.FC<any> = (props) => {
               {selectList &&
                 selectList?.length > 0 &&
                 selectList?.map((item: any, index: any) =>
-                  pageName === "analyticsPage" ? (
-                    selectedAnalyticsTitle === "Equipment #1" ||
-                    selectedAnalyticsTitle === "Equipment #2" ||
-                    selectedAnalyticsTitle === "Equipment #3" ? (
-                      graphTitle === "Temperature (°C)" ? (
-                        <MenuItem key={index} value={item.label}>
-                          {item.label}
-                        </MenuItem>
-                      ) : isGraphDayDataAvailable ? (
-                        index !== 0 ? (
-                          <MenuItem key={index} value={item.label}>
-                            {item.label}
-                          </MenuItem>
-                        ) : null
-                      ) : index !== 0 && index !== 1 ? (
-                        <MenuItem key={index} value={item.label}>
-                          {item.label}
-                        </MenuItem>
-                      ) : null
-                    ) : isGraphDayDataAvailable ? (
-                      index !== 0 ? (
-                        <MenuItem key={index} value={item.label}>
-                          {item.label}
-                        </MenuItem>
-                      ) : null
-                    ) : index !== 0 && index !== 1 ? (
-                      <MenuItem key={index} value={item.label}>
-                        {item.label}
-                      </MenuItem>
-                    ) : null
-                  ) : //for infodialogue wndow
+                  // pageName === "analyticsPage" ? (
+                  //   selectedAnalyticsTitle === "Equipment #1" ||
+                  //   selectedAnalyticsTitle === "Equipment #2" ||
+                  //   selectedAnalyticsTitle === "Equipment #3" ? (
+                  //     graphTitle === "Temperature (°C)" ? (
+                  //       <MenuItem key={index} value={item.label}>
+                  //         {item.label}
+                  //       </MenuItem>
+                  //     ) : isGraphDayDataAvailable ? (
+                  //       index !== 0 ? (
+                  //         <MenuItem key={index} value={item.label}>
+                  //           {item.label}
+                  //         </MenuItem>
+                  //       ) : null
+                  //     ) : index !== 0 && index !== 1 ? (
+                  //       <MenuItem key={index} value={item.label}>
+                  //         {item.label}
+                  //       </MenuItem>
+                  //     ) : null
+                  //   ) : isGraphDayDataAvailable ? (
+                  //     index !== 0 ? (
+                  //       <MenuItem key={index} value={item.label}>
+                  //         {item.label}
+                  //       </MenuItem>
+                  //     ) : null
+                  //   ) : index !== 0 && index !== 1 ? (
+                  //     <MenuItem key={index} value={item.label}>
+                  //       {item.label}
+                  //     </MenuItem>
+                  //   ) : null
+                  // ) : //for infodialogue wndow
 
-                  (selectedAnalyticsTitle === "Equipment#1" ||
-                      selectedAnalyticsTitle === "Equipment#2" ||
-                      selectedAnalyticsTitle === "Equipment#3") &&
-                    graphTitle === "Temperature" ? (
+                  // (selectedAnalyticsTitle === "Equipment#1" ||
+                  //     selectedAnalyticsTitle === "Equipment#2" ||
+                  //     selectedAnalyticsTitle === "Equipment#3") &&
+                  //   graphTitle === "Temperature" ? (
                     <MenuItem key={index} value={item.label}>
                       {item.label}
                     </MenuItem>
-                  ) : index !== 0 ? (
-                    <MenuItem key={index} value={item.label}>
-                      {item.label}
-                    </MenuItem>
-                  ) : null
+                  // ) : index !== 0 ? (
+                  //   <MenuItem key={index} value={item.label}>
+                  //     {item.label}
+                  //   </MenuItem>
+                  // ) : null
                 )}
             </Select>
           </FormControl>
