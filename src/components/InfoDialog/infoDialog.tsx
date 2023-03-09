@@ -23,6 +23,7 @@ import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
 import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
 import RealTimeChart from "elements/RealTimeChart";
+import {FullScreenIcon} from "../../assets/InfoDialogueIcons"
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -163,15 +164,18 @@ const InfoDialog: React.FC<any> = (props) => {
     incomeText,
 
     iframVideoContainer,
+    fullScreenIconImgStyle,
+    cameraTitleName,
+    videoContainer,
   } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  const { temperature, humidity, carbonMonoxide, voc, waterLevel, rainfall } =
+  const { temperature, humidity, carbonMonoxide, voc, waterLevel, rainfall, aiCamera, zone } =
     useTranslation();
-
+   
   useEffect(() => {
     switch (selectedTheme) {
       case "red":
@@ -807,6 +811,30 @@ const InfoDialog: React.FC<any> = (props) => {
     return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   };
 
+  const [isFullScreen, setIsFullScreen] = useState(
+    document.fullscreenElement !== null ? false : true
+  );
+
+  const fullScreenView = (e: any) => {
+   
+    if (document.fullscreenElement) {
+      // setIsFullScreen(true);
+      e.currentTarget?.exitFullscreen();
+      // document.exitFullscreen();
+    } else {
+      // setIsFullScreen(false);
+      e.currentTarget?.requestFullscreen();
+
+      // document.body.requestFullscreen();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", (event) => {
+      setIsFullScreen((prev) => !prev);
+    });
+  }, []);
+
   return (
     <>
       <DialogWrapper open={open}>
@@ -851,6 +879,16 @@ const InfoDialog: React.FC<any> = (props) => {
           {selectedType === "aiCameras" ? (
             <>
               <Grid item xs={12} className={iframVideoContainer}>
+              <div className={videoContainer}>
+              <div className={cameraTitleName}>
+                {" "}
+                <div>
+                {aiCamera} C# 3454 | {zone} 1                  
+                </div>
+                <div className={fullScreenIconImgStyle} onClick={fullScreenView}>
+                  <img src={FullScreenIcon} alt="FullScreenIcon" />
+                </div>
+              </div>
                 <ReactPlayer
                   playing
                   muted
@@ -858,16 +896,18 @@ const InfoDialog: React.FC<any> = (props) => {
                   // className={videoPlayerClass}
                   url={SampleVideo}
                   width="100%"
-                  height="100%"
+                  height="100%"                
                   config={{
                     file: {
                       attributes: {
-                        controlsList: "nodownload nofullscreen",
+                        controlsList: "nodownload",
                       },
                     },
                   }}
                 />
+                </div>
               </Grid>
+              
             </>
           ) : selectedType === "envrSensors" ||
             selectedType === "floodSensors" ? (
