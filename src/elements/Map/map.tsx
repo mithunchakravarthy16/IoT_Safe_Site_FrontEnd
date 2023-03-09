@@ -95,6 +95,7 @@ const Map: React.FC<any> = (props) => {
 
     return {
       ...defaultMapOptions,
+      streetViewControl: true,
       mapTypeControl: true,
       mapTypeControlOptions: {
         style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
