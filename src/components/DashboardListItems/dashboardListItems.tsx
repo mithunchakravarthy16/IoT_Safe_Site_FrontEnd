@@ -33,6 +33,7 @@ const DashboardListItems: React.FC<any> = (props) => {
       infoIconList,
       id,
     },
+    refs,
     selectedNotification,
     setSelectedNotification,
     handleExpandListItem,
@@ -138,10 +139,12 @@ const DashboardListItems: React.FC<any> = (props) => {
   );
 
   return (
-    <>
+    <div>
+      {" "}
       <div
         className={listItemContainer}
         onClick={() => handleExpandListItem(index)}
+        ref={refs[index]}
       >
         {selectedNotification === index ? (
           <div className={expandedListItem}>
@@ -244,7 +247,7 @@ const DashboardListItems: React.FC<any> = (props) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 export default DashboardListItems;

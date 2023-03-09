@@ -80,11 +80,11 @@ const AlertsListItem: React.FC<any> = (props) => {
   const { call911, viewDetails, raiseAlert } = useTranslation();
 
   return (
-    <>
+    <div>
       <div
         className={listItemContainer}
         onClick={() => handleExpandListItem(index, currentTimeStamp)}
-        // ref={refs[id]}
+        ref={refs[index]}
       >
         {selectedNotification === index ? (
           <div className={expandedListItem}>
@@ -158,7 +158,7 @@ const AlertsListItem: React.FC<any> = (props) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 export default AlertsListItem;
