@@ -517,133 +517,157 @@ const grokEyeZonesList = [
     name: "Zone 2",
     instruments: [
       // {
-      //     id: "instrument-03",
-      //     indicator: "alert",
-      //     name: "Environmental Sensors",
-      //     sensors: [
+      //   id: "instrument-03",
+      //   indicator: "alert",
+      //   name: "Environmental Sensors",
+      //   sensors: [
+      //     {
+      //       indicator: "alert",
+      //       name: "Environmental Sensor #1",
+      //       bodySectionItems: [
       //         {
-      //             indicator: "alert",
-      //             name: "Environmental Sensor #1",
-      //             bodySectionItems: [
-      //                 {
-      //                     label: "Temperature",
-      //                     value: "25°C",
-      //                     icon: "temperature"                            },
-      //                 {
-      //                     label: "Humidity",
-      //                     value: "40%",
-      //                     icon: "humidity"                            },
-      //                 {
-      //                     label: "Carbon Monoxide",
-      //                     value: "36Kg",
-      //                     icon: "co2"                            },
-      //                 {
-      //                     label: "VOC ‘S",
-      //                     value: "551",
-      //                     icon: "voc"                            },
-      //                 {
-      //                     label: "Particulates",
-      //                     value: "136µg/m³",
-      //                     icon: "particulates"                            },
-      //                 {
-      //                     label: "Noise",
-      //                     value: "70dBA",
-      //                     icon: "noise"                            },
-      //                 {
-      //                     label: "Pressure",
-      //                     value: "10hPa",
-      //                     icon: "pressure"                            },
-      //                 {
-      //                     label: "Light",
-      //                     value: "60%",
-      //                     icon: "light"                            },
-      //             ]
+      //           label: "Temperature",
+      //           value: "25°C",
+      //           icon: "temperature",
       //         },
       //         {
-      //             indicator: "alert",
-      //             name: "Environmental Sensor #2",
-      //             bodySectionItems: [
-      //                 {
-      //                     label: "Temperature",
-      //                     value: "25°C",
-      //                     icon: "temperature"                            },
-      //                 {
-      //                     label: "Humidity",
-      //                     value: "40%",
-      //                     icon: "humidity"                            },
-      //                 {
-      //                     label: "Carbon Monoxide",
-      //                     value: "36Kg",
-      //                     icon: "co2"                            },
-      //                 {
-      //                     label: "VOC ‘S",
-      //                     value: "551",
-      //                     icon: "voc"                            },
-      //                 {
-      //                     label: "Particulates",
-      //                     value: "136µg/m³",
-      //                     icon: "particulates"                            },
-      //                 {
-      //                     label: "Noise",
-      //                     value: "70dBA",
-      //                     icon: "noise"                            },
-      //                 {
-      //                     label: "Pressure",
-      //                     value: "10hPa",
-      //                     icon: "pressure"                            },
-      //                 {
-      //                     label: "Light",
-      //                     value: "60%",
-      //                     icon: "light"                            },
-      //             ]
-      //         }
-      //     ]
-      // },
-      // {
-      //     id: "instrument-04",
-      //     indicator: "alert",
-      //     name: "Flood Sensors",
-      //     sensors: [
+      //           label: "Humidity",
+      //           value: "40%",
+      //           icon: "humidity",
+      //         },
       //         {
-      //             indicator: "alert",
-      //             name: "Flood Sensor #1",
-      //             bodySectionItems: [
-      //                 {
-      //                     label: "Temperature",
-      //                     value: "25°C",
-      //                     icon: "temperature"                            },
-      //                 {
-      //                     label: "Humidity",
-      //                     value: "40%",
-      //                     icon: "humidity"                            },
-      //                 {
-      //                     label: "Carbon Monoxide",
-      //                     value: "36Kg",
-      //                     icon: "co2"                            },
-      //                 {
-      //                     label: "VOC ‘S",
-      //                     value: "551",
-      //                     icon: "voc"                            },
-      //                 {
-      //                     label: "Particulates",
-      //                     value: "136µg/m³",
-      //                     icon: "particulates"                            },
-      //                 {
-      //                     label: "Noise",
-      //                     value: "70dBA",
-      //                     icon: "noise"                            },
-      //                 {
-      //                     label: "Pressure",
-      //                     value: "10hPa",
-      //                     icon: "pressure"                            },
-      //                 {
-      //                     label: "Light",
-      //                     value: "60%",
-      //                     icon: "light"                            },
-      //             ]
-      //         }
-      //     ]
-      // }
+      //           label: "Carbon Monoxide",
+      //           value: "36Kg",
+      //           icon: "co2",
+      //         },
+      //         {
+      //           label: "VOC ‘S",
+      //           value: "551",
+      //           icon: "voc",
+      //         },
+      //         {
+      //           label: "Particulates",
+      //           value: "136µg/m³",
+      //           icon: "particulates",
+      //         },
+      //         {
+      //           label: "Noise",
+      //           value: "70dBA",
+      //           icon: "noise",
+      //         },
+      //         {
+      //           label: "Pressure",
+      //           value: "10hPa",
+      //           icon: "pressure",
+      //         },
+      //         {
+      //           label: "Light",
+      //           value: "60%",
+      //           icon: "light",
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       indicator: "alert",
+      //       name: "Environmental Sensor #2",
+      //       bodySectionItems: [
+      //         {
+      //           label: "Temperature",
+      //           value: "25°C",
+      //           icon: "temperature",
+      //         },
+      //         {
+      //           label: "Humidity",
+      //           value: "40%",
+      //           icon: "humidity",
+      //         },
+      //         {
+      //           label: "Carbon Monoxide",
+      //           value: "36Kg",
+      //           icon: "co2",
+      //         },
+      //         {
+      //           label: "VOC ‘S",
+      //           value: "551",
+      //           icon: "voc",
+      //         },
+      //         {
+      //           label: "Particulates",
+      //           value: "136µg/m³",
+      //           icon: "particulates",
+      //         },
+      //         {
+      //           label: "Noise",
+      //           value: "70dBA",
+      //           icon: "noise",
+      //         },
+      //         {
+      //           label: "Pressure",
+      //           value: "10hPa",
+      //           icon: "pressure",
+      //         },
+      //         {
+      //           label: "Light",
+      //           value: "60%",
+      //           icon: "light",
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
+      {
+        id: "instrument-04",
+        indicator: "alert",
+        name: "Flood Sensors",
+        sensors: [
+          {
+            indicator: "alert",
+            name: "Flood Sensor #15",
+            bodySectionItems: [
+              {
+                label: "Temperature",
+                value: "25°C",
+                icon: "temperature",
+              },
+              {
+                label: "Humidity",
+                value: "40%",
+                icon: "humidity",
+              },
+              {
+                label: "Carbon Monoxide",
+                value: "36Kg",
+                icon: "co2",
+              },
+              {
+                label: "VOC ‘S",
+                value: "551",
+                icon: "voc",
+              },
+              {
+                label: "Particulates",
+                value: "136µg/m³",
+                icon: "particulates",
+              },
+              {
+                label: "Noise",
+                value: "70dBA",
+                icon: "noise",
+              },
+              {
+                label: "Pressure",
+                value: "10hPa",
+                icon: "pressure",
+              },
+              {
+                label: "Light",
+                value: "60%",
+                icon: "light",
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
