@@ -122,7 +122,7 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "25°C",
+            value: "20°C",
           },
           {
             name: "Humidity",
@@ -130,7 +130,7 @@ const dashboardEquipments = {
           },
           {
             name: "Carbon Monoxide",
-            value: "36Kg",
+            value: "16Kg",
           },
           {
             name: "Battery",
@@ -155,15 +155,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "65°C",
+            value: "33°C",
           },
           {
             name: "Humidity",
-            value: "80%",
+            value: "65%",
           },
           {
             name: "Carbon Monoxide",
-            value: "16Kg",
+            value: "28Kg",
           },
           {
             name: "Battery",
@@ -188,15 +188,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "55°C",
+            value: "40°C",
           },
           {
             name: "Humidity",
-            value: "72%",
+            value: "80%",
           },
           {
             name: "Carbon Monoxide",
-            value: "46Kg",
+            value: "34Kg",
           },
           {
             name: "Battery",
@@ -221,15 +221,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "62°C",
+            value: "50°C",
           },
           {
             name: "Humidity",
-            value: "60%",
+            value: "62%",
           },
           {
             name: "Carbon Monoxide",
-            value: "63Kg",
+            value: "27Kg",
           },
           {
             name: "Battery",
@@ -254,15 +254,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "72°C",
+            value: "25°C",
           },
           {
             name: "Humidity",
-            value: "65%",
+            value: "40%",
           },
           {
             name: "Carbon Monoxide",
-            value: "41Kg",
+            value: "36Kg",
           },
           {
             name: "Battery",
@@ -287,15 +287,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "58°C",
+            value: "48°C",
           },
           {
             name: "Humidity",
-            value: "62%",
+            value: "90%",
           },
           {
             name: "Carbon Monoxide",
-            value: "23Kg",
+            value: "46Kg",
           },
           {
             name: "Battery",
@@ -320,15 +320,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "69°C",
+            value: "17°C",
           },
           {
             name: "Humidity",
-            value: "72%",
+            value: "68%",
           },
           {
             name: "Carbon Monoxide",
-            value: "52Kg",
+            value: "18Kg",
           },
           {
             name: "Battery",
@@ -353,15 +353,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "72°C",
+            value: "60°C",
           },
           {
             name: "Humidity",
-            value: "83%",
+            value: "70%",
           },
           {
             name: "Carbon Monoxide",
-            value: "29Kg",
+            value: "13Kg",
           },
           {
             name: "Battery",
@@ -386,7 +386,7 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "67°C",
+            value: "54°C",
           },
           {
             name: "Humidity",
@@ -394,7 +394,7 @@ const dashboardEquipments = {
           },
           {
             name: "Carbon Monoxide",
-            value: "16Kg",
+            value: "24Kg",
           },
           {
             name: "Battery",
@@ -406,7 +406,7 @@ const dashboardEquipments = {
         id: "envrSensor10",
         category: "envrSensors",
         title: "Environmental Sensor#10",
-        area: "Construction Area, Zone 4",
+        area: "Construction Area, Zone 5",
         connectivityPercentage: "62%",
         incidentsObservation: "55 min ago",
         operationAlertObservation: "3 days ago",
@@ -419,15 +419,15 @@ const dashboardEquipments = {
         infoIconList: [
           {
             name: "Temperature",
-            value: "74°C",
+            value: "45°C",
           },
           {
             name: "Humidity",
-            value: "70%",
+            value: "68%",
           },
           {
             name: "Carbon Monoxide",
-            value: "52Kg",
+            value: "16Kg",
           },
           {
             name: "Battery",
@@ -829,7 +829,7 @@ const dashboardEquipments = {
         id: "floodSensor12",
         category: "floodSensors",
         title: "Flood Sensor #12",
-        area: "Construction Area, Zone 5",
+        area: "Construction Area, Zone 4",
         connectivityPercentage: "83%",
         incidentsObservation: "31 min ago",
         operationAlertObservation: "3 days ago",
@@ -862,7 +862,7 @@ const dashboardEquipments = {
         id: "floodSensor13",
         category: "floodSensors",
         title: "Flood Sensor #13",
-        area: "Construction Area, Zone 4",
+        area: "Construction Area, Zone 3",
         connectivityPercentage: "82%",
         incidentsObservation: "42 min ago",
         operationAlertObservation: "1 days ago",
