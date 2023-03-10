@@ -177,7 +177,7 @@ const InfoDialog: React.FC<any> = (props) => {
     (state: any) => state?.dashboardInfoWindowResponse?.dashboardInfoWindowDataValue
   );
 
-  console.log("dashboardInfoWindowApiData", dashboardInfoWindowApiData)
+  
   const dashboardInfoWindow = dashboardInfoWindowApiData;
 
   const [selectedTheme, setSelectedTheme] = useState(

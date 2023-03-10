@@ -122,7 +122,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   // const { width, height } = useWindowDimensions();
   const [chartWidth, setChartWidth] = useState<number>(480);
   const [chartHeight, setChartHeight] = useState<number>(275);
-  console.log(chartHeight, chartWidth);
+  
 
   useEffect(() => {
     if (dimension.width <= 1024) {
