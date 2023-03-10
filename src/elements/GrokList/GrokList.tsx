@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
     RootContainer,
     ZoneContainer,
@@ -20,9 +21,27 @@ import {
 import IndicatorLED from "./IndicatorLed";
 import {Icon} from "elements";
 import { useTransition, animated } from "react-spring";
-import mockData from "mockdata/grokEyeZonesList";
+// import mockData from "mockdata/grokEyeZonesList";
+
 
 const GrokList = () => {
+ 
+    const dispatch: any = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+          type: "GET_GORK_EYE_ZONE_LIST_DATA",
+          payload: {},
+        });
+      }, []);
+
+      const grokListAPIData = useSelector(
+        (state: any) => state?.gorkEyeZonesListResponse?.gorkEyeZonesListDataValue
+      );
+
+      const grokEyeZoneList = grokListAPIData;
+      
+
     const [selectedInstrument, setSelectedInstrument] = useState("");
 
     const transitions = useTransition(selectedInstrument, {
@@ -44,7 +63,7 @@ const GrokList = () => {
     return (
         <RootContainer>
             {
-                mockData.map(zone => (
+                grokEyeZoneList && grokEyeZoneList.length > 0 && grokEyeZoneList?.map((zone: any) => (
                     <ZoneContainer>
                         <ZoneHeader>
                             <ZoneTitle>{zone.name}</ZoneTitle>
@@ -55,7 +74,7 @@ const GrokList = () => {
                         </ZoneHeader>
                         <ZoneContent>
                             {
-                                zone.instruments.map(instrument => (
+                                zone.instruments.map((instrument:any) => (
                                     <InstrumentContainer>
                                         <InstrumentHeader highlighted={instrument.id === selectedInstrument} onClick={() => onInstrumentClick(instrument.id)} >
                                             <span>{instrument.name} ({instrument.sensors.length})</span>
@@ -72,7 +91,7 @@ const GrokList = () => {
                                                 <animated.div style={style} >
                                                     <InstrumentContent>
                                                         {
-                                                            instrument.sensors.map(sensor => (
+                                                            instrument.sensors.map((sensor:any) => (
                                                                 <InstrumentItemContainer>
                                                                     <InstrumentItemHeader>
                                                                         <span>{sensor.name}</span>

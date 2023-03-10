@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoSubList from "../InfoSubList";
 import Tooltip from "elements/Tooltip";
-import dashboardInfoWindow from "../../mockdata/dashboardInfoWindow";
+// import dashboardInfoWindow from "../../mockdata/dashboardInfoWindow";
 import Tabs from "../../elements/Tabs";
 
 import theme from "../../theme/theme";
@@ -23,6 +23,8 @@ import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
 import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
 import RealTimeChart from "elements/RealTimeChart";
+import { getDashboardInfoWindowData } from "redux/actions/dashboardInfoWindowActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -164,6 +166,19 @@ const InfoDialog: React.FC<any> = (props) => {
 
     iframVideoContainer,
   } = useStyles(appTheme);
+
+  const dispatch: any = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDashboardInfoWindowData({}));
+  }, []);
+
+  const dashboardInfoWindowApiData = useSelector(
+    (state: any) => state?.dashboardInfoWindowResponse?.dashboardInfoWindowDataValue
+  );
+
+  
+  const dashboardInfoWindow = dashboardInfoWindowApiData;
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
