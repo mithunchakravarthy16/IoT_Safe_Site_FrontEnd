@@ -57,7 +57,7 @@ const GrokList = () => {
                             {
                                 zone.instruments.map(instrument => (
                                     <InstrumentContainer>
-                                        <InstrumentHeader highlighted={true} onClick={() => onInstrumentClick(instrument.id)} >
+                                        <InstrumentHeader highlighted={instrument.id === selectedInstrument} onClick={() => onInstrumentClick(instrument.id)} >
                                             <span>{instrument.name} ({instrument.sensors.length})</span>
                                             <FlexSpace />
                                             <IndicatorLED type={instrument.indicator} />
