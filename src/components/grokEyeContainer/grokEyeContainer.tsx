@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -14,6 +15,19 @@ import { GrokList } from "elements";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
+
+  const dispatch: any = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALERTS_DATA",
+      payload: {},
+    });
+  }, []);
+
+  const alertsAPIData = useSelector(
+    (state: any) => state?.alertsResponse?.alertsDataValue
+  );
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
@@ -48,7 +62,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
-  const alertsMainList = alerts;
+  const alertsMainList = alertsAPIData;
 
   const [notifications, setNotifications] = useState([]);
   const [notificationTimeStamp, setNotificationTimeStamp] = useState();
@@ -57,15 +71,15 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     const { events, alerts, operations } = alertsMainList;
     const combinedNotifications: any = [];
 
-    events?.forEach((event, index) => {
+    events?.forEach((event:any, index:any) => {
       combinedNotifications.push({ ...event, type: "events" });
     });
 
-    alerts?.forEach((alerts, index) => {
+    alerts?.forEach((alerts:any, index:any) => {
       combinedNotifications.push({ ...alerts, type: "alerts" });
     });
 
-    operations?.forEach((operations, index) => {
+    operations?.forEach((operations:any, index:any) => {
       combinedNotifications.push({ ...operations, type: "operations" });
     });
 
@@ -76,7 +90,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     );
 
     setNotifications(dataValue);
-  }, []);
+  }, [alertsAPIData]);
 
   let currentTimeStampValue;
   let timeArrayNew: any = [];
