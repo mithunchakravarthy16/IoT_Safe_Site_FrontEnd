@@ -51,6 +51,9 @@ const useStyles = makeStyles(() => ({
     [muiTheme.breakpoints.down(1025)]: {
       padding: `32px 52px 32px`,
     },
+    [muiTheme.breakpoints.down(963)]: {
+      padding: "20px 50px 20px",
+    },
   }),
   loginBannerContent: (props: any) => ({
     display: "flex",
@@ -73,14 +76,17 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0px 4px 15px rgb(0 0 0 / 5%)",
     borderRadius: "5px 5px 0px 0px",
     "& img": {
-      [muiTheme.breakpoints.down(1281)]: {
-        width: "50%",
+      [muiTheme.breakpoints.down(1547)]: {
+        width: "32%",
       },
       [muiTheme.breakpoints.down(1181)]: {
         width: "60%",
       },
       [muiTheme.breakpoints.down(1025)]: {
         width: "50%",
+      },
+      [muiTheme.breakpoints.down(963)]: {
+        width: "32%",
       },
     },
     [muiTheme.breakpoints.down(1350)]: {
@@ -95,6 +101,9 @@ const useStyles = makeStyles(() => ({
     [muiTheme.breakpoints.down(1025)]: {
       padding: "24px 2px",
     },
+    [muiTheme.breakpoints.down(963)]: {
+      padding: "16px 2px",
+    },
   }),
   welcomeSection: (props: any) => ({
     marginBottom: 23,
@@ -108,7 +117,15 @@ const useStyles = makeStyles(() => ({
     fontSize: "34px",
     lineHeight: "42px",
     color: props?.palette?.login?.welcomeContent,
+    [muiTheme.breakpoints.down(1547)]: {
+      fontSize: "24px",
+      lineHeight: "24px",
+    },
     [muiTheme.breakpoints.down(1281)]: {
+      fontSize: "24px",
+      lineHeight: "24px",
+    },
+    [muiTheme.breakpoints.down(963)]: {
       fontSize: "24px",
       lineHeight: "24px",
     },
@@ -154,6 +171,20 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 16,
+    "& img": {
+      [muiTheme.breakpoints.down(1547)]: {
+        width: "32%",
+      },
+      [muiTheme.breakpoints.down(1181)]: {
+        width: "60%",
+      },
+      [muiTheme.breakpoints.down(1025)]: {
+        width: "50%",
+      },
+      [muiTheme.breakpoints.down(963)]: {
+        width: "32%",
+      },
+    },
   }),
   radioButtonSection: (props: any) => ({
     marginBottom: 50,
@@ -215,7 +246,12 @@ const useStyles = makeStyles(() => ({
       "&:hover": {
         background: props?.palette?.login?.loginButton,
       },
-      [muiTheme.breakpoints.down(1281)]: {
+      [muiTheme.breakpoints.down(1547)]: {
+        padding: 12,
+        fontSize: "16px",
+        lineHeight: "21px",
+      },
+      [muiTheme.breakpoints.down(963)]: {
         padding: 12,
         fontSize: "16px",
         lineHeight: "21px",
@@ -250,6 +286,11 @@ const useStyles = makeStyles(() => ({
       fontWeight: " 500",
       fontSize: "16px",
       lineHeight: "30px",
+      [muiTheme.breakpoints.down(1350)]: {
+        fontWeight: " 500",
+        fontSize: "11px",
+        lineHeight: "20px",
+      },
     },
     "& img": {
       margin: "0 8px",
@@ -258,7 +299,7 @@ const useStyles = makeStyles(() => ({
         width: "100px",
       },
       [muiTheme.breakpoints.down(1281)]: {
-        width: "120px",
+        width: "100px",
       },
       [muiTheme.breakpoints.down(1025)]: {
         width: "100px",
@@ -281,6 +322,11 @@ const useStyles = makeStyles(() => ({
       fontWeight: " 500",
       fontSize: "12px",
       lineHeight: "20px",
+    },
+    [muiTheme.breakpoints.down(769)]: {
+      position: "absolute",
+      bottom: "8px",
+      width: "100%",
     },
   }),
 }));
