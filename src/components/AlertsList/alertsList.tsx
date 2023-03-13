@@ -24,9 +24,6 @@ const AlertsList: React.FC<any> = (props) => {
     alertsMainList,
     searchOpen,
     setSearchOpen,
-    currentOpenAlert,
-    setCurrentOpenAlert,
-    currentOpenInstrument,
     setCurrentOpenInstrument
   } = props;
 
