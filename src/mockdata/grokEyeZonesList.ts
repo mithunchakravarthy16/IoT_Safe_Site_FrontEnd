@@ -5,7 +5,7 @@ const grokEyeZonesList = [
       instruments: [
         {
           id: "instrument-01",
-          indicator: "alert",
+          indicator: "event",
           name: "Environmental Sensors",
           sensors: [
             {
@@ -510,6 +510,34 @@ const grokEyeZonesList = [
             },
           ],
         },
+        {
+          id: "instrument-14",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
+                },
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -653,6 +681,34 @@ const grokEyeZonesList = [
             },
           ],
         },
+        {
+          id: "instrument-13",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
+                },
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -728,6 +784,34 @@ const grokEyeZonesList = [
             },
           ],
         },
+        {
+          id: "instrument-12",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
+                },
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -948,6 +1032,34 @@ const grokEyeZonesList = [
             },
           ],
         },
+        {
+          id: "instrument-11",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
+                },
+              ],
+            },
+          ],
+        }
       ],
     },
     {
@@ -1076,6 +1188,34 @@ const grokEyeZonesList = [
             },
           ],
         },
+        {
+          id: "instrument-10",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {
@@ -1115,6 +1255,34 @@ const grokEyeZonesList = [
                   label: "Battery",
                   value: "87%",
                   icon: "battery",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "instrument-09",
+          indicator: "alert",
+          name: "AI Camera",
+          sensors: [
+            {
+              indicator: "event",
+              name: "AI Camera #1",
+              bodySectionItems: [
+                {
+                  label: "Incidents",
+                  value: "32 min ago",
+                  icon: "incident",
+                },
+                {
+                  label: "Motion",
+                  value: "5 sec ago",
+                  icon: "motion",
+                },
+                {
+                  label: "Operation Alert",
+                  value: "3 days ago",
+                  icon: "waterlevel",
                 },
               ],
             },

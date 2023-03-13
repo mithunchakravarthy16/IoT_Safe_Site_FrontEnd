@@ -15,6 +15,8 @@ import { GrokList } from "elements";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
+  const [currentOpenAlert, setCurrentOpenAlert] = useState('')
+  const [currentOpenInstrument, setCurrentOpenInstrument] = useState('')
 
   const dispatch: any = useDispatch();
 
@@ -35,7 +37,6 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
-  const [selectedNotification, setSelectedNotification] = useState<any>(-1);
   const [alertsMainData, setAlertsMainData] = useState();
   const [tabIndex, setTabIndex] = useState<number>(1);
   const [searchOpen, setSearchOpen] = useState<any>(false);
@@ -252,13 +253,18 @@ const GrokEyeContainer: React.FC<any> = (props) => {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-            <GrokList />
+            <GrokList
+              currentOpenAlert={currentOpenAlert}
+              setCurrentOpenAlert={setCurrentOpenAlert}
+              currentOpenInstrument={currentOpenInstrument}
+              setCurrentOpenInstrument={setCurrentOpenInstrument}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             {alertsData && alertsData?.length > 0 ? (
               <AlertsList
-                setSelectedNotification={setSelectedNotification}
-                selectedNotification={selectedNotification}
+                setSelectedNotification={setCurrentOpenInstrument}
+                selectedNotification={currentOpenInstrument}
                 tabIndex={tabIndex}
                 setTabIndex={setTabIndex}
                 setNotificationTimeStamp={setNotificationTimeStamp}
@@ -266,6 +272,10 @@ const GrokEyeContainer: React.FC<any> = (props) => {
                 alertsMainList={alertsMainList}
                 searchOpen={searchOpen}
                 setSearchOpen={setSearchOpen}
+                currentOpenAlert={currentOpenAlert}
+                setCurrentOpenAlert={setCurrentOpenAlert}
+                currentOpenInstrument={currentOpenInstrument}
+                setCurrentOpenInstrument={setCurrentOpenInstrument}
               />
             ) : (
               ""

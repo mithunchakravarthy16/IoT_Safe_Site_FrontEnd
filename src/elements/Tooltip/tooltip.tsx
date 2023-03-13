@@ -2,8 +2,12 @@ import * as React from "react";
 import { useState, useEffect, createRef } from "react";
 import Zoom from "@mui/material/Zoom";
 import Tooltip from "@mui/material/Tooltip";
+import useStyles from "./styles";
 
 const INF_Tooltip: React.FC<any> = (props) => {
+  const {
+    rootContainer
+  } = useStyles();
   const tipRef = createRef<any>();
 
   const [inView, setInView] = useState(false);
@@ -31,7 +35,7 @@ const INF_Tooltip: React.FC<any> = (props) => {
   const { tooltipValue, children } = props;
 
   return (
-    <div>
+    <div className={rootContainer} >
       <Tooltip
         className="tooltipTest"
         arrow
