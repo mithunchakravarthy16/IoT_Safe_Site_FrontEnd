@@ -100,6 +100,9 @@ const INF_SearchBox: React.FC<any> = (props) => {
             ml: 1,
             flex: 1,
             color: fontColor,
+            fontSize: 15,
+            fontWeight: 400,
+            letterSpacing: 0.5,
           }}
           placeholder={placeHolder}
           onChange={handleInput}

@@ -113,6 +113,9 @@ const AlertsList: React.FC<any> = (props) => {
           .includes(searchValue?.toString()?.toLowerCase()) ||
         value?.name
           ?.toLowerCase()
+          .includes(searchValue?.toString()?.toLowerCase()) ||
+        value?.zone
+          ?.toLowerCase()
           .includes(searchValue?.toString()?.toLowerCase())
       );
     });
@@ -175,7 +178,7 @@ const AlertsList: React.FC<any> = (props) => {
                 placeHolder={search}
                 handleSearch={handleSearch}
                 searchIsOpen={true}
-                fontColor={appTheme?.palette?.dashboard?.black}
+                fontColor={appTheme?.palette?.dashboard?.blackGrayWhite}
               />
             )}
           </div>
