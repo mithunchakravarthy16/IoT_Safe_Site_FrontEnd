@@ -72,6 +72,7 @@ export const InstrumentHeader = styled("div")<{ highlighted?: boolean }>`
   padding: 12px 16px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   span {
     font-family: "Nunito Sans", sans-serif;

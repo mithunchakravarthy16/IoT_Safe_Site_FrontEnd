@@ -20,11 +20,21 @@ import {
 } from "./styles"
 import IndicatorLED from "./IndicatorLed";
 import {Icon} from "elements";
+import Tooltip from "elements/Tooltip";
 import { useTransition, animated } from "react-spring";
+import useTranslation from "localization/translations";
 // import mockData from "mockdata/grokEyeZonesList";
 
 
-const GrokList = () => {
+const GrokList = (props: any) => {
+    const {
+        currentOpenAlert,
+        setCurrentOpenAlert,
+        currentOpenInstrument,
+        setCurrentOpenInstrument
+    } = props;
+
+    const {raiseAlert, call} = useTranslation()
  
     const dispatch: any = useDispatch();
 
@@ -40,18 +50,16 @@ const GrokList = () => {
       );
 
       const grokEyeZoneList = grokListAPIData;
-      
 
-    const [selectedInstrument, setSelectedInstrument] = useState("");
-
-    const transitions = useTransition(selectedInstrument, {
+    const transitions = useTransition(currentOpenInstrument, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
         leave: { opacity: 0 },
     });
 
     const onInstrumentClick = (id: string) => {
-        setSelectedInstrument(prev => {
+        setCurrentOpenAlert("")
+        setCurrentOpenInstrument((prev: any) => {
             if(prev === id) {
                 return ""
             }
@@ -68,22 +76,26 @@ const GrokList = () => {
                         <ZoneHeader>
                             <ZoneTitle>{zone.name}</ZoneTitle>
                             <FlexSpace />
-                            <Icon size={30} icon="raise-alert" />
+                            <Tooltip tooltipValue={raiseAlert}>
+                                <Icon size={30} icon="raise-alert" />
+                            </Tooltip>
                             <HorizontalSpace count={10} />
-                            <Icon size={30} icon="call" />
+                            <Tooltip tooltipValue={call}>
+                                <Icon size={30} icon="call" />
+                            </Tooltip>
                         </ZoneHeader>
                         <ZoneContent>
                             {
                                 zone.instruments.map((instrument:any) => (
                                     <InstrumentContainer>
-                                        <InstrumentHeader highlighted={true} onClick={() => onInstrumentClick(instrument.id)} >
+                                        <InstrumentHeader highlighted={instrument.id === currentOpenInstrument} onClick={() => onInstrumentClick(instrument.id)} >
                                             <span>{instrument.name} ({instrument.sensors.length})</span>
                                             <FlexSpace />
                                             <IndicatorLED type={instrument.indicator} />
-                                            <Icon size={15} style={{transform: `rotateZ(${selectedInstrument === instrument.id?"0deg":"-90deg"})`, transition: "all 0.3s ease"}} icon="chevron-down" />
+                                            <Icon size={15} style={{transform: `rotateZ(${currentOpenInstrument === instrument.id?"0deg":"-90deg"})`, transition: "all 0.3s ease"}} icon="chevron-down" />
                                         </InstrumentHeader>
                                         {
-                                            selectedInstrument === instrument.id
+                                            currentOpenInstrument === instrument.id
                                             ?
                                             transitions((style, show) => (
                                                 show

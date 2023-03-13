@@ -49,7 +49,7 @@ const IndicatorLED = (props: Props) => {
                 return {fill: theme.defaultTheme.palette.grokList.unavailableFill, stroke: theme.defaultTheme.palette.grokList.unavailableStroke, index: 3}
             
             default:
-                return {fill: null, stroke: null}
+                return {fill: theme.defaultTheme.palette.grokList.unavailableFill, stroke: theme.defaultTheme.palette.grokList.unavailableStroke}
         }
     }
 

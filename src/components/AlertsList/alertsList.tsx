@@ -24,6 +24,7 @@ const AlertsList: React.FC<any> = (props) => {
     alertsMainList,
     searchOpen,
     setSearchOpen,
+    setCurrentOpenInstrument
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -131,6 +132,7 @@ const AlertsList: React.FC<any> = (props) => {
   };
 
   const handleExpandListItem = (index: any, dateTime: any) => {
+    setCurrentOpenInstrument("");
     setSelectedNotification(selectedNotification === index ? "" : index);
     setSelectedRefId(index);
     setNotificationTimeStamp(dateTime);
@@ -229,3 +231,5 @@ const AlertsList: React.FC<any> = (props) => {
   );
 };
 export default AlertsList;
+
+// selectedNotification
