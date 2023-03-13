@@ -50,7 +50,7 @@ const useStyles = makeStyles({
       marginRight: 7,
     },
     "& .MuiInputBase-root": {
-      fontWeight: 500,
+      // fontWeight: 500,
     },
   }),
 

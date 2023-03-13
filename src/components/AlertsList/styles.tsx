@@ -46,7 +46,7 @@ const useStyles = makeStyles({
       marginRight: 7,
     },
     "& .MuiInputBase-root": {
-      fontWeight: 500,
+      // fontWeight: 500,
     },
   }),
 
@@ -60,10 +60,12 @@ const useStyles = makeStyles({
       justifyContent: "space-between",
     },
     "& .MuiButtonBase-root": {
-      fontSize: "15px !important",
+      fontSize: "14px !important",
       // marginBottom: "-0.5px !important",
       flex: "1 !important",
       textTransform: "none",
+      fontWeight: 400,
+      fontFamily: `'Nunito Sans', sans-serif !important'`,
     },
     "& .MuiTab-root": {
       padding: "10px 12px",
