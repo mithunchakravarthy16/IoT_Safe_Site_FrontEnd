@@ -16,6 +16,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import useStyles from "./styles";
 import useTranslation from "localization/translations";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VideoDragIcon from "../../assets/videoDragIcon.svg";
 
 function ValueLabelComponent(props: SliderValueLabelProps) {
   const { children, value } = props;
@@ -28,14 +29,14 @@ function ValueLabelComponent(props: SliderValueLabelProps) {
 }
 
 const PrettoSlider = styled(Slider)({
-  // color: "#52af77",
+  color: "#5A5757",
   height: 4,
   "& .MuiSlider-track": {
     border: "none",
   },
   "& .MuiSlider-thumb": {
-    height: 14,
-    width: 14,
+    height: 12,
+    width: 12,
     backgroundColor: "#fff",
     border: "2px solid currentColor",
     "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
@@ -90,7 +91,7 @@ const PlayerControls: React.FC<any> = (props) => {
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const { controlWrapper, bottomIcon, volueSlider } = useStyles(appTheme);
+  const { controlWrapper, bottomIcon, volueSlider, fullScreenIcon, VideoDragIconClass } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -118,7 +119,7 @@ const PlayerControls: React.FC<any> = (props) => {
 
   const { aiCamera, zone } = useTranslation();
 
-  console.log("Playercontrolplayed", played);
+  
 
   return (
     <>
@@ -137,9 +138,13 @@ const PlayerControls: React.FC<any> = (props) => {
             </div>
           </Grid>
           <Grid item>
-            <IconButton onClick={onToggleFullScreen} className={bottomIcon}>
+            <IconButton onClick={onToggleFullScreen} className={fullScreenIcon}>
               <FullscreenIcon fontSize="small" />
             </IconButton>
+            
+            <img src={VideoDragIcon} alt="VideoDragIcon"  width={6} style={{color:"#fff !important", marginRight:"18px", position: "absolute", right:"-6px", top: "10px"}}/>
+            
+            
           </Grid>
         </Grid>
         <Grid

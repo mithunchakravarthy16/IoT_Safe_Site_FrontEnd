@@ -22,24 +22,40 @@ const useStyles = makeStyles(() => ({
   }),
 
   bottomIcon: (props: any) => ({
-    position: "absolute",
-    top: "-7px",
-    left: "px",
+    
     color: "#999 !important",
     "&:hover": {
       color: "fff !important",
     },
   }),
 
+  fullScreenIcon: (props: any) => ({
+    position: "absolute",
+    top: "-7px",
+    right: "20px",
+    color: "#fff !important",
+    "&:hover": {
+      color: "#fff !important",
+    },
+  }),
+
   volueSlider: (props: any) => ({
     width: "10% !important",
+    color: "#5A5757 !important",
     "& .MuiSlider-track": {
       height: "1px !important",
     },
     "& .MuiSlider-thumb": {
       width: "12px !important",
       height: "12px !important",
+      backgroundColor: "#fff",
     },
+  }),
+
+  
+  VideoDragIconClass: (props: any) => ({
+    color:"#fff !important",
+     marginRight:"18px"
   }),
 
   fullScreenIconImgStyle: (props: any) => ({

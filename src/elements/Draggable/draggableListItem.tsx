@@ -26,8 +26,8 @@ const formate = (seconds: any)=>{
 
 
 const DraggableListItem: React.FC<any> = (props) => {
-  const { width, height, videoList, index, item } = props;
-  const [list, setList] = useState<any>(videoList);
+  const { width, height, videoList, indexProp, item } = props;
+  
   let { SampleVideo } = SampleVideoContent;
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [selectedTheme, setSelectedTheme] = useState(
@@ -59,48 +59,9 @@ const DraggableListItem: React.FC<any> = (props) => {
     dragIconImageStyle,
     dragListItemStyle,
   } = useStyles(appTheme);
-  let listItemDrag = useRef<any>();
-  let listItemDragOver = useRef<any>();
-  const handleDragStart = (event: any, index: number) => {
-    listItemDrag.current = index;
-    const copyArr = [...list];
-    let finalArray: any = [];
-    copyArr.forEach((item) => {
-      finalArray.push({
-        id: item?.id,
-        cameraName: item?.cameraName,
-        zone: item?.zone,
-        isDragging: false,
-      });
-    });
-    finalArray[index].isDragging = true;
-    setList(finalArray);
-  };
-  const handleDragEnter = (event: any, index: number) => {
-    listItemDragOver.current = index;
-  };
-  const handleDragEnd = (event: any, index: number) => {
-    const array1 = [...list];
-    const array_list_main = array1[listItemDrag.current];
-    array1.splice(listItemDrag.current, 1);
-    array1.splice(listItemDragOver.current, 0, array_list_main);
-    listItemDrag.current = null;
-    listItemDragOver.current = null;
-    let finalArray: any = [];
-    array1.forEach((item) =>
-      finalArray.push({
-        id: item?.id,
-        cameraName: item?.cameraName,
-        zone: item?.zone,
-        isDragging: false,
-      })
-    );
-    setList(finalArray);
-  };
-  document.addEventListener("dragover", (event) => {
-    event.preventDefault();
-  });
 
+
+ 
 
   const playerContainerRef = useRef<any>(null);
 
@@ -110,7 +71,7 @@ const DraggableListItem: React.FC<any> = (props) => {
    const[state, setSate]= useState<any>({playing: true, muted: true, volume: 50, playbackRate:1.0, played: 0, seeking: false});
  
    const{playing, muted, volume, playbackRate, played, seeking}=state;
- console.log("played", played)
+ 
    const handlePlayPause = ()=>{
  
      setSate({...state, playing: !state.playing})
@@ -189,17 +150,7 @@ const DraggableListItem: React.FC<any> = (props) => {
   return (
     <>    
       
-          <div
-          
-            draggable
-            onDragStart={(event) => handleDragStart(event, index)}
-            onDragEnter={(event) => handleDragEnter(event, index)}
-            onDragEnd={(event) => handleDragEnd(event, index)}
-            style={{
-              width: width,
-              height: height,
-            }}
-          >
+         
             
             <div ref = {playerContainerRef} className={videoBoxStyle}>
               
@@ -215,7 +166,7 @@ const DraggableListItem: React.FC<any> = (props) => {
                 </div>
               </div> */}
 
-              {/* <div> */}
+              <div>
                 
                 <ReactPlayer
                   width={"100%"}
@@ -259,9 +210,9 @@ const DraggableListItem: React.FC<any> = (props) => {
                   item={item}
                   pageName={"gorkEye"}
                   />
-              {/* </div> */}
+              </div>
             </div>
-          </div>
+          
         
     </>
   );

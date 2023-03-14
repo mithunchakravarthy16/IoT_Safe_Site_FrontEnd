@@ -951,7 +951,7 @@ const InfoDialog: React.FC<any> = (props) => {
     setTimeDisplayFormate( timeDisplayFormate === "normal" ? "remaining" : "normal") 
   }
   
-  console.log("played", played)
+  
   return (
     <>
       <DialogWrapper open={open}>

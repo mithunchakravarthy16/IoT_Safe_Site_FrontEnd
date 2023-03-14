@@ -101,93 +101,23 @@ const DraggableList: React.FC<any> = (props) => {
     event.preventDefault();
   });
 
-  const playerContainerRef = useRef<any>(null);
-
-  const playerRef = useRef<any>(null);
-
-  const [state, setSate] = useState<any>({
-    playing: true,
-    muted: true,
-    volume: 50,
-    playbackRate: 1.0,
-    played: 0,
-    seeking: false,
-  });
-
-  const { playing, muted, volume, playbackRate, played, seeking } = state;
-  console.log("played", played);
-  const handlePlayPause = () => {
-    setSate({ ...state, playing: !state.playing });
-  };
-
-  const handleMute = () => {
-    setSate({ ...state, muted: !state.muted });
-  };
-
-  const handleVolumeChange = (e: any, newValue: any) => {
-    setSate({
-      ...state,
-      volume: newValue / 100,
-      muted: newValue === 0 ? true : false,
-    });
-  };
-
-  const handleVolumeSeekDown = (e: any, newValue: any) => {
-    setSate({
-      ...state,
-      volume: (newValue / 100).toFixed(2),
-      muted: newValue === 0 ? true : false,
-    });
-  };
-
-  const toggleFullScreen = () => {
-    screenfull.toggle(playerContainerRef.current);
-  };
-
-  const handleProgress = (changeState: any) => {
-    if (!state.seeking) {
-      setSate({ ...state, ...changeState });
-    }
-  };
-
-  const handleSeekChange = (e: any, newValue: any) => {
-    setSate({ ...state, played: (newValue / 100).toFixed(2) });
-  };
-
-  const handleSeekMouseDown = (e: any) => {
-    setSate({ ...state, seeking: true });
-  };
-
-  const handleSeekMouseUp = (e: any, newValue: any) => {
-    setSate({ ...state, seeking: false });
-    playerRef.current.seekTo(newValue / 100);
-  };
-
-  const [timeDisplayFormate, setTimeDisplayFormate] = useState("normal");
-
-  const currentTimeVideo: any = playerRef.current
-    ? playerRef.current.getCurrentTime()
-    : "00:00";
-  const duration: any = playerRef.current
-    ? playerRef.current.getDuration()
-    : "00:00";
-
-  const elapsedTime =
-    timeDisplayFormate === "normal"
-      ? formate(currentTimeVideo)
-      : `-${duration - currentTimeVideo}`;
-  const totalDuration = formate(duration);
-
-  const handleChangeDisplayFormate = () => {
-    setTimeDisplayFormate(
-      timeDisplayFormate === "normal" ? "remaining" : "normal"
-    );
-  };
+ 
 
   return (
     <>
       <div className={dragListContainerStyle}>
         {list?.map((item: any, index: number) => (
+            
+             <div          
+             draggable
+             onDragStart={(event) => handleDragStart(event, index)}
+             onDragEnter={(event) => handleDragEnter(event, index)}
+             onDragEnd={(event) => handleDragEnd(event, index)}
+             style={{
+               width: width,
+               height: height,
+             }}
+           >
           <DraggableListItem
             item={item}
             index={index}
@@ -195,6 +125,7 @@ const DraggableList: React.FC<any> = (props) => {
             height={height}
             videoList={videoList}
           />
+          </div>
         ))}
       </div>
     </>

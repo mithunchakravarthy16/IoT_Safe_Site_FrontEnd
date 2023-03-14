@@ -73,7 +73,7 @@ const VideoDragDrop: React.FC<any> = (props) => {
   const[state, setSate]= useState<any>({playing: true, muted: true, volume: 50, playbackRate:1.0, played: 0, seeking: false});
 
   const{playing, muted, volume, playbackRate, played, seeking}=state;
-console.log("played", played)
+
   const handlePlayPause = ()=>{
 
     setSate({...state, playing: !state.playing})
@@ -157,7 +157,7 @@ console.log("played", played)
       <div className={dragListContainerStyle}>
         <DraggableList width={width} height={height} rowSize={rowSize}>
           {videoList?.map((item: any, i: number) => (
-            console.log("dfdac"),
+            
             <div ref = {playerContainerRef} className={videoBoxStyle}>
               
               {/* <div className={cameraTitleName}>
