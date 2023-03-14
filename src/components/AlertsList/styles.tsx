@@ -69,6 +69,7 @@ const useStyles = makeStyles({
     },
     "& .MuiTab-root": {
       padding: "10px 12px",
+      minHeight: "88px !important",
       [muiTheme.breakpoints.down(1281)]: {
         padding: "6px 12px",
       },
