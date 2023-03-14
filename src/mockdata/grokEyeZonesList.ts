@@ -6,11 +6,11 @@ const grokEyeZonesList = [
       {
         id: "instrument-01",
         indicator: "event",
-        name: "Environmental Sensors",
+        name: "Environment Sensors",
         sensors: [
           {
             indicator: "alert",
-            name: "Environmental Sensor #1",
+            name: "Environment Sensor #1",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -56,7 +56,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #2",
+            name: "Environment Sensor #2",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -102,7 +102,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #3",
+            name: "Environment Sensor #3",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -148,7 +148,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #4",
+            name: "Environment Sensor #4",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -194,7 +194,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #8",
+            name: "Environment Sensor #8",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -240,7 +240,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #9",
+            name: "Environment Sensor #9",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -547,11 +547,11 @@ const grokEyeZonesList = [
       // {
       //   id: "instrument-03",
       //   indicator: "alert",
-      //   name: "Environmental Sensors",
+      //   name: "Environment Sensors",
       //   sensors: [
       //     {
       //       indicator: "alert",
-      //       name: "Environmental Sensor #1",
+      //       name: "Environment Sensor #1",
       //       bodySectionItems: [
       //         {
       //           label: "Temperature",
@@ -597,7 +597,7 @@ const grokEyeZonesList = [
       //     },
       //     {
       //       indicator: "alert",
-      //       name: "Environmental Sensor #2",
+      //       name: "Environment Sensor #2",
       //       bodySectionItems: [
       //         {
       //           label: "Temperature",
@@ -821,11 +821,11 @@ const grokEyeZonesList = [
       {
         id: "instrument-04",
         indicator: "alert",
-        name: "Environmental Sensors",
+        name: "Environment Sensors",
         sensors: [
           {
             indicator: "alert",
-            name: "Environmental Sensor #5",
+            name: "Environment Sensor #5",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -871,7 +871,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #6",
+            name: "Environment Sensor #6",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -917,7 +917,7 @@ const grokEyeZonesList = [
           },
           {
             indicator: "null",
-            name: "Environmental Sensor #7",
+            name: "Environment Sensor #7",
             bodySectionItems: [
               {
                 label: "Temperature",
@@ -1069,11 +1069,11 @@ const grokEyeZonesList = [
       {
         id: "instrument-06",
         indicator: "alert",
-        name: "Environmental Sensors",
+        name: "Environment Sensors",
         sensors: [
           {
             indicator: "alert",
-            name: "Environmental Sensor #10",
+            name: "Environment Sensor #10",
             bodySectionItems: [
               {
                 label: "Temperature",
