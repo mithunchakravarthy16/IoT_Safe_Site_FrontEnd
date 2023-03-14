@@ -3,7 +3,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera1",
       category: "aiCamera",
-      title: "AI Camera1",
+      title: "AI Camera #1",
       area: "Construction Area, Zone 1",
       connectivityPercentage: "79%",
       incidentsObservation: "32 min ago",
@@ -16,7 +16,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera2",
       category: "aiCamera",
-      title: "AI Camera2",
+      title: "AI Camera #2",
       area: "Construction Area, Zone 2",
       connectivityPercentage: "69%",
       incidentsObservation: "12 min ago",
@@ -29,7 +29,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera3",
       category: "aiCamera",
-      title: "AI Camera3",
+      title: "AI Camera #3",
       area: "Construction Area, Zone 3",
       connectivityPercentage: "89%",
       incidentsObservation: "42 min ago",
@@ -42,7 +42,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera4",
       category: "aiCamera",
-      title: "AI Camera4",
+      title: "AI Camera #4",
       area: "Construction Area, Zone 4",
       connectivityPercentage: "59%",
       incidentsObservation: "12 min ago",
@@ -55,7 +55,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera5",
       category: "aiCamera",
-      title: "AI Camera5",
+      title: "AI Camera #5",
       area: "Construction Area, Zone 5",
       connectivityPercentage: "89%",
       incidentsObservation: "42 min ago",
@@ -68,7 +68,7 @@ const dashboardInfoWindow = {
     {
       id: "aiCamera6",
       category: "aiCamera",
-      title: "AI Camera6",
+      title: "AI Camera #6",
       area: "Construction Area, Zone 6",
       connectivityPercentage: "79%",
       incidentsObservation: "32 min ago",
@@ -83,7 +83,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor1",
       category: "envrSensors",
-      title: "Environmental Sensor#1",
+      title: "Environment Sensor#1",
       area: "Construction Area, Zone 1",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -118,7 +118,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -1383,7 +1383,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor2",
       category: "envrSensors",
-      title: "Environmental Sensor#2",
+      title: "Environment Sensor#2",
       area: "Construction Area, Zone 2",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -1418,7 +1418,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -2683,7 +2683,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor3",
       category: "envrSensors",
-      title: "Environmental Sensor#3",
+      title: "Environment Sensor#3",
       area: "Construction Area, Zone 3",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -2718,7 +2718,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -3983,7 +3983,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor3",
       category: "envrSensors",
-      title: "Environmental Sensor#3",
+      title: "Environment Sensor#3",
       area: "Construction Area, Zone 3",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -4018,7 +4018,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -5283,7 +5283,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor4",
       category: "envrSensors",
-      title: "Environmental Sensor#4",
+      title: "Environment Sensor#4",
       area: "Construction Area, Zone 4",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -5318,7 +5318,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -6583,7 +6583,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor5",
       category: "envrSensors",
-      title: "Environmental Sensor#5",
+      title: "Environment Sensor#5",
       area: "Construction Area, Zone 5",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -6618,7 +6618,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -7883,7 +7883,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor6",
       category: "envrSensors",
-      title: "Environmental Sensor#6",
+      title: "Environment Sensor#6",
       area: "Construction Area, Zone 6",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -7918,7 +7918,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -9183,7 +9183,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor7",
       category: "envrSensors",
-      title: "Environmental Sensor#7",
+      title: "Environment Sensor#7",
       area: "Construction Area, Zone 7",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -9218,7 +9218,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -10483,7 +10483,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor8",
       category: "envrSensors",
-      title: "Environmental Sensor#8",
+      title: "Environment Sensor#8",
       area: "Construction Area, Zone 8",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -10518,7 +10518,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -11783,7 +11783,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor9",
       category: "envrSensors",
-      title: "Environmental Sensor#9",
+      title: "Environment Sensor#9",
       area: "Construction Area, Zone 9",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -11818,7 +11818,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
@@ -13083,7 +13083,7 @@ const dashboardInfoWindow = {
     {
       id: "envrSensor10",
       category: "envrSensors",
-      title: "Environmental Sensor#10",
+      title: "Environment Sensor#10",
       area: "Construction Area, Zone 10",
       connectivityPercentage: "59%",
       incidentsObservation: "32 min ago",
@@ -13118,7 +13118,7 @@ const dashboardInfoWindow = {
         },
         {
           title: "Pressure",
-          value: "10Pa",
+          value: "10hPa",
         },
         {
           title: "Light",
