@@ -152,9 +152,9 @@ const PlayerControls: React.FC<any> = (props) => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          style={{ padding: "20px" }}
+          style={{ padding: "0px 20px" }}
         >
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ height: "25px" }}>
             <PrettoSlider
               valueLabelDisplay="auto"
               min={0}
