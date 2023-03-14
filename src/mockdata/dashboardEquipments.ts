@@ -108,7 +108,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor1",
         category: "envrSensors",
-        title: "Environmental Sensor#1",
+        title: "Environment Sensor#1",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "69%",
         incidentsObservation: "12 min ago",
@@ -141,7 +141,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor2",
         category: "envrSensors",
-        title: "Environmental Sensor#2",
+        title: "Environment Sensor#2",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "74%",
         incidentsObservation: "32 min ago",
@@ -174,7 +174,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor3",
         category: "envrSensors",
-        title: "Environmental Sensor#3",
+        title: "Environment Sensor#3",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "62%",
         incidentsObservation: "22 min ago",
@@ -207,7 +207,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor4",
         category: "envrSensors",
-        title: "Environmental Sensor#4",
+        title: "Environment Sensor#4",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "58%",
         incidentsObservation: "21 min ago",
@@ -240,7 +240,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor5",
         category: "envrSensors",
-        title: "Environmental Sensor#5",
+        title: "Environment Sensor#5",
         area: "Construction Area, Zone 4",
         connectivityPercentage: "66%",
         incidentsObservation: "38 min ago",
@@ -273,7 +273,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor6",
         category: "envrSensors",
-        title: "Environmental Sensor#6",
+        title: "Environment Sensor#6",
         area: "Construction Area, Zone 4",
         connectivityPercentage: "67%",
         incidentsObservation: "30 min ago",
@@ -306,7 +306,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor7",
         category: "envrSensors",
-        title: "Environmental Sensor#7",
+        title: "Environment Sensor#7",
         area: "Construction Area, Zone 4",
         connectivityPercentage: "87%",
         incidentsObservation: "37 min ago",
@@ -339,7 +339,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor8",
         category: "envrSensors",
-        title: "Environmental Sensor#8",
+        title: "Environment Sensor#8",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "74%",
         incidentsObservation: "48 min ago",
@@ -372,7 +372,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor9",
         category: "envrSensors",
-        title: "Environmental Sensor#9",
+        title: "Environment Sensor#9",
         area: "Construction Area, Zone 1",
         connectivityPercentage: "64%",
         incidentsObservation: "40 min ago",
@@ -405,7 +405,7 @@ const dashboardEquipments = {
       {
         id: "envrSensor10",
         category: "envrSensors",
-        title: "Environmental Sensor#10",
+        title: "Environment Sensor#10",
         area: "Construction Area, Zone 5",
         connectivityPercentage: "62%",
         incidentsObservation: "55 min ago",
