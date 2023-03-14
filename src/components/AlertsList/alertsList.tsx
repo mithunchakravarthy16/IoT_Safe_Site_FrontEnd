@@ -132,7 +132,9 @@ const AlertsList: React.FC<any> = (props) => {
   };
 
   const handleExpandListItem = (index: any, dateTime: any) => {
-    setCurrentOpenInstrument("");
+    if(setCurrentOpenInstrument) {
+      setCurrentOpenInstrument("");
+    }
     setSelectedNotification(selectedNotification === index ? "" : index);
     setSelectedRefId(index);
     setNotificationTimeStamp(dateTime);
