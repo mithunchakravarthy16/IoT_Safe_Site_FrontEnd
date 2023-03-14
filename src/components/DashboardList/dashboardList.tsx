@@ -31,13 +31,12 @@ const DashboardList: React.FC<any> = (props) => {
     JSON.parse(localStorage.getItem("theme")!)
   );
 
- 
-
   const [appTheme, setAppTheme] = useState<any>(theme?.defaultTheme);
   const [dataList, setDataList] = useState(
     formattedCardListData(tabIndex, equipmentData)
   );
   const [searchValue, setSearchValue] = useState<any>(dataList);
+  const [selectedRefId, setSelectedRefId] = useState<any>("");
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -68,6 +67,7 @@ const DashboardList: React.FC<any> = (props) => {
     searchClass,
     noResultStyle,
     customNotificationTabs,
+    listItemMainSection,
   } = useStyles(appTheme);
 
   const { equipment, aiCameras, envrSensor, floodSensor, search, noResult } =
@@ -111,6 +111,7 @@ const DashboardList: React.FC<any> = (props) => {
 
   const handleExpandListItem = (id: number) => {
     setSelectedNotification(selectedNotification === id ? "" : id);
+    setSelectedRefId(id);
   };
 
   const tabsList = [
@@ -139,11 +140,32 @@ const DashboardList: React.FC<any> = (props) => {
   const [selectedType, setSelectedType] = useState<string>();
   const [selectedId, setSelectedId] = useState<any>();
 
-  const handleInfoDialogue = (type: string, id: any)=>{
+  const handleInfoDialogue = (type: string, id: any) => {
     setShowInfoDialogue(true);
     setSelectedType(type);
     setSelectedId(id);
-  }
+  };
+
+  const refs =
+    searchValue && searchValue.length > 0
+      ? searchValue.reduce((acc: any, value: any) => {
+          acc[value.index] = createRef<any>();
+          return acc;
+        }, {})
+      : "";
+
+  useEffect(() => {
+    if ((selectedNotification || selectedRefId) && refs) {
+      setTimeout(() => {
+        refs[
+          selectedNotification ? selectedNotification : selectedRefId
+        ]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }, 300);
+    }
+  }, [refs, selectedRefId, selectedNotification]);
 
   return (
     <>
@@ -179,32 +201,34 @@ const DashboardList: React.FC<any> = (props) => {
             tabType={"listTab"}
           />
         </div>{" "}
-        {searchValue && searchValue?.length > 0 ? (
-          searchValue?.map((item: any, index: number) => {
-            return (
-              <DashboardListItems
-                data={item}
-                key={index}
-                selectedNotification={selectedNotification}
-                setSelectedNotification={setSelectedNotification}
-                handleExpandListItem={handleExpandListItem}
-                handleInfoDialogue={handleInfoDialogue}
-              />
-            );
-          })
-        ) : (
-          <div className={noResultStyle}>{noResult}</div>
-        )}
+        <div className={listItemMainSection}>
+          {searchValue && searchValue?.length > 0 ? (
+            searchValue?.map((item: any, index: number) => {
+              return (
+                <DashboardListItems
+                  refs={refs}
+                  data={item}
+                  key={index}
+                  selectedNotification={selectedNotification}
+                  setSelectedNotification={setSelectedNotification}
+                  handleExpandListItem={handleExpandListItem}
+                  handleInfoDialogue={handleInfoDialogue}
+                />
+              );
+            })
+          ) : (
+            <div className={noResultStyle}>{noResult}</div>
+          )}
+        </div>
       </div>
       <div>
-      {showInfoDialogue && (
-        <InfoDialog
-        selectedType={selectedType}
-        selectedId={selectedId}
-        setShowInfoDialogue={setShowInfoDialogue}
-          
-        />
-      )}
+        {showInfoDialogue && (
+          <InfoDialog
+            selectedType={selectedType}
+            selectedId={selectedId}
+            setShowInfoDialogue={setShowInfoDialogue}
+          />
+        )}
       </div>
     </>
   );

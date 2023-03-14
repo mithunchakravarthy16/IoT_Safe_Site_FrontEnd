@@ -191,57 +191,6 @@ const useStyles = makeStyles(
         position: "absolute",
         bottom: 0,
         transform: "translate(55px, 0px) !important",
-        [muiTheme.breakpoints.down(5761)]: {
-          transform: "translate(158px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(3841)]: {
-          transform: "translate(136px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(3073)]: {
-          transform: "translate(103px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(2733)]: {
-          transform: "translate(92px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(2561)]: {
-          transform: "translate(82px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(2049)]: {
-          transform: "translate(60px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1921)]: {
-          transform: "translate(56px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1793)]: {
-          transform: "translate(51px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1681)]: {
-          transform: "translate(47px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1601)]: {
-          transform: "translate(43px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1537)]: {
-          transform: "translate(41px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1401)]: {
-          transform: "translate(35px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1281)]: {
-          transform: "translate(30px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1181)]: {
-          transform: "translate(48px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1153)]: {
-          transform: "translate(46px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(1025)]: {
-          transform: "translate(38px, 0px) !important",
-        },
-        [muiTheme.breakpoints.down(801)]: {
-          transform: "translate(75px, 0px) !important",
-        },
       },
     }),
 
@@ -323,6 +272,69 @@ const useStyles = makeStyles(
         bottom: 0,
         transform: "translate(69px, 0px) !important",
         margin: "0px 0px 0px 15px",
+        [muiTheme.breakpoints.down(5761)]: {
+          transform: "translate(145px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(3841)]: {
+          transform: "translate(145px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(3073)]: {
+          transform: "translate(130px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(2733)]: {
+          transform: "translate(115px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(2561)]: {
+          transform: "translate(102px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(2049)]: {
+          transform: "translate(73px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(2001)]: {
+          transform: "translate(72px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1921)]: {
+          transform: "translate(66px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1874)]: {
+          transform: "translate(62px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1793)]: {
+          transform: "translate(57px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1681)]: {
+          transform: "translate(56px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1601)]: {
+          transform: "translate(51px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1537)]: {
+          transform: "translate(44px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1401)]: {
+          transform: "translate(35px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1281)]: {
+          transform: "translate(30px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1181)]: {
+          transform: "translate(57px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1153)]: {
+          transform: "translate(56px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(1025)]: {
+          transform: "translate(42px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(811)]: {
+          transform: "translate(90px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(769)]: {
+          transform: "translate(87px, 0px) !important",
+        },
+        [muiTheme.breakpoints.down(601)]: {
+          transform: "translate(57px, 0px) !important",
+        },
       },
     }),
     personIconClass: (props: any) => ({

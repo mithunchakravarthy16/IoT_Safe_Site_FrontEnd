@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -14,6 +15,21 @@ import { GrokList } from "elements";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
+  const [currentOpenAlert, setCurrentOpenAlert] = useState('')
+  const [currentOpenInstrument, setCurrentOpenInstrument] = useState('')
+
+  const dispatch: any = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALERTS_DATA",
+      payload: {},
+    });
+  }, []);
+
+  const alertsAPIData = useSelector(
+    (state: any) => state?.alertsResponse?.alertsDataValue
+  );
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
@@ -21,7 +37,6 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
-  const [selectedNotification, setSelectedNotification] = useState<any>(-1);
   const [alertsMainData, setAlertsMainData] = useState();
   const [tabIndex, setTabIndex] = useState<number>(1);
   const [searchOpen, setSearchOpen] = useState<any>(false);
@@ -48,7 +63,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     }
   }, [selectedTheme]);
 
-  const alertsMainList = alerts;
+  const alertsMainList = alertsAPIData;
 
   const [notifications, setNotifications] = useState([]);
   const [notificationTimeStamp, setNotificationTimeStamp] = useState();
@@ -57,15 +72,15 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     const { events, alerts, operations } = alertsMainList;
     const combinedNotifications: any = [];
 
-    events?.forEach((event, index) => {
+    events?.forEach((event:any, index:any) => {
       combinedNotifications.push({ ...event, type: "events" });
     });
 
-    alerts?.forEach((alerts, index) => {
+    alerts?.forEach((alerts:any, index:any) => {
       combinedNotifications.push({ ...alerts, type: "alerts" });
     });
 
-    operations?.forEach((operations, index) => {
+    operations?.forEach((operations:any, index:any) => {
       combinedNotifications.push({ ...operations, type: "operations" });
     });
 
@@ -76,7 +91,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     );
 
     setNotifications(dataValue);
-  }, []);
+  }, [alertsAPIData]);
 
   let currentTimeStampValue;
   let timeArrayNew: any = [];
@@ -108,7 +123,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   // const { width, height } = useWindowDimensions();
   const [chartWidth, setChartWidth] = useState<number>(480);
   const [chartHeight, setChartHeight] = useState<number>(275);
-  console.log(chartHeight, chartWidth);
+  
 
   useEffect(() => {
     if (dimension.width <= 1024) {
@@ -238,13 +253,18 @@ const GrokEyeContainer: React.FC<any> = (props) => {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-            <GrokList />
+            <GrokList
+              currentOpenAlert={currentOpenAlert}
+              setCurrentOpenAlert={setCurrentOpenAlert}
+              currentOpenInstrument={currentOpenInstrument}
+              setCurrentOpenInstrument={setCurrentOpenInstrument}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             {alertsData && alertsData?.length > 0 ? (
               <AlertsList
-                setSelectedNotification={setSelectedNotification}
-                selectedNotification={selectedNotification}
+                setSelectedNotification={setCurrentOpenInstrument}
+                selectedNotification={currentOpenInstrument}
                 tabIndex={tabIndex}
                 setTabIndex={setTabIndex}
                 setNotificationTimeStamp={setNotificationTimeStamp}
@@ -252,6 +272,10 @@ const GrokEyeContainer: React.FC<any> = (props) => {
                 alertsMainList={alertsMainList}
                 searchOpen={searchOpen}
                 setSearchOpen={setSearchOpen}
+                currentOpenAlert={currentOpenAlert}
+                setCurrentOpenAlert={setCurrentOpenAlert}
+                currentOpenInstrument={currentOpenInstrument}
+                setCurrentOpenInstrument={setCurrentOpenInstrument}
               />
             ) : (
               ""

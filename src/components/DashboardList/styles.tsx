@@ -8,6 +8,10 @@ const useStyles = makeStyles({
     borderLeft: `2px solid ${props?.palette?.dashboard?.lightGrey2}`,
     height: "calc(100vh - 124px)",
   }),
+  listItemMainSection: (props: any) => ({
+    height: "calc(100vh - 310px)",
+    overflow: "auto",
+  }),
   dashboarListTitle: (props: any) => ({
     display: "flex",
     justifyContent: "space-between",
@@ -46,7 +50,7 @@ const useStyles = makeStyles({
       marginRight: 7,
     },
     "& .MuiInputBase-root": {
-      fontWeight: 500,
+      // fontWeight: 500,
     },
   }),
 
