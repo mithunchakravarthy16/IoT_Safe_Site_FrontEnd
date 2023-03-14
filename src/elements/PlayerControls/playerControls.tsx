@@ -91,7 +91,13 @@ const PlayerControls: React.FC<any> = (props) => {
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const { controlWrapper, bottomIcon, volueSlider, fullScreenIcon, VideoDragIconClass } = useStyles(appTheme);
+  const {
+    controlWrapper,
+    bottomIcon,
+    volueSlider,
+    fullScreenIcon,
+    VideoDragIconClass,
+  } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -119,8 +125,6 @@ const PlayerControls: React.FC<any> = (props) => {
 
   const { aiCamera, zone } = useTranslation();
 
-  
-
   return (
     <>
       <div className={controlWrapper}>
@@ -139,11 +143,22 @@ const PlayerControls: React.FC<any> = (props) => {
           </Grid>
           <Grid item>
             <IconButton onClick={onToggleFullScreen} className={fullScreenIcon}>
-              <FullscreenIcon fontSize="small" />
+              <FullscreenIcon fontSize = {pageName === "infoVideo" ? "large" : "small"} />
             </IconButton>
-            
-            <img src={VideoDragIcon} alt="VideoDragIcon"  width={6} style={{color:"#fff !important", marginRight:"18px", position: "absolute", right:"-6px", top: "10px"}}/>
-            
+            {pageName !== "infoVideo" ? 
+            <img
+            src={VideoDragIcon}
+            alt="VideoDragIcon"
+            width={6}
+            style={{
+              color: "#fff !important",
+              marginRight: "18px",
+              position: "absolute",
+              right: "-6px",
+              top: "10px",
+            }}
+          />
+          : null}
             
           </Grid>
         </Grid>
@@ -176,17 +191,17 @@ const PlayerControls: React.FC<any> = (props) => {
             <Grid container alignItems="center" direction="row">
               <IconButton onClick={onPlayPause} className={bottomIcon}>
                 {playing && played !== 1 ? (
-                  <PauseIcon fontSize="small" />
+                  <PauseIcon fontSize={pageName === "infoVideo" ? "large" : "small"} />
                 ) : (
-                  <PlayArrowIcon fontSize="small" />
+                  <PlayArrowIcon fontSize={pageName === "infoVideo" ? "large" : "small"} />
                 )}
               </IconButton>
 
               <IconButton onClick={onMute} className={bottomIcon}>
                 {muted ? (
-                  <VolumeOffIcon fontSize="small" />
+                  <VolumeOffIcon fontSize={pageName === "infoVideo" ? "large" : "small"} />
                 ) : (
-                  <VolumeUpIcon fontSize="small" />
+                  <VolumeUpIcon fontSize={pageName === "infoVideo" ? "large" : "small"} />
                 )}
               </IconButton>
 
