@@ -532,7 +532,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
@@ -703,7 +703,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
@@ -806,7 +806,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
@@ -1054,7 +1054,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
@@ -1210,7 +1210,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
@@ -1282,7 +1282,7 @@ const grokEyeZonesList = [
                 {
                   label: "Operation Alert",
                   value: "3 days ago",
-                  icon: "waterlevel",
+                  icon: "operations",
                 },
               ],
             },
