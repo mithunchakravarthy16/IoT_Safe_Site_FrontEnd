@@ -23,9 +23,11 @@ const useStyles = makeStyles({
   itemText: {
     fontSize: 13,
     fontWeight: 600,
+    lineHeight: "19px",
     [muiTheme.breakpoints.down(1281)]: {
       fontSize: 13,
       fontWeight: 400,
+      lineHeight: "19px",
     },
   },
   tabHeadingText: {

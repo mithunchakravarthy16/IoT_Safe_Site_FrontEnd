@@ -2,8 +2,6 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
-
-  
   controlWrapper: (props: any) => ({
     position: "absolute",
     top: 0,
@@ -23,38 +21,31 @@ const useStyles = makeStyles(() => ({
     letterSpacing: 0.5,
   }),
 
-  
   bottomIcon: (props: any) => ({
+    position: "absolute",
+    top: "-7px",
+    left: "px",
     color: "#999 !important",
-    "&:hover":{
-      color:"fff !important"
-    }
+    "&:hover": {
+      color: "fff !important",
+    },
   }),
 
-  
   volueSlider: (props: any) => ({
     width: "10% !important",
+    "& .MuiSlider-track": {
+      height: "1px !important",
+    },
+    "& .MuiSlider-thumb": {
+      width: "12px !important",
+      height: "12px !important",
+    },
   }),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   fullScreenIconImgStyle: (props: any) => ({
     marginRight: 10,
     cursor: "pointer",
-    zIndex: "999"
+    zIndex: "999",
   }),
 
   customNotificationTabs: (props: any) => ({
@@ -93,7 +84,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   headerStyle: (props: any) => ({
     fontWeight: 700,
     fontSize: 20,
@@ -182,7 +172,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   subListRow: (props: any) => ({
     marginBottom: "12px !important",
     // [muiTheme.breakpoints.down(1350)]: {
@@ -199,11 +188,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "flex-end",
   }),
 
-
-
   subListSection: (props: any) => ({}),
- 
-
 }));
 
 export default useStyles;
