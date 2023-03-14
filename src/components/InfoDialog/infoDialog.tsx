@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Dialog from "@mui/material/Dialog";
@@ -6,7 +6,7 @@ import useTranslation from "../../localization/translations";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoSubList from "../InfoSubList";
-import Tooltip from "elements/Tooltip";
+
 // import dashboardInfoWindow from "../../mockdata/dashboardInfoWindow";
 import Tabs from "../../elements/Tabs";
 
@@ -23,9 +23,11 @@ import ReactPlayer from "react-player";
 import AlertsInfoContainer from "components/AlertsInfoContainer";
 import SampleVideoContent from "../../assets/AlertsInfoVideo/video";
 import RealTimeChart from "elements/RealTimeChart";
-import {FullScreenIcon} from "../../assets/InfoDialogueIcons"
+import { FullScreenIcon } from "../../assets/InfoDialogueIcons";
 import { getDashboardInfoWindowData } from "redux/actions/dashboardInfoWindowActions";
 import { useDispatch, useSelector } from "react-redux";
+import screenfull from 'screenfull';
+import PlayerControls from "elements/PlayerControls";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -54,6 +56,8 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
     height: "calc(100vh - 84px) !important",
   },
 }));
+
+
 
 interface ChildComponentProps {
   widthMemo: number;
@@ -138,6 +142,22 @@ const RealTimeGraph4 = React.memo<ChildComponentProps>(
   }
 );
 
+const formate = (seconds: any)=>{
+if(isNaN(seconds)){
+  return "00:00"
+}
+const date = new Date(seconds*1000)
+const hh = date.getUTCHours();
+const mm = date.getUTCMinutes();
+const ss = date.getUTCSeconds().toString().padStart(2,"0");
+
+if(hh){
+  return `${hh}:${mm.toString().padStart(2,"0")}:${ss}`
+}
+
+return `${mm}:${ss}`
+}
+
 const InfoDialog: React.FC<any> = (props) => {
   let { SampleVideo } = SampleVideoContent;
   const {
@@ -169,6 +189,9 @@ const InfoDialog: React.FC<any> = (props) => {
     fullScreenIconImgStyle,
     cameraTitleName,
     videoContainer,
+    controlWrapper,
+    bottomIcon,
+    volueSlider,
   } = useStyles(appTheme);
 
   const dispatch: any = useDispatch();
@@ -178,19 +201,27 @@ const InfoDialog: React.FC<any> = (props) => {
   }, []);
 
   const dashboardInfoWindowApiData = useSelector(
-    (state: any) => state?.dashboardInfoWindowResponse?.dashboardInfoWindowDataValue
+    (state: any) =>
+      state?.dashboardInfoWindowResponse?.dashboardInfoWindowDataValue
   );
 
-  
   const dashboardInfoWindow = dashboardInfoWindowApiData;
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
   );
 
-  const { temperature, humidity, carbonMonoxide, voc, waterLevel, rainfall, aiCamera, zone } =
-    useTranslation();
-   
+  const {
+    temperature,
+    humidity,
+    carbonMonoxide,
+    voc,
+    waterLevel,
+    rainfall,
+    aiCamera,
+    zone,
+  } = useTranslation();
+
   useEffect(() => {
     switch (selectedTheme) {
       case "red":
@@ -826,30 +857,101 @@ const InfoDialog: React.FC<any> = (props) => {
     return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   };
 
-  const [isFullScreen, setIsFullScreen] = useState(
-    document.fullscreenElement !== null ? false : true
-  );
+ 
 
-  const fullScreenView = (e: any) => {
+  
+
+ 
+
+
+
+ const playerContainerRef = useRef<any>(null);
+
+ const playerRef = useRef<any>(null);
+
+
+  const[state, setSate]= useState<any>({playing: true, muted: true, volume: 50, playbackRate:1.0, played: 0, seeking: false});
+
+  const{playing, muted, volume, playbackRate, played, seeking}=state;
+
+  const handlePlayPause = ()=>{
+
+    setSate({...state, playing: !state.playing})
+
+  }
+
+ 
+
+  const handleMute = ()=>{
+    setSate({...state, muted: !state.muted})
+  }
+
+  const handleVolumeChange = (e: any, newValue: any)=>{
+    
+    setSate(
+      {...state,
+      volume: (newValue/100),
+       muted: newValue === 0 ? true : false,
+      }
+       )
+  }
+
+  const handleVolumeSeekDown = (e: any, newValue: any)=> {
+    
+    setSate(
+      {...state,
+      volume: (newValue/100).toFixed(2),
+       muted: newValue === 0 ? true : false,
+      }
+       )
+  }
+
+  const handlePlaybackRateChange = (rate:any)=>{
+    setSate({...state, playbackRate: rate})
+  }
+
+  const toggleFullScreen = ()=> {
+    
+    screenfull.toggle(playerContainerRef.current)
+  }
+
+  const handleProgress = (changeState: any)=> {
    
-    if (document.fullscreenElement) {
-      // setIsFullScreen(true);
-      e.currentTarget?.exitFullscreen();
-      // document.exitFullscreen();
-    } else {
-      // setIsFullScreen(false);
-      e.currentTarget?.requestFullscreen();
+   if(!state.seeking){
+    setSate({...state, ...changeState})
+   }
+    
+  }
 
-      // document.body.requestFullscreen();
-    }
-  };
+  const handleSeekChange = (e: any, newValue: any)=>{
+    
+    setSate({...state, played: (newValue/100).toFixed(2)}) 
+  }
 
-  useEffect(() => {
-    document.addEventListener("fullscreenchange", (event) => {
-      setIsFullScreen((prev) => !prev);
-    });
-  }, []);
+  const handleSeekMouseDown = (e: any)=>{
+    
+    setSate({...state, seeking: true}) 
+  }
 
+  const handleSeekMouseUp = (e: any, newValue: any)=>{
+    
+    setSate({...state, seeking: false}) 
+    playerRef.current.seekTo(newValue/100)
+  }
+
+  const [timeDisplayFormate, setTimeDisplayFormate] = useState("normal")
+
+  const currentTimeVideo : any = playerRef.current ? playerRef.current.getCurrentTime() : "00:00";
+  const duration : any = playerRef.current ? playerRef.current.getDuration() : "00:00";
+
+  const elapsedTime = timeDisplayFormate === "normal" ? formate(currentTimeVideo) : `-${duration-currentTimeVideo}`;
+  const totalDuration = formate(duration);
+
+  const handleChangeDisplayFormate = ()=>{
+    setTimeDisplayFormate( timeDisplayFormate === "normal" ? "remaining" : "normal") 
+  }
+  
+  console.log("played", played)
   return (
     <>
       <DialogWrapper open={open}>
@@ -894,35 +996,52 @@ const InfoDialog: React.FC<any> = (props) => {
           {selectedType === "aiCameras" ? (
             <>
               <Grid item xs={12} className={iframVideoContainer}>
-              <div className={videoContainer}>
-              <div className={cameraTitleName}>
-                {" "}
-                <div>
-                {aiCamera} C# 3454 | {zone} 1                  
-                </div>
-                <div className={fullScreenIconImgStyle} onClick={fullScreenView}>
-                  <img src={FullScreenIcon} alt="FullScreenIcon" />
-                </div>
-              </div>
-                <ReactPlayer
-                  playing
-                  muted
-                  controls={true}
-                  // className={videoPlayerClass}
-                  url={SampleVideo}
-                  width="100%"
-                  height="100%"                
-                  config={{
-                    file: {
-                      attributes: {
-                        controlsList: "nodownload",
+                <div ref = {playerContainerRef} className={videoContainer}>
+                  
+                  <ReactPlayer
+                    ref={playerRef}
+                    playing={playing}
+                    muted={muted}
+                    // controls={true}
+                    // className={videoPlayerClass}
+                    url={SampleVideo}
+                    volume={volume}
+                    playbackRate={playbackRate}
+                    onProgress={handleProgress}
+                    width="100%"
+                    height="100%"
+                    config={{
+                      file: {
+                        attributes: {
+                          controlsList: "nodownload",
+                        },
                       },
-                    },
-                  }}
-                />
+                    }}
+                  />
+
+                  <PlayerControls
+                  onPlayPause={handlePlayPause}
+                  playing={playing}
+                  muted={muted}
+                  onMute={handleMute}
+                  onVolumeChange={handleVolumeChange}
+                  onVolumeSeekUp={handleVolumeSeekDown}
+                  volume={volume}
+                  // playbackRate={playbackRate}
+                  // onPlaybackRateChange={handlePlaybackRateChange}
+                  onToggleFullScreen = {toggleFullScreen}
+                  played={played}
+                  onSeek={handleSeekChange}
+                  onSeekMouseDown={handleSeekMouseDown}
+                  onSeekMouseUp={handleSeekMouseUp}
+                  elapsedTime={elapsedTime}
+                  totalDuration={totalDuration}
+                  onChangeDisplayFormate={handleChangeDisplayFormate}
+                  pageName={"infoVideo"}
+                  />               
+
                 </div>
               </Grid>
-              
             </>
           ) : selectedType === "envrSensors" ||
             selectedType === "floodSensors" ? (

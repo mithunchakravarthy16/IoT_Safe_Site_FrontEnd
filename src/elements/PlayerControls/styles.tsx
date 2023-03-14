@@ -3,36 +3,6 @@ import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
 
-  iframVideoContainer: (props: any) => ({
-    height: "calc(100vh - 355px)",
-
-    // border: "1px solid #fff",
-  }), 
-  
-  videoContainer: (props: any) => ({
-    position: "relative",
-    width: "98%",
-    margin: "15px 15px 0px 15px",
-    height: "calc(100vh - 360px)",
-
-   
-  }),
-
-  cameraTitleName: (props: any) => ({
-    position: "absolute",
-    top: 0,
-    background: "rgb(30, 31, 32, 63%);",
-    backdropFilter: "blur(2.5px)",
-    color: props?.palette?.dashboard?.white,
-    width: "100%",
-    padding: "5px 0px 5px 5px",
-    display: "flex",
-    justifyContent: "space-between",
-    fontSize: 13,
-    fontWeight: 800,
-    letterSpacing: 0.5,
-  }),
-
   
   controlWrapper: (props: any) => ({
     position: "absolute",
@@ -40,8 +10,8 @@ const useStyles = makeStyles(() => ({
     right: 0,
     bottom: 0,
     left: 0,
-    background: "rgb(30, 31, 32, 63%);",
-    backdropFilter: "blur(2.5px)",
+    // background: "rgb(30, 31, 32, 63%);",
+    // backdropFilter: "blur(2.5px)",
     color: props?.palette?.dashboard?.white,
     width: "100%",
     padding: "5px 0px 5px 5px",

@@ -17,6 +17,8 @@ const useStyles = makeStyles({
       overflow: " auto",
     },
   }),
+  dragListSytle: (props: any) => ({ margin: "10px 0px 0px 10px" }),
+
   floorMapContainerStyle: (props: any) => ({
     width: "100%",
     height: "calc(100vh - 114px)",

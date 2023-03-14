@@ -12,11 +12,12 @@ import useTranslation from "../../localization/translations";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useStyles from "./styles";
 import { GrokList } from "elements";
+import DraggableList from "elements/Draggable/draggableList";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
-  const [currentOpenAlert, setCurrentOpenAlert] = useState('')
-  const [currentOpenInstrument, setCurrentOpenInstrument] = useState('')
+  const [currentOpenAlert, setCurrentOpenAlert] = useState("");
+  const [currentOpenInstrument, setCurrentOpenInstrument] = useState("");
 
   const dispatch: any = useDispatch();
 
@@ -32,7 +33,7 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   );
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
+  const { alertsContainerMain, floorMapContainerStyle, dragListSytle } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -72,15 +73,15 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     const { events, alerts, operations } = alertsMainList;
     const combinedNotifications: any = [];
 
-    events?.forEach((event:any, index:any) => {
+    events?.forEach((event: any, index: any) => {
       combinedNotifications.push({ ...event, type: "events" });
     });
 
-    alerts?.forEach((alerts:any, index:any) => {
+    alerts?.forEach((alerts: any, index: any) => {
       combinedNotifications.push({ ...alerts, type: "alerts" });
     });
 
-    operations?.forEach((operations:any, index:any) => {
+    operations?.forEach((operations: any, index: any) => {
       combinedNotifications.push({ ...operations, type: "operations" });
     });
 
@@ -123,7 +124,6 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   // const { width, height } = useWindowDimensions();
   const [chartWidth, setChartWidth] = useState<number>(480);
   const [chartHeight, setChartHeight] = useState<number>(275);
-  
 
   useEffect(() => {
     if (dimension.width <= 1024) {
@@ -245,12 +245,20 @@ const GrokEyeContainer: React.FC<any> = (props) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={alertsContainerMain}>
           <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-            <VideoDragDrop
+            {/* <VideoDragDrop
               videoList={videoList}
               width={chartWidth}
               height={chartHeight}
               rowSize={2}
+            /> */}
+            <div className={dragListSytle}>
+            <DraggableList
+              width={chartWidth}
+              height={chartHeight}
+              videoList={videoList}
             />
+            </div>
+            
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             <GrokList
