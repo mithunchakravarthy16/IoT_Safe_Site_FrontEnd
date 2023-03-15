@@ -349,6 +349,10 @@ const InfoDialog: React.FC<any> = (props) => {
     }
   }, [selectedType, selectedId, dashboardInfoWindow]);
 
+
+  const zoneNumber = selectedId && selectedId?.charAt(selectedId?.length - 1);
+  
+
   const [open, setOpen] = useState(!false);
 
   const handleClose = () => {
@@ -1033,6 +1037,7 @@ const InfoDialog: React.FC<any> = (props) => {
                     totalDuration={totalDuration}
                     onChangeDisplayFormate={handleChangeDisplayFormate}
                     pageName={"infoVideo"}
+                    zoneNumber={zoneNumber}
                   />
                 </div>
               </Grid>

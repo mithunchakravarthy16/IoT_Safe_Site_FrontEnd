@@ -88,6 +88,7 @@ const PlayerControls: React.FC<any> = (props) => {
     onToggleFullScreen,
     item,
     pageName,
+    zoneNumber,
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -139,7 +140,7 @@ const PlayerControls: React.FC<any> = (props) => {
           <Grid item >
             <div>
               {pageName === "infoVideo"
-                ? `${aiCamera} C# 3454 | ${zone} 1 `
+                ? `${aiCamera} C# 3454 | ${zone} ${zoneNumber} `
                 : `${item?.cameraName} | ${item?.zone}`}
             </div>
           </Grid>
