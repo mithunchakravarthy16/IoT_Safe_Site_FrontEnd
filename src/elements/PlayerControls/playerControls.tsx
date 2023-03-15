@@ -133,8 +133,10 @@ const PlayerControls: React.FC<any> = (props) => {
           direction="row"
           alignContent="center"
           justifyContent="space-between"
+          alignItems="center"
+          style={{ background: "rgba(30, 31, 32, 63%)",  backdropFilter: "blur(2.5px)", paddingLeft:"10px"}}
         >
-          <Grid item>
+          <Grid item >
             <div>
               {pageName === "infoVideo"
                 ? `${aiCamera} C# 3454 | ${zone} 1 `
@@ -155,7 +157,7 @@ const PlayerControls: React.FC<any> = (props) => {
               marginRight: "18px",
               position: "absolute",
               right: "-6px",
-              top: "10px",
+              top: "12px",
             }}
           />
           : null}
