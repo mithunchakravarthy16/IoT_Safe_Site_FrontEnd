@@ -26,7 +26,7 @@ import RealTimeChart from "elements/RealTimeChart";
 import { FullScreenIcon } from "../../assets/InfoDialogueIcons";
 import { getDashboardInfoWindowData } from "redux/actions/dashboardInfoWindowActions";
 import { useDispatch, useSelector } from "react-redux";
-import screenfull from 'screenfull';
+import screenfull from "screenfull";
 import PlayerControls from "elements/PlayerControls";
 
 const DialogWrapper = styled(Dialog)(({ theme }) => ({
@@ -56,8 +56,6 @@ const DialogWrapper = styled(Dialog)(({ theme }) => ({
     height: "calc(100vh - 84px) !important",
   },
 }));
-
-
 
 interface ChildComponentProps {
   widthMemo: number;
@@ -142,21 +140,21 @@ const RealTimeGraph4 = React.memo<ChildComponentProps>(
   }
 );
 
-const formate = (seconds: any)=>{
-if(isNaN(seconds)){
-  return "00:00"
-}
-const date = new Date(seconds*1000)
-const hh = date.getUTCHours();
-const mm = date.getUTCMinutes();
-const ss = date.getUTCSeconds().toString().padStart(2,"0");
+const formate = (seconds: any) => {
+  if (isNaN(seconds)) {
+    return "00:00";
+  }
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds().toString().padStart(2, "0");
 
-if(hh){
-  return `${hh}:${mm.toString().padStart(2,"0")}:${ss}`
-}
+  if (hh) {
+    return `${hh}:${mm.toString().padStart(2, "0")}:${ss}`;
+  }
 
-return `${mm}:${ss}`
-}
+  return `${mm}:${ss}`;
+};
 
 const InfoDialog: React.FC<any> = (props) => {
   let { SampleVideo } = SampleVideoContent;
@@ -857,101 +855,99 @@ const InfoDialog: React.FC<any> = (props) => {
     return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   };
 
- 
+  const playerContainerRef = useRef<any>(null);
 
-  
+  const playerRef = useRef<any>(null);
 
- 
+  const [state, setSate] = useState<any>({
+    playing: true,
+    muted: true,
+    volume: 50,
+    playbackRate: 1.0,
+    played: 0,
+    seeking: false,
+  });
 
+  const { playing, muted, volume, playbackRate, played, seeking } = state;
 
+  useEffect(() => {
+    if (played === 1) {
+      setSate({ ...state, played: 0, playing: false });
+    }
+  }, [played]);
 
- const playerContainerRef = useRef<any>(null);
+  const handlePlayPause = () => {
+    setSate({ ...state, playing: !state.playing });
+  };
 
- const playerRef = useRef<any>(null);
+  const handleMute = () => {
+    setSate({ ...state, muted: !state.muted });
+  };
 
+  const handleVolumeChange = (e: any, newValue: any) => {
+    setSate({
+      ...state,
+      volume: newValue / 100,
+      muted: newValue === 0 ? true : false,
+    });
+  };
 
-  const[state, setSate]= useState<any>({playing: true, muted: true, volume: 50, playbackRate:1.0, played: 0, seeking: false});
+  const handleVolumeSeekDown = (e: any, newValue: any) => {
+    setSate({
+      ...state,
+      volume: (newValue / 100).toFixed(2),
+      muted: newValue === 0 ? true : false,
+    });
+  };
 
-  const{playing, muted, volume, playbackRate, played, seeking}=state;
+  const handlePlaybackRateChange = (rate: any) => {
+    setSate({ ...state, playbackRate: rate });
+  };
 
-  const handlePlayPause = ()=>{
+  const toggleFullScreen = () => {
+    screenfull.toggle(playerContainerRef.current);
+  };
 
-    setSate({...state, playing: !state.playing})
+  const handleProgress = (changeState: any) => {
+    if (!state.seeking) {
+      setSate({ ...state, ...changeState });
+    }
+  };
 
-  }
+  const handleSeekChange = (e: any, newValue: any) => {
+    setSate({ ...state, played: (newValue / 100).toFixed(2) });
+  };
 
- 
+  const handleSeekMouseDown = (e: any) => {
+    setSate({ ...state, seeking: true });
+  };
 
-  const handleMute = ()=>{
-    setSate({...state, muted: !state.muted})
-  }
+  const handleSeekMouseUp = (e: any, newValue: any) => {
+    setSate({ ...state, seeking: false });
+    playerRef.current.seekTo(newValue / 100);
+  };
 
-  const handleVolumeChange = (e: any, newValue: any)=>{
-    
-    setSate(
-      {...state,
-      volume: (newValue/100),
-       muted: newValue === 0 ? true : false,
-      }
-       )
-  }
+  const [timeDisplayFormate, setTimeDisplayFormate] = useState("normal");
 
-  const handleVolumeSeekDown = (e: any, newValue: any)=> {
-    
-    setSate(
-      {...state,
-      volume: (newValue/100).toFixed(2),
-       muted: newValue === 0 ? true : false,
-      }
-       )
-  }
+  const currentTimeVideo: any = playerRef.current
+    ? playerRef.current.getCurrentTime()
+    : "00:00";
+  const duration: any = playerRef.current
+    ? playerRef.current.getDuration()
+    : "00:00";
 
-  const handlePlaybackRateChange = (rate:any)=>{
-    setSate({...state, playbackRate: rate})
-  }
-
-  const toggleFullScreen = ()=> {
-    
-    screenfull.toggle(playerContainerRef.current)
-  }
-
-  const handleProgress = (changeState: any)=> {
-   
-   if(!state.seeking){
-    setSate({...state, ...changeState})
-   }
-    
-  }
-
-  const handleSeekChange = (e: any, newValue: any)=>{
-    
-    setSate({...state, played: (newValue/100).toFixed(2)}) 
-  }
-
-  const handleSeekMouseDown = (e: any)=>{
-    
-    setSate({...state, seeking: true}) 
-  }
-
-  const handleSeekMouseUp = (e: any, newValue: any)=>{
-    
-    setSate({...state, seeking: false}) 
-    playerRef.current.seekTo(newValue/100)
-  }
-
-  const [timeDisplayFormate, setTimeDisplayFormate] = useState("normal")
-
-  const currentTimeVideo : any = playerRef.current ? playerRef.current.getCurrentTime() : "00:00";
-  const duration : any = playerRef.current ? playerRef.current.getDuration() : "00:00";
-
-  const elapsedTime = timeDisplayFormate === "normal" ? formate(currentTimeVideo) : `-${duration-currentTimeVideo}`;
+  const elapsedTime =
+    timeDisplayFormate === "normal"
+      ? formate(currentTimeVideo)
+      : `-${duration - currentTimeVideo}`;
   const totalDuration = formate(duration);
 
-  const handleChangeDisplayFormate = ()=>{
-    setTimeDisplayFormate( timeDisplayFormate === "normal" ? "remaining" : "normal") 
-  }
-  
-  
+  const handleChangeDisplayFormate = () => {
+    setTimeDisplayFormate(
+      timeDisplayFormate === "normal" ? "remaining" : "normal"
+    );
+  };
+
   return (
     <>
       <DialogWrapper open={open}>
@@ -996,8 +992,7 @@ const InfoDialog: React.FC<any> = (props) => {
           {selectedType === "aiCameras" ? (
             <>
               <Grid item xs={12} className={iframVideoContainer}>
-                <div ref = {playerContainerRef} className={videoContainer}>
-                  
+                <div ref={playerContainerRef} className={videoContainer}>
                   <ReactPlayer
                     ref={playerRef}
                     playing={playing}
@@ -1020,26 +1015,25 @@ const InfoDialog: React.FC<any> = (props) => {
                   />
 
                   <PlayerControls
-                  onPlayPause={handlePlayPause}
-                  playing={playing}
-                  muted={muted}
-                  onMute={handleMute}
-                  onVolumeChange={handleVolumeChange}
-                  onVolumeSeekUp={handleVolumeSeekDown}
-                  volume={volume}
-                  // playbackRate={playbackRate}
-                  // onPlaybackRateChange={handlePlaybackRateChange}
-                  onToggleFullScreen = {toggleFullScreen}
-                  played={played}
-                  onSeek={handleSeekChange}
-                  onSeekMouseDown={handleSeekMouseDown}
-                  onSeekMouseUp={handleSeekMouseUp}
-                  elapsedTime={elapsedTime}
-                  totalDuration={totalDuration}
-                  onChangeDisplayFormate={handleChangeDisplayFormate}
-                  pageName={"infoVideo"}
-                  />               
-
+                    onPlayPause={handlePlayPause}
+                    playing={playing}
+                    muted={muted}
+                    onMute={handleMute}
+                    onVolumeChange={handleVolumeChange}
+                    onVolumeSeekUp={handleVolumeSeekDown}
+                    volume={volume}
+                    // playbackRate={playbackRate}
+                    // onPlaybackRateChange={handlePlaybackRateChange}
+                    onToggleFullScreen={toggleFullScreen}
+                    played={played}
+                    onSeek={handleSeekChange}
+                    onSeekMouseDown={handleSeekMouseDown}
+                    onSeekMouseUp={handleSeekMouseUp}
+                    elapsedTime={elapsedTime}
+                    totalDuration={totalDuration}
+                    onChangeDisplayFormate={handleChangeDisplayFormate}
+                    pageName={"infoVideo"}
+                  />
                 </div>
               </Grid>
             </>
