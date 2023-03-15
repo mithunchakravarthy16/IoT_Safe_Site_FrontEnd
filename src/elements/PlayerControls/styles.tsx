@@ -2,46 +2,14 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
-
-  iframVideoContainer: (props: any) => ({
-    height: "calc(100vh - 355px)",
-
-    // border: "1px solid #fff",
-  }), 
-  
-  videoContainer: (props: any) => ({
-    position: "relative",
-    width: "98%",
-    margin: "15px 15px 0px 15px",
-    height: "calc(100vh - 360px)",
-
-   
-  }),
-
-  cameraTitleName: (props: any) => ({
-    position: "absolute",
-    top: 0,
-    background: "rgb(30, 31, 32, 63%);",
-    backdropFilter: "blur(2.5px)",
-    color: props?.palette?.dashboard?.white,
-    width: "100%",
-    padding: "5px 0px 5px 5px",
-    display: "flex",
-    justifyContent: "space-between",
-    fontSize: 13,
-    fontWeight: 800,
-    letterSpacing: 0.5,
-  }),
-
-  
   controlWrapper: (props: any) => ({
     position: "absolute",
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    background: "rgb(30, 31, 32, 63%);",
-    backdropFilter: "blur(2.5px)",
+    // background: "rgb(30, 31, 32, 63%);",
+    // backdropFilter: "blur(2.5px)",
     color: props?.palette?.dashboard?.white,
     width: "100%",
     padding: "5px 0px 5px 5px",
@@ -53,38 +21,47 @@ const useStyles = makeStyles(() => ({
     letterSpacing: 0.5,
   }),
 
-  
   bottomIcon: (props: any) => ({
+    
     color: "#999 !important",
-    "&:hover":{
-      color:"fff !important"
-    }
+    "&:hover": {
+      color: "fff !important",
+    },
   }),
 
-  
+  fullScreenIcon: (props: any) => ({
+    position: "absolute",
+    top: "-7px",
+    right: "20px",
+    color: "#fff !important",
+    "&:hover": {
+      color: "#fff !important",
+    },
+  }),
+
   volueSlider: (props: any) => ({
     width: "10% !important",
+    color: "#5A5757 !important",
+    "& .MuiSlider-track": {
+      height: "1px !important",
+    },
+    "& .MuiSlider-thumb": {
+      width: "12px !important",
+      height: "12px !important",
+      backgroundColor: "#fff",
+    },
   }),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  VideoDragIconClass: (props: any) => ({
+    color:"#fff !important",
+     marginRight:"18px"
+  }),
 
   fullScreenIconImgStyle: (props: any) => ({
     marginRight: 10,
     cursor: "pointer",
-    zIndex: "999"
+    zIndex: "999",
   }),
 
   customNotificationTabs: (props: any) => ({
@@ -123,7 +100,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   headerStyle: (props: any) => ({
     fontWeight: 700,
     fontSize: 20,
@@ -212,7 +188,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   subListRow: (props: any) => ({
     marginBottom: "12px !important",
     // [muiTheme.breakpoints.down(1350)]: {
@@ -229,11 +204,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "flex-end",
   }),
 
-
-
   subListSection: (props: any) => ({}),
- 
-
 }));
 
 export default useStyles;

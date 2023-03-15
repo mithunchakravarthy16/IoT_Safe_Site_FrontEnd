@@ -1,9 +1,7 @@
 import { makeStyles } from "@mui/styles";
-
 const useStyles = makeStyles({
   videoBoxStyle: (props: any) => ({
     position: "relative",
-    margin: "15px 0px 0px 15px",
   }),
   cameraTitleName: (props: any) => ({
     position: "absolute",
@@ -11,8 +9,8 @@ const useStyles = makeStyles({
     background: props?.palette?.dashboard?.blackGrayWhite, //blackGrayWhite
     backdropFilter: "blur(2.5px)",
     color: props?.palette?.dashboard?.white,
-    width: "99%",
-    padding: "5px 0px 5px 5px",
+    width: "97.5%",
+    padding: "10px 0px 10px 10px",
     display: "flex",
     justifyContent: "space-between",
     fontSize: 13,
@@ -20,13 +18,17 @@ const useStyles = makeStyles({
     letterSpacing: 0.5,
   }),
   dragListContainerStyle: (props: any) => ({
-    width: "100%",
-    height: "calc(100vh - 100px)",
-    overflow: "scroll",
+    display: "flex",
+    flexWrap: "wrap",
+    rowGap: "0px",
+    columnGap: "10px",
+    cursor: "default",
+    height: "calc(100vh - 133px)",
   }),
   dragIconImageStyle: (props: any) => ({
     marginRight: 10,
     cursor: "pointer",
   }),
+  dragListItemStyle: (props: any) => ({}),
 });
 export default useStyles;
