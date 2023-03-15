@@ -24,7 +24,7 @@ const AlertsList: React.FC<any> = (props) => {
     alertsMainList,
     searchOpen,
     setSearchOpen,
-    setCurrentOpenInstrument
+    setCurrentOpenInstrument,
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -132,7 +132,7 @@ const AlertsList: React.FC<any> = (props) => {
   };
 
   const handleExpandListItem = (index: any, dateTime: any) => {
-    if(setCurrentOpenInstrument) {
+    if (setCurrentOpenInstrument) {
       setCurrentOpenInstrument("");
     }
     setSelectedNotification(selectedNotification === index ? "" : index);
@@ -151,23 +151,23 @@ const AlertsList: React.FC<any> = (props) => {
   const refs =
     searchValue && searchValue.length > 0
       ? searchValue.reduce((acc: any, value: any) => {
-          acc[value.id] = createRef<any>();
+          acc[value.index] = createRef<any>();
           return acc;
         }, {})
       : "";
 
   useEffect(() => {
-    if ((selectedMarker || selectedRefId) && refs) {
+    if ((selectedNotification || selectedRefId) && refs) {
       setTimeout(() => {
         refs[
-          selectedMarker ? selectedMarker : selectedRefId
+          selectedNotification ? selectedNotification : selectedRefId
         ]?.current?.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
         });
       }, 300);
     }
-  }, [refs, selectedRefId, selectedMarker, selectedNotification]);
+  }, [refs, selectedRefId, selectedNotification]);
 
   return (
     <>

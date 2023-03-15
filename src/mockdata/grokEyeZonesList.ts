@@ -544,105 +544,6 @@ const grokEyeZonesList = [
     id: "zone-02",
     name: "Zone 2",
     instruments: [
-      // {
-      //   id: "instrument-03",
-      //   indicator: "alert",
-      //   name: "Environment Sensors",
-      //   sensors: [
-      //     {
-      //       indicator: "alert",
-      //       name: "Environment Sensor #1",
-      //       bodySectionItems: [
-      //         {
-      //           label: "Temperature",
-      //           value: "25°C",
-      //           icon: "temperature",
-      //         },
-      //         {
-      //           label: "Humidity",
-      //           value: "40%",
-      //           icon: "humidity",
-      //         },
-      //         {
-      //           label: "Carbon Monoxide",
-      //           value: "36Kg",
-      //           icon: "co2",
-      //         },
-      //         {
-      //           label: "VOC ‘S",
-      //           value: "551",
-      //           icon: "voc",
-      //         },
-      //         {
-      //           label: "Particulates",
-      //           value: "136µg/m³",
-      //           icon: "particulates",
-      //         },
-      //         {
-      //           label: "Noise",
-      //           value: "70dBA",
-      //           icon: "noise",
-      //         },
-      //         {
-      //           label: "Pressure",
-      //           value: "10hPa",
-      //           icon: "pressure",
-      //         },
-      //         {
-      //           label: "Light",
-      //           value: "60%",
-      //           icon: "light",
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       indicator: "alert",
-      //       name: "Environment Sensor #2",
-      //       bodySectionItems: [
-      //         {
-      //           label: "Temperature",
-      //           value: "25°C",
-      //           icon: "temperature",
-      //         },
-      //         {
-      //           label: "Humidity",
-      //           value: "40%",
-      //           icon: "humidity",
-      //         },
-      //         {
-      //           label: "Carbon Monoxide",
-      //           value: "36Kg",
-      //           icon: "co2",
-      //         },
-      //         {
-      //           label: "VOC ‘S",
-      //           value: "551",
-      //           icon: "voc",
-      //         },
-      //         {
-      //           label: "Particulates",
-      //           value: "136µg/m³",
-      //           icon: "particulates",
-      //         },
-      //         {
-      //           label: "Noise",
-      //           value: "70dBA",
-      //           icon: "noise",
-      //         },
-      //         {
-      //           label: "Pressure",
-      //           value: "10hPa",
-      //           icon: "pressure",
-      //         },
-      //         {
-      //           label: "Light",
-      //           value: "60%",
-      //           icon: "light",
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
       {
         id: "instrument-44",
         indicator: "alert",
@@ -692,17 +593,17 @@ const grokEyeZonesList = [
             bodySectionItems: [
               {
                 label: "Incidents",
-                value: "32 min ago",
+                value: "12 min ago",
                 icon: "incident",
               },
               {
                 label: "Motion",
-                value: "5 sec ago",
+                value: "25 sec ago",
                 icon: "motion",
               },
               {
                 label: "Operation Alert",
-                value: "3 days ago",
+                value: "1 day ago",
                 icon: "operations",
               },
             ],
@@ -795,17 +696,17 @@ const grokEyeZonesList = [
             bodySectionItems: [
               {
                 label: "Incidents",
-                value: "32 min ago",
+                value: "42 min ago",
                 icon: "incident",
               },
               {
                 label: "Motion",
-                value: "5 sec ago",
+                value: "35 sec ago",
                 icon: "motion",
               },
               {
                 label: "Operation Alert",
-                value: "3 days ago",
+                value: "2 days ago",
                 icon: "operations",
               },
             ],
@@ -1043,17 +944,17 @@ const grokEyeZonesList = [
             bodySectionItems: [
               {
                 label: "Incidents",
-                value: "32 min ago",
+                value: "12 min ago",
                 icon: "incident",
               },
               {
                 label: "Motion",
-                value: "5 sec ago",
+                value: "35 sec ago",
                 icon: "motion",
               },
               {
                 label: "Operation Alert",
-                value: "3 days ago",
+                value: "1 day ago",
                 icon: "operations",
               },
             ],
@@ -1199,17 +1100,17 @@ const grokEyeZonesList = [
             bodySectionItems: [
               {
                 label: "Incidents",
-                value: "32 min ago",
+                value: "42 min ago",
                 icon: "incident",
               },
               {
                 label: "Motion",
-                value: "5 sec ago",
+                value: "355 sec ago",
                 icon: "motion",
               },
               {
                 label: "Operation Alert",
-                value: "3 days ago",
+                value: "2 days ago",
                 icon: "operations",
               },
             ],
@@ -1281,7 +1182,7 @@ const grokEyeZonesList = [
               },
               {
                 label: "Operation Alert",
-                value: "3 days ago",
+                value: "1 day ago",
                 icon: "operations",
               },
             ],
