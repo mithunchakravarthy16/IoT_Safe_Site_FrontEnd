@@ -56,6 +56,7 @@ const AlertsList: React.FC<any> = (props) => {
     setTabIndex(index);
     setSearchOpen(false);
     setSelectedNotification("");
+    setSelectedRefId("");
   };
 
   useEffect(() => {
@@ -168,6 +169,31 @@ const AlertsList: React.FC<any> = (props) => {
       }, 300);
     }
   }, [refs, selectedRefId, selectedNotification]);
+
+  useEffect(() => {
+    if (selectedNotification === -1 || selectedNotification === "") {
+      if (tabIndex === 0 && refs[1]) {
+        refs[1]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+      if (tabIndex === 1 && refs[6]) {
+        refs[6]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+      if (tabIndex === 2 && refs[16]) {
+        setTimeout(() => {
+          refs[16]?.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        }, 300);
+      }
+    }
+  }, [tabIndex, refs, selectedNotification]);
 
   return (
     <>
