@@ -2,20 +2,21 @@ import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
-
   iframVideoContainer: (props: any) => ({
     height: "calc(100vh - 355px)",
 
     // border: "1px solid #fff",
-  }), 
-  
+  }),
+
   videoContainer: (props: any) => ({
     position: "relative",
-    width: "98%",
+    // width: "98%",
     margin: "15px 15px 0px 15px",
-    height: "calc(100vh - 360px)",
-
-   
+    // height: "calc(100vh - 360px)",
+    "& video": {
+      height: "calc(100vh - 356px) !important",
+      objectFit: "fill",
+    },
   }),
 
   cameraTitleName: (props: any) => ({
@@ -33,7 +34,6 @@ const useStyles = makeStyles(() => ({
     letterSpacing: 0.5,
   }),
 
-  
   controlWrapper: (props: any) => ({
     position: "absolute",
     top: 0,
@@ -53,38 +53,21 @@ const useStyles = makeStyles(() => ({
     letterSpacing: 0.5,
   }),
 
-  
   bottomIcon: (props: any) => ({
     color: "#999 !important",
-    "&:hover":{
-      color:"fff !important"
-    }
+    "&:hover": {
+      color: "fff !important",
+    },
   }),
 
-  
   volueSlider: (props: any) => ({
     width: "10% !important",
   }),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   fullScreenIconImgStyle: (props: any) => ({
     marginRight: 10,
     cursor: "pointer",
-    zIndex: "999"
+    zIndex: "999",
   }),
 
   customNotificationTabs: (props: any) => ({
@@ -123,7 +106,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   headerStyle: (props: any) => ({
     fontWeight: 700,
     fontSize: 20,
@@ -212,7 +194,6 @@ const useStyles = makeStyles(() => ({
     },
   }),
 
-  
   subListRow: (props: any) => ({
     marginBottom: "12px !important",
     // [muiTheme.breakpoints.down(1350)]: {
@@ -229,11 +210,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "flex-end",
   }),
 
-
-
   subListSection: (props: any) => ({}),
- 
-
 }));
 
 export default useStyles;
