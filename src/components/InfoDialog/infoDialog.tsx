@@ -349,9 +349,7 @@ const InfoDialog: React.FC<any> = (props) => {
     }
   }, [selectedType, selectedId, dashboardInfoWindow]);
 
-
   const zoneNumber = selectedId && selectedId?.charAt(selectedId?.length - 1);
-  
 
   const [open, setOpen] = useState(!false);
 
