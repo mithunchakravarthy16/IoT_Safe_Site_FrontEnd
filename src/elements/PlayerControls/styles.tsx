@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     // backdropFilter: "blur(2.5px)",
     color: props?.palette?.dashboard?.white,
     width: "100%",
-    padding: "5px 0px 5px 5px",
+    // padding: "5px 0px 5px 5px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
 
   fullScreenIcon: (props: any) => ({
     position: "absolute",
-    top: "-7px",
+    top: "0px",
     right: "20px",
     color: "#fff !important",
     "&:hover": {

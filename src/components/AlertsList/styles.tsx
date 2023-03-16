@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     cursor: "pointer",
   }),
   dashboardListSection: (props: any) => ({
-    height: "calc(100vh - 263px)",
+    height: "calc(100vh - 326px)",
     overflow: "auto",
     marginRight: "-12px",
     marginTop: 10,

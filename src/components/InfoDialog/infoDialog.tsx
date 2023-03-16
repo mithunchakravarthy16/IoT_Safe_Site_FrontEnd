@@ -349,6 +349,8 @@ const InfoDialog: React.FC<any> = (props) => {
     }
   }, [selectedType, selectedId, dashboardInfoWindow]);
 
+  const zoneNumber = selectedId && selectedId?.charAt(selectedId?.length - 1);
+
   const [open, setOpen] = useState(!false);
 
   const handleClose = () => {
@@ -870,6 +872,12 @@ const InfoDialog: React.FC<any> = (props) => {
 
   const { playing, muted, volume, playbackRate, played, seeking } = state;
 
+  useEffect(() => {
+    if (played === 1) {
+      setSate({ ...state, played: 0, playing: false });
+    }
+  }, [played]);
+
   const handlePlayPause = () => {
     setSate({ ...state, playing: !state.playing });
   };
@@ -1027,6 +1035,7 @@ const InfoDialog: React.FC<any> = (props) => {
                     totalDuration={totalDuration}
                     onChangeDisplayFormate={handleChangeDisplayFormate}
                     pageName={"infoVideo"}
+                    zoneNumber={zoneNumber}
                   />
                 </div>
               </Grid>
