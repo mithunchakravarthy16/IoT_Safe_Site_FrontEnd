@@ -66,6 +66,9 @@ const GrokList = (props: any) => {
 
             return id
         })
+
+        const container = document.getElementById(`instr-${id}`)
+        container?.scrollIntoView({behavior: 'smooth'})
     }
 
     return (
@@ -87,7 +90,7 @@ const GrokList = (props: any) => {
                         <ZoneContent>
                             {
                                 zone.instruments.map((instrument:any) => (
-                                    <InstrumentContainer>
+                                    <InstrumentContainer id={`instr-${instrument.id}`}>
                                         <InstrumentHeader highlighted={instrument.id === currentOpenInstrument} onClick={() => onInstrumentClick(instrument.id)} >
                                             <span>{instrument.name} ({instrument.sensors.length})</span>
                                             <FlexSpace />
