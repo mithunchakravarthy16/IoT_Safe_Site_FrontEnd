@@ -12,11 +12,12 @@ import useTranslation from "../../localization/translations";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useStyles from "./styles";
 import { GrokList } from "elements";
+import DraggableList from "elements/Draggable/draggableList";
 
 const GrokEyeContainer: React.FC<any> = (props) => {
   const {} = props;
-  const [currentOpenAlert, setCurrentOpenAlert] = useState('')
-  const [currentOpenInstrument, setCurrentOpenInstrument] = useState('')
+  const [currentOpenAlert, setCurrentOpenAlert] = useState("");
+  const [currentOpenInstrument, setCurrentOpenInstrument] = useState("");
 
   const dispatch: any = useDispatch();
 
@@ -32,7 +33,8 @@ const GrokEyeContainer: React.FC<any> = (props) => {
   );
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const { alertsContainerMain, floorMapContainerStyle } = useStyles(appTheme);
+  const { alertsContainerMain, floorMapContainerStyle, dragListSytle } =
+    useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -72,15 +74,15 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     const { events, alerts, operations } = alertsMainList;
     const combinedNotifications: any = [];
 
-    events?.forEach((event:any, index:any) => {
+    events?.forEach((event: any, index: any) => {
       combinedNotifications.push({ ...event, type: "events" });
     });
 
-    alerts?.forEach((alerts:any, index:any) => {
+    alerts?.forEach((alerts: any, index: any) => {
       combinedNotifications.push({ ...alerts, type: "alerts" });
     });
 
-    operations?.forEach((operations:any, index:any) => {
+    operations?.forEach((operations: any, index: any) => {
       combinedNotifications.push({ ...operations, type: "operations" });
     });
 
@@ -119,138 +121,134 @@ const GrokEyeContainer: React.FC<any> = (props) => {
     { cameraName: `${aiCamera} C# 3459`, zone: `${zone} 6` },
   ];
 
-  const [dimension, setDimention] = useState({ width: 0, height: 0 });
+  // const [dimension, setDimention] = useState({ width: 0, height: 0 });
   // const { width, height } = useWindowDimensions();
-  const [chartWidth, setChartWidth] = useState<number>(480);
-  const [chartHeight, setChartHeight] = useState<number>(275);
-  
+  // const [chartWidth, setChartWidth] = useState<number>(580);
+  // const [chartHeight, setChartHeight] = useState<number>(305);
 
-  useEffect(() => {
-    if (dimension.width <= 1024) {
-      setChartWidth(410);
-      setChartHeight(135);
-    } else if (dimension.height <= 600) {
-      setChartWidth(410);
-      setChartHeight(80);
-    } else if (dimension.height <= 633) {
-      setChartWidth(410);
-      setChartHeight(100);
-    } else if (dimension.height <= 720) {
-      setChartWidth(410);
-      setChartHeight(118);
-    } else if (dimension.height <= 768) {
-      setChartWidth(410);
-      setChartHeight(140);
-    } else if (dimension.height <= 800) {
-      setChartWidth(410);
-      setChartHeight(150);
-    } else if (dimension.height <= 820) {
-      setChartWidth(410);
-      setChartHeight(160);
-    } else if (dimension.height <= 820) {
-      setChartWidth(410);
-      setChartHeight(160);
-    } else if (dimension.height <= 881) {
-      setChartWidth(410);
-      setChartHeight(160);
-    } else if (dimension.height <= 900) {
-      setChartWidth(410);
-      setChartHeight(176);
-    } else if (dimension.height <= 937) {
-      setChartWidth(410);
-      setChartHeight(176);
-    } else if (dimension.height <= 960) {
-      setChartWidth(410);
-      setChartHeight(204);
-    } else if (dimension.height <= 1024) {
-      setChartWidth(410);
-      setChartHeight(183);
-    } else if (dimension.height <= 1050) {
-      setChartWidth(410);
-      setChartHeight(215);
-    } else if (dimension.height <= 1080) {
-      setChartWidth(410);
-      setChartHeight(220);
-    } else if (dimension.height <= 1201) {
-      setChartWidth(410);
-      setChartHeight(260);
-    } else if (dimension.height <= 1280) {
-      setChartWidth(410);
-      setChartHeight(280);
-    } else if (dimension.height <= 1600) {
-      setChartWidth(410);
-      setChartHeight(392);
-    } else if (dimension.width <= 1152) {
-      setChartWidth(410);
-      setChartHeight(142);
-    } else if (dimension.width <= 1280) {
-      setChartWidth(410);
-      setChartHeight(210);
-    } else if (dimension.width <= 1280) {
-      setChartWidth(410);
-      setChartHeight(210);
-    } else if (dimension.width <= 1280) {
-      setChartWidth(410);
-      setChartHeight(210);
-    } else if (dimension.width <= 1366) {
-      setChartWidth(410);
-      setChartHeight(94);
-    } else if (dimension.width <= 1536) {
-      setChartWidth(410);
-      setChartHeight(150);
-    } else if (dimension.width <= 1600) {
-      setChartWidth(410);
-      setChartHeight(158);
-    } else if (dimension.width <= 1680) {
-      setChartWidth(410);
-      setChartHeight(200);
-    } else if (dimension.width <= 1792) {
-      setChartWidth(410);
-      setChartHeight(230);
-    } else if (dimension.width <= 1792) {
-      setChartWidth(410);
-      setChartHeight(230);
-    } else if (dimension.width <= 2560) {
-      setChartWidth(410);
-      setChartHeight(170);
-    } else if (dimension.width <= 2732) {
-      setChartWidth(410);
-      setChartHeight(540);
-    } else if (dimension.width <= 3072) {
-      setChartWidth(410);
-      setChartHeight(622);
-    } else if (dimension.width <= 3840) {
-      setChartWidth(410);
-      setChartHeight(575);
-    } else if (dimension.width <= 5120) {
-      setChartWidth(410);
-      setChartHeight(750);
-    } else if (dimension.width <= 5760) {
-      setChartWidth(410);
-      setChartHeight(930);
-    }
-  }, [dimension.width, dimension.height]);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setDimention({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   if (width <= 1024) {
+  //     setChartWidth(410);
+  //     setChartHeight(135);
+  //   } else if (height <= 600) {
+  //     setChartWidth(410);
+  //     setChartHeight(80);
+  //   } else if (height <= 633) {
+  //     setChartWidth(410);
+  //     setChartHeight(100);
+  //   } else if (height <= 720) {
+  //     setChartWidth(410);
+  //     setChartHeight(118);
+  //   } else if (height <= 768) {
+  //     setChartWidth(410);
+  //     setChartHeight(140);
+  //   } else if (height <= 800) {
+  //     setChartWidth(410);
+  //     setChartHeight(150);
+  //   } else if (height <= 820) {
+  //     setChartWidth(410);
+  //     setChartHeight(160);
+  //   } else if (height <= 820) {
+  //     setChartWidth(410);
+  //     setChartHeight(160);
+  //   } else if (height <= 881) {
+  //     setChartWidth(410);
+  //     setChartHeight(160);
+  //   } else if (height <= 900) {
+  //     setChartWidth(410);
+  //     setChartHeight(176);
+  //   } else if (height <= 937) {
+  //     setChartWidth(410);
+  //     setChartHeight(176);
+  //   } else if (height <= 960) {
+  //     setChartWidth(410);
+  //     setChartHeight(204);
+  //   } else if (height <= 1024) {
+  //     setChartWidth(410);
+  //     setChartHeight(183);
+  //   } else if (height <= 1050) {
+  //     setChartWidth(410);
+  //     setChartHeight(215);
+  //   } else if (height <= 1080) {
+  //     setChartWidth(410);
+  //     setChartHeight(220);
+  //   } else if (height <= 1201) {
+  //     setChartWidth(410);
+  //     setChartHeight(260);
+  //   } else if (height <= 1280) {
+  //     setChartWidth(410);
+  //     setChartHeight(280);
+  //   } else if (height <= 1600) {
+  //     setChartWidth(410);
+  //     setChartHeight(392);
+  //   } else if (width <= 1152) {
+  //     setChartWidth(410);
+  //     setChartHeight(142);
+  //   } else if (width <= 1280) {
+  //     setChartWidth(410);
+  //     setChartHeight(210);
+  //   } else if (width <= 1280) {
+  //     setChartWidth(410);
+  //     setChartHeight(210);
+  //   } else if (width <= 1280) {
+  //     setChartWidth(410);
+  //     setChartHeight(210);
+  //   } else if (width <= 1366) {
+  //     setChartWidth(410);
+  //     setChartHeight(94);
+  //   } else if (width <= 1536) {
+  //     setChartWidth(410);
+  //     setChartHeight(150);
+  //   } else if (width <= 1600) {
+  //     setChartWidth(410);
+  //     setChartHeight(158);
+  //   } else if (width <= 1680) {
+  //     setChartWidth(410);
+  //     setChartHeight(200);
+  //   } else if (width <= 1792) {
+  //     setChartWidth(410);
+  //     setChartHeight(230);
+  //   } else if (width <= 1792) {
+  //     setChartWidth(410);
+  //     setChartHeight(230);
+  //   } else if (width <= 1921) {
+  //     setChartWidth(410);
+  //     setChartHeight(230);
+  //   } else if (width <= 2560) {
+  //     setChartWidth(410);
+  //     setChartHeight(170);
+  //   } else if (width <= 2732) {
+  //     setChartWidth(410);
+  //     setChartHeight(540);
+  //   } else if (width <= 3072) {
+  //     setChartWidth(410);
+  //     setChartHeight(622);
+  //   } else if (width <= 3840) {
+  //     setChartWidth(410);
+  //     setChartHeight(575);
+  //   } else if (width <= 5120) {
+  //     setChartWidth(410);
+  //     setChartHeight(750);
+  //   } else if (width <= 5760) {
+  //     setChartWidth(410);
+  //     setChartHeight(930);
+  //   }
+  // }, [width, height]);
 
   return (
     <Fragment>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container className={alertsContainerMain}>
           <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-            <VideoDragDrop
+            {/* <VideoDragDrop
               videoList={videoList}
               width={chartWidth}
               height={chartHeight}
               rowSize={2}
-            />
+            /> */}
+            <div className={dragListSytle}>
+              <DraggableList width={460} height={275} videoList={videoList} />
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             <GrokList

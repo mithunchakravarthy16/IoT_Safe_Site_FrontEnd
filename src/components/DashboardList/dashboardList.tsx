@@ -107,6 +107,7 @@ const DashboardList: React.FC<any> = (props) => {
     setTabIndex(index);
     setSearchOpen(false);
     setSelectedNotification("");
+    setSelectedRefId("");
   };
 
   const handleExpandListItem = (id: number) => {
@@ -167,6 +168,31 @@ const DashboardList: React.FC<any> = (props) => {
       }, 300);
     }
   }, [refs, selectedRefId, selectedNotification]);
+
+  useEffect(() => {
+    if (selectedNotification === -1 || selectedNotification === "") {
+      if (tabIndex === 0 && refs[1]) {
+        refs[1]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+      if (tabIndex === 1 && refs[7]) {
+        refs[7]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+      if (tabIndex === 2 && refs[17]) {
+        setTimeout(() => {
+          refs[17]?.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        }, 300);
+      }
+    }
+  }, [tabIndex, refs, selectedNotification]);
 
   return (
     <>

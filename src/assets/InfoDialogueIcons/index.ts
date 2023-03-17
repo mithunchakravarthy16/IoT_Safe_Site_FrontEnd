@@ -16,6 +16,7 @@ import WaterFallIcon from "./waterFallIcon.svg";
 import RainFallIcon from "./rainFallIcon.svg";
 import BatteryIcon from "./batteryIcon.svg";
 import DeleteIcon from "./deleteButton.svg";
+import FullScreenIcon from "./fullScreenIcon.svg";
 
 
 
@@ -38,5 +39,5 @@ export{
     RainFallIcon,
     BatteryIcon,
     DeleteIcon,
-   
+    FullScreenIcon,
 };

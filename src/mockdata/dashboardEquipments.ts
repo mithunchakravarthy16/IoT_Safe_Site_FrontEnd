@@ -28,7 +28,7 @@ const dashboardEquipments = {
         area: "Construction Area, Zone 2",
         connectivityPercentage: "69%",
         incidentsObservation: "12 min ago",
-        operationAlertObservation: "1 days ago",
+        operationAlertObservation: "1 day ago",
         motionObservation: "25 sec ago",
         timeStamp: "12-15-2022 | 09:00 AM",
         location: {
@@ -58,7 +58,7 @@ const dashboardEquipments = {
         area: "Construction Area, Zone 4",
         connectivityPercentage: "59%",
         incidentsObservation: "12 min ago",
-        operationAlertObservation: "1 days ago",
+        operationAlertObservation: "1 day ago",
         motionObservation: "35 sec ago",
         timeStamp: "12-15-2022 | 09:00 AM",
         location: {
@@ -88,7 +88,7 @@ const dashboardEquipments = {
         area: "Construction Area, Zone 6",
         connectivityPercentage: "79%",
         incidentsObservation: "32 min ago",
-        operationAlertObservation: "1 days ago",
+        operationAlertObservation: "1 day ago",
         motionObservation: "5 sec ago",
         timeStamp: "12-15-2022 | 09:00 AM",
         location: {

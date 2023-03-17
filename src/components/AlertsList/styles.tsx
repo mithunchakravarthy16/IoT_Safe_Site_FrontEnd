@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     cursor: "pointer",
   }),
   dashboardListSection: (props: any) => ({
-    height: "calc(100vh - 263px)",
+    height: "calc(100vh - 326px)",
     overflow: "auto",
     marginRight: "-12px",
     marginTop: 10,
@@ -69,6 +69,7 @@ const useStyles = makeStyles({
     },
     "& .MuiTab-root": {
       padding: "10px 12px",
+      minHeight: "88px !important",
       [muiTheme.breakpoints.down(1281)]: {
         padding: "6px 12px",
       },
