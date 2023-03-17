@@ -44,6 +44,7 @@ const Map: React.FC<any> = (props) => {
   const [selectedTitle, setSelectedTitle] = useState<string>();
 
   const handleInfoDialogue = (type: string, id: any) => {
+    setSelectedNotification("");
     if (pageName === "Dashboard") {
       setShowInfoDialogue(true);
       setSelectedType(type);

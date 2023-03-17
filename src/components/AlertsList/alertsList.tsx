@@ -145,7 +145,7 @@ const AlertsList: React.FC<any> = (props) => {
   const [selectedTitle, setSelectedTitle] = useState<string>();
 
   const handleInfoDialogue = (evt: React.MouseEvent, title: string) => {
-    evt.stopPropagation()
+    setSelectedNotification("")
     setShowInfoDialogue(true);
     setSelectedTitle(title);
   };

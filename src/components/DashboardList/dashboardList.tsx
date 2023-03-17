@@ -142,7 +142,7 @@ const DashboardList: React.FC<any> = (props) => {
   const [selectedId, setSelectedId] = useState<any>();
 
   const handleInfoDialogue = (evt: React.MouseEvent, type: string, id: any) => {
-    evt.stopPropagation()
+    setSelectedNotification("");
     setShowInfoDialogue(true);
     setSelectedType(type);
     setSelectedId(id);
