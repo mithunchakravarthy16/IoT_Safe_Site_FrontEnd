@@ -95,8 +95,8 @@ const AlertsListItem: React.FC<any> = (props) => {
               <div className={expandedListButtonContainer}>
                 <div
                   className={expandedListButtonStyle}
-                  onClick={() => {
-                    handleInfoDialogue(observation);
+                  onClick={(evt) => {
+                    handleInfoDialogue(evt, observation);
                   }}
                 >
                   <Tooltip tooltipValue={viewDetails}>

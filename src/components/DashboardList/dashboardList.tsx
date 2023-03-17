@@ -141,7 +141,8 @@ const DashboardList: React.FC<any> = (props) => {
   const [selectedType, setSelectedType] = useState<string>();
   const [selectedId, setSelectedId] = useState<any>();
 
-  const handleInfoDialogue = (type: string, id: any) => {
+  const handleInfoDialogue = (evt: React.MouseEvent, type: string, id: any) => {
+    evt.stopPropagation()
     setShowInfoDialogue(true);
     setSelectedType(type);
     setSelectedId(id);

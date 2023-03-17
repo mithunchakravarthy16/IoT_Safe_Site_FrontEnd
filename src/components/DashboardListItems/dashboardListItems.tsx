@@ -167,8 +167,8 @@ const DashboardListItems: React.FC<any> = (props) => {
               <div className={expandedListButtonContainer}>
                 <div
                   className={expandedListButtonStyle}
-                  onClick={() => {
-                    handleInfoDialogue(type, id);
+                  onClick={(evt) => {
+                    handleInfoDialogue(evt, type, id);
                   }}
                 >
                   <Tooltip tooltipValue={viewDetails}>
