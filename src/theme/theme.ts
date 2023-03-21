@@ -19,6 +19,8 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.darkBlack2,
+        adminLogoBg: colorCodes.adminLogoBg,
+        adminLoginButton: colorCodes.adminLoginButton,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -130,6 +132,8 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.darkBlack2,
+        adminLogoBg: colorCodes.adminLogoBg,
+        adminLoginButton: colorCodes.adminLoginButton,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -241,6 +245,8 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.darkBlack2,
+        adminLogoBg: colorCodes.adminLogoBg,
+        adminLoginButton: colorCodes.adminLoginButton,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -352,6 +358,8 @@ let theme = {
         loginButton: colorCodes.blue,
         atthirate: colorCodes.lightBlue,
         logoBg: colorCodes.darkBlack2,
+        adminLogoBg: colorCodes.adminLogoBg,
+        adminLoginButton: colorCodes.adminLoginButton,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
