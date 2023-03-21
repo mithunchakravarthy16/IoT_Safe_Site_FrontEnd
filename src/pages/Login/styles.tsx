@@ -329,5 +329,11 @@ const useStyles = makeStyles(() => ({
       width: "100%",
     },
   }),
+  adminLoginLink: (props: any) => ({
+    color: props?.palette?.login?.linkColor,
+    textAlign: "center",
+    marginTop: "12px",
+    cursor: "pointer",
+  }),
 }));
 export default useStyles;

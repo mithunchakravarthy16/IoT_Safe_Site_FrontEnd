@@ -73,11 +73,15 @@ const Login = () => {
     forgotPassword,
     copyRights,
     zurichLogo,
+    adminLoginLink,
   } = useStyles(appTheme);
 
   useEffect(() => {
     if (user && user?.userName) {
-      localStorage.setItem("user", JSON.stringify({ role: user?.currentRoleType }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ role: user?.currentRoleType })
+      );
       navigate("/dashboard");
     }
   }, [user]);
@@ -119,9 +123,9 @@ const Login = () => {
   const height: any = window.innerHeight;
   const width: any = window.innerWidth;
 
-  const handleAdminLogin = () =>{
-    navigate("/adminLogin")
-  }
+  const handleAdminLogin = () => {
+    navigate("/adminLogin");
+  };
 
   return (
     <>
@@ -129,7 +133,7 @@ const Login = () => {
         <Grid item xs={12} className={loginFormSection}>
           <div className={loginWidth}>
             <Grid item xs={12} className={logoSection}>
-              <img src={gdSafeSite} />  
+              <img src={gdSafeSite} />
             </Grid>
             <Grid item xs={12}>
               <Box className={innerForm}>
@@ -140,7 +144,7 @@ const Login = () => {
                   <div className={welcomeSection}>
                     <p className={welcomeContent}>
                       {/* Test Build ( {width} X {height} ) */}
-                      Welcome  <div onClick={handleAdminLogin}> Admin Login</div>
+                      Welcome Admin Login
                     </p>
                   </div>
                   <div className={outlineInputField}>
@@ -197,6 +201,9 @@ const Login = () => {
                     <Button variant="contained" fullWidth type="submit">
                       Login
                     </Button>
+                  </div>
+                  <div className={adminLoginLink} onClick={handleAdminLogin}>
+                    Admin Login
                   </div>
                 </form>
               </Box>
