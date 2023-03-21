@@ -120,5 +120,6 @@ let colorCodes = {
   adminLogoBg:
     "linear-gradient(91.57deg, #2C47A4 0.29%, #152F8A 48.72%, #0F246D 95.93%)",
   adminLoginButton: "#1A3175",
+  linkColor: "#0040ff",
 };
 export default colorCodes;

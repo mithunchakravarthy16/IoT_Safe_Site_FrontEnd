@@ -21,6 +21,7 @@ let theme = {
         logoBg: colorCodes.darkBlack2,
         adminLogoBg: colorCodes.adminLogoBg,
         adminLoginButton: colorCodes.adminLoginButton,
+        linkColor: colorCodes.linkColor,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -134,6 +135,7 @@ let theme = {
         logoBg: colorCodes.darkBlack2,
         adminLogoBg: colorCodes.adminLogoBg,
         adminLoginButton: colorCodes.adminLoginButton,
+        linkColor: colorCodes.linkColor,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -247,6 +249,7 @@ let theme = {
         logoBg: colorCodes.darkBlack2,
         adminLogoBg: colorCodes.adminLogoBg,
         adminLoginButton: colorCodes.adminLoginButton,
+        linkColor: colorCodes.linkColor,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
@@ -360,6 +363,7 @@ let theme = {
         logoBg: colorCodes.darkBlack2,
         adminLogoBg: colorCodes.adminLogoBg,
         adminLoginButton: colorCodes.adminLoginButton,
+        linkColor: colorCodes.linkColor,
       },
       grokList: {
         zoneContainerBackground: "#D9D9D9",
