@@ -77,7 +77,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user && user?.userName) {
-      localStorage.setItem("user", JSON.stringify({ role: "ADMIN" }));
+      localStorage.setItem("user", JSON.stringify({ role: user?.currentRoleType }));
       navigate("/dashboard");
     }
   }, [user]);
@@ -119,13 +119,17 @@ const Login = () => {
   const height: any = window.innerHeight;
   const width: any = window.innerWidth;
 
+  const handleAdminLogin = () =>{
+    navigate("/adminLogin")
+  }
+
   return (
     <>
       <Grid container className={loginBannerSection}>
         <Grid item xs={12} className={loginFormSection}>
           <div className={loginWidth}>
             <Grid item xs={12} className={logoSection}>
-              <img src={gdSafeSite} />
+              <img src={gdSafeSite} />  
             </Grid>
             <Grid item xs={12}>
               <Box className={innerForm}>
@@ -136,7 +140,7 @@ const Login = () => {
                   <div className={welcomeSection}>
                     <p className={welcomeContent}>
                       {/* Test Build ( {width} X {height} ) */}
-                      Welcome
+                      Welcome  <div onClick={handleAdminLogin}> Admin Login</div>
                     </p>
                   </div>
                   <div className={outlineInputField}>
