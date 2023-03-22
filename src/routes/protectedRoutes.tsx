@@ -5,9 +5,9 @@ import useAuth from '../hooks/useAuth';
 const ProtectedRoutes = (props:any) => {
     const { auth, role } = useAuth()
     //if the role required is there or not
-    if (props.roleRequired) {
+    if (props.role) {
         return auth ? (
-            props.roleRequired === role ? (
+            props.role === role ? (
                 <Outlet />
             ) : (
                 <Navigate to="/denied" />

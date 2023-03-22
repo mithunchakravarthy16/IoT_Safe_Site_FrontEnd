@@ -8,19 +8,17 @@ import { OutlinedInput } from "@mui/material";
 import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import gdSafeSite from "../../assets/login/gd-save-site.svg";
-import zurich from "../../assets/login/Zurich-logo.svg";
+import gdSafeSite from "../../assets/Admin-login/developer-tools.svg";
 import EyeOff from "../../assets/login/lock.svg";
 import OpenEyeIcon from "../../assets/login/lock.svg";
 import AttherateIcon from "../../assets/login/atthirate.svg";
-import saveSiteLogo from "../../assets/login/gd-save-site.svg";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
 
-const Login = () => {
+const AdminLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -56,7 +54,6 @@ const Login = () => {
   const {
     loginBannerSection,
     loginFormSection,
-    loginBannerContent,
     logoSection,
     welcomeSection,
     welcomeContent,
@@ -71,20 +68,7 @@ const Login = () => {
     attherate,
     radioButtonSection,
     forgotPassword,
-    copyRights,
-    zurichLogo,
-    adminLoginLink,
   } = useStyles(appTheme);
-
-  useEffect(() => {
-    if (user && user?.userName) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ role: user?.currentRoleType })
-      );
-      navigate("/dashboard");
-    }
-  }, [user]);
 
   const formik = useFormik({
     initialValues: {
@@ -116,15 +100,16 @@ const Login = () => {
     },
   });
 
-  const handlePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleLogin = () => {
+    localStorage.setItem("user", JSON.stringify({ role: "ADMIN" }));
+    navigate("/devTools");
   };
-
-  const height: any = window.innerHeight;
-  const width: any = window.innerWidth;
-
   const handleAdminLogin = () => {
     navigate("/adminLogin");
+  };
+
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -138,14 +123,8 @@ const Login = () => {
             <Grid item xs={12}>
               <Box className={innerForm}>
                 <form onSubmit={formik.handleSubmit}>
-                  <div className={zurichLogo}>
-                    <img src={zurich} />
-                  </div>
                   <div className={welcomeSection}>
-                    <p className={welcomeContent}>
-                      {/* Test Build ( {width} X {height} ) */}
-                      Welcome Admin Login
-                    </p>
+                    <p className={welcomeContent}>Welcome to admin panel</p>
                   </div>
                   <div className={outlineInputField}>
                     <p className={inputTitle}>Your Email</p>
@@ -198,26 +177,23 @@ const Login = () => {
                     <p className={forgotPassword}>Forgot Password?</p>
                   </div>
                   <div className={loginButton}>
-                    <Button variant="contained" fullWidth type="submit">
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      type="submit"
+                      onClick={handleLogin}
+                    >
                       Login
                     </Button>
-                  </div>
-                  <div className={adminLoginLink} onClick={handleAdminLogin}>
-                    Admin Login
                   </div>
                 </form>
               </Box>
             </Grid>
           </div>
         </Grid>
-        <div className={copyRights}>
-          <span>Powered by</span>
-          <img src={saveSiteLogo} />
-          <span>© 2023. All Rights Reserved</span>
-        </div>
       </Grid>
     </>
   );
 };
 
-export default Login;
+export default AdminLogin;

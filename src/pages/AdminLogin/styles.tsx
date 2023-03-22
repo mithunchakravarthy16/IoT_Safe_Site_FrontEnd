@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-import safeSizeBg from "../../assets/login/Safe-Site-Login-Bg.jpg";
+import safeSizeBg from "../../assets/Admin-login/admin-login-bg.png";
 import muiTheme from "../../theme/muiTheme";
 
 const useStyles = makeStyles(() => ({
@@ -71,8 +71,8 @@ const useStyles = makeStyles(() => ({
   }),
   logoSection: (props: any) => ({
     textAlign: "center",
-    padding: "35px 2px",
-    background: props?.palette?.login?.logoBg,
+    padding: "42px 2px",
+    background: props?.palette?.login?.adminLogoBg,
     boxShadow: "0px 4px 15px rgb(0 0 0 / 5%)",
     borderRadius: "5px 5px 0px 0px",
     "& img": {
@@ -112,10 +112,11 @@ const useStyles = makeStyles(() => ({
     },
   }),
   welcomeContent: (props: any) => ({
-    fontFamily: `'Nunito Sans', sans-serif'`,
-    fontWeight: " 700",
-    fontSize: "34px",
+    fontFamily: `'Montserrat', sans-serif'`,
+    fontWeight: "700",
+    fontSize: "26px",
     lineHeight: "42px",
+    textTransform: "uppercase",
     color: props?.palette?.login?.welcomeContent,
     [muiTheme.breakpoints.down(1547)]: {
       fontSize: "24px",
@@ -234,7 +235,7 @@ const useStyles = makeStyles(() => ({
   }),
   loginButton: (props: any) => ({
     "& .MuiButtonBase-root": {
-      background: props?.palette?.login?.loginButton,
+      background: props?.palette?.login?.adminLoginButton,
       borderRadius: "5px",
       fontFamily: `'Nunito Sans', sans-serif'`,
       fontWeight: "500",
@@ -244,7 +245,7 @@ const useStyles = makeStyles(() => ({
       textTransform: "Capitalize",
       padding: 18,
       "&:hover": {
-        background: props?.palette?.login?.loginButton,
+        background: props?.palette?.login?.adminLoginButton,
       },
       [muiTheme.breakpoints.down(1547)]: {
         padding: 12,
@@ -272,68 +273,6 @@ const useStyles = makeStyles(() => ({
   }),
   outlineInputField: (props: any) => ({
     position: "relative",
-  }),
-  copyRights: (props: any) => ({
-    color: props?.palette?.login?.loginFormBg,
-    position: "fixed",
-    bottom: "0%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    display: "flex",
-    justifyContent: "center",
-    "& span": {
-      fontFamily: `'Nunito Sans', sans-serif'`,
-      fontWeight: " 500",
-      fontSize: "16px",
-      lineHeight: "30px",
-      [muiTheme.breakpoints.down(1350)]: {
-        fontWeight: " 500",
-        fontSize: "11px",
-        lineHeight: "20px",
-      },
-    },
-    "& img": {
-      margin: "0 8px",
-      width: 150,
-      [muiTheme.breakpoints.down(1350)]: {
-        width: "100px",
-      },
-      [muiTheme.breakpoints.down(1281)]: {
-        width: "100px",
-      },
-      [muiTheme.breakpoints.down(1025)]: {
-        width: "100px",
-      },
-    },
-    [muiTheme.breakpoints.down(1367)]: {
-      position: "absolute",
-      bottom: "8px",
-    },
-    [muiTheme.breakpoints.down(1350)]: {
-      position: "absolute",
-      bottom: "8px",
-    },
-    [muiTheme.breakpoints.down(1350)]: {
-      fontWeight: " 500",
-      fontSize: "12px",
-      lineHeight: "20px",
-    },
-    [muiTheme.breakpoints.down(1025)]: {
-      fontWeight: " 500",
-      fontSize: "12px",
-      lineHeight: "20px",
-    },
-    [muiTheme.breakpoints.down(769)]: {
-      position: "absolute",
-      bottom: "8px",
-      width: "100%",
-    },
-  }),
-  adminLoginLink: (props: any) => ({
-    color: props?.palette?.login?.linkColor,
-    textAlign: "center",
-    marginTop: "12px",
-    cursor: "pointer",
   }),
 }));
 export default useStyles;

@@ -109,14 +109,17 @@ let colorCodes = {
   goldenOrangeColor: "#E0791A",
   lightGrayShade5: "rgba(157, 160, 171, 1)",
   blackGrayWhite: "rgba(30, 31, 32, 0.63)",
- 
 
-  greenShades : "#20E89C",
+  greenShades: "#20E89C",
   blueShades: "#3C81EF",
   indianRed: "#CD5959",
   yellowShades: "#EDA230",
 
   darkGray: "#C7C7C7",
-  blackShades1: "#1F1E1E"
+  blackShades1: "#1F1E1E",
+  adminLogoBg:
+    "linear-gradient(91.57deg, #2C47A4 0.29%, #152F8A 48.72%, #0F246D 95.93%)",
+  adminLoginButton: "#1A3175",
+  linkColor: "#0040ff",
 };
 export default colorCodes;
