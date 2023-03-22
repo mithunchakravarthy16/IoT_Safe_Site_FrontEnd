@@ -77,8 +77,8 @@ const dashboardEquipments = {
         motionObservation: "35 sec ago",
         timeStamp: "12-15-2022 | 09:00 AM",
         location: {
-          lat: 39.95428076168706,
-          lng: -75.19098373315772,
+          lat: 39.954280748005736, 
+          lng: -75.19046871486617,
         },
       },
       {

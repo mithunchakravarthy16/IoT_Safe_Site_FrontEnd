@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     RootContainer,
@@ -35,6 +35,8 @@ const GrokList = (props: any) => {
     } = props;
 
     const {raiseAlert, call} = useTranslation()
+    const [prevScrollPosition, setPrevScrollPosition] = useState(0);
+    const rootContainerRef = useRef<any>(null);
  
     const dispatch: any = useDispatch();
 
@@ -57,25 +59,32 @@ const GrokList = (props: any) => {
         leave: { opacity: 0 },
     });
 
-    const onInstrumentClick = (id: string) => {
+    const onInstrumentClick = (id: string, zone: string) => {
         setCurrentOpenAlert("")
         setCurrentOpenInstrument((prev: any) => {
             if(prev === id) {
+                if(rootContainerRef?.current) {
+                    rootContainerRef.current.scrollTop = prevScrollPosition
+                }
                 return ""
             }
-
+            setPrevScrollPosition(rootContainerRef?.current?.scrollTop || 0)
             return id
         })
 
         const container = document.getElementById(`instr-${id}`)
-        container?.scrollIntoView({behavior: 'smooth'})
+        container?.scrollIntoView({behavior: 'smooth', block: 'start'})
+
+        if(zone === grokEyeZoneList[grokEyeZoneList.length-1].id) {
+            rootContainerRef.current.scrollTop = rootContainerRef.current.clientHeight
+        }
     }
 
     return (
-        <RootContainer>
+        <RootContainer ref={rootContainerRef} >
             {
                 grokEyeZoneList && grokEyeZoneList.length > 0 && grokEyeZoneList?.map((zone: any) => (
-                    <ZoneContainer>
+                    <ZoneContainer key={zone?.id} >
                         <ZoneHeader>
                             <ZoneTitle>{zone.name}</ZoneTitle>
                             <FlexSpace />
@@ -90,8 +99,8 @@ const GrokList = (props: any) => {
                         <ZoneContent>
                             {
                                 zone.instruments.map((instrument:any) => (
-                                    <InstrumentContainer id={`instr-${instrument.id}`}>
-                                        <InstrumentHeader highlighted={instrument.id === currentOpenInstrument} onClick={() => onInstrumentClick(instrument.id)} >
+                                    <InstrumentContainer key={instrument?.id} >
+                                        <InstrumentHeader highlighted={instrument.id === currentOpenInstrument} onClick={() => onInstrumentClick(instrument.id, zone.id)} >
                                             <span>{instrument.name} ({instrument.sensors.length})</span>
                                             <FlexSpace />
                                             <IndicatorLED type={instrument.indicator} />
@@ -107,7 +116,7 @@ const GrokList = (props: any) => {
                                                     <InstrumentContent>
                                                         {
                                                             instrument.sensors.map((sensor:any) => (
-                                                                <InstrumentItemContainer>
+                                                                <InstrumentItemContainer key={sensor.id} >
                                                                     <InstrumentItemHeader>
                                                                         <span>{sensor.name}</span>
                                                                         <FlexSpace />
@@ -137,6 +146,7 @@ const GrokList = (props: any) => {
                                             :
                                             null
                                         }
+                                        <div id={`instr-${instrument.id}`} ></div>
                                     </InstrumentContainer>
                                 ))
                             }
