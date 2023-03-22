@@ -145,6 +145,7 @@ const useStyles = makeStyles({
   }),
   listItemCloseIcon: (props: any) => ({
     cursor: "pointer",
+    alignSelf: "flex-start"
   }),
   infoIconListContainer: (props: any) => ({
     margin: 5,
