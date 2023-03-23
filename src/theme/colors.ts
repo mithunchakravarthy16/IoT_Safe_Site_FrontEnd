@@ -81,7 +81,6 @@ let colorCodes = {
 
   blackShade: "#2B2B2B",
   orangeShade1: "#FF5910",
-
   grayShade: "#CCCCCC",
   lightGrayShade: "#C4C4C4",
   lightBlueShade: "#949FFF",
