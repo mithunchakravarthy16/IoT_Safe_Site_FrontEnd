@@ -33,7 +33,7 @@ const useStyles = makeStyles(
       background: props?.palette?.login?.adminLogoBg,
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",
       zIndex: 1500,
-      padding: "11px 16px",
+      padding: "11px 42px",
       position: "fixed",
       top: 0,
     }),
