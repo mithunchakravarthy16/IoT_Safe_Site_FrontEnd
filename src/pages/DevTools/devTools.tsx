@@ -2,7 +2,7 @@ import { useState, Fragment, useEffect } from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import AdminHeader from "components/AdminHeader";
-
+import ColorPicker from "elements/ColorPicker";
 import useStyles from "./styles";
 
 const DevTools = () => {
@@ -36,6 +36,12 @@ const DevTools = () => {
   useEffect(() => {
     setActivePage(0);
   }, []);
+
+  const [state, updateState] = useState("#FFFFFF");
+
+  const handleInput = (e: any) => {
+    updateState(e.target.value);
+  };
   return (
     <Fragment>
       <Grid container>
@@ -69,6 +75,7 @@ const DevTools = () => {
               <Grid container className={adminRightPanelHeader}>
                 <Grid item xs={6}>
                   <p className={colorSchemeHeading}>Color Scheme</p>
+                  <ColorPicker onChange={handleInput} value={state} />
                 </Grid>
                 <Grid item xs={6} className={adminHeaderButtonSection}>
                   <Button variant="outlined" className={previewButton}>
