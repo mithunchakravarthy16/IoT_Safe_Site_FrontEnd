@@ -4,9 +4,8 @@ import styled from "styled-components";
 const Container = styled.span`
   display: inline-flex;
   align-items: center;
-  width: 250px;
   max-width: auto;
-  padding: 10px 10px;
+  padding: 8px;
   border: 1px solid #bfc9d9;
   border-radius: 4px;
 
