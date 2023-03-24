@@ -3,6 +3,13 @@ import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import AdminHeader from "components/AdminHeader";
 import ColorPicker from "elements/ColorPicker";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import Select from "../../elements/Select";
+import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import useStyles from "./styles";
 
 const DevTools = () => {
@@ -18,6 +25,14 @@ const DevTools = () => {
     updateButton,
     colorSchemeHeading,
     innerPanel,
+    backgroundColor,
+    radioButtonHeader,
+    adminRightPanelBody,
+    adminRightPanelBackgroundColor,
+    customSelects,
+    adminPlusIconClass,
+    colorPickerItem,
+    radioButton,
   } = useStyles();
 
   const [activePage, setActivePage] = useState<any>();
@@ -33,6 +48,13 @@ const DevTools = () => {
     { name: "Font Family", id: 3 },
     { name: "Components", id: 4 },
   ];
+  const selectList = [
+    { label: "H1", value: "H1" },
+    { label: "H2", value: "H2" },
+    { label: "H3", value: "H3" },
+    { label: "H4", value: "H4" },
+    { label: "H5", value: "H5" },
+  ];
   useEffect(() => {
     setActivePage(0);
   }, []);
@@ -42,6 +64,7 @@ const DevTools = () => {
   const handleInput = (e: any) => {
     updateState(e.target.value);
   };
+
   return (
     <Fragment>
       <Grid container>
@@ -75,7 +98,6 @@ const DevTools = () => {
               <Grid container className={adminRightPanelHeader}>
                 <Grid item xs={6}>
                   <p className={colorSchemeHeading}>Color Scheme</p>
-                  <ColorPicker onChange={handleInput} value={state} />
                 </Grid>
                 <Grid item xs={6} className={adminHeaderButtonSection}>
                   <Button variant="outlined" className={previewButton}>
@@ -87,6 +109,120 @@ const DevTools = () => {
                   <Button variant="contained" className={updateButton}>
                     Update
                   </Button>
+                </Grid>
+              </Grid>
+              <p className={backgroundColor}>Background color</p>
+              <Grid container className={adminRightPanelBody}>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Login</p>
+                  <FormControl className={radioButton}>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="solid"
+                        control={<Radio />}
+                        label="Solid"
+                      />
+                      <FormControlLabel
+                        value="gradient"
+                        control={<Radio />}
+                        label="Gradient"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Theme Header</p>
+                  <FormControl className={radioButton}>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="solid"
+                        control={<Radio />}
+                        label="Solid"
+                      />
+                      <FormControlLabel
+                        value="gradient"
+                        control={<Radio />}
+                        label="Gradient"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Footer</p>
+                  <FormControl className={radioButton}>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="solid"
+                        control={<Radio />}
+                        label="Solid"
+                      />
+                      <FormControlLabel
+                        value="gradient"
+                        control={<Radio />}
+                        label="Gradient"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+              </Grid>
+              <Grid container className={adminRightPanelBackgroundColor}>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Header</p>
+                  <div className={colorPickerItem}>
+                    <ColorPicker onChange={handleInput} value={state} />
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Header</p>
+                  <div className={colorPickerItem}>
+                    <ColorPicker onChange={handleInput} value={state} />
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <p className={radioButtonHeader}>Header</p>
+                  <div className={colorPickerItem}>
+                    <ColorPicker onChange={handleInput} value={state} />
+                  </div>
+                </Grid>
+              </Grid>
+              <p className={backgroundColor}>Tags</p>
+              <Grid container className={adminRightPanelBody}>
+                <Grid item xs={2} className={customSelects}>
+                  <p className={radioButtonHeader}>Semantic tags</p>
+                  <Select
+                    selectList={selectList}
+                    customWidth={"100%"}
+                    customHeight={"54px"}
+                  />
+                </Grid>
+                <Grid item xs={2} className={customSelects}>
+                  <p className={radioButtonHeader}>Font Size</p>
+                  <Select
+                    selectList={selectList}
+                    customWidth={"100%"}
+                    customHeight={"54px"}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <p className={radioButtonHeader}>Footer</p>
+                  <div className={colorPickerItem}>
+                    <ColorPicker onChange={handleInput} value={state} />
+                  </div>
+                </Grid>
+                <Grid item xs={2} className={adminPlusIconClass}>
+                  <img src={adminPlusIcon} />
                 </Grid>
               </Grid>
             </div>

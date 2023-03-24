@@ -52,7 +52,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   adminRightPanelHeader: () => ({
-    padding: "46px 40px",
+    padding: "30px 30px 30px 30px ",
     borderBottom: "1px solid rgb(0 0 0 / 10%)",
   }),
   previewButton: () => ({
@@ -89,6 +89,94 @@ const useStyles = makeStyles(() => ({
     background: "#FFFFFF",
     borderRadius: "24px",
     height: "100%",
+  }),
+  backgroundColor: () => ({
+    fontFamily: "Montserrat",
+    fontWeight: "600",
+    fontSize: "18px",
+    lineHeight: " 22px",
+    textAlign: "left",
+    color: " #445B7D",
+    padding: " 30px 30px 0px 30px ",
+  }),
+  radioButton: () => ({
+    "& .MuiFormControlLabel-label": {
+      color: "#445B7D",
+      fontFamily: "Montserrat",
+      fontWeight: "600",
+      fontSize: "18px",
+      lineHeight: "22px",
+      textAlign: "left",
+    },
+  }),
+  radioButtonHeader: () => ({
+    fontFamily: "Montserrat",
+    fontWeight: "600",
+    fontSize: "18px",
+    lineHeight: "22px",
+    textAlign: "left",
+    color: "#000000",
+    marginBottom: "18px",
+  }),
+  adminRightPanelBody: () => ({
+    padding: "30px 30px 30px 30px ",
+    alignItems: "center",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+  }),
+  adminRightPanelBackgroundColor: () => ({
+    padding: "30px 30px 30px 30px ",
+    borderBottom: "1px solid rgb(0 0 0 / 10%)",
+  }),
+  customSelects: () => ({
+    minWidth: "100px !important",
+    minheight: "5px !important",
+    paddingRight: "24px",
+    "& .MuiSelect-select": {
+      padding: "15px 11px !important",
+      background: "#FFFFFF",
+      border: "1px solid #93A8C1",
+      borderRadius: " 5px",
+      fontFamily: "Montserrat",
+      fontWeight: "600",
+      fontSize: "18px",
+      lineHeight: "22px",
+      textAlign: "left",
+      color: "#000000",
+    },
+    "& .MuiInputBase-root": {
+      borderRadius: "50px",
+      fontSize: 14,
+      // lineHeight: 21,
+      textAlign: "center",
+      fontWeight: "bold",
+      position: "relative",
+      color: "#000",
+      "& .MuiSvgIcon-root": {
+        position: "absolute",
+        right: "10px",
+        color: "black !important",
+      },
+
+      "& .MuiOutlinedInput-notchedOutline": {
+        display: "none !important",
+      },
+    },
+
+    "& .MuiSelect-iconOutlined": {
+      color: `#000 !important`,
+    },
+  }),
+  adminPlusIconClass: () => ({
+    position: "relative",
+    "& img": {
+      position: "absolute",
+      top: "10px",
+      left: "26px",
+      cursor: "pointer",
+    },
+  }),
+  colorPickerItem: () => ({
+    width: "250px !important",
   }),
 }));
 export default useStyles;

@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(
   {
-    customSelect: (props: any) => ( {
+    customSelect: (props: any) => ({
       minWidth: "100px !important",
       minheight: "5px !important",
       "& .MuiSelect-select": {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(
           position: "absolute",
           right: "10px",
         },
-        
+
         "& .MuiOutlinedInput-notchedOutline": {
           color: props?.palette?.selectElement?.colorWhite,
           border: `1px solid ${props?.palette?.selectElement?.colorWhite} !important`,
@@ -32,8 +32,7 @@ const useStyles = makeStyles(
       },
     }),
 
-
-    tableSelect: (props: any) => ( {
+    tableSelect: (props: any) => ({
       "& .MuiInputBase-root": {
         marginTop: 12,
       },
