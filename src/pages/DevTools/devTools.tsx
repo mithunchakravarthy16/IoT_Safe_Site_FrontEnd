@@ -242,7 +242,11 @@ const DevTools = () => {
     setMuiltipleTabs(tabs);
   };
 
-  const handleRemoveSemanticTags = (index: number) => {};
+  const handleRemoveSemanticTags = (index: number) => {
+    setMuiltipleTags((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
 
   const handleUpdate = () => {
     const data = {
