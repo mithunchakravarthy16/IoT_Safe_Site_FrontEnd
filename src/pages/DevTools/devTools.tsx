@@ -35,6 +35,7 @@ const DevTools = () => {
     colorPickerItem,
     radioButton,
     deleteIconClass,
+    insideContainer,
   } = useStyles();
 
   const [activePage, setActivePage] = useState<any>();
@@ -326,346 +327,334 @@ const DevTools = () => {
                   </Button>
                 </Grid>
               </Grid>
-              <p className={backgroundColor}>Background color</p>
-              <Grid container className={adminRightPanelBody}>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Login</p>
-                  <FormControl className={radioButton}>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="solid"
-                        control={<Radio />}
-                        label="Solid"
-                      />
-                      <FormControlLabel
-                        value="gradient"
-                        control={<Radio />}
-                        label="Gradient"
-                      />
-                    </RadioGroup>
-                  </FormControl>
+              <div className={insideContainer}>
+                <p className={backgroundColor}>Background color</p>
+                <Grid container className={adminRightPanelBody}>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Login</p>
+                    <FormControl className={radioButton}>
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="solid"
+                          control={<Radio />}
+                          label="Solid"
+                        />
+                        <FormControlLabel
+                          value="gradient"
+                          control={<Radio />}
+                          label="Gradient"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Theme Header</p>
+                    <FormControl className={radioButton}>
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="solid"
+                          control={<Radio />}
+                          label="Solid"
+                        />
+                        <FormControlLabel
+                          value="gradient"
+                          control={<Radio />}
+                          label="Gradient"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Footer</p>
+                    <FormControl className={radioButton}>
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="solid"
+                          control={<Radio />}
+                          label="Solid"
+                        />
+                        <FormControlLabel
+                          value="gradient"
+                          control={<Radio />}
+                          label="Gradient"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Theme Header</p>
-                  <FormControl className={radioButton}>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="solid"
-                        control={<Radio />}
-                        label="Solid"
-                      />
-                      <FormControlLabel
-                        value="gradient"
-                        control={<Radio />}
-                        label="Gradient"
-                      />
-                    </RadioGroup>
-                  </FormControl>
+                <Grid container className={adminRightPanelBackgroundColor}>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Header</p>
+                    <div className={colorPickerItem}>
+                      <ColorPicker onChange={handleInput} value={state} />
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Header</p>
+                    <div className={colorPickerItem}>
+                      <ColorPicker onChange={handleInput} value={state} />
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <p className={radioButtonHeader}>Header</p>
+                    <div className={colorPickerItem}>
+                      <ColorPicker onChange={handleInput} value={state} />
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Footer</p>
-                  <FormControl className={radioButton}>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="solid"
-                        control={<Radio />}
-                        label="Solid"
-                      />
-                      <FormControlLabel
-                        value="gradient"
-                        control={<Radio />}
-                        label="Gradient"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-              </Grid>
-              <Grid container className={adminRightPanelBackgroundColor}>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Header</p>
-                  <div className={colorPickerItem}>
-                    <ColorPicker onChange={handleInput} value={state} />
-                  </div>
-                </Grid>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Header</p>
-                  <div className={colorPickerItem}>
-                    <ColorPicker onChange={handleInput} value={state} />
-                  </div>
-                </Grid>
-                <Grid item xs={3}>
-                  <p className={radioButtonHeader}>Header</p>
-                  <div className={colorPickerItem}>
-                    <ColorPicker onChange={handleInput} value={state} />
-                  </div>
-                </Grid>
-              </Grid>
-              <p className={backgroundColor}>Tags</p>
-              <Grid container className={adminRightPanelBody}>
-                {multipleTags?.map((item: any, index: number) => {
-                  return (
-                    <Grid container>
-                      <Grid item xs={2} className={customSelects}>
-                        <p className={radioButtonHeader}>Semantic tags</p>
+                <p className={backgroundColor}>Tags</p>
+                <Grid container className={adminRightPanelBody}>
+                  {multipleTags?.map((item: any, index: number) => {
+                    return (
+                      <Grid container>
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Semantic tags</p>
 
-                        <Select
-                          selectList={selectList}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          value={item.name}
-                          type={"admin"}
-                          handleSelect={(val: any) =>
-                            handleSelectTags(val, index)
-                          }
-                        />
-                      </Grid>
-                      <Grid item xs={2} className={customSelects}>
-                        <p className={radioButtonHeader}>Font Size</p>
-                        <Select
-                          selectList={fontSizes}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          handleSelect={(val: any) =>
-                            handleSelectFont(val, index)
-                          }
-                          value={item.size}
-                          type={"admin"}
-                        />
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleInputColor(val, index)
+                          <Select
+                            selectList={selectList}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            value={item.name}
+                            type={"admin"}
+                            handleSelect={(val: any) =>
+                              handleSelectTags(val, index)
                             }
-                            value={item.color}
                           />
-                        </div>
-                      </Grid>
-                      {multipleTags?.length > 1 && index !== 0 && (
-                        <Grid
-                          item
-                          xs={2}
-                          className={deleteIconClass}
-                          onClick={() => handleRemoveSemanticTags(index)}
-                        >
-                          <img src={deleteIcon} />
                         </Grid>
-                      )}
-                    </Grid>
-                  );
-                })}
-                <Grid
-                  item
-                  xs={2}
-                  className={adminPlusIconClass}
-                  onClick={handleAddSemanticTags}
-                >
-                  <img src={adminPlusIcon} />
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Font Size</p>
+                          <Select
+                            selectList={fontSizes}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            handleSelect={(val: any) =>
+                              handleSelectFont(val, index)
+                            }
+                            value={item.size}
+                            type={"admin"}
+                          />
+                        </Grid>
+                        <Grid item xs={2}>
+                          <p className={radioButtonHeader}>Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleInputColor(val, index)
+                              }
+                              value={item.color}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <div
+                            className={deleteIconClass}
+                            onClick={() => handleRemoveSemanticTags(index)}
+                          >
+                            {multipleTags?.length > 1 && index !== 0 && (
+                              <img src={deleteIcon} />
+                            )}
+                          </div>
+                          <div
+                            className={adminPlusIconClass}
+                            onClick={handleAddSemanticTags}
+                          >
+                            <img src={adminPlusIcon} />
+                          </div>
+                        </Grid>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
-              </Grid>
-              <p className={backgroundColor}>Button</p>
-              <Grid container className={adminRightPanelBody}>
-                {multipleButtons?.map((item: any, index: number) => {
-                  return (
-                    <Grid container>
-                      <Grid item xs={2} className={customSelects}>
-                        <p className={radioButtonHeader}>Button Style</p>
+                <p className={backgroundColor}>Button</p>
+                <Grid container className={adminRightPanelBody}>
+                  {multipleButtons?.map((item: any, index: number) => {
+                    return (
+                      <Grid container>
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Button Style</p>
 
-                        <Select
-                          selectList={buttonOptions}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          value={item.name}
-                          type={"admin"}
-                          handleSelect={(val: any) =>
-                            handleSelectButtons(val, index)
-                          }
-                        />
-                      </Grid>
-                      <Grid item xs={2} className={customSelects}>
-                        <p className={radioButtonHeader}>Font Size</p>
-                        <Select
-                          selectList={fontSizes}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          handleSelect={(val: any) =>
-                            handleSelectButtonFont(val, index)
-                          }
-                          value={item.size}
-                          type={"admin"}
-                        />
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Bg_Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleBgInputColor(val, index)
+                          <Select
+                            selectList={buttonOptions}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            value={item.name}
+                            type={"admin"}
+                            handleSelect={(val: any) =>
+                              handleSelectButtons(val, index)
                             }
-                            value={item.bgColor}
                           />
-                        </div>
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Text_Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleTextInputColor(val, index)
-                            }
-                            value={item.textColor}
-                          />
-                        </div>
-                      </Grid>
-                      {multipleButtons?.length > 1 && index !== 0 && (
-                        <Grid
-                          item
-                          xs={2}
-                          className={deleteIconClass}
-                          onClick={() => handleRemoveButtons(index)}
-                        >
-                          <img src={deleteIcon} />
                         </Grid>
-                      )}
-                    </Grid>
-                  );
-                })}
-                <Grid
-                  item
-                  xs={2}
-                  className={adminPlusIconClass}
-                  onClick={handleAddButtons}
-                >
-                  <img src={adminPlusIcon} />
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Font Size</p>
+                          <Select
+                            selectList={fontSizes}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            handleSelect={(val: any) =>
+                              handleSelectButtonFont(val, index)
+                            }
+                            value={item.size}
+                            type={"admin"}
+                          />
+                        </Grid>
+                        <Grid item xs={2.3}>
+                          <p className={radioButtonHeader}>Bg_Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleBgInputColor(val, index)
+                              }
+                              value={item.bgColor}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid item xs={2.3}>
+                          <p className={radioButtonHeader}>Text_Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleTextInputColor(val, index)
+                              }
+                              value={item.textColor}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <div
+                            className={deleteIconClass}
+                            onClick={() => handleRemoveButtons(index)}
+                          >
+                            {multipleButtons?.length > 1 && index !== 0 && (
+                              <img src={deleteIcon} />
+                            )}
+                          </div>
+                          <div
+                            className={adminPlusIconClass}
+                            onClick={handleAddButtons}
+                          >
+                            {" "}
+                            <img src={adminPlusIcon} />
+                          </div>
+                        </Grid>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
-              </Grid>
-              <p className={backgroundColor}>Location Marker</p>
-              <Grid container className={adminRightPanelBody}>
-                {multipleMarkers?.map((item: any, index: number) => {
-                  return (
-                    <Grid container>
-                      <Grid item xs={2} className={customSelects}>
-                        <p className={radioButtonHeader}>Marker</p>
+                <p className={backgroundColor}>Location Marker</p>
+                <Grid container className={adminRightPanelBody}>
+                  {multipleMarkers?.map((item: any, index: number) => {
+                    return (
+                      <Grid container>
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Marker</p>
 
-                        <Select
-                          selectList={tabOptions}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          value={item.name}
-                          type={"admin"}
-                          handleSelect={(val: any) =>
-                            handleSelectMarker(val, index)
-                          }
-                        />
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Bg_Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleMarkerInputColor(val, index)
+                          <Select
+                            selectList={tabOptions}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            value={item.name}
+                            type={"admin"}
+                            handleSelect={(val: any) =>
+                              handleSelectMarker(val, index)
                             }
-                            value={item.bgColor}
                           />
-                        </div>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <p className={radioButtonHeader}>Bg_Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleMarkerInputColor(val, index)
+                              }
+                              value={item.bgColor}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <div
+                            className={deleteIconClass}
+                            onClick={() => handleRemoveMarkers(index)}
+                          >
+                            {multipleMarkers?.length > 1 && index !== 0 && (
+                              <img src={deleteIcon} />
+                            )}
+                          </div>
+                          <div
+                            className={adminPlusIconClass}
+                            onClick={handleAddMarkers}
+                          >
+                            <img src={adminPlusIcon} />
+                          </div>
+                        </Grid>
                       </Grid>
-                      {multipleMarkers?.length > 1 && index !== 0 && (
+                    );
+                  })}
+                </Grid>
+                <p className={backgroundColor}>Tab</p>
+                <Grid container className={adminRightPanelBody}>
+                  {multipleTabs?.map((item: any, index: number) => {
+                    return (
+                      <Grid container>
+                        <Grid item xs={2} className={customSelects}>
+                          <p className={radioButtonHeader}>Events</p>
+                          <Select
+                            selectList={tabOptions}
+                            customWidth={"100%"}
+                            customHeight={"54px"}
+                            value={item.name}
+                            type={"admin"}
+                            handleSelect={(val: any) =>
+                              handleSelectTab(val, index)
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={2.3}>
+                          <p className={radioButtonHeader}>Bg_Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleTabBgInputColor(val, index)
+                              }
+                              value={item.bgColor}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid item xs={2.3}>
+                          <p className={radioButtonHeader}>Text_Color</p>
+                          <div className={colorPickerItem}>
+                            <ColorPicker
+                              onChange={(val: any) =>
+                                handleTabTextInputColor(val, index)
+                              }
+                              value={item.textColor}
+                            />
+                          </div>
+                        </Grid>
                         <Grid
                           item
                           xs={2}
-                          className={deleteIconClass}
-                          onClick={() => handleRemoveMarkers(index)}
+                          className={adminPlusIconClass}
+                          onClick={handleAddTabs}
                         >
-                          <img src={deleteIcon} />
+                          <img src={adminPlusIcon} />
                         </Grid>
-                      )}
-                    </Grid>
-                  );
-                })}
-                <Grid
-                  item
-                  xs={2}
-                  className={adminPlusIconClass}
-                  onClick={handleAddMarkers}
-                >
-                  <img src={adminPlusIcon} />
+                      </Grid>
+                    );
+                  })}
                 </Grid>
-              </Grid>
-              <p className={backgroundColor}>Tab</p>
-              <Grid container className={adminRightPanelBody}>
-                {multipleTabs?.map((item: any, index: number) => {
-                  return (
-                    <Grid container>
-                      <Grid item xs={2} className={customSelects}>
-                        <Select
-                          selectList={tabOptions}
-                          customWidth={"100%"}
-                          customHeight={"54px"}
-                          value={item.name}
-                          type={"admin"}
-                          handleSelect={(val: any) =>
-                            handleSelectTab(val, index)
-                          }
-                        />
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Bg_Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleTabBgInputColor(val, index)
-                            }
-                            value={item.bgColor}
-                          />
-                        </div>
-                      </Grid>
-                      <Grid item xs={2}>
-                        <p className={radioButtonHeader}>Text_Color</p>
-                        <div className={colorPickerItem}>
-                          <ColorPicker
-                            onChange={(val: any) =>
-                              handleTabTextInputColor(val, index)
-                            }
-                            value={item.textColor}
-                          />
-                        </div>
-                      </Grid>
-                      {multipleTabs?.length > 1 && index !== 0 && (
-                        <Grid
-                          item
-                          xs={2}
-                          className={deleteIconClass}
-                          onClick={() => handleRemoveTabs(index)}
-                        >
-                          <img src={deleteIcon} />
-                        </Grid>
-                      )}
-                    </Grid>
-                  );
-                })}
-                <Grid
-                  item
-                  xs={2}
-                  className={adminPlusIconClass}
-                  onClick={handleAddTabs}
-                >
-                  <img src={adminPlusIcon} />
-                </Grid>
-              </Grid>
+              </div>
             </div>
           </div>
         </Grid>
