@@ -248,6 +248,24 @@ const DevTools = () => {
     });
   };
 
+  const handleRemoveButtons = (index: number) => {
+    setMuiltipleButtons((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
+  const handleRemoveMarkers = (index: number) => {
+    setMuiltipleMarkers((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
+  const handleRemoveTabs = (index: number) => {
+    setMuiltipleTabs((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
   const handleUpdate = () => {
     const data = {
       semanticTags: multipleTags,
@@ -513,6 +531,16 @@ const DevTools = () => {
                           />
                         </div>
                       </Grid>
+                      {multipleButtons?.length > 1 && index !== 0 && (
+                        <Grid
+                          item
+                          xs={2}
+                          className={deleteIconClass}
+                          onClick={() => handleRemoveButtons(index)}
+                        >
+                          <img src={deleteIcon} />
+                        </Grid>
+                      )}
                     </Grid>
                   );
                 })}
@@ -555,6 +583,16 @@ const DevTools = () => {
                           />
                         </div>
                       </Grid>
+                      {multipleMarkers?.length > 1 && index !== 0 && (
+                        <Grid
+                          item
+                          xs={2}
+                          className={deleteIconClass}
+                          onClick={() => handleRemoveMarkers(index)}
+                        >
+                          <img src={deleteIcon} />
+                        </Grid>
+                      )}
                     </Grid>
                   );
                 })}
@@ -606,6 +644,16 @@ const DevTools = () => {
                           />
                         </div>
                       </Grid>
+                      {multipleTabs?.length > 1 && index !== 0 && (
+                        <Grid
+                          item
+                          xs={2}
+                          className={deleteIconClass}
+                          onClick={() => handleRemoveTabs(index)}
+                        >
+                          <img src={deleteIcon} />
+                        </Grid>
+                      )}
                     </Grid>
                   );
                 })}
