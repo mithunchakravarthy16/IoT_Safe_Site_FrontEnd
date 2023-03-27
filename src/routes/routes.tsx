@@ -20,21 +20,20 @@ const SAFE_SITE_Routes = () => {
       {user?.userName && <Header />}
       <Routes>
         {/** Protected Routes */}
-        <Route path="/" element={<ProtectedRoutes role={user?.currentRoleType}/>}>
-          <Route path="/" element={<Navigate replace to="login" />} />
-          <Route path="/dashboard" element={<DashBoard />} />
-          <Route path="/alerts" element={<Alerts />} />
-          <Route path="/grokeye" element={<GrokEye />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/grokeye" element={<GrokEye />} />
-          <Route path="/devTools" element={<DevTools />} />
-          
-        </Route>
+        {/* <Route path="/" element={<ProtectedRoutes role={user?.currentRoleType}/>}> */}
+        <Route path="/" element={<Navigate replace to="login" />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/alerts" element={<Alerts />} />
+        <Route path="/grokeye" element={<GrokEye />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/grokeye" element={<GrokEye />} />
+        <Route path="/devTools" element={<DevTools />} />
+
+        {/* </Route> */}
 
         {/** Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
-        
 
         {/** Permission denied route */}
         <Route path="/denied" element={<div>No permission</div>} />

@@ -60,13 +60,19 @@ const INF_Select: React.FC<any> = (props) => {
     selectedAnalyticsTitle,
     graphTitle,
     selectedRealTimeGraph,
+    value,
+    type,
   } = props;
 
   const [selectedValue, setselectedValue] = useState(
-    
-    selectList && selectList[0]?.value
+    value ? value : selectList && selectList[0]?.value
   );
 
+  useEffect(() => {
+    if (type === "admin") {
+      setselectedValue(value);
+    }
+  }, [value]);
   // const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e: any) => {
@@ -90,9 +96,12 @@ const INF_Select: React.FC<any> = (props) => {
     //     selectedAnalyticsTitle === "Equipment #3") &&
     //   graphTitle === "Temperature (°C)"
     // ) {
+    if (type !== "admin") {
       if (selectList && selectList[0] && selectList[0].value !== "Real Time") {
         setselectedValue(selectList && selectList[0]?.value);
       }
+    }
+
     // } else if (
     //   (selectedAnalyticsTitle === "Equipment#1" ||
     //     selectedAnalyticsTitle === "Equipment#2" ||
@@ -129,13 +138,11 @@ const INF_Select: React.FC<any> = (props) => {
   //   }
   // }, [isGraphDayDataAvailable, selectedAnalyticsTitle, graphTitle]);
 
-
-  useEffect(()=>{
-    if(selectedRealTimeGraph){
+  useEffect(() => {
+    if (selectedRealTimeGraph) {
       setselectedValue("Real Time");
     }
-
-  },[selectedRealTimeGraph])
+  }, [selectedRealTimeGraph]);
 
   return (
     <>
@@ -170,9 +177,7 @@ const INF_Select: React.FC<any> = (props) => {
           theme={createTheme({
             palette: {
               primary: {
-                main: dropDownBgColor
-                  ? dropDownBgColor
-                  : "#000",
+                main: dropDownBgColor ? dropDownBgColor : "#000",
               },
             },
 
@@ -182,21 +187,15 @@ const INF_Select: React.FC<any> = (props) => {
                   root: {
                     // top : "254px !important",
                     marginTop: "5px !important",
-                    backgroundColor: dropDownBgColor
-                      ? dropDownBgColor
-                      : "#000",
+                    backgroundColor: dropDownBgColor ? dropDownBgColor : "#000",
                   },
                 },
               },
               MuiMenuItem: {
                 styleOverrides: {
                   root: {
-                    color: drowpDownTextColor
-                      ? drowpDownTextColor
-                      : "#fff",
-                    backgroundColor: dropDownBgColor
-                      ? dropDownBgColor
-                      : "#000",
+                    color: drowpDownTextColor ? drowpDownTextColor : "#fff",
+                    backgroundColor: dropDownBgColor ? dropDownBgColor : "#000",
                     // fontSize: "10px",
 
                     // "&.MuiMenuItem-root": {
@@ -208,7 +207,7 @@ const INF_Select: React.FC<any> = (props) => {
                         backgroundColor: dropDownSelectedBgColor
                           ? dropDownSelectedBgColor
                           : "#fff",
-                          color: "#000",
+                        color: "#000",
                       },
 
                       // "&.Mui-focusVisible": { background: "orange" },
@@ -244,46 +243,48 @@ const INF_Select: React.FC<any> = (props) => {
             >
               {selectList &&
                 selectList?.length > 0 &&
-                selectList?.map((item: any, index: any) =>
-                  // pageName === "analyticsPage" ? (
-                  //   selectedAnalyticsTitle === "Equipment #1" ||
-                  //   selectedAnalyticsTitle === "Equipment #2" ||
-                  //   selectedAnalyticsTitle === "Equipment #3" ? (
-                  //     graphTitle === "Temperature (°C)" ? (
-                  //       <MenuItem key={index} value={item.label}>
-                  //         {item.label}
-                  //       </MenuItem>
-                  //     ) : isGraphDayDataAvailable ? (
-                  //       index !== 0 ? (
-                  //         <MenuItem key={index} value={item.label}>
-                  //           {item.label}
-                  //         </MenuItem>
-                  //       ) : null
-                  //     ) : index !== 0 && index !== 1 ? (
-                  //       <MenuItem key={index} value={item.label}>
-                  //         {item.label}
-                  //       </MenuItem>
-                  //     ) : null
-                  //   ) : isGraphDayDataAvailable ? (
-                  //     index !== 0 ? (
-                  //       <MenuItem key={index} value={item.label}>
-                  //         {item.label}
-                  //       </MenuItem>
-                  //     ) : null
-                  //   ) : index !== 0 && index !== 1 ? (
-                  //     <MenuItem key={index} value={item.label}>
-                  //       {item.label}
-                  //     </MenuItem>
-                  //   ) : null
-                  // ) : //for infodialogue wndow
+                selectList?.map(
+                  (item: any, index: any) => (
+                    // pageName === "analyticsPage" ? (
+                    //   selectedAnalyticsTitle === "Equipment #1" ||
+                    //   selectedAnalyticsTitle === "Equipment #2" ||
+                    //   selectedAnalyticsTitle === "Equipment #3" ? (
+                    //     graphTitle === "Temperature (°C)" ? (
+                    //       <MenuItem key={index} value={item.label}>
+                    //         {item.label}
+                    //       </MenuItem>
+                    //     ) : isGraphDayDataAvailable ? (
+                    //       index !== 0 ? (
+                    //         <MenuItem key={index} value={item.label}>
+                    //           {item.label}
+                    //         </MenuItem>
+                    //       ) : null
+                    //     ) : index !== 0 && index !== 1 ? (
+                    //       <MenuItem key={index} value={item.label}>
+                    //         {item.label}
+                    //       </MenuItem>
+                    //     ) : null
+                    //   ) : isGraphDayDataAvailable ? (
+                    //     index !== 0 ? (
+                    //       <MenuItem key={index} value={item.label}>
+                    //         {item.label}
+                    //       </MenuItem>
+                    //     ) : null
+                    //   ) : index !== 0 && index !== 1 ? (
+                    //     <MenuItem key={index} value={item.label}>
+                    //       {item.label}
+                    //     </MenuItem>
+                    //   ) : null
+                    // ) : //for infodialogue wndow
 
-                  // (selectedAnalyticsTitle === "Equipment#1" ||
-                  //     selectedAnalyticsTitle === "Equipment#2" ||
-                  //     selectedAnalyticsTitle === "Equipment#3") &&
-                  //   graphTitle === "Temperature" ? (
+                    // (selectedAnalyticsTitle === "Equipment#1" ||
+                    //     selectedAnalyticsTitle === "Equipment#2" ||
+                    //     selectedAnalyticsTitle === "Equipment#3") &&
+                    //   graphTitle === "Temperature" ? (
                     <MenuItem key={index} value={item.label}>
                       {item.label}
                     </MenuItem>
+                  )
                   // ) : index !== 0 ? (
                   //   <MenuItem key={index} value={item.label}>
                   //     {item.label}
