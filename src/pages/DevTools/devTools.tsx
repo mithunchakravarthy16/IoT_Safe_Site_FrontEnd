@@ -41,7 +41,7 @@ const DevTools = () => {
   const tags = [
     {
       name: "H1",
-      size: "1",
+      size: "2",
       color: "#FFFFFF",
     },
   ];
@@ -49,7 +49,7 @@ const DevTools = () => {
   const buttons = [
     {
       name: "Primary",
-      size: "1",
+      size: "2",
       bgColor: "#FFFFFF",
       textColor: "#FFFFFF",
     },
