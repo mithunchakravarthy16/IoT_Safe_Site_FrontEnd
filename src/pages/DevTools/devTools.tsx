@@ -41,7 +41,7 @@ const DevTools = () => {
   const tags = [
     {
       name: "H1",
-      size: "1",
+      size: "2",
       color: "#FFFFFF",
     },
   ];
@@ -49,7 +49,7 @@ const DevTools = () => {
   const buttons = [
     {
       name: "Primary",
-      size: "1",
+      size: "2",
       bgColor: "#FFFFFF",
       textColor: "#FFFFFF",
     },
@@ -242,7 +242,11 @@ const DevTools = () => {
     setMuiltipleTabs(tabs);
   };
 
-  const handleRemoveSemanticTags = (index: number) => {};
+  const handleRemoveSemanticTags = (index: number) => {
+    setMuiltipleTags((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
 
   const handleUpdate = () => {
     const data = {
