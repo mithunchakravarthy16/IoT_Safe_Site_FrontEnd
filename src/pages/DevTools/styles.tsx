@@ -171,12 +171,21 @@ const useStyles = makeStyles(() => ({
     "& img": {
       position: "absolute",
       top: "10px",
-      left: "26px",
+      left: "46px",
       cursor: "pointer",
     },
   }),
   colorPickerItem: () => ({
     width: "250px !important",
+  }),
+  deleteIconClass: () => ({
+    position: "relative",
+    "& img": {
+      position: "absolute",
+      top: "55px",
+      left: "26px",
+      cursor: "pointer",
+    },
   }),
 }));
 export default useStyles;
