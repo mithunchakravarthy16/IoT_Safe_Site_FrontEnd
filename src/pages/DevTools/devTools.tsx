@@ -249,6 +249,24 @@ const DevTools = () => {
     });
   };
 
+  const handleRemoveButtons = (index: number) => {
+    setMuiltipleButtons((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
+  const handleRemoveMarkers = (index: number) => {
+    setMuiltipleMarkers((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
+  const handleRemoveTabs = (index: number) => {
+    setMuiltipleTabs((prev: any) => {
+      return prev.filter((item: any, i: number) => i !== index);
+    });
+  };
+
   const handleUpdate = () => {
     const data = {
       semanticTags: multipleTags,
@@ -513,13 +531,22 @@ const DevTools = () => {
                             />
                           </div>
                         </Grid>
-                        <Grid
-                          item
-                          xs={2}
-                          className={adminPlusIconClass}
-                          onClick={handleAddButtons}
-                        >
-                          <img src={adminPlusIcon} />
+                        <Grid item xs={2}>
+                          <div
+                            className={deleteIconClass}
+                            onClick={() => handleRemoveButtons(index)}
+                          >
+                            {multipleButtons?.length > 1 && index !== 0 && (
+                              <img src={deleteIcon} />
+                            )}
+                          </div>
+                          <div
+                            className={adminPlusIconClass}
+                            onClick={handleAddButtons}
+                          >
+                            {" "}
+                            <img src={adminPlusIcon} />
+                          </div>
                         </Grid>
                       </Grid>
                     );
@@ -555,13 +582,21 @@ const DevTools = () => {
                             />
                           </div>
                         </Grid>
-                        <Grid
-                          item
-                          xs={2}
-                          className={adminPlusIconClass}
-                          onClick={handleAddMarkers}
-                        >
-                          <img src={adminPlusIcon} />
+                        <Grid item xs={2}>
+                          <div
+                            className={deleteIconClass}
+                            onClick={() => handleRemoveMarkers(index)}
+                          >
+                            {multipleMarkers?.length > 1 && index !== 0 && (
+                              <img src={deleteIcon} />
+                            )}
+                          </div>
+                          <div
+                            className={adminPlusIconClass}
+                            onClick={handleAddMarkers}
+                          >
+                            <img src={adminPlusIcon} />
+                          </div>
                         </Grid>
                       </Grid>
                     );
