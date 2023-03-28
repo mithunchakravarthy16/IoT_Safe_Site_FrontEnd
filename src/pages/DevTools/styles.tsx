@@ -54,6 +54,9 @@ const useStyles = makeStyles(() => ({
   adminRightPanelHeader: () => ({
     padding: "30px 30px 30px 30px ",
     borderBottom: "1px solid rgb(0 0 0 / 10%)",
+    "& :last-child": {
+      borderBottom: "none !important",
+    },
   }),
   previewButton: () => ({
     fontFamily: "Montserrat !important",
@@ -100,6 +103,7 @@ const useStyles = makeStyles(() => ({
     padding: " 30px 30px 0px 30px ",
   }),
   radioButton: () => ({
+    paddingBottom: "30px !important",
     "& .MuiFormControlLabel-label": {
       color: "#445B7D",
       fontFamily: "Montserrat",
@@ -119,7 +123,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: "18px",
   }),
   adminRightPanelBody: () => ({
-    padding: "30px 30px 30px 30px ",
+    padding: "30px 30px 0px 30px ",
     alignItems: "center",
     borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
   }),
@@ -131,6 +135,7 @@ const useStyles = makeStyles(() => ({
     minWidth: "100px !important",
     minheight: "5px !important",
     paddingRight: "24px",
+    paddingBottom: "30px",
     "& .MuiSelect-select": {
       padding: "15px 11px !important",
       background: "#FFFFFF",
@@ -170,8 +175,8 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     "& img": {
       position: "absolute",
-      top: "10px",
-      left: "46px",
+      top: "57px",
+      left: "77px",
       cursor: "pointer",
     },
   }),
@@ -186,6 +191,10 @@ const useStyles = makeStyles(() => ({
       left: "26px",
       cursor: "pointer",
     },
+  }),
+  insideContainer: () => ({
+    height: "calc(100vh - 340px)",
+    overflow: " auto",
   }),
 }));
 export default useStyles;
