@@ -186,6 +186,7 @@ const AdminLogin = () => {
                       type={"submit"}
                       // handleClick={handleLogin}
                       buttonStyles={loginButton}
+                      buttonVariant={"primary"}
                     >
                       Login
                     </Button>

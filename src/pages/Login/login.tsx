@@ -205,7 +205,7 @@ const Login = () => {
                     <p className={forgotPassword}><Typography variant="h3">Forgot Password?</Typography></p>
                   </div>
                   <div className={loginButton}>
-                    <Button variant={"contained"} fullWidth={true} type={"submit"} buttonStyles={loginButton} >
+                    <Button variant={"contained"} fullWidth={true} type={"submit"} buttonStyles={loginButton} buttonVariant={"primary"}>
                       Login
                     </Button>
                   </div>

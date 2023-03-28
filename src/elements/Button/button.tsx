@@ -30,7 +30,7 @@ const INF_Button: React.FC<any> = (props) => {
   }, [selectedTheme]);
   const { loginButton, CustomButton, CustomButtonDisable } =
     useStyles(appTheme);
-  const { variant, handleClick, type, children, disable, buttonStyles, fullWidth, color } = props;
+  const { variant, handleClick, type, children, disable, buttonStyles, fullWidth, buttonVariant } = props;
 
   const handleButtonClick = () => {
     handleClick();
@@ -49,10 +49,8 @@ useEffect(()=>{
 
   if(buttonTheme){
     buttonTheme?.buttons?.map((item: any)=>{
-       if(item?.name?.toLowerCase() === color?.toLowerCase()){
-        setbTnTextProperty({...btnTextProperty, fontSize: item?.size ? item?.size : "unset", textColor: item?.textColor ? item?.textColor : "unset"})
-       }else{
-        setbTnTextProperty({...btnTextProperty, fontSize: item?.size ? item?.size : "unset", textColor: item?.textColor ? item?.textColor : "unset"})
+       if(item?.name?.toLowerCase() === buttonVariant?.toLowerCase()){
+        setbTnTextProperty({ fontSize: item?.size ? item?.size : "unset", textColor: item?.textColor ? item?.textColor : "unset"})
        }
     })
   }
@@ -75,7 +73,7 @@ useEffect(()=>{
         onClick={handleButtonClick}
         type={type}
         disabled={disable}
-        color={color}
+        color={buttonVariant}
         fullWidth={fullWidth}
       >
         <span 
