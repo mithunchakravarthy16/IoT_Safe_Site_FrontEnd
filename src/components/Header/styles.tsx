@@ -1,6 +1,16 @@
 import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
+let data = JSON.parse(localStorage.getItem("colorScheme")!)
+
+
+
+let headerBgColor: string;
+
+if(data && data?.bgData?.theme?.type === "solid"){
+  headerBgColor = data?.bgData?.theme?.color
+}
+
 const useStyles = makeStyles(
   () => ({
     root: (props: any) => ({
@@ -34,7 +44,9 @@ const useStyles = makeStyles(
     }),
     header: (props: any) => ({
       alignItems: "center",
-      background: props?.palette?.header?.headerBg,
+      background: headerBgColor ? headerBgColor : props?.palette?.header?.headerBg,
+
+
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",
       zIndex: 1500,
       padding: "0 16px",

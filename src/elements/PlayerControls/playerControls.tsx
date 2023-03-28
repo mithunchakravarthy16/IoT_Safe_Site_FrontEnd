@@ -220,15 +220,15 @@ const PlayerControls: React.FC<any> = (props) => {
                 onChangeCommitted={onVolumeSeekUp}
               />
 
-              <Button
-                variant="text"
+              <div
+                // variant="text"
                 style={{ color: "#fff", marginLeft: "20px" }}
                 onClick={onChangeDisplayFormate}
               >
                 <span>
                   {elapsedTime}/{totalDuration}
                 </span>
-              </Button>
+              </div>
             </Grid>
           </Grid>
         </Grid>
