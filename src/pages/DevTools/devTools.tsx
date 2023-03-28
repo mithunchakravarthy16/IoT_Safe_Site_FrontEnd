@@ -215,7 +215,6 @@ const DevTools = () => {
           break;
         }
         case "login": {
-          console.log("INSIDE CASE LOGIN", imageString)
           oldLogos.login = imageString
           break;
         }
@@ -227,7 +226,6 @@ const DevTools = () => {
       }
 
       setCustomLogos(oldLogos)
-      console.log("ALL TASKS DONE", oldLogos, location)
     };
   }
 
