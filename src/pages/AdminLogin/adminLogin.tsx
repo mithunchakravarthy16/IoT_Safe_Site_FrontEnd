@@ -5,7 +5,7 @@ import theme from "../../theme/theme";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { OutlinedInput } from "@mui/material";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import gdSafeSite from "../../assets/Admin-login/developer-tools.svg";
@@ -17,6 +17,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
+import Button from "elements/Button";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -178,10 +179,11 @@ const AdminLogin = () => {
                   </div>
                   <div className={loginButton}>
                     <Button
-                      variant="contained"
-                      fullWidth
-                      type="submit"
-                      onClick={handleLogin}
+                      variant={"contained"}
+                      fullWidth={true}
+                      type={"submit"}
+                      handleClick={handleLogin}
+                      buttonStyles={loginButton}
                     >
                       Login
                     </Button>
