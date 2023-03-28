@@ -77,9 +77,10 @@ const useStyles = makeStyles(() => ({
     fontWeight: " 600 !important",
     fontSize: "20px !important",
     lineHeight: "24px !important",
-    background: "#1a3175",
+    background: "#1a3175 !important",
     padding: "12px 16px !important",
     marginRight: "20px !important",
+    color: "white !important",
   }),
   colorSchemeHeading: () => ({
     fontFamily: "Montserrat",

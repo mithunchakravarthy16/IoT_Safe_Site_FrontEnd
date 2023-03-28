@@ -14,7 +14,7 @@ import ColorScheme from "components/ColorScheme";
 import DevtoolsUser from "components/DevToolsUser";
 import default_logo from "../../assets/default_logo.svg";
 
-const DevTools = () => {
+const DevTools: React.FC<any> = (props) => {
   const {
     adminContentPanel,
     adminLeftPanel,
@@ -259,7 +259,7 @@ const DevTools = () => {
           <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
           <div className={adminRightPanel}>
             <div className={innerPanel}>
-              <Grid container className={adminRightPanelHeader}>
+              {/* <Grid container className={adminRightPanelHeader}>
                 <Grid item xs={6}>
                   <p className={colorSchemeHeading}>{activeTab}</p>
                 </Grid>
@@ -278,11 +278,11 @@ const DevTools = () => {
                     Update
                   </Button>
                 </Grid>
-              </Grid>
+              </Grid> */}
               {activePage === 0 ? (
-                <ColorScheme />
+                <ColorScheme activeTab={activeTab} />
               ) : activePage === 2 ? (
-                <DevtoolsUser />
+                <DevtoolsUser activeTab={activeTab} />
               ) : null}
             </div>
           </div>
