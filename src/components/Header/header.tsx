@@ -204,12 +204,14 @@ const Header: React.FC = (props: any) => {
         <Grid className={headerRight} item xs={12} sm={12} md={3} lg={4} xl={4}>
           <div>
             <div className={avatharSection}>
-              <Avatar className={avatharBackground}>{name.initials}</Avatar>
+              <Avatar className={avatharBackground}><Typography variant="h3">{name.initials}</Typography></Avatar>
               <div className={avatharName}>
                 <div className={avatharUserName}>
+                <Typography variant="h5">
                   {name?.firstName + " " + name?.lastName}
+                  </Typography>
                 </div>
-                <div className={avatharUserRole}>{name?.role}</div>
+                <div className={avatharUserRole}><Typography variant="h5">{name?.role}</Typography></div>
               </div>
               <IconButton onClick={handleOpenUserMenu} className={avatharIcon}>
                 <KeyboardArrowDownIcon

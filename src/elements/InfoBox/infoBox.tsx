@@ -17,6 +17,7 @@ import CarbonMonoxideIcon from "assets/ListInfoIcons/CarbonMonoxideIcon.svg";
 import HumidityIcon from "assets/ListInfoIcons/HumidityIcon.svg";
 import WaterLevelIcon from "assets/ListInfoIcons/WaterLevelIcon.svg";
 import DeleteButton from "assets/deleteButton.svg";
+import Typography from "@mui/material/Typography";
 import useStyles from "./styles";
 
 const InfoBox: React.FC<any> = (props) => {
@@ -141,7 +142,7 @@ const InfoBox: React.FC<any> = (props) => {
         <div className={expandedListItemCallout} key={key}>
           <div className={expandedListHeaderStyle}>
             <div>
-              <div className={listItemTitle}>{title}</div>
+              <div className={listItemTitle}><Typography variant="h3">{title}</Typography></div>
             </div>
             <div className={listItemCloseIcon} onClick={handleClose}>
               <img src={CloseCalloutIcon} />
@@ -156,7 +157,7 @@ const InfoBox: React.FC<any> = (props) => {
                 className={locationIconStyle}
                 width={17}
               />
-              {area}
+              <Typography variant="h4">{area}</Typography>
             </div>
             <div className={expandedListButtonContainer}>
               <div
@@ -188,7 +189,7 @@ const InfoBox: React.FC<any> = (props) => {
               className={locationIconStyle}
               width={16}
             />
-            <span className={spanTextClass}>{connectivity}</span>
+            <span className={spanTextClass}><Typography variant="h4">{connectivity}</Typography></span>
             <span className={spanTextValue}>{connectivityPercentage}</span>
           </div>
           <div className={lineClass}></div>
@@ -202,8 +203,8 @@ const InfoBox: React.FC<any> = (props) => {
                       <img src={item?.icon} alt="Icons" width={25} />
                     </div>
                     <div className={listIemDetails}>
-                      <div className={listItemIconDetails}>{item?.value}</div>
-                      <div className={listItemIconName}>{item?.label}</div>
+                      <div className={listItemIconDetails}><Typography variant="h4">{item?.value}</Typography></div>
+                      <div className={listItemIconName}><Typography variant="h4">{item?.label}</Typography></div>
                     </div>
                   </div>
                 );
@@ -221,9 +222,9 @@ const InfoBox: React.FC<any> = (props) => {
                         <div>
                           <img src={item?.icon} alt="Icon" />
                         </div>
-                        <div className={itemValueStyle}>{item?.value}</div>
+                        <div className={itemValueStyle}><Typography variant="h4">{item?.value}</Typography></div>
                       </div>
-                      <div className={itemNameStyle}>{item?.name}</div>
+                      <div className={itemNameStyle}><Typography variant="h4">{item?.name}</Typography></div>
                     </div>
                   );
                 })}
