@@ -3,7 +3,7 @@ import muiTheme from "../../theme/muiTheme";
 
 let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
-console.log("dataStyle", data?.tabs);
+
 
 let eventBgColor : string;
 let eventTextColor : string;

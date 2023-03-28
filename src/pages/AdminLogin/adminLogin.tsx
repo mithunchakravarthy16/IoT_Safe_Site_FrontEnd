@@ -71,6 +71,16 @@ const AdminLogin = () => {
     forgotPassword,
   } = useStyles(appTheme);
 
+  useEffect(() => {
+    if (user && user?.userName) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ role: user?.currentRoleType })
+      );
+      navigate("/devTools");
+    }
+  }, [user]);
+
   const formik = useFormik({
     initialValues: {
       userid: "",
@@ -87,7 +97,7 @@ const AdminLogin = () => {
     }),
     onSubmit: (values) => {
       if (
-        (values?.userid).toLowerCase() === "john.smith@zurichna.com" &&
+        (values?.userid).toLowerCase() === "admin.smith@zurichna.com" &&
         values?.password === "John@2023"
       ) {
         let payload = {
@@ -100,14 +110,6 @@ const AdminLogin = () => {
       }
     },
   });
-
-  const handleLogin = () => {
-    localStorage.setItem("user", JSON.stringify({ role: "ADMIN" }));
-    navigate("/devTools");
-  };
-  const handleAdminLogin = () => {
-    navigate("/adminLogin");
-  };
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -182,7 +184,7 @@ const AdminLogin = () => {
                       variant={"contained"}
                       fullWidth={true}
                       type={"submit"}
-                      handleClick={handleLogin}
+                      // handleClick={handleLogin}
                       buttonStyles={loginButton}
                     >
                       Login

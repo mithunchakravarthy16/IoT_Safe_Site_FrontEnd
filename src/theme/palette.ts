@@ -24,7 +24,7 @@ let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
 data.buttons = JSON.parse(localStorage.getItem("colorScheme")!) ? [...defaultData.buttons, ...data?.buttons] : [...defaultData.buttons];
 
-console.log("data.buttons", data.buttons)
+
 const palette: any = { };
 
 data?.buttons?.map((tag: buttonTagsTypes) => {
