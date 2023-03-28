@@ -37,6 +37,7 @@ const Header: React.FC = (props: any) => {
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
+  const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
   const {
     logoImg,
     header,
@@ -145,7 +146,7 @@ const Header: React.FC = (props: any) => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    localStorage.clear();
+    // localStorage.clear();
     dispatch(setUserLogin({}));
     navigate("/login");
   };
@@ -186,7 +187,7 @@ const Header: React.FC = (props: any) => {
         <Grid item xs={12} sm={12} md={3} lg={4} xl={4}>
           <div className={logoSection}>
             <div className={logoImg}>
-              <img src={Logo} alt="logo" width={300} height={50} />
+              <img src={customLogo.header || Logo} alt="logo" width={300} height={50} />
             </div>
           </div>
         </Grid>

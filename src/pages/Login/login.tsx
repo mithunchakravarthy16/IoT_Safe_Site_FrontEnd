@@ -31,6 +31,7 @@ const Login = () => {
     JSON.parse(localStorage.getItem("theme")!)
   );
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -134,7 +135,7 @@ const Login = () => {
         <Grid item xs={12} className={loginFormSection}>
           <div className={loginWidth}>
             <Grid item xs={12} className={logoSection}>
-              <img src={gdSafeSite} />
+              <img src={customLogo.login || gdSafeSite} />
             </Grid>
             <Grid item xs={12}>
               <Box className={innerForm}>
