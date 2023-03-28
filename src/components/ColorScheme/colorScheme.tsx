@@ -1,4 +1,5 @@
 import { useState, Fragment, useEffect } from "react";
+import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import ColorPicker from "elements/ColorPicker";
 import Radio from "@mui/material/Radio";
@@ -10,7 +11,8 @@ import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
 
-const ColorScheme = () => {
+const ColorScheme: React.FC<any> = (props) => {
+  const { activeTab } = props;
   const {
     backgroundColor,
     radioButtonHeader,
@@ -22,6 +24,12 @@ const ColorScheme = () => {
     radioButton,
     deleteIconClass,
     insideContainer,
+    adminRightPanelHeader,
+    previewButton,
+    adminHeaderButtonSection,
+    updateButton,
+    colorSchemeHeading,
+    innerPanel,
   } = useStyles();
 
   const [activePage, setActivePage] = useState<any>();
@@ -263,14 +271,34 @@ const ColorScheme = () => {
     localStorage.setItem("colorScheme", JSON.stringify(data));
   };
 
-  const [activeTab, setActiveTab] = useState<any>(menuItems[activePage]);
-  useEffect(() => {
-    setActiveTab(menuItems[activePage]?.name);
-  }, [activePage]);
-
   return (
     <Fragment>
       <Grid container>
+        <Grid item xs={12}>
+          <div className={innerPanel}>
+            <Grid container className={adminRightPanelHeader}>
+              <Grid item xs={6}>
+                <p className={colorSchemeHeading}>{activeTab}</p>
+              </Grid>
+              <Grid item xs={6} className={adminHeaderButtonSection}>
+                <Button variant="outlined" className={previewButton}>
+                  Preview
+                </Button>
+
+                <Button variant="contained" className={updateButton} disabled>
+                  Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  className={updateButton}
+                  // onClick={handleUpdate}
+                >
+                  Update
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+        </Grid>
         <Grid item xs={12}>
           <div className={insideContainer}>
             <p className={backgroundColor}>Background color</p>
