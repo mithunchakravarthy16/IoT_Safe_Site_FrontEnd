@@ -10,6 +10,7 @@ import {
   CallIconBlue,
 } from "../../assets/InfoDialogueIcons";
 import Tooltip from "elements/Tooltip";
+import Typography from "@mui/material/Typography";
 import {
   RootContainer,
   ItemContainer,
@@ -125,8 +126,8 @@ const TitleInfoSubList: React.FC<any> = ({
               </ItemSubContainer2>
 
               <ItemSubContainer1>
-                <ItemValue paletteColor={appTheme.palette.titleInfoSubList.colorWhite}>{item?.value}</ItemValue>
-                <ItemLabel paletteColor={appTheme.palette.titleInfoSubList.darkGray}>{item?.title}</ItemLabel>
+                <ItemValue paletteColor={appTheme.palette.titleInfoSubList.colorWhite}><Typography variant="h4">{item?.value}</Typography></ItemValue>
+                <ItemLabel paletteColor={appTheme.palette.titleInfoSubList.darkGray}><Typography variant="h4">{item?.title}</Typography></ItemLabel>
               </ItemSubContainer1>
             </ItemContainer>
           );
