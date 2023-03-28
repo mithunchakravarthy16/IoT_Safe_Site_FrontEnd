@@ -5,6 +5,7 @@ import AdminHeader from "components/AdminHeader";
 import useStyles from "./styles";
 import ColorScheme from "components/ColorScheme";
 import DevtoolsUser from "components/DevToolsUser";
+import DevToolFontFamily from "components/DevToolFontFamily";
 
 const DevTools = () => {
   const {
@@ -183,6 +184,8 @@ const DevTools = () => {
                 <ColorScheme />
               ) : activePage === 2 ? (
                 <DevtoolsUser />
+              ) : activePage === 3 ? (
+                <DevToolFontFamily />
               ) : null}
             </div>
           </div>
