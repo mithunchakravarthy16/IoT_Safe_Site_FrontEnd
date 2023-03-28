@@ -1,3 +1,4 @@
+import { background } from "@chakra-ui/react";
 import { makeStyles } from "@mui/styles";
 import MenuShapes from "../../assets/admin-leftpan-shape.png";
 
@@ -86,6 +87,13 @@ const useStyles = makeStyles(() => ({
     fontWeight: 600,
     fontSize: " 24px",
     lineHeight: "29px",
+    color: "#000000",
+  }),
+  colorSchemeSubeading: () => ({
+    fontFamily: "Montserrat",
+    fontWeight: 600,
+    fontSize: "16px",
+    lineHeight: "20px",
     color: "#000000",
   }),
   innerPanel: () => ({
@@ -196,6 +204,47 @@ const useStyles = makeStyles(() => ({
     height: "calc(100vh - 340px)",
     overflow: " auto",
   }),
-  adminUser: () => ({}),
+  fileUploadContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    margin: "36px",
+    marginBottom: "0px",
+  },
+  fileUploadTitle: {
+    fontWeight: 600,
+    fontSize: "18px",
+    lineHeight: "22px",
+    color: "#445B7D",
+    marginBottom: "20px"
+  },
+  fileUploadContent: {
+    display: "flex",
+    alignItems: "center",
+  },
+  logoPreviewWrapper: {
+    border: "7px solid #F9F9F9",
+    background: "#FFFFFF",
+    borderRadius: "5px",
+    marginRight: "40px",
+  },
+  logoPreviewInnercontainer: {
+    border: "1px dashed #5485B3",
+    borderRadius: "5px",
+    width: "370px",
+    height: "127px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoPreview: {
+    width: "80%",
+    maxWidth: "80%",
+    maxHeight: "100%",
+    height: "auto"
+  },
+  invisibleDisplay: {
+    display: "none"
+  }
 }));
 export default useStyles;
