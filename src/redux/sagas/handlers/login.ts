@@ -16,6 +16,8 @@ export function* handleLogin(action: any): any {
       const response =
         action?.payload?.userName === "john.smith@zurichna.com"
           ? userList[0]
+          : action?.payload?.userName === "admin.smith@zurichna.com"
+          ? userList[1]
           : "";
 
       if (response) {
