@@ -2,6 +2,12 @@ import { useState, Fragment, useEffect, useRef } from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import {
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+} from "@mui/material"
+import ColorPicker from "elements/ColorPicker";
 import AdminHeader from "components/AdminHeader";
 import useStyles from "./styles";
 import ColorScheme from "components/ColorScheme";
@@ -242,6 +248,11 @@ const DevTools = () => {
 
     setCustomLogos(oldLogos)
   }
+
+  const [activeTab, setActiveTab] = useState<any>(menuItems[activePage]);
+  useEffect(() => {
+    setActiveTab(menuItems[activePage]?.name);
+  }, [activePage]);
 
   const pageContentRenderer = () => {
     switch(activePage) {
