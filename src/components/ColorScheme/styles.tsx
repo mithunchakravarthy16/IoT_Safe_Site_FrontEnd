@@ -77,9 +77,10 @@ const useStyles = makeStyles(() => ({
     fontWeight: " 600 !important",
     fontSize: "20px !important",
     lineHeight: "24px !important",
-    background: "#1a3175",
+    background: "#1a3175 !important",
     padding: "12px 16px !important",
     marginRight: "20px !important",
+    color: "white !important",
   }),
   colorSchemeHeading: () => ({
     fontFamily: "Montserrat",
@@ -128,7 +129,7 @@ const useStyles = makeStyles(() => ({
     borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
   }),
   adminRightPanelBackgroundColor: () => ({
-    padding: "30px 30px 30px 30px ",
+    padding: "0px 30px 30px 30px ",
     borderBottom: "1px solid rgb(0 0 0 / 10%)",
   }),
   customSelects: () => ({
@@ -197,5 +198,8 @@ const useStyles = makeStyles(() => ({
     overflow: " auto",
   }),
   adminUser: () => ({}),
+  adminRightPanelMainBody: () => ({
+    padding: "30px 30px 0px 30px ",
+  }),
 }));
 export default useStyles;

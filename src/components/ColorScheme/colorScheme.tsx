@@ -1,4 +1,5 @@
 import { useState, Fragment, useEffect } from "react";
+import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import ColorPicker from "elements/ColorPicker";
 import Radio from "@mui/material/Radio";
@@ -10,7 +11,8 @@ import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
 
-const ColorScheme = () => {
+const ColorScheme: React.FC<any> = (props) => {
+  const { activeTab } = props;
   const {
     backgroundColor,
     radioButtonHeader,
@@ -22,6 +24,13 @@ const ColorScheme = () => {
     radioButton,
     deleteIconClass,
     insideContainer,
+    adminRightPanelHeader,
+    previewButton,
+    adminHeaderButtonSection,
+    updateButton,
+    colorSchemeHeading,
+    innerPanel,
+    adminRightPanelMainBody,
   } = useStyles();
 
   const [activePage, setActivePage] = useState<any>();
@@ -66,6 +75,13 @@ const ColorScheme = () => {
   const [multipleMarkers, setMuiltipleMarkers] = useState<any>();
 
   const [multipleTabs, setMuiltipleTabs] = useState<any>();
+
+  const [loginValue, setLoginValue] = useState<any>();
+  const [themeValue, setThemeValue] = useState<any>();
+  const [footerValue, setFooterValue] = useState<any>();
+  const [loginColorValue, setLoginColorValue] = useState<any>("#FFFFFF");
+  const [themeColorValue, setThemeColorValue] = useState<any>("#FFFFFF");
+  const [footerColorValue, setFooterColorValue] = useState<any>("#FFFFFF");
 
   const my_array = Array.from(Array(100 + 1).keys()).slice(1);
 
@@ -259,22 +275,71 @@ const ColorScheme = () => {
       buttons: multipleButtons,
       markers: multipleMarkers,
       tabs: multipleTabs,
+      bgData: {
+        login: { type: loginValue, color: loginColorValue },
+        theme: { type: themeValue, color: themeColorValue },
+        footer: { type: footerValue, color: footerColorValue },
+      },
     };
     localStorage.setItem("colorScheme", JSON.stringify(data));
   };
 
-  const [activeTab, setActiveTab] = useState<any>(menuItems[activePage]);
-  useEffect(() => {
-    setActiveTab(menuItems[activePage]?.name);
-  }, [activePage]);
+  const handleLoginRadioChange = (e: any) => {
+    setLoginValue(e.target.value);
+  };
+
+  const handleThemeRadioChange = (e: any) => {
+    setThemeValue(e.target.value);
+  };
+
+  const handleFooterRadioChange = (e: any) => {
+    setFooterValue(e.target.value);
+  };
+
+  const handleLoginInputColor = (e: any) => {
+    setLoginColorValue(e.target.value);
+  };
+
+  const handleThemeInputColor = (e: any) => {
+    setThemeColorValue(e.target.value);
+  };
+
+  const handleFooterInputColor = (e: any) => {
+    setFooterColorValue(e.target.value);
+  };
 
   return (
     <Fragment>
       <Grid container>
         <Grid item xs={12}>
+          <div className={innerPanel}>
+            <Grid container className={adminRightPanelHeader}>
+              <Grid item xs={6}>
+                <p className={colorSchemeHeading}>{activeTab}</p>
+              </Grid>
+              <Grid item xs={6} className={adminHeaderButtonSection}>
+                <Button variant="outlined" className={previewButton}>
+                  Preview
+                </Button>
+
+                <Button variant="contained" className={updateButton} disabled>
+                  Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  className={updateButton}
+                  onClick={handleUpdate}
+                >
+                  Update
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+        </Grid>
+        <Grid item xs={12}>
           <div className={insideContainer}>
             <p className={backgroundColor}>Background color</p>
-            <Grid container className={adminRightPanelBody}>
+            <Grid container className={adminRightPanelMainBody}>
               <Grid item xs={3}>
                 <p className={radioButtonHeader}>Login</p>
                 <FormControl className={radioButton}>
@@ -282,6 +347,8 @@ const ColorScheme = () => {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    value={loginValue}
+                    onChange={handleLoginRadioChange}
                   >
                     <FormControlLabel
                       value="solid"
@@ -303,6 +370,8 @@ const ColorScheme = () => {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    value={themeValue}
+                    onChange={handleThemeRadioChange}
                   >
                     <FormControlLabel
                       value="solid"
@@ -324,6 +393,8 @@ const ColorScheme = () => {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    value={footerValue}
+                    onChange={handleFooterRadioChange}
                   >
                     <FormControlLabel
                       value="solid"
@@ -343,19 +414,28 @@ const ColorScheme = () => {
               <Grid item xs={3}>
                 <p className={radioButtonHeader}>Header</p>
                 <div className={colorPickerItem}>
-                  <ColorPicker onChange={handleInput} value={state} />
+                  <ColorPicker
+                    onChange={handleLoginInputColor}
+                    value={loginColorValue}
+                  />
                 </div>
               </Grid>
               <Grid item xs={3}>
                 <p className={radioButtonHeader}>Header</p>
                 <div className={colorPickerItem}>
-                  <ColorPicker onChange={handleInput} value={state} />
+                  <ColorPicker
+                    onChange={handleThemeInputColor}
+                    value={themeColorValue}
+                  />
                 </div>
               </Grid>
               <Grid item xs={3}>
                 <p className={radioButtonHeader}>Header</p>
                 <div className={colorPickerItem}>
-                  <ColorPicker onChange={handleInput} value={state} />
+                  <ColorPicker
+                    onChange={handleFooterInputColor}
+                    value={footerColorValue}
+                  />
                 </div>
               </Grid>
             </Grid>
@@ -583,13 +663,21 @@ const ColorScheme = () => {
                         />
                       </div>
                     </Grid>
-                    <Grid
-                      item
-                      xs={2}
-                      className={adminPlusIconClass}
-                      onClick={handleAddTabs}
-                    >
-                      <img src={adminPlusIcon} />
+                    <Grid item xs={2}>
+                      <div
+                        className={deleteIconClass}
+                        onClick={() => handleRemoveTabs(index)}
+                      >
+                        {multipleTabs?.length > 1 && index !== 0 && (
+                          <img src={deleteIcon} />
+                        )}
+                      </div>
+                      <div
+                        className={adminPlusIconClass}
+                        onClick={handleAddTabs}
+                      >
+                        <img src={adminPlusIcon} />
+                      </div>
                     </Grid>
                   </Grid>
                 );

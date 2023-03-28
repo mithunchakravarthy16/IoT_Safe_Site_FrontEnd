@@ -58,19 +58,19 @@ const INF_Tabs = (props: TabProps) => {
                     <div>
                       {item?.icon ? (
                         <>
-                          {" "}
-                          <img src={item?.icon} alt="icon" />{" "}
+                          
+                          <img src={item?.icon} alt="icon" />
                           <div className={itemCount}></div>
                           <div className={itemText}>
                             {item?.name}
                             {item?.count}
-                          </div>{" "}
+                          </div>
                         </>
                       ) : (
                         <>
-                          {" "}
+                          
                           <div className={itemCount}> {item?.count}</div>
-                          <div className={itemText}>{item?.name}</div>{" "}
+                          <div className={itemText}>{item?.name}</div>
                         </>
                       )}
                     </div>

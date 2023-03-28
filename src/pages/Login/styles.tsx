@@ -2,6 +2,17 @@ import { makeStyles } from "@mui/styles";
 import safeSizeBg from "../../assets/login/Safe-Site-Login-Bg.jpg";
 import muiTheme from "../../theme/muiTheme";
 
+let data = JSON.parse(localStorage.getItem("colorScheme")!)
+
+
+
+let logoSectionBgColor: string;
+if(data && data?.bgData?.login?.type === "solid"){
+  logoSectionBgColor = data?.bgData?.login?.color
+}
+
+
+
 const useStyles = makeStyles(() => ({
   loginBannerSection: (props: any) => ({
     backgroundImage: `url("${safeSizeBg}")`,
@@ -72,7 +83,8 @@ const useStyles = makeStyles(() => ({
   logoSection: (props: any) => ({
     textAlign: "center",
     padding: "35px 2px",
-    background: props?.palette?.login?.logoBg,
+    background: logoSectionBgColor ? logoSectionBgColor : props?.palette?.login?.logoBg,
+
     boxShadow: "0px 4px 15px rgb(0 0 0 / 5%)",
     borderRadius: "5px 5px 0px 0px",
     "& img": {

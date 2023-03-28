@@ -5,7 +5,7 @@ import theme from "../../theme/theme";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { OutlinedInput } from "@mui/material";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import gdSafeSite from "../../assets/login/gd-save-site.svg";
@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
+import Button from "elements/Button";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Login = () => {
     JSON.parse(localStorage.getItem("theme")!)
   );
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -133,7 +135,7 @@ const Login = () => {
         <Grid item xs={12} className={loginFormSection}>
           <div className={loginWidth}>
             <Grid item xs={12} className={logoSection}>
-              <img src={gdSafeSite} />
+              <img src={customLogo.login || gdSafeSite} />
             </Grid>
             <Grid item xs={12}>
               <Box className={innerForm}>
@@ -203,7 +205,7 @@ const Login = () => {
                     <p className={forgotPassword}><Typography variant="h3">Forgot Password?</Typography></p>
                   </div>
                   <div className={loginButton}>
-                    <Button variant="contained" fullWidth type="submit">
+                    <Button variant={"contained"} fullWidth={true} type={"submit"} buttonStyles={loginButton} buttonVariant={"primary"}>
                       Login
                     </Button>
                   </div>

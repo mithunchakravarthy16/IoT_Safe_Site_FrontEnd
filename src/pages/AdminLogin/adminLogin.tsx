@@ -5,7 +5,7 @@ import theme from "../../theme/theme";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { OutlinedInput } from "@mui/material";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import gdSafeSite from "../../assets/Admin-login/developer-tools.svg";
@@ -17,6 +17,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
+import Button from "elements/Button";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -70,6 +71,16 @@ const AdminLogin = () => {
     forgotPassword,
   } = useStyles(appTheme);
 
+  useEffect(() => {
+    if (user && user?.userName) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ role: user?.currentRoleType })
+      );
+      navigate("/devTools");
+    }
+  }, [user]);
+
   const formik = useFormik({
     initialValues: {
       userid: "",
@@ -86,7 +97,7 @@ const AdminLogin = () => {
     }),
     onSubmit: (values) => {
       if (
-        (values?.userid).toLowerCase() === "john.smith@zurichna.com" &&
+        (values?.userid).toLowerCase() === "admin.smith@zurichna.com" &&
         values?.password === "John@2023"
       ) {
         let payload = {
@@ -99,14 +110,6 @@ const AdminLogin = () => {
       }
     },
   });
-
-  const handleLogin = () => {
-    localStorage.setItem("user", JSON.stringify({ role: "ADMIN" }));
-    navigate("/devTools");
-  };
-  const handleAdminLogin = () => {
-    navigate("/adminLogin");
-  };
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -178,10 +181,12 @@ const AdminLogin = () => {
                   </div>
                   <div className={loginButton}>
                     <Button
-                      variant="contained"
-                      fullWidth
-                      type="submit"
-                      onClick={handleLogin}
+                      variant={"contained"}
+                      fullWidth={true}
+                      type={"submit"}
+                      // handleClick={handleLogin}
+                      buttonStyles={loginButton}
+                      buttonVariant={"primary"}
                     >
                       Login
                     </Button>

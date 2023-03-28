@@ -1,9 +1,10 @@
 import Table from "elements/Table";
 
-const INF_DevToolsUser = () => {
+const INF_DevToolsUser: React.FC<any> = (props) => {
+  const { activeTab } = props;
   return (
     <div>
-      <Table />
+      <Table activeTab={activeTab} />
     </div>
   );
 };

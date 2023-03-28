@@ -30,11 +30,33 @@ const INF_Button: React.FC<any> = (props) => {
   }, [selectedTheme]);
   const { loginButton, CustomButton, CustomButtonDisable } =
     useStyles(appTheme);
-  const { variant, handleClick, type, children, disable, buttonStyles } = props;
+  const { variant, handleClick, type, children, disable, buttonStyles, fullWidth, buttonVariant } = props;
 
   const handleButtonClick = () => {
     handleClick();
   };
+
+  const[buttonTheme, setButtonTheme] = useState<any>();
+  const[btnTextProperty, setbTnTextProperty]=useState<any>({fontSize : "unset", textColor: "unset"})
+  const{fontSize, textColor} = btnTextProperty;
+useEffect(()=>{
+  setButtonTheme(JSON.parse(localStorage.getItem("colorScheme")!))
+},[])
+
+
+
+useEffect(()=>{
+
+  if(buttonTheme){
+    buttonTheme?.buttons?.map((item: any)=>{
+       if(item?.name?.toLowerCase() === buttonVariant?.toLowerCase()){
+        setbTnTextProperty({ fontSize: item?.size ? item?.size : "unset", textColor: item?.textColor ? item?.textColor : "unset"})
+       }
+    })
+  }
+
+},[buttonTheme])
+  
   return (
     <>
       <Button
@@ -51,8 +73,12 @@ const INF_Button: React.FC<any> = (props) => {
         onClick={handleButtonClick}
         type={type}
         disabled={disable}
+        color={buttonVariant}
+        fullWidth={fullWidth}
       >
-        {children}
+        <span 
+        style={{fontSize: `${fontSize}px`, color:textColor}}
+        >{children}</span>
       </Button>
     </>
   );
