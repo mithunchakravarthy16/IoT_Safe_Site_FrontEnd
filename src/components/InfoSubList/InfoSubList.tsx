@@ -24,6 +24,7 @@ import {
   ItemSubContainer2,
 } from "./styles";
 import useTranslation from "localization/translations";
+import Typography from "@mui/material/Typography";
 
 const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -165,9 +166,9 @@ const InfoSubList: React.FC<any> = ({ highlighted, infoSubList, ...props }) => {
             >
               <ItemSubContainer1>
                 <ItemValue paletteColor={appTheme.palette.infoSubList.colorWhite}>
-                  { item.value}
+                <Typography variant="h3">{ item.value}</Typography>
                 </ItemValue>
-                <ItemLabel paletteColor={appTheme.palette.infoSubList.darkGray}>{item?.title}</ItemLabel>
+                <ItemLabel paletteColor={appTheme.palette.infoSubList.darkGray}><Typography variant="h4">{item?.title}</Typography></ItemLabel>
               </ItemSubContainer1>
 
               <ItemSubContainer2>

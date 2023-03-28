@@ -15,7 +15,7 @@ import colorCodes from "../../theme/colors";
 import useStyles from "./styles";
 import Select from "../../elements/Select";
 import Chart from "../../elements/Chart";
-
+import Typography from "@mui/material/Typography";
 import moment from "moment";
 import useWindowDimensions from "hooks/useWindowDimensions";
 import TitleInfoSubList from "components/TitleInfoSubList";
@@ -1063,9 +1063,11 @@ const InfoDialog: React.FC<any> = (props) => {
                         <div className={tripsSection1}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
+                            <Typography variant="h3">
                               {graphOneTitle === "temperature"
                                 ? temperature
                                 : capitalizeFirstLetter(graphOneTitle)}
+                                </Typography>
                             </p>
                             <div
                             // className={customSelectButton}
@@ -1124,9 +1126,11 @@ const InfoDialog: React.FC<any> = (props) => {
                         <div className={tripsSection2}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
+                            <Typography variant="h3">
                               {graphTwoTitle === "humidity"
                                 ? humidity
                                 : capitalizeFirstLetter(graphTwoTitle)}
+                                </Typography>
                             </p>
                             <div
                             // className={customSelectButton}
@@ -1180,9 +1184,11 @@ const InfoDialog: React.FC<any> = (props) => {
                         <div className={tripsSection}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
+                            <Typography variant="h3">
                               {graphThreeTitle === "carbonMonoxide"
                                 ? carbonMonoxide
                                 : waterLevel}
+                                </Typography>
                             </p>
                             <div
                             // className={customSelectButton}
@@ -1235,7 +1241,9 @@ const InfoDialog: React.FC<any> = (props) => {
                         <div className={tripsSection}>
                           <div className={incomeCurrentSection}>
                             <p className={incomeText}>
+                            <Typography variant="h3">
                               {graphFourTitle === "voc" ? voc : rainfall}
+                              </Typography>
                             </p>
                             <div
                             // className={customSelectButton}

@@ -15,6 +15,7 @@ import FloodSensorActive from "../../assets/TabIcons/FloodSensorActive.svg";
 import FloodSensorInactive from "../../assets/TabIcons/FloodSensorInactive.svg";
 import useStyles from "./styles";
 import InfoDialog from "components/InfoDialog";
+import Typography from "@mui/material/Typography";
 
 const DashboardList: React.FC<any> = (props) => {
   const {
@@ -200,7 +201,7 @@ const DashboardList: React.FC<any> = (props) => {
         <div className={dashboarListTitle}>
           <div className={listTitleName}>
             {!searchOpen ? (
-              `${equipment}`
+              <Typography variant="h3">equipment</Typography>
             ) : (
               <SearchBox
                 searchInput={searchClass}

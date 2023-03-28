@@ -14,7 +14,7 @@ import EyeOff from "../../assets/login/lock.svg";
 import OpenEyeIcon from "../../assets/login/lock.svg";
 import AttherateIcon from "../../assets/login/atthirate.svg";
 import saveSiteLogo from "../../assets/login/gd-save-site.svg";
-
+import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
@@ -144,11 +144,16 @@ const Login = () => {
                   <div className={welcomeSection}>
                     <p className={welcomeContent}>
                       {/* Test Build ( {width} X {height} ) */}
+                     
+                      <Typography variant="h2">
                       Welcome Admin Login
+                      </Typography>
+                      
                     </p>
                   </div>
                   <div className={outlineInputField}>
-                    <p className={inputTitle}>Your Email</p>
+                    <p className={inputTitle}><Typography variant="h3">Your Email</Typography></p>
+                    
                     <OutlinedInput
                       className={inputField}
                       fullWidth
@@ -166,7 +171,7 @@ const Login = () => {
                     )}
                   </div>
                   <div className={outlineInputField}>
-                    <p className={inputTitle}>Password</p>
+                    <p className={inputTitle}><Typography variant="h3">Password</Typography></p>
                     <OutlinedInput
                       className={inputField}
                       fullWidth
@@ -193,9 +198,9 @@ const Login = () => {
                     <FormControlLabel
                       value="rememberMe"
                       control={<Radio />}
-                      label="Remember me"
+                      label={<Typography variant="h3">Remember me</Typography>}
                     />
-                    <p className={forgotPassword}>Forgot Password?</p>
+                    <p className={forgotPassword}><Typography variant="h3">Forgot Password?</Typography></p>
                   </div>
                   <div className={loginButton}>
                     <Button variant="contained" fullWidth type="submit">
@@ -203,7 +208,7 @@ const Login = () => {
                     </Button>
                   </div>
                   <div className={adminLoginLink} onClick={handleAdminLogin}>
-                    Admin Login
+                  <Typography variant="h4">Admin Login</Typography>
                   </div>
                 </form>
               </Box>
@@ -211,9 +216,9 @@ const Login = () => {
           </div>
         </Grid>
         <div className={copyRights}>
-          <span>Powered by</span>
+          <span><Typography variant="h4">Powered by</Typography></span>
           <img src={saveSiteLogo} />
-          <span>© 2023. All Rights Reserved</span>
+          <span><Typography variant="h4">© 2023. All Rights Reserved</Typography></span>
         </div>
       </Grid>
     </>

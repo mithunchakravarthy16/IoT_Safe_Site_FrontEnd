@@ -1,40 +1,96 @@
-// import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-// const theme = createTheme();
+interface semanticTagsTypes {
+  name: string;
+  color: string;
+  size: string | number;
+}
 
+const semanticTags = [
+  {
+    name: "H1",
 
+    // size: "48px",
+    // color: "#000000",
+  },
+  {
+    name: "H2",
 
-const h1 = {  
-  fontSize: "24px",
-  color:''
-};
+    // size: "34px",
+    // color: "#000000",
+  },
+  {
+    name: "H3",
 
-const h2 = { 
-};
+    // size: "18px",
+    // color: "#000000",
+  },
+  {
+    name: "H4",
 
-const h3 = { 
-};
+    // size: "16px",
+    // color: "#000000",
+  },
+  {
+    name: "H5",
 
-const h4 = {
-};
+    // size: "14px",
+    // color: "#45DA19",
+  },
+  {
+    name: "H6",
 
-const h5 = {
-};
+    // size: "12px",
+    // color: "#000000",
+  },
+];
 
-const h6 = {};
+const buttons = [
+  {
+    name: "Primary",
+    size: "2",
+    bgColor: "#FFFFFF",
+    textColor: "#FFFFFF",
+  },
+];
 
+const markers = [
+  {
+    name: "Events",
+    bgColor: "#FFFFFF",
+  },
+];
 
-const body = {};
+const tabs = [
+  {
+    name: "Events",
+    bgColor: "#FFFFFF",
+    textColor: "#FFFFFF",
+  },
+];
 
+const defaultData = { semanticTags, tabs, buttons, markers };
 
-const typography = { 
-  h1: h1,
-  h2: h2,
-  h3: h3,
-  h4: h4,
-  h5: h5,
-  h6: h6,
-  body: body
-};
+let data = JSON.parse(localStorage.getItem("colorScheme")!)
+  ? JSON.parse(localStorage.getItem("colorScheme")!)
+  : defaultData;
 
-export default typography;
+data.semanticTags = [...defaultData.semanticTags, ...data?.semanticTags];
+data.buttons = [...defaultData.buttons, ...data?.buttons];
+data.markers = [...defaultData.markers, ...data?.markers];
+data.tabs = [...defaultData.tabs, ...data?.tabs];
+
+const customTheming: any = {};
+
+data?.semanticTags?.map((tag: semanticTagsTypes) => {
+  const { name, color, size } = tag;
+
+  customTheming[name?.toLowerCase()] = {
+    color: color ? `${color}!important` : "unset",
+    fontSize: size ? `${size.toString()}px !important` : "unset",
+    fontWeight: "unset",
+    // fontFamily: `'Poppins', sans-serif`,
+  };
+});
+
+export default customTheming;
