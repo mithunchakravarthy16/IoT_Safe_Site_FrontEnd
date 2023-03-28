@@ -17,6 +17,7 @@ import useStyles from "./styles";
 import useTranslation from "localization/translations";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VideoDragIcon from "../../assets/videoDragIcon.svg";
+import Typography from "@mui/material/Typography";
 
 function ValueLabelComponent(props: SliderValueLabelProps) {
   const { children, value } = props;
@@ -139,9 +140,11 @@ const PlayerControls: React.FC<any> = (props) => {
         >
           <Grid item >
             <div>
+            <Typography variant="h4">
               {pageName === "infoVideo"
                 ? `${aiCamera} C# 3454 | ${zone} ${zoneNumber} `
                 : `${item?.cameraName} | ${item?.zone}`}
+                </Typography>
             </div>
           </Grid>
           <Grid item>
