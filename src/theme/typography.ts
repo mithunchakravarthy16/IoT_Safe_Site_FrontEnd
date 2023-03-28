@@ -87,7 +87,7 @@ data?.semanticTags?.map((tag: semanticTagsTypes) => {
 
   customTheming[name?.toLowerCase()] = {
     color: color ? `${color}!important` : "unset",
-    fontSize: size ? `${size.toString()}!important` : "unset",
+    fontSize: size ? `${size.toString()}px !important` : "unset",
     fontWeight: "unset",
     // fontFamily: `'Poppins', sans-serif`,
   };
