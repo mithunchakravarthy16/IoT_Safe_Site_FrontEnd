@@ -19,7 +19,7 @@ const AdminHeader: React.FC = (props: any) => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    localStorage.clear();
+    // localStorage.clear();
     dispatch(setUserLogin({}));
     navigate("/login");
   };
