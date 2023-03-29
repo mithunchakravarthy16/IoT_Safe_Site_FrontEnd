@@ -37,36 +37,36 @@ const ColorScheme: React.FC<any> = (props) => {
   const tags = [
     {
       name: "H1",
-      size: "2",
-      color: "#FFFFFF",
+      size: "unset",
+      color: "unset",
     },
   ];
 
   const buttons = [
     {
       name: "Primary",
-      size: "2",
-      bgColor: "#FFFFFF",
-      textColor: "#FFFFFF",
+      size: "unset",
+      bgColor: "#nnn",
+      textColor: "unset",
     },
   ];
 
   const markers = [
     {
       name: "Events",
-      bgColor: "#FFFFFF",
+      bgColor: "unset",
     },
   ];
 
   const tabs = [
     {
       name: "Events",
-      bgColor: "#FFFFFF",
-      textColor: "#FFFFFF",
+      bgColor: "unset",
+      textColor: "unset",
     },
   ];
 
-  const [state, updateState] = useState("#FFFFFF");
+  const [state, updateState] = useState("unset");
 
   const [multipleTags, setMuiltipleTags] = useState<any>();
 
@@ -79,9 +79,9 @@ const ColorScheme: React.FC<any> = (props) => {
   const [loginValue, setLoginValue] = useState<any>();
   const [themeValue, setThemeValue] = useState<any>();
   const [footerValue, setFooterValue] = useState<any>();
-  const [loginColorValue, setLoginColorValue] = useState<any>("#FFFFFF");
-  const [themeColorValue, setThemeColorValue] = useState<any>("#FFFFFF");
-  const [footerColorValue, setFooterColorValue] = useState<any>("#FFFFFF");
+  const [loginColorValue, setLoginColorValue] = useState<any>("unset");
+  const [themeColorValue, setThemeColorValue] = useState<any>("unset");
+  const [footerColorValue, setFooterColorValue] = useState<any>("unset");
 
   const my_array = Array.from(Array(100 + 1).keys()).slice(1);
 
@@ -107,19 +107,28 @@ const ColorScheme: React.FC<any> = (props) => {
       data?.buttons?.length > 0 ||
       data?.markers?.length > 0 ||
       data?.semanticTags?.length > 0 ||
-      data?.tabs?.length > 0
+      data?.tabs?.length > 0 ||
+      data?.bgData?.login?.color ||
+      data?.bgData?.theme?.color ||
+      data?.bgData?.footer?.color
     ) {
       setMuiltipleTags(data?.semanticTags);
       setMuiltipleButtons(data?.buttons);
       setMuiltipleMarkers(data?.markers);
       setMuiltipleTabs(data?.tabs);
+      setLoginColorValue(data?.bgData?.login?.color);
+      setThemeColorValue(data?.bgData?.theme?.color);
+      setFooterColorValue(data?.bgData?.footer?.color);
     } else {
       setMuiltipleTags(tags);
       setMuiltipleButtons(buttons);
       setMuiltipleMarkers(markers);
       setMuiltipleTabs(tabs);
+      setLoginColorValue("unset");
+      setThemeColorValue("unset");
+      setFooterColorValue("unset");
     }
-  }, []);
+  }, [activeTab]);
 
   const handleClick = (event: any, id: any) => {
     setActivePage(id);
