@@ -172,6 +172,7 @@ const DevTools: React.FC<any> = (props) => {
     const logos = JSON.parse(
       localStorage.getItem("customLogos") || defaultLogos
     );
+    setFooterLogoType(logos?.footer?.type)
     setCustomLogos(logos);
   };
 
@@ -254,6 +255,7 @@ const DevTools: React.FC<any> = (props) => {
   const [activeTab, setActiveTab] = useState<any>(menuItems[activePage]);
   useEffect(() => {
     setActiveTab(menuItems[activePage]?.name);
+    getLogos()
   }, [activePage]);
 
   const pageContentRenderer = () => {
