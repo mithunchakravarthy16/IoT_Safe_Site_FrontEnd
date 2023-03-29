@@ -107,19 +107,28 @@ const ColorScheme: React.FC<any> = (props) => {
       data?.buttons?.length > 0 ||
       data?.markers?.length > 0 ||
       data?.semanticTags?.length > 0 ||
-      data?.tabs?.length > 0
+      data?.tabs?.length > 0 ||
+      data?.bgData?.login?.color ||
+      data?.bgData?.theme?.color ||
+      data?.bgData?.footer?.color
     ) {
       setMuiltipleTags(data?.semanticTags);
       setMuiltipleButtons(data?.buttons);
       setMuiltipleMarkers(data?.markers);
       setMuiltipleTabs(data?.tabs);
+      setLoginColorValue(data?.bgData?.login?.color);
+      setThemeColorValue(data?.bgData?.theme?.color);
+      setFooterColorValue(data?.bgData?.footer?.color);
     } else {
       setMuiltipleTags(tags);
       setMuiltipleButtons(buttons);
       setMuiltipleMarkers(markers);
       setMuiltipleTabs(tabs);
+      setLoginColorValue("unset");
+      setThemeColorValue("unset");
+      setFooterColorValue("unset");
     }
-  }, []);
+  }, [activeTab]);
 
   const handleClick = (event: any, id: any) => {
     setActivePage(id);

@@ -7,7 +7,7 @@ let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
 let headerBgColor: string;
 
-if(data && data?.bgData?.theme?.type === "solid"){
+if(data && data?.bgData?.theme?.color){
   headerBgColor = data?.bgData?.theme?.color
 }
 
