@@ -37,36 +37,36 @@ const ColorScheme: React.FC<any> = (props) => {
   const tags = [
     {
       name: "H1",
-      size: "2",
-      color: "#FFFFFF",
+      size: "unset",
+      color: "unset",
     },
   ];
 
   const buttons = [
     {
       name: "Primary",
-      size: "2",
-      bgColor: "#FFFFFF",
-      textColor: "#FFFFFF",
+      size: "unset",
+      bgColor: "#nnn",
+      textColor: "unset",
     },
   ];
 
   const markers = [
     {
       name: "Events",
-      bgColor: "#FFFFFF",
+      bgColor: "unset",
     },
   ];
 
   const tabs = [
     {
       name: "Events",
-      bgColor: "#FFFFFF",
-      textColor: "#FFFFFF",
+      bgColor: "unset",
+      textColor: "unset",
     },
   ];
 
-  const [state, updateState] = useState("#FFFFFF");
+  const [state, updateState] = useState("unset");
 
   const [multipleTags, setMuiltipleTags] = useState<any>();
 
@@ -79,9 +79,9 @@ const ColorScheme: React.FC<any> = (props) => {
   const [loginValue, setLoginValue] = useState<any>();
   const [themeValue, setThemeValue] = useState<any>();
   const [footerValue, setFooterValue] = useState<any>();
-  const [loginColorValue, setLoginColorValue] = useState<any>("#FFFFFF");
-  const [themeColorValue, setThemeColorValue] = useState<any>("#FFFFFF");
-  const [footerColorValue, setFooterColorValue] = useState<any>("#FFFFFF");
+  const [loginColorValue, setLoginColorValue] = useState<any>("unset");
+  const [themeColorValue, setThemeColorValue] = useState<any>("unset");
+  const [footerColorValue, setFooterColorValue] = useState<any>("unset");
 
   const my_array = Array.from(Array(100 + 1).keys()).slice(1);
 

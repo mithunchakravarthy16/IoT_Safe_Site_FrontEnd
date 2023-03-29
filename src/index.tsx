@@ -16,12 +16,13 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <LanguageContextProvider>
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}> */}
           <App />
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </LanguageContextProvider>
     </PersistGate>
   </Provider>
 );
 
 reportWebVitals();
+
