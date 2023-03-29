@@ -7,7 +7,7 @@ let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
 
 let logoSectionBgColor: string;
-if(data && data?.bgData?.login?.type === "solid"){
+if(data && data?.bgData?.login?.color){
   logoSectionBgColor = data?.bgData?.login?.color
 }
 
