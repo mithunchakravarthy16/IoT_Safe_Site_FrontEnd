@@ -30,7 +30,8 @@ const useStyles = makeStyles(
       },
       "& img": {
         margin: "0 8px",
-        width: "80px",
+        height: "30px",
+        width: "auto",
         // [muiTheme.breakpoints.down(1281)]: {
         //   width: "60px",
         // },

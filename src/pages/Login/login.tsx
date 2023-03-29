@@ -219,7 +219,13 @@ const Login = () => {
         </Grid>
         <div className={copyRights}>
           <span><Typography variant="h4">Powered by</Typography></span>
-          <img src={saveSiteLogo} />
+          {
+            customLogo?.footer?.type !== "text"
+            ?
+            <img src={customLogo?.footer?.value || saveSiteLogo} />
+            :
+            <Typography variant="h6" sx={{color: customLogo?.footer?.color, marginLeft: "10px", marginRight: "10px"}} >{customLogo?.footer?.value}</Typography>
+          }
           <span><Typography variant="h4">© 2023. All Rights Reserved</Typography></span>
         </div>
       </Grid>
