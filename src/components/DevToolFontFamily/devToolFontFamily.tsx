@@ -89,7 +89,6 @@ const DevToolFontFamily: React.FC<any> = (props) => {
     if (text.includes("<link")) {
       const newsplit = text?.split("?family=");
       const split2 = newsplit && newsplit[1]?.split("&");
-
       if (split2[0].includes("+")) {
         const split3 = split2[0]?.split("+");
         if (split3[1].includes(":")) {
