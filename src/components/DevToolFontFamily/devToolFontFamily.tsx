@@ -4,7 +4,8 @@ import theme from "../../theme/theme";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
+import fbApp from "services/firebase";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import useStyles from "./styles";
 import { json } from "stream/consumers";
 
@@ -27,6 +28,8 @@ const DevToolFontFamily: React.FC<any> = (props) => {
     cancelButtonDisabled,
     cancelButton,
     textAreaStyleDisabled,
+    inputTextDisabled,
+    inputText,
   } = useStyles(appTheme);
 
   const [selectedTheme, setSelectedTheme] = useState(
@@ -58,23 +61,46 @@ const DevToolFontFamily: React.FC<any> = (props) => {
   const [isFontAdded, setIsFontAdded] = useState<boolean>(false);
   const [isFontFormatValid, setIsFontFormatValid] = useState<boolean>(false);
   const [textValue, setTextValue] = useState<any>();
+  const [fontTextValue, setFontTextValue] = useState<any>();
   const [buttonName, setButtonName] = useState<any>("SAVE");
   const [cancelButtonActive, setCancelButtonActive] = useState<boolean>(false);
   const [previewButtonActive, setPreviewButtonActive] =
     useState<boolean>(false);
+  const [customFont, setCustomFont] = useState<any>({
+    fontLink: "",
+    fontFamily: "",
+  });
 
-  const handleSubmitButton = (event: any) => {
-    if (textValue.includes("<link")) {
-      localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
-      localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
+  const [fontDetails, setFontDetails] = useState<any>();
+
+  const db = getFirestore(fbApp);
+
+  const handleSubmitButton = async () => {
+    try {
+      // if (textValue.includes("<link")) {
+      // localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
+      // localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
+      const ref = doc(db, "customFontFamily", "fontFamily");
+
+      const dbResponse = await setDoc(ref, customFont);
       setIsFontFormatValid(!isFontFormatValid);
       setCancelButtonActive(!cancelButtonActive);
       setPreviewButtonActive(!previewButtonActive);
-
-      // setButtonName("EDIT");
-    } else {
-      alert("Invalid Font Format");
+      // } else {
+      //   alert("Invalid Font Format");
+      // }
+    } catch (err) {
+      console.error("SOMETHING WENT WRONG", err);
     }
+    // if (textValue.includes("<link")) {
+    //   localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
+    //   localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
+    //   setIsFontFormatValid(!isFontFormatValid);
+    //   setCancelButtonActive(!cancelButtonActive);
+    //   setPreviewButtonActive(!previewButtonActive);
+    // } else {
+    //   alert("Invalid Font Format");
+    // }
   };
 
   const handleTextAreaContent = (event: any) => {
@@ -89,36 +115,38 @@ const DevToolFontFamily: React.FC<any> = (props) => {
     if (text.includes("<link")) {
       const newsplit = text?.split("?family=");
       const split2 = newsplit && newsplit[1]?.split("&");
-      if (split2[0].includes("+")) {
-        const split3 = split2[0]?.split("+");
-        if (split3[1].includes(":")) {
-          const split4 = split3[1].split(":");
-          const split6 =
-            split3[0] && split3[1] && split4[0] && split3[0] + " " + split4[0];
-          setFontFamily(`'` + split6 + `'` + ", sans-serif");
-        } else {
-          const split7 = split3[0] && split3[1] && split3[0] + " " + split3[1];
-          setFontFamily(`'` + split7 + `'` + ", sans-serif");
-        }
-      } else {
-        if (split2[0].includes(":")) {
-          const split4 = split2[0].split(":");
-          setFontFamily(`'` + split4[0] + `'` + ", sans-serif");
-        } else {
-          setFontFamily(`'` + split2[0] + `'` + ", cursive");
-        }
-      }
-
       const textSplit = text?.split("href");
       const newSplit = textSplit && textSplit[3]?.split(`"`);
       setGoogleFontDetails(newSplit && newSplit[1]);
+      customFont.fontLink = newSplit && newSplit[1];
       // setIsFontFormatValid(true);
     } else {
       // alert("Invalid Font Format");
     }
   };
 
-  const [fontDetails, setFontDetails] = useState<any>();
+  const handleFontFamily = (event: any) => {
+    setFontTextValue(event.target.value);
+    // setFontFamily(event.target.value);
+
+    const text = event.target.value;
+    if (text.length > 0) {
+      setIsFontAdded(true);
+      setCancelButtonActive(true);
+    } else {
+      setCancelButtonActive(false);
+    }
+
+    if (text?.includes("font-family")) {
+      const newsplit = text?.split("font-family:");
+      const split2 = newsplit && newsplit[1]?.replace(/;/g, "");
+      const split3 = split2?.split(",");
+      setFontFamily(split2.trim());
+      customFont.fontFamily = split2.trim();
+    } else {
+      alert("Enter valid CSS rules to specify families");
+    }
+  };
 
   useEffect(() => {
     const data = localStorage.getItem("googleFont");
@@ -179,12 +207,20 @@ const DevToolFontFamily: React.FC<any> = (props) => {
           </Grid>
         </Grid>
       </div>
-      <div className={googleFontHeading}>Google Font</div>
+      <div className={googleFontHeading}>Google Font Link</div>
       <textarea
         className={isFontFormatValid ? textAreaStyleDisabled : textAreaStyle}
         onChange={handleTextAreaContent}
         value={textValue}
         readOnly={isFontFormatValid ? true : false}
+      />
+      <div className={googleFontHeading}>Google Font Family</div>
+      <input
+        className={isFontFormatValid ? inputTextDisabled : inputText}
+        onChange={handleFontFamily}
+        value={fontTextValue}
+        readOnly={isFontFormatValid ? true : false}
+        placeholder={"Enter Font Family.."}
       />
       <div className={googleFontLinkStyle}>
         <a href="https://fonts.google.com" target="_blank">
