@@ -9,6 +9,7 @@ import powerIcon from "../../assets/Admin-Header/power-icon.png";
 import { setUserLogin } from "redux/actions/loginActions";
 import useStyles from "./styles";
 
+
 const AdminHeader: React.FC = (props: any) => {
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -24,11 +25,13 @@ const AdminHeader: React.FC = (props: any) => {
     navigate("/login");
   };
 
+  
+
   return (
     <Fragment>
       <Grid container className={header}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <div className={logoImg}>
+          <div className={logoImg} >
             <img src={devToolsLogo} alt="toolslogo" />
           </div>
         </Grid>
@@ -39,6 +42,8 @@ const AdminHeader: React.FC = (props: any) => {
           </div>
         </Grid>
       </Grid>
+      
+      
     </Fragment>
   );
 };

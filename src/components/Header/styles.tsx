@@ -1,15 +1,15 @@
 import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
-let data = JSON.parse(localStorage.getItem("colorScheme")!)
+// let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
 
 
-let headerBgColor: string;
+// let headerBgColor: string;
 
-if(data && data?.bgData?.theme?.color){
-  headerBgColor = data?.bgData?.theme?.color
-}
+// if(data && data?.bgData?.theme?.color){
+//   headerBgColor = data?.bgData?.theme?.color
+// }
 
 const useStyles = makeStyles(
   () => ({
@@ -44,7 +44,7 @@ const useStyles = makeStyles(
     }),
     header: (props: any) => ({
       alignItems: "center",
-      background: headerBgColor ? headerBgColor : props?.palette?.header?.headerBg,
+      background: props?.bgData?.theme ? props?.bgData?.theme?.color : props?.palette?.header?.headerBg,
 
 
       boxShadow: "0px 4px 4px 3px rgba(0, 0, 0, 0.05)",

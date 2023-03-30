@@ -24,7 +24,9 @@ import GrokEyeInactiveIcon from "../../assets/HeaderTabIcons/GrokEyeInactive.svg
 import GrokEyeActiveIcon from "../../assets/HeaderTabIcons/GrokEyeActive.svg";
 import useStyles from "./styles";
 import fbApp from 'services/firebase'
-import { getFirestore, onSnapshot, doc } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
+import {addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore/lite';
+import { db } from "services/firebase";
 
 interface UserName {
   firstName: string | undefined;
@@ -37,11 +39,12 @@ const Header: React.FC = (props: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const db = getFirestore(fbApp);
+  // const db = getFirestore(fbApp);
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
   const [customLogo, setCustomLogo] = useState<any>({})
+  const[firebaseData, setFirebaseData]=useState<any>({})
   const {
     logoImg,
     header,
@@ -59,7 +62,22 @@ const Header: React.FC = (props: any) => {
     customNotificationTabs,
     avatharUserName,
     avatharUserRole,
-  } = useStyles(appTheme);
+  } = useStyles({...appTheme, bgData: firebaseData?.bgData});
+
+  
+
+  useEffect(()=>{
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    getDoc(buttonCollectionRef)
+    .then(response => {
+      
+      const btns = response.data()
+    
+      setFirebaseData(btns);
+      
+    })
+    .catch(error=> console.log(error.message));
+  },[])
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -187,8 +205,8 @@ const Header: React.FC = (props: any) => {
 
   const getThemeData = async () => {
     try {
-      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
-          console.log("Current data: ", doc.data());
+      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc:any) => {
+          
           setCustomLogo(doc.data())
       });
 

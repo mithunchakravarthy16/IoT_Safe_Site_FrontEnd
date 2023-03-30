@@ -13,12 +13,84 @@ import Header from "../components/Header";
 import Footer from "components/Footer";
 import GrokEye from "pages/grokEye";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../theme/muiTheme";
+import themeVal from "../theme/muiTheme";
+import { useEffect, useState } from "react";
+import {addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore/lite';
+import { db } from "services/firebase";
+
+interface semanticTagsTypes {
+  name: string;
+  color: string;
+  size: string | number;
+}
+
+interface buttonTagsTypes {
+  name: string;
+  bgColor: string;
+  
+}
 
 const SAFE_SITE_Routes = () => {
   const user = useSelector((state: RootState) => state.login.loginData);
 
   console.log("user", user);
+
+  const [theme, setTheme] = useState<any>(themeVal);
+  const[firebaseDataState, setFirebaseDataState] = useState<any>()
+
+
+  
+  useEffect(()=>{
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    getDoc(buttonCollectionRef)
+    .then(response => {
+      
+      const btns = response.data()
+      
+      setFirebaseDataState(btns);
+      
+    })
+    .catch(error=> console.log(error.message));
+  },[])
+  
+
+
+useEffect(() => {
+
+ 
+
+  const customTheming: any = {};
+
+  firebaseDataState?.semanticTags?.map((tag: semanticTagsTypes) => {
+  const { name, color, size } = tag;
+
+  customTheming[name?.toLowerCase()] = {
+    color: color ? `${color}!important` : "unset",
+    fontSize: size ? `${size.toString()}px !important` : "unset",
+    fontWeight: "unset",
+    // fontFamily: `'Poppins', sans-serif`,
+  };
+});
+
+
+const palette: any = { };
+
+firebaseDataState?.buttons?.map((tag: buttonTagsTypes) => {
+    const { name, bgColor} = tag;
+  
+    palette[name?.toLowerCase()] = {
+      main: bgColor ? `${bgColor}!important` : "#nnn",
+    };
+  });
+
+ 
+themeVal.typography = { ...themeVal.typography, ...customTheming };
+themeVal.palette = { ...themeVal.palette, ...palette };
+ 
+// setTheme(themeVal)
+ 
+
+}, [firebaseDataState])
 
   return (
     <>

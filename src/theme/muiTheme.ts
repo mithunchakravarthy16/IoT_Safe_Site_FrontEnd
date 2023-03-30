@@ -6,11 +6,11 @@ import palette from "./palette";
 
 const muiTheme = createTheme();
 
-muiTheme.typography = { ...muiTheme.typography, ...typography };
+// muiTheme.typography = { ...muiTheme.typography, ...typography };
 
 muiTheme.breakpoints = { ...muiTheme.breakpoints, ...breakpoints };
 
-muiTheme.palette = { ...muiTheme.palette, ...palette };
+// muiTheme.palette = { ...muiTheme.palette, ...palette };
 
 
 export default muiTheme;

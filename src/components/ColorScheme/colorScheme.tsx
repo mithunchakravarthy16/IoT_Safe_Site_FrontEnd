@@ -10,6 +10,8 @@ import Select from "../../elements/Select";
 import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
+import {addDoc, collection, doc, getDocs, setDoc} from 'firebase/firestore/lite';
+import { db } from "services/firebase";
 
 const ColorScheme: React.FC<any> = (props) => {
   const { activeTab } = props;
@@ -76,9 +78,9 @@ const ColorScheme: React.FC<any> = (props) => {
 
   const [multipleTabs, setMuiltipleTabs] = useState<any>();
 
-  const [loginValue, setLoginValue] = useState<any>();
-  const [themeValue, setThemeValue] = useState<any>();
-  const [footerValue, setFooterValue] = useState<any>();
+  const [loginValue, setLoginValue] = useState<any>("solid");
+  const [themeValue, setThemeValue] = useState<any>("solid");
+  const [footerValue, setFooterValue] = useState<any>("solid");
   const [loginColorValue, setLoginColorValue] = useState<any>("unset");
   const [themeColorValue, setThemeColorValue] = useState<any>("unset");
   const [footerColorValue, setFooterColorValue] = useState<any>("unset");
@@ -291,7 +293,18 @@ const ColorScheme: React.FC<any> = (props) => {
       },
     };
     localStorage.setItem("colorScheme", JSON.stringify(data));
+
+    const addButtonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    setDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
   };
+
+  // const addButtons = ()=>{
+  //   const addButtonCollectionRef = collection(db, "buttons" );
+  //   addDoc(addButtonCollectionRef, {
+  //     name: "Tokyo",
+  //     country: "Japan"
+  //   }).then(response=>console.log("success")).catch(error=> console.log(error.message));
+  // }
 
   const handleLoginRadioChange = (e: any) => {
     setLoginValue(e.target.value);
