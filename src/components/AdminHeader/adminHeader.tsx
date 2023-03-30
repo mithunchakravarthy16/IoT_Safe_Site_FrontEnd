@@ -8,7 +8,7 @@ import saveSiteLogo from "../../assets/Admin-Header/safe-site-logo.svg";
 import powerIcon from "../../assets/Admin-Header/power-icon.png";
 import { setUserLogin } from "redux/actions/loginActions";
 import useStyles from "./styles";
-import FirebaseTrial from "components/FirebaseTrial";
+
 
 const AdminHeader: React.FC = (props: any) => {
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -25,13 +25,13 @@ const AdminHeader: React.FC = (props: any) => {
     navigate("/login");
   };
 
-  const [firebaseTrialWindow, setFirebaseTrialWindow]= useState(false)
+  
 
   return (
     <Fragment>
       <Grid container className={header}>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <div className={logoImg} onClick={()=>setFirebaseTrialWindow(!firebaseTrialWindow)}>
+          <div className={logoImg} >
             <img src={devToolsLogo} alt="toolslogo" />
           </div>
         </Grid>
@@ -42,9 +42,7 @@ const AdminHeader: React.FC = (props: any) => {
           </div>
         </Grid>
       </Grid>
-      {
-        firebaseTrialWindow && <FirebaseTrial setFirebaseTrialWindow={setFirebaseTrialWindow}/>
-      }
+      
       
     </Fragment>
   );

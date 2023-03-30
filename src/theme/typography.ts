@@ -1,4 +1,6 @@
 import { createTheme } from "@mui/material/styles";
+import {addDoc, collection, getDocs} from 'firebase/firestore/lite';
+import { db } from "services/firebase";
 
 interface semanticTagsTypes {
   name: string;
@@ -68,6 +70,65 @@ const tabs = [
     textColor: "#FFFFFF",
   },
 ];
+
+// let firebaseData: any;
+
+
+
+let firebaseData;
+
+   const getFirebaseData = async ()=>{
+    const buttonCollectionRef = collection(db, "customTheming" );
+   const firebasePromis = await getDocs(buttonCollectionRef)
+   const btns = firebasePromis.docs.map(docs => ({
+    data : docs.data(),
+    id : docs.id,
+  }))
+   return btns;
+   } 
+
+   const theme = getFirebaseData()
+   
+  //  getDocs(buttonCollectionRef)
+  //   .then(response => {
+      
+  //     const btns = response.docs.map(docs => ({
+  //       data : docs.data(),
+  //       id : docs.id,
+  //     }))
+  //     // setButtons(btns)
+  //     console.log("firebaseDataInside", btns)
+  //     firebaseData= btns
+  //     return(btns);
+      
+  //   })
+  //   .catch(error=> console.log(error.message));
+
+
+    console.log("firebaseDataOutside", theme);
+
+
+
+  //   let finalResult:any;
+
+  //   const firebaseDataValue = (result:any)=>{
+  //     console.log("firebaseData", result);
+  //     finalResult=result;
+
+  //   }
+  //  firebaseData.then(result=> {
+      
+  //     firebaseDataValue(result);
+  //  })
+
+   
+
+
+
+
+
+
+    
 
 const defaultData = { semanticTags, tabs, buttons, markers };
 

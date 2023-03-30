@@ -11,7 +11,7 @@ import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
 import {addDoc, collection, getDocs} from 'firebase/firestore/lite';
-import { db } from 'lib/init-firebase';
+import { db } from "services/firebase";
 
 const ColorScheme: React.FC<any> = (props) => {
   const { activeTab } = props;
@@ -293,7 +293,8 @@ const ColorScheme: React.FC<any> = (props) => {
       },
     };
     localStorage.setItem("colorScheme", JSON.stringify(data));
-    const addButtonCollectionRef = collection(db, "buttons" );
+
+    const addButtonCollectionRef = collection(db, "customTheming" );
     addDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
   };
 
