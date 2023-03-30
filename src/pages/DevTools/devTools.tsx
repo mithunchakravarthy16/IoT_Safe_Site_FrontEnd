@@ -8,6 +8,7 @@ import AdminHeader from "components/AdminHeader";
 import useStyles from "./styles";
 import ColorScheme from "components/ColorScheme";
 import DevtoolsUser from "components/DevToolsUser";
+import DevToolFontFamily from "components/DevToolFontFamily";
 import default_logo from "../../assets/default_logo.svg";
 
 const DevTools: React.FC<any> = (props) => {
@@ -258,6 +259,10 @@ const DevTools: React.FC<any> = (props) => {
     getLogos()
   }, [activePage]);
 
+  useEffect(() => {
+    localStorage.setItem("fontFamily", JSON.stringify("Montserrat"));
+  }, []);
+
   const pageContentRenderer = () => {
     switch (activePage) {
       case 0: {
@@ -451,6 +456,17 @@ const DevTools: React.FC<any> = (props) => {
             <div className={adminRightPanel}>
               <div className={innerPanel}>
                 <DevtoolsUser activeTab={activeTab} />
+              </div>
+            </div>
+          </Grid>
+        );
+      }
+      case 3: {
+        return (
+          <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
+            <div className={adminRightPanel}>
+              <div className={innerPanel}>
+                <DevToolFontFamily activeTab={activeTab} />
               </div>
             </div>
           </Grid>
