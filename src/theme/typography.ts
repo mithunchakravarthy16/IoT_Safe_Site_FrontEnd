@@ -75,19 +75,19 @@ const tabs = [
 
 
 
-let firebaseData;
+// let firebaseData;
 
-   const getFirebaseData = async ()=>{
-    const buttonCollectionRef = collection(db, "customTheming" );
-   const firebasePromis = await getDocs(buttonCollectionRef)
-   const btns = firebasePromis.docs.map(docs => ({
-    data : docs.data(),
-    id : docs.id,
-  }))
-   return btns;
-   } 
+//    const getFirebaseData = async ()=>{
+//     const buttonCollectionRef = collection(db, "customTheming" );
+//    const firebasePromis = await getDocs(buttonCollectionRef)
+//    const btns = firebasePromis.docs.map(docs => ({
+//     data : docs.data(),
+//     id : docs.id,
+//   }))
+//    return btns;
+//    } 
 
-   const theme = getFirebaseData()
+//    const theme = getFirebaseData()
    
   //  getDocs(buttonCollectionRef)
   //   .then(response => {
@@ -105,7 +105,7 @@ let firebaseData;
   //   .catch(error=> console.log(error.message));
 
 
-    console.log("firebaseDataOutside", theme);
+    // console.log("firebaseDataOutside", theme);
 
 
 
@@ -130,16 +130,16 @@ let firebaseData;
 
     
 
-const defaultData = { semanticTags, tabs, buttons, markers };
+const defaultData = { semanticTags};
 
 let data = JSON.parse(localStorage.getItem("colorScheme")!)
   ? JSON.parse(localStorage.getItem("colorScheme")!)
   : defaultData;
 
 data.semanticTags = [...defaultData.semanticTags, ...data?.semanticTags];
-data.buttons = [...defaultData.buttons, ...data?.buttons];
-data.markers = [...defaultData.markers, ...data?.markers];
-data.tabs = [...defaultData.tabs, ...data?.tabs];
+// data.buttons = [...defaultData.buttons, ...data?.buttons];
+// data.markers = [...defaultData.markers, ...data?.markers];
+// data.tabs = [...defaultData.tabs, ...data?.tabs];
 
 const customTheming: any = {};
 

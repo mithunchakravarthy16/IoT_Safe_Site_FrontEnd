@@ -57,6 +57,7 @@ const Login = () => {
   }, [selectedTheme]);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [firebaseLoginHeaderBg, setFirebaseLoginHeaderBg] = useState<any>({});
 
   const {
     loginBannerSection,
@@ -79,7 +80,7 @@ const Login = () => {
     copyRights,
     zurichLogo,
     adminLoginLink,
-  } = useStyles(appTheme);
+  } = useStyles({...appTheme, loginHeaderBg : firebaseLoginHeaderBg?.bgData});
 
   useEffect(() => {
     if (user && user?.userName) {
@@ -135,9 +136,13 @@ const Login = () => {
   const getThemeData = async () => {
     try {
       const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
-          console.log("Current data: ", doc.data());
+         
           setCustomLogo(doc.data())
       });
+      const customLoginTheme = onSnapshot(doc(db, "customTheming", "iotTheme"), (doc) => {
+        
+        setFirebaseLoginHeaderBg(doc.data())
+    });
 
     } catch (error) {
       

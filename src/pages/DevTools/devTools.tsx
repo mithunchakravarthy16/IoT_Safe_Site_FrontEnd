@@ -153,8 +153,8 @@ const DevTools: React.FC<any> = (props) => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setFooterLogoType(docSnap.data().footer?.type);
+     
+      setFooterLogoType(docSnap.data().footer?.type)
       setCustomLogos(docSnap.data());
     } else {
       // doc.data() will be undefined in this case

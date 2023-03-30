@@ -1,29 +1,29 @@
 import { makeStyles } from "@mui/styles";
 import muiTheme from "../../theme/muiTheme";
 
-let data = JSON.parse(localStorage.getItem("colorScheme")!)
+// let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
 
 
-let eventBgColor : string;
-let eventTextColor : string;
-let alertsBgColor : string;
-let alertsTextColor : string;
-let oprBgColor : string;
-let oprTextColor : string;
+// let eventBgColor : string;
+// let eventTextColor : string;
+// let alertsBgColor : string;
+// let alertsTextColor : string;
+// let oprBgColor : string;
+// let oprTextColor : string;
 
-data?.tabs?.map((item:any)=>{
-  switch(item?.name){
-    case "Events" : eventBgColor = item?.bgColor; eventTextColor = item?.textColor;
-    break;
-    case "Incidents" : oprBgColor = item?.bgColor; oprTextColor = item?.textColor;
-    break;
-    case "Alerts" : alertsBgColor = item?.bgColor; alertsTextColor = item?.textColor;
-    break;
+// data?.tabs?.map((item:any)=>{
+//   switch(item?.name){
+//     case "Events" : eventBgColor = item?.bgColor; eventTextColor = item?.textColor;
+//     break;
+//     case "Incidents" : oprBgColor = item?.bgColor; oprTextColor = item?.textColor;
+//     break;
+//     case "Alerts" : alertsBgColor = item?.bgColor; alertsTextColor = item?.textColor;
+//     break;
 
-  }
+//   }
 
-})
+// })
 
 const useStyles = makeStyles({
   alertsRightPanel: (props: any) => ({
@@ -98,7 +98,7 @@ const useStyles = makeStyles({
         padding: "6px 12px",
       },
       "&:first-child": {
-        color:  eventTextColor ? `${eventTextColor} !important` : `${props?.palette?.dashboard?.skyBlueColor} !important`,
+        color:  props?.tabThemeEvent ?  `${props?.tabThemeEvent?.eventTextColor} !important` : `${props?.palette?.dashboard?.skyBlueColor} !important`,
         margin: "15px 20px 0px 0px",
         border: `1px solid ${props?.palette?.dashboard?.skyBlueColor}`,
         [muiTheme.breakpoints.down(1281)]: {
@@ -108,10 +108,10 @@ const useStyles = makeStyles({
       },
       "&:first-child.Mui-selected": {
         color:  `${props?.palette?.dashboard?.white} !important`,
-        background: eventBgColor ? eventBgColor : props?.palette?.dashboard?.skyBlueColor,
+        background: props?.tabThemeEvent ?  `${props?.tabThemeEvent?.eventBgColor} !important` : props?.palette?.dashboard?.skyBlueColor,
       },
       "&:nth-child(2)": {
-        color: alertsTextColor ? `${alertsTextColor} !important` : `${props?.palette?.dashboard?.darkRedColor} !important`,
+        color: props?.tabThemeAlerts ?  `${props?.tabThemeAlerts?.alertsTextColor} !important` : `${props?.palette?.dashboard?.darkRedColor} !important`,
         margin: "15px 20px 0px 0px",
         border: `1px solid ${props?.palette?.dashboard?.darkRedColor}`,
         [muiTheme.breakpoints.down(1281)]: {
@@ -121,16 +121,16 @@ const useStyles = makeStyles({
       },
       "&:nth-child(2).Mui-selected": {
         color: `${props?.palette?.dashboard?.white} !important`,
-        background: alertsBgColor ? alertsBgColor : props?.palette?.dashboard?.darkRedColor,
+        background:  props?.tabThemeAlerts ?  `${props?.tabThemeAlerts?.alertsBgColor} !important` : props?.palette?.dashboard?.darkRedColor,
       },
       "&:nth-child(3)": {
-        color: oprTextColor ? `${oprTextColor} !important` : `${props?.palette?.dashboard?.goldenOrangeColor} !important`,
+        color:  props?.tabThemeOpr ?  `${props?.tabThemeOpr?.oprTextColor} !important` : `${props?.palette?.dashboard?.goldenOrangeColor} !important`,
         margin: "15px 0px 0px 0px",
         border: `1px solid ${props?.palette?.dashboard?.goldenOrangeColor}`,
       },
       "&:nth-child(3).Mui-selected": {
         color: `${props?.palette?.dashboard?.white} !important`,
-        background: oprBgColor ? oprBgColor : props?.palette?.dashboard?.goldenOrangeColor,
+        background:  props?.tabThemeOpr ?  `${props?.tabThemeOpr?.oprBgColor} !important` : props?.palette?.dashboard?.goldenOrangeColor,
       },
     },
     "& .MuiTabs-root .MuiTabs-indicator": {

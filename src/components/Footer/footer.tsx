@@ -52,7 +52,7 @@ const Footer: React.FC = (props: any) => {
   const getThemeData = async () => {
     try {
       const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
-          console.log("Current data: ", doc.data());
+          
           setCustomLogo(doc.data())
       });
 

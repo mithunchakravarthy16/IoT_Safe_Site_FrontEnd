@@ -10,6 +10,8 @@ import AlertsListItem from "components/AlertsListItem";
 import { formattedAlertListData } from "../../utils.ts/utils";
 import useStyles from "./styles";
 import InfoDialog from "components/InfoDialog";
+import {addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore/lite';
+import { db } from "services/firebase";
 
 const AlertsList: React.FC<any> = (props) => {
   const {
@@ -28,6 +30,25 @@ const AlertsList: React.FC<any> = (props) => {
   } = props;
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
+  const [firebaseTabsTheme, setFirebaseTabsTheme]=useState<any>({})
+  const [firebaseTabsThemeDestructureEvent, setFirebaseTabsThemeDestructureEvent]=useState<any>({
+    eventBgColor:"unset",
+   eventTextColor:"unset",  
+
+  })
+  const [firebaseTabsThemeDestructureAlerts, setFirebaseTabsThemeDestructureAlerts]=useState<any>({    
+   alertsBgColor:"unset",
+   alertsTextColor:"unset",
+
+  })
+
+  const [firebaseTabsThemeDestructureOpr, setFirebaseTabsThemeDestructureOpr]=useState<any>({    
+    oprBgColor:"unset",
+   oprTextColor:"unset",
+ 
+   })
+
+  
   const {
     alertsRightPanel,
     dashboarListTitle,
@@ -37,7 +58,48 @@ const AlertsList: React.FC<any> = (props) => {
     searchClass,
     noResultStyle,
     customNotificationTabs,
-  } = useStyles(appTheme);
+  } = useStyles({
+    ...appTheme,
+     tabThemeEvent:firebaseTabsThemeDestructureEvent,
+     tabThemeAlerts:firebaseTabsThemeDestructureAlerts,
+     tabThemeOpr:firebaseTabsThemeDestructureOpr,
+    });
+
+  useEffect(()=>{
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    getDoc(buttonCollectionRef)
+    .then(response => {
+      
+      const btns = response.data()
+      
+      setFirebaseTabsTheme(btns);
+      
+    })
+    .catch(error=> console.log(error.message));
+  },[])
+
+  useEffect(()=>{
+    if(firebaseTabsTheme){
+      firebaseTabsTheme?.tabs?.map((item:any)=>{
+        switch(item?.name){
+              case "Events" : setFirebaseTabsThemeDestructureEvent({eventBgColor: item?.bgColor, eventTextColor: item?.textColor});
+                             
+              
+               break;
+              case "Incidents" : setFirebaseTabsThemeDestructureOpr({oprBgColor: item?.bgColor, oprTextColor: item?.textColor});
+                           
+              
+              break;
+              case "Alerts" : setFirebaseTabsThemeDestructureAlerts({alertsBgColor: item?.bgColor, alertsTextColor: item?.textColor});
+                            
+             
+              break;
+          
+           }
+      })
+    }
+
+  },[firebaseTabsTheme])
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)

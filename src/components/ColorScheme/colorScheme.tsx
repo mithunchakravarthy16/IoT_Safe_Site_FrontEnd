@@ -10,7 +10,7 @@ import Select from "../../elements/Select";
 import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
-import {addDoc, collection, getDocs} from 'firebase/firestore/lite';
+import {addDoc, collection, doc, getDocs, setDoc} from 'firebase/firestore/lite';
 import { db } from "services/firebase";
 
 const ColorScheme: React.FC<any> = (props) => {
@@ -294,8 +294,8 @@ const ColorScheme: React.FC<any> = (props) => {
     };
     localStorage.setItem("colorScheme", JSON.stringify(data));
 
-    const addButtonCollectionRef = collection(db, "customTheming" );
-    addDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
+    const addButtonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    setDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
   };
 
   // const addButtons = ()=>{
