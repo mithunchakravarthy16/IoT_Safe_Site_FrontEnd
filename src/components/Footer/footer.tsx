@@ -7,7 +7,8 @@ import { Grid, Typography } from "@mui/material";
 import useStyles from "./styles";
 import saveSiteLogo from "../../assets/login/gd-save-site.svg";
 import FooterLogo from "../../assets/login/FooterLogo.svg";
-
+import fbApp from 'services/firebase'
+import { getFirestore, onSnapshot, doc } from "firebase/firestore";
 interface UserName {
   firstName: string | undefined;
   lastName: string | undefined;
@@ -16,6 +17,7 @@ interface UserName {
 }
 
 const Footer: React.FC = (props: any) => {
+  const db = getFirestore(fbApp);
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
 
@@ -47,11 +49,26 @@ const Footer: React.FC = (props: any) => {
     }
   }, [selectedTheme]);
 
+  const getThemeData = async () => {
+    try {
+      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
+          console.log("Current data: ", doc.data());
+          setCustomLogo(doc.data())
+      });
+
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(() => {
+    getThemeData()
+  }, [])
+
   return (
     <Fragment>
       <Grid container className={footer}>
         <Grid item xs={12} className={copyRights}>
-          <span>{poweredBy}</span>
           {
             customLogo?.footer?.type !== "text"
             ?
@@ -59,7 +76,6 @@ const Footer: React.FC = (props: any) => {
             :
             <Typography variant="h6" sx={{color: customLogo?.footer?.color, marginLeft: "10px", marginRight: "10px"}} >{customLogo?.footer?.value}</Typography>
           }
-          <span>{copyRight}</span>
         </Grid>
       </Grid>
     </Fragment>

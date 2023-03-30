@@ -8,7 +8,10 @@ import AdminHeader from "components/AdminHeader";
 import useStyles from "./styles";
 import ColorScheme from "components/ColorScheme";
 import DevtoolsUser from "components/DevToolsUser";
+import DevToolFontFamily from "components/DevToolFontFamily";
 import default_logo from "../../assets/default_logo.svg";
+import fbApp from 'services/firebase'
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const DevTools: React.FC<any> = (props) => {
   const {
@@ -43,13 +46,15 @@ const DevTools: React.FC<any> = (props) => {
     invisibleDisplay,
   } = useStyles();
 
+  const db = getFirestore(fbApp);
+
   const headerLogoInputRef = useRef<any>(null);
   const loginLogoInputRef = useRef<any>(null);
   const footerLogoInputRef = useRef<any>(null);
 
   const [activePage, setActivePage] = useState<any>();
   const [footerLogoType, setFooterLogoType] = useState("image");
-  const [customLogos, setCustomLogos] = useState({
+  const [customLogos, setCustomLogos] = useState<any>({
     header: "",
     login: "",
     footer: { type: "image", value: "", color: "" },
@@ -113,27 +118,6 @@ const DevTools: React.FC<any> = (props) => {
     setActivePage(0);
   }, []);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("colorScheme") || "{}");
-
-    if (
-      data?.buttons?.length > 0 ||
-      data?.markers?.length > 0 ||
-      data?.semanticTags?.length > 0 ||
-      data?.tabs?.length > 0
-    ) {
-      setMuiltipleTags(data?.semanticTags);
-      setMuiltipleButtons(data?.buttons);
-      setMuiltipleMarkers(data?.markers);
-      setMuiltipleTabs(data?.tabs);
-    } else {
-      setMuiltipleTags(tags);
-      setMuiltipleButtons(buttons);
-      setMuiltipleMarkers(markers);
-      setMuiltipleTabs(tabs);
-    }
-  }, []);
-
   const handleClick = (event: any, id: any) => {
     setActivePage(id);
   };
@@ -146,21 +130,18 @@ const DevTools: React.FC<any> = (props) => {
     { name: "Components", id: 4 },
   ];
 
-  const handleUpdate = () => {
-    const data = {
-      semanticTags: multipleTags,
-      buttons: multipleButtons,
-      markers: multipleMarkers,
-      tabs: multipleTabs,
-    };
-    localStorage.setItem("colorScheme", JSON.stringify(data));
+  const handleLogoChangesUpdate = async () => {
+    try {
+      const ref = doc(db, 'customLogos', 'iotSafeSite');
+      const dbResponse = await setDoc(ref, customLogos);
+      console.log("dbResponse", dbResponse);
+    }
+    catch(err) {
+      console.error("SOMETHING WENT WRONG", err)
+    }
   };
 
-  const handleLogoChangesUpdate = () => {
-    localStorage.setItem("customLogos", JSON.stringify(customLogos));
-  };
-
-  const getLogos = () => {
+  const getLogos = async () => {
     const defaultLogos = JSON.stringify({
       login: "",
       header: "",
@@ -169,11 +150,18 @@ const DevTools: React.FC<any> = (props) => {
         value: "",
       },
     });
-    const logos = JSON.parse(
-      localStorage.getItem("customLogos") || defaultLogos
-    );
-    setFooterLogoType(logos?.footer?.type)
-    setCustomLogos(logos);
+    
+    const docRef = doc(db, "customLogos", "iotSafeSite");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setFooterLogoType(docSnap.data().footer?.type)
+      setCustomLogos(docSnap.data());
+    } else {
+      // doc.data() will be undefined in this case
+      setCustomLogos(defaultLogos);
+    }
   };
 
   const onLogoChange = (place: string) => {
@@ -257,6 +245,10 @@ const DevTools: React.FC<any> = (props) => {
     setActiveTab(menuItems[activePage]?.name);
     getLogos()
   }, [activePage]);
+
+  useEffect(() => {
+    localStorage.setItem("fontFamily", JSON.stringify("Montserrat"));
+  }, []);
 
   const pageContentRenderer = () => {
     switch (activePage) {
@@ -451,6 +443,17 @@ const DevTools: React.FC<any> = (props) => {
             <div className={adminRightPanel}>
               <div className={innerPanel}>
                 <DevtoolsUser activeTab={activeTab} />
+              </div>
+            </div>
+          </Grid>
+        );
+      }
+      case 3: {
+        return (
+          <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
+            <div className={adminRightPanel}>
+              <div className={innerPanel}>
+                <DevToolFontFamily activeTab={activeTab} />
               </div>
             </div>
           </Grid>

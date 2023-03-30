@@ -23,6 +23,8 @@ import AlertsActiveIcon from "../../assets/HeaderTabIcons/AlertsActive.svg";
 import GrokEyeInactiveIcon from "../../assets/HeaderTabIcons/GrokEyeInactive.svg";
 import GrokEyeActiveIcon from "../../assets/HeaderTabIcons/GrokEyeActive.svg";
 import useStyles from "./styles";
+import fbApp from 'services/firebase'
+import { getFirestore, onSnapshot, doc } from "firebase/firestore";
 
 interface UserName {
   firstName: string | undefined;
@@ -35,9 +37,11 @@ const Header: React.FC = (props: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const db = getFirestore(fbApp);
+
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
-  const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
+  const [customLogo, setCustomLogo] = useState<any>({})
   const {
     logoImg,
     header,
@@ -180,6 +184,22 @@ const Header: React.FC = (props: any) => {
       icon: tabIndex === 2 ? GrokEyeActiveIcon : GrokEyeInactiveIcon,
     },
   ];
+
+  const getThemeData = async () => {
+    try {
+      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
+          console.log("Current data: ", doc.data());
+          setCustomLogo(doc.data())
+      });
+
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(() => {
+    getThemeData()
+  }, [])
 
   return (
     <Fragment>

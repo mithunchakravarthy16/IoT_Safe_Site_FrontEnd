@@ -20,10 +20,13 @@ import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
 import Button from "elements/Button";
+import fbApp from 'services/firebase'
+import { getFirestore, onSnapshot, doc } from "firebase/firestore";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const db = getFirestore(fbApp);
 
   const user = useSelector((state: any) => state.login.loginData);
 
@@ -31,7 +34,7 @@ const Login = () => {
     JSON.parse(localStorage.getItem("theme")!)
   );
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const [customLogo, setCustomLogo] = useState(JSON.parse(localStorage.getItem("customLogos") || "{}"))
+  const [customLogo, setCustomLogo] = useState<any>({})
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -129,6 +132,22 @@ const Login = () => {
     navigate("/adminLogin");
   };
 
+  const getThemeData = async () => {
+    try {
+      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
+          console.log("Current data: ", doc.data());
+          setCustomLogo(doc.data())
+      });
+
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(() => {
+    getThemeData()
+  }, [])
+
   return (
     <>
       <Grid container className={loginBannerSection}>
@@ -218,9 +237,13 @@ const Login = () => {
           </div>
         </Grid>
         <div className={copyRights}>
-          <span><Typography variant="h4">Powered by</Typography></span>
-          <img src={saveSiteLogo} />
-          <span><Typography variant="h4">© 2023. All Rights Reserved</Typography></span>
+          {
+            customLogo?.footer?.type !== "text"
+            ?
+            <img src={customLogo?.footer?.value || saveSiteLogo} />
+            :
+            <Typography variant="h6" sx={{color: customLogo?.footer?.color, marginLeft: "10px", marginRight: "10px"}} >{customLogo?.footer?.value}</Typography>
+          }
         </div>
       </Grid>
     </>

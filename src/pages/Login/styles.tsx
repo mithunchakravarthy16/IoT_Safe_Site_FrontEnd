@@ -306,7 +306,8 @@ const useStyles = makeStyles(() => ({
     },
     "& img": {
       margin: "0 8px",
-      width: 150,
+      height: "20px",
+      width: "auto",
       [muiTheme.breakpoints.down(1350)]: {
         width: "100px",
       },
