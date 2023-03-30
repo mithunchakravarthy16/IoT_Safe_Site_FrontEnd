@@ -10,7 +10,7 @@ import ColorScheme from "components/ColorScheme";
 import DevtoolsUser from "components/DevToolsUser";
 import DevToolFontFamily from "components/DevToolFontFamily";
 import default_logo from "../../assets/default_logo.svg";
-import fbApp from 'services/firebase'
+import fbApp from "services/firebase";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const DevTools: React.FC<any> = (props) => {
@@ -132,12 +132,10 @@ const DevTools: React.FC<any> = (props) => {
 
   const handleLogoChangesUpdate = async () => {
     try {
-      const ref = doc(db, 'customLogos', 'iotSafeSite');
+      const ref = doc(db, "customLogos", "iotSafeSite");
       const dbResponse = await setDoc(ref, customLogos);
-      console.log("dbResponse", dbResponse);
-    }
-    catch(err) {
-      console.error("SOMETHING WENT WRONG", err)
+    } catch (err) {
+      console.error("SOMETHING WENT WRONG", err);
     }
   };
 
@@ -150,13 +148,13 @@ const DevTools: React.FC<any> = (props) => {
         value: "",
       },
     });
-    
+
     const docRef = doc(db, "customLogos", "iotSafeSite");
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
-      setFooterLogoType(docSnap.data().footer?.type)
+      setFooterLogoType(docSnap.data().footer?.type);
       setCustomLogos(docSnap.data());
     } else {
       // doc.data() will be undefined in this case
@@ -243,7 +241,7 @@ const DevTools: React.FC<any> = (props) => {
   const [activeTab, setActiveTab] = useState<any>(menuItems[activePage]);
   useEffect(() => {
     setActiveTab(menuItems[activePage]?.name);
-    getLogos()
+    getLogos();
   }, [activePage]);
 
   useEffect(() => {
