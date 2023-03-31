@@ -153,8 +153,7 @@ const DevTools: React.FC<any> = (props) => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-     
-      setFooterLogoType(docSnap.data().footer?.type)
+      setFooterLogoType(docSnap.data().footer?.type);
       setCustomLogos(docSnap.data());
     } else {
       // doc.data() will be undefined in this case
@@ -244,9 +243,9 @@ const DevTools: React.FC<any> = (props) => {
     getLogos();
   }, [activePage]);
 
-  useEffect(() => {
-    localStorage.setItem("fontFamily", JSON.stringify("Montserrat"));
-  }, []);
+  // useEffect(() => {
+  //   localStorage.setItem("fontFamily", JSON.stringify("Montserrat"));
+  // }, []);
 
   const pageContentRenderer = () => {
     switch (activePage) {
