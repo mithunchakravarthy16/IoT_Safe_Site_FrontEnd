@@ -11,7 +11,7 @@ import DevtoolsUser from "components/DevToolsUser";
 import DevToolFontFamily from "components/DevToolFontFamily";
 import default_logo from "../../assets/default_logo.svg";
 import fbApp from "services/firebase";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore/lite";
 
 const DevTools: React.FC<any> = (props) => {
   const {
