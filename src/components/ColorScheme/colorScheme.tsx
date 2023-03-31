@@ -119,7 +119,7 @@ const ColorScheme: React.FC<any> = (props) => {
 
   useEffect(() => {
     // const data = JSON.parse(localStorage.getItem("colorScheme") || "{}");
-    console.log("firebaseTabsTheme", firebaseTabsTheme)
+   
 
     if (
       firebaseTabsTheme?.buttons?.length > 0 ||
