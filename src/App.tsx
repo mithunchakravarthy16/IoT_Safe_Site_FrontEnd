@@ -28,10 +28,24 @@ const App = () => {
         (doc) => {
           const docData: any = doc.data();
           setFontDetails(docData);
+          alert(
+            "New Font Style updated, please reload the page to see changes"
+          );
         }
       );
     } catch (error) {}
   };
+
+  // const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+  // getDoc(buttonCollectionRef)
+  // .then(response => {
+
+  //   const btns = response.data()
+
+  //   setFirebaseDataState(btns);
+
+  // })
+  // .catch(error=> console.log(error.message));
 
   useEffect(() => {
     getFontFamily();
@@ -64,9 +78,9 @@ const App = () => {
   //   setFontFamily(formattedFont);
   // }, [localStorage?.getItem("fontFamily")]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("fontFamily", JSON.stringify(fontDetails?.fontLink));
-  // }, [fontDetails]);
+  useEffect(() => {
+    localStorage.setItem("fontFamily", JSON.stringify(fontDetails?.fontLink));
+  }, [fontDetails]);
 
   return (
     <RootContainer id="rootContainer" fontFamily={fontDetails?.fontFamily}>

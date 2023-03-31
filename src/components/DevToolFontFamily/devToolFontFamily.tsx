@@ -5,7 +5,14 @@ import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import fbApp from "services/firebase";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore/lite";
+import { db } from "services/firebase";
 import useStyles from "./styles";
 import { json } from "stream/consumers";
 
@@ -73,25 +80,33 @@ const DevToolFontFamily: React.FC<any> = (props) => {
 
   const [fontDetails, setFontDetails] = useState<any>();
 
-  const db = getFirestore(fbApp);
+  const handleSubmitButton = () => {
+    const ref = doc(db, "customFontFamily", "fontFamily");
+    setDoc(ref, customFont)
+      .then((response) => console.log("success"))
+      .catch((error) => console.log(error.message));
 
-  const handleSubmitButton = async () => {
-    try {
-      // if (textValue.includes("<link")) {
-      // localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
-      // localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
-      const ref = doc(db, "customFontFamily", "fontFamily");
+    setIsFontFormatValid(!isFontFormatValid);
+    setCancelButtonActive(!cancelButtonActive);
+    setPreviewButtonActive(!previewButtonActive);
 
-      const dbResponse = await setDoc(ref, customFont);
-      setIsFontFormatValid(!isFontFormatValid);
-      setCancelButtonActive(!cancelButtonActive);
-      setPreviewButtonActive(!previewButtonActive);
-      // } else {
-      //   alert("Invalid Font Format");
-      // }
-    } catch (err) {
-      console.error("SOMETHING WENT WRONG", err);
-    }
+    // setDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
+    // try {
+    //   // if (textValue.includes("<link")) {
+    //   // localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
+    //   // localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
+    //   const ref = doc(db, "customFontFamily", "fontFamily");
+
+    //   const dbResponse =  setDoc(ref, customFont);
+    //   setIsFontFormatValid(!isFontFormatValid);
+    //   setCancelButtonActive(!cancelButtonActive);
+    //   setPreviewButtonActive(!previewButtonActive);
+    //   // } else {
+    //   //   alert("Invalid Font Format");
+    //   // }
+    // } catch (err) {
+    //   console.error("SOMETHING WENT WRONG", err);
+    // }
     // if (textValue.includes("<link")) {
     //   localStorage.setItem("googleFont", JSON.stringify(googleFontDetails));
     //   localStorage.setItem("fontFamily", JSON.stringify(fontFamily));
@@ -155,6 +170,7 @@ const DevToolFontFamily: React.FC<any> = (props) => {
 
   const clearTextareaValue = () => {
     setTextValue("");
+    setFontTextValue("");
   };
 
   useEffect(() => {
@@ -229,6 +245,7 @@ const DevToolFontFamily: React.FC<any> = (props) => {
         {/* <div>{fontFamily}</div>
         <div>{googleFontDetails}</div> */}
       </div>
+      <h2>Sample Font Style</h2>
     </div>
   );
 };
