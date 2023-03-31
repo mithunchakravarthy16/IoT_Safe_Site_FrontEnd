@@ -10,7 +10,7 @@ import Select from "../../elements/Select";
 import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
-import {addDoc, collection, doc, getDocs, setDoc} from 'firebase/firestore/lite';
+import {addDoc, collection, doc, getDocs, setDoc, getDoc} from 'firebase/firestore/lite';
 import { db } from "services/firebase";
 
 const ColorScheme: React.FC<any> = (props) => {
@@ -102,25 +102,41 @@ const ColorScheme: React.FC<any> = (props) => {
     setActivePage(0);
   }, []);
 
+  const [firebaseTabsTheme, setFirebaseTabsTheme]=useState<any>({})
+
+  useEffect(()=>{
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+    getDoc(buttonCollectionRef)
+    .then(response => {
+      
+      const btns = response.data()
+      
+      setFirebaseTabsTheme(btns);
+      
+    })
+    .catch(error=> console.log(error.message));
+  },[activeTab])
+
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("colorScheme") || "{}");
+    // const data = JSON.parse(localStorage.getItem("colorScheme") || "{}");
+   
 
     if (
-      data?.buttons?.length > 0 ||
-      data?.markers?.length > 0 ||
-      data?.semanticTags?.length > 0 ||
-      data?.tabs?.length > 0 ||
-      data?.bgData?.login?.color ||
-      data?.bgData?.theme?.color ||
-      data?.bgData?.footer?.color
+      firebaseTabsTheme?.buttons?.length > 0 ||
+      firebaseTabsTheme?.markers?.length > 0 ||
+      firebaseTabsTheme?.semanticTags?.length > 0 ||
+      firebaseTabsTheme?.tabs?.length > 0 ||
+      firebaseTabsTheme?.bgData?.login?.color ||
+      firebaseTabsTheme?.bgData?.theme?.color ||
+      firebaseTabsTheme?.bgData?.footer?.color
     ) {
-      setMuiltipleTags(data?.semanticTags);
-      setMuiltipleButtons(data?.buttons);
-      setMuiltipleMarkers(data?.markers);
-      setMuiltipleTabs(data?.tabs);
-      setLoginColorValue(data?.bgData?.login?.color);
-      setThemeColorValue(data?.bgData?.theme?.color);
-      setFooterColorValue(data?.bgData?.footer?.color);
+      setMuiltipleTags(firebaseTabsTheme?.semanticTags);
+      setMuiltipleButtons(firebaseTabsTheme?.buttons);
+      setMuiltipleMarkers(firebaseTabsTheme?.markers);
+      setMuiltipleTabs(firebaseTabsTheme?.tabs);
+      setLoginColorValue(firebaseTabsTheme?.bgData?.login?.color);
+      setThemeColorValue(firebaseTabsTheme?.bgData?.theme?.color);
+      setFooterColorValue(firebaseTabsTheme?.bgData?.footer?.color);
     } else {
       setMuiltipleTags(tags);
       setMuiltipleButtons(buttons);
@@ -130,7 +146,7 @@ const ColorScheme: React.FC<any> = (props) => {
       setThemeColorValue("unset");
       setFooterColorValue("unset");
     }
-  }, [activeTab]);
+  }, [firebaseTabsTheme]);
 
   const handleClick = (event: any, id: any) => {
     setActivePage(id);
