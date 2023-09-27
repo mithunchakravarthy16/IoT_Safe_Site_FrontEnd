@@ -1,4 +1,4 @@
 const appData = {
-  googleMapApiKey: "AIzaSyDykLcSVPpD9Kw0VoZUkrlpMOCKOVWs7Bg",
+  googleMapApiKey: "AIzaSyBjnsedFLB4nVkgtsi5nl3fMcCHxLcDMVI",
 };
 export default appData;
