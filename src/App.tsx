@@ -32,7 +32,7 @@ const App = () => {
       );
     } catch (error) {}
   };
-  console.log("fontDetails", fontDetails);
+
   // const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
   // getDoc(buttonCollectionRef)
   // .then(response => {
