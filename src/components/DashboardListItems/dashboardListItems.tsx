@@ -151,7 +151,9 @@ const DashboardListItems: React.FC<any> = (props) => {
           <div className={expandedListItem}>
             <div className={expandedListHeaderStyle}>
               <div>
-                <div className={listItemTitle}><Typography variant="h3">{title}</Typography></div>
+                <div className={listItemTitle}>
+                  <Typography variant="h6">{title}</Typography>
+                </div>
               </div>
             </div>
 
@@ -196,7 +198,9 @@ const DashboardListItems: React.FC<any> = (props) => {
                 className={locationIconStyle}
                 width={16}
               />
-              <span className={spanTextClass}><Typography variant="h4">{connectivity}</Typography></span>
+              <span className={spanTextClass}>
+                <Typography variant="h4">{connectivity}</Typography>
+              </span>
               <span className={spanTextValue}>{connectivityPercentage}</span>
             </div>
             <div className={lineClass}></div>
@@ -211,8 +215,12 @@ const DashboardListItems: React.FC<any> = (props) => {
                       </div>
                       <div className={listIemDetails}>
                         {" "}
-                        <div className={listItemIconDetails}><Typography variant="h4">{item?.value}</Typography></div>
-                        <div className={listItemIconName}><Typography variant="h4">{item?.label}</Typography></div>
+                        <div className={listItemIconDetails}>
+                          <Typography variant="h4">{item?.value}</Typography>
+                        </div>
+                        <div className={listItemIconName}>
+                          <Typography variant="h4">{item?.label}</Typography>
+                        </div>
                       </div>
                     </div>
                   );
@@ -243,8 +251,12 @@ const DashboardListItems: React.FC<any> = (props) => {
           </div>
         ) : (
           <div className={collapsedListItem}>
-            <div className={listItemTitle}><Typography variant="h3">{title}</Typography></div>
-            <div className={listItemLocation}><Typography variant="h4">{area}</Typography></div>
+            <div className={listItemTitle}>
+              <Typography variant="h3">{title}</Typography>
+            </div>
+            <div className={listItemLocation}>
+              <Typography variant="h4">{area}</Typography>
+            </div>
           </div>
         )}
       </div>

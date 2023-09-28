@@ -142,7 +142,9 @@ const InfoBox: React.FC<any> = (props) => {
         <div className={expandedListItemCallout} key={key}>
           <div className={expandedListHeaderStyle}>
             <div>
-              <div className={listItemTitle}><Typography variant="h3">{title}</Typography></div>
+              <div className={listItemTitle}>
+                <Typography variant="h6">{title}</Typography>
+              </div>
             </div>
             <div className={listItemCloseIcon} onClick={handleClose}>
               <img src={CloseCalloutIcon} />
@@ -189,7 +191,9 @@ const InfoBox: React.FC<any> = (props) => {
               className={locationIconStyle}
               width={16}
             />
-            <span className={spanTextClass}><Typography variant="h4">{connectivity}</Typography></span>
+            <span className={spanTextClass}>
+              <Typography variant="h4">{connectivity}</Typography>
+            </span>
             <span className={spanTextValue}>{connectivityPercentage}</span>
           </div>
           <div className={lineClass}></div>
@@ -203,8 +207,12 @@ const InfoBox: React.FC<any> = (props) => {
                       <img src={item?.icon} alt="Icons" width={25} />
                     </div>
                     <div className={listIemDetails}>
-                      <div className={listItemIconDetails}><Typography variant="h4">{item?.value}</Typography></div>
-                      <div className={listItemIconName}><Typography variant="h4">{item?.label}</Typography></div>
+                      <div className={listItemIconDetails}>
+                        <Typography variant="h4">{item?.value}</Typography>
+                      </div>
+                      <div className={listItemIconName}>
+                        <Typography variant="h4">{item?.label}</Typography>
+                      </div>
                     </div>
                   </div>
                 );
@@ -222,9 +230,13 @@ const InfoBox: React.FC<any> = (props) => {
                         <div>
                           <img src={item?.icon} alt="Icon" />
                         </div>
-                        <div className={itemValueStyle}><Typography variant="h4">{item?.value}</Typography></div>
+                        <div className={itemValueStyle}>
+                          <Typography variant="h4">{item?.value}</Typography>
+                        </div>
                       </div>
-                      <div className={itemNameStyle}><Typography variant="h4">{item?.name}</Typography></div>
+                      <div className={itemNameStyle}>
+                        <Typography variant="h4">{item?.name}</Typography>
+                      </div>
                     </div>
                   );
                 })}

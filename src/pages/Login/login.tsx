@@ -20,7 +20,7 @@ import * as Yup from "yup";
 import { getUserLogin } from "../../redux/actions/loginActions";
 import useStyles from "./styles";
 import Button from "elements/Button";
-import fbApp from 'services/firebase'
+import fbApp from "services/firebase";
 import { getFirestore, onSnapshot, doc } from "firebase/firestore";
 
 const Login = () => {
@@ -34,7 +34,7 @@ const Login = () => {
     JSON.parse(localStorage.getItem("theme")!)
   );
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
-  const [customLogo, setCustomLogo] = useState<any>({})
+  const [customLogo, setCustomLogo] = useState<any>({});
 
   useEffect(() => {
     switch (selectedTheme) {
@@ -80,7 +80,7 @@ const Login = () => {
     copyRights,
     zurichLogo,
     adminLoginLink,
-  } = useStyles({...appTheme, loginHeaderBg : firebaseLoginHeaderBg?.bgData});
+  } = useStyles({ ...appTheme, loginHeaderBg: firebaseLoginHeaderBg?.bgData });
 
   useEffect(() => {
     if (user && user?.userName) {
@@ -136,22 +136,20 @@ const Login = () => {
   const getThemeData = async () => {
     try {
       const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
-         
-          setCustomLogo(doc.data())
+        setCustomLogo(doc.data());
       });
-      const customLoginTheme = onSnapshot(doc(db, "customTheming", "iotTheme"), (doc) => {
-        
-        setFirebaseLoginHeaderBg(doc.data())
-    });
-
-    } catch (error) {
-      
-    }
-  }
+      const customLoginTheme = onSnapshot(
+        doc(db, "customTheming", "iotTheme"),
+        (doc) => {
+          setFirebaseLoginHeaderBg(doc.data());
+        }
+      );
+    } catch (error) {}
+  };
 
   useEffect(() => {
-    getThemeData()
-  }, [])
+    getThemeData();
+  }, []);
 
   return (
     <>
@@ -170,16 +168,15 @@ const Login = () => {
                   <div className={welcomeSection}>
                     <p className={welcomeContent}>
                       {/* Test Build ( {width} X {height} ) */}
-                     
-                      <Typography variant="h2">
-                      Welcome Admin Login
-                      </Typography>
-                      
+
+                      <Typography variant="h2">Welcome Admin Login</Typography>
                     </p>
                   </div>
                   <div className={outlineInputField}>
-                    <p className={inputTitle}><Typography variant="h3">Your Email</Typography></p>
-                    
+                    <p className={inputTitle}>
+                      <Typography variant="h3">Your Email</Typography>
+                    </p>
+
                     <OutlinedInput
                       className={inputField}
                       fullWidth
@@ -197,7 +194,9 @@ const Login = () => {
                     )}
                   </div>
                   <div className={outlineInputField}>
-                    <p className={inputTitle}><Typography variant="h3">Password</Typography></p>
+                    <p className={inputTitle}>
+                      <Typography variant="h3">Password</Typography>
+                    </p>
                     <OutlinedInput
                       className={inputField}
                       fullWidth
@@ -226,15 +225,24 @@ const Login = () => {
                       control={<Radio />}
                       label={<Typography variant="h3">Remember me</Typography>}
                     />
-                    <p className={forgotPassword}><Typography variant="h3">Forgot Password?</Typography></p>
+                    <p className={forgotPassword}>
+                      <Typography variant="h3">Forgot Password?</Typography>
+                    </p>
                   </div>
                   <div className={loginButton}>
-                    <Button variant={"contained"} fullWidth={true} type={"submit"} buttonStyles={loginButton} buttonVariant={"primary"}>
+                    <Button
+                      variant={"contained"}
+                      fullWidth={true}
+                      type={"submit"}
+                      buttonStyles={loginButton}
+                      buttonVariant={"primary"}
+                      handleClick={() => {}}
+                    >
                       Login
                     </Button>
                   </div>
                   <div className={adminLoginLink} onClick={handleAdminLogin}>
-                  <Typography variant="h4">Admin Login</Typography>
+                    <Typography variant="h4">Admin Login</Typography>
                   </div>
                 </form>
               </Box>
@@ -242,13 +250,20 @@ const Login = () => {
           </div>
         </Grid>
         <div className={copyRights}>
-          {
-            customLogo?.footer?.type !== "text"
-            ?
+          {customLogo?.footer?.type !== "text" ? (
             <img src={customLogo?.footer?.value || saveSiteLogo} />
-            :
-            <Typography variant="h6" sx={{color: customLogo?.footer?.color, marginLeft: "10px", marginRight: "10px"}} >{customLogo?.footer?.value}</Typography>
-          }
+          ) : (
+            <Typography
+              variant="h6"
+              sx={{
+                color: customLogo?.footer?.color,
+                marginLeft: "10px",
+                marginRight: "10px",
+              }}
+            >
+              {customLogo?.footer?.value}
+            </Typography>
+          )}
         </div>
       </Grid>
     </>

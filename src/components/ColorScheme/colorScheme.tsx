@@ -10,7 +10,14 @@ import Select from "../../elements/Select";
 import adminPlusIcon from "../../assets/admin-plus-icon.svg";
 import deleteIcon from "../../assets/trashIcon.svg";
 import useStyles from "./styles";
-import {addDoc, collection, doc, getDocs, setDoc, getDoc} from 'firebase/firestore/lite';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  setDoc,
+  getDoc,
+} from "firebase/firestore/lite";
 import { db } from "services/firebase";
 
 const ColorScheme: React.FC<any> = (props) => {
@@ -102,24 +109,21 @@ const ColorScheme: React.FC<any> = (props) => {
     setActivePage(0);
   }, []);
 
-  const [firebaseTabsTheme, setFirebaseTabsTheme]=useState<any>({})
+  const [firebaseTabsTheme, setFirebaseTabsTheme] = useState<any>({});
 
-  useEffect(()=>{
-    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+  useEffect(() => {
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme");
     getDoc(buttonCollectionRef)
-    .then(response => {
-      
-      const btns = response.data()
-      
-      setFirebaseTabsTheme(btns);
-      
-    })
-    .catch(error=> console.log(error.message));
-  },[activeTab])
+      .then((response) => {
+        const btns = response.data();
+
+        setFirebaseTabsTheme(btns);
+      })
+      .catch((error) => console.log(error.message));
+  }, [activeTab]);
 
   useEffect(() => {
     // const data = JSON.parse(localStorage.getItem("colorScheme") || "{}");
-   
 
     if (
       firebaseTabsTheme?.buttons?.length > 0 ||
@@ -165,6 +169,8 @@ const ColorScheme: React.FC<any> = (props) => {
     { label: "H3", value: "H3" },
     { label: "H4", value: "H4" },
     { label: "H5", value: "H5" },
+    { label: "H6", value: "H6" },
+    { label: "Title", value: "Title" },
     { label: "Subtitle1", value: "Subtitle1" },
     { label: "Subtitle2", value: "Subtitle2" },
     { label: "Body", value: "Body" },
@@ -310,8 +316,10 @@ const ColorScheme: React.FC<any> = (props) => {
     };
     localStorage.setItem("colorScheme", JSON.stringify(data));
 
-    const addButtonCollectionRef = doc(db, "customTheming", "iotTheme" );
-    setDoc(addButtonCollectionRef, data).then(response=>console.log("success")).catch(error=> console.log(error.message));
+    const addButtonCollectionRef = doc(db, "customTheming", "iotTheme");
+    setDoc(addButtonCollectionRef, data)
+      .then((response) => console.log("success"))
+      .catch((error) => console.log(error.message));
   };
 
   // const addButtons = ()=>{

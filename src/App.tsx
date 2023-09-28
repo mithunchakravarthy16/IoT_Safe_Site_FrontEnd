@@ -28,14 +28,11 @@ const App = () => {
         (doc) => {
           const docData: any = doc.data();
           setFontDetails(docData);
-          alert(
-            "New Font Style updated, please reload the page to see changes"
-          );
         }
       );
     } catch (error) {}
   };
-
+  console.log("fontDetails", fontDetails);
   // const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
   // getDoc(buttonCollectionRef)
   // .then(response => {
@@ -79,7 +76,9 @@ const App = () => {
   // }, [localStorage?.getItem("fontFamily")]);
 
   useEffect(() => {
-    localStorage.setItem("fontFamily", JSON.stringify(fontDetails?.fontLink));
+    if (fontDetails) {
+      localStorage.setItem("fontFamily", JSON.stringify(fontDetails?.fontLink));
+    }
   }, [fontDetails]);
 
   return (

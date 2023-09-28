@@ -23,9 +23,15 @@ import AlertsActiveIcon from "../../assets/HeaderTabIcons/AlertsActive.svg";
 import GrokEyeInactiveIcon from "../../assets/HeaderTabIcons/GrokEyeInactive.svg";
 import GrokEyeActiveIcon from "../../assets/HeaderTabIcons/GrokEyeActive.svg";
 import useStyles from "./styles";
-import fbApp from 'services/firebase'
+import fbApp from "services/firebase";
 import { onSnapshot } from "firebase/firestore";
-import {addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore/lite';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore/lite";
 import { db } from "services/firebase";
 
 interface UserName {
@@ -43,8 +49,8 @@ const Header: React.FC = (props: any) => {
 
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
   const [tabIndex, setTabIndex] = useState<number>(0);
-  const [customLogo, setCustomLogo] = useState<any>({})
-  const[firebaseData, setFirebaseData]=useState<any>({})
+  const [customLogo, setCustomLogo] = useState<any>({});
+  const [firebaseData, setFirebaseData] = useState<any>({});
   const {
     logoImg,
     header,
@@ -62,22 +68,18 @@ const Header: React.FC = (props: any) => {
     customNotificationTabs,
     avatharUserName,
     avatharUserRole,
-  } = useStyles({...appTheme, bgData: firebaseData?.bgData});
+  } = useStyles({ ...appTheme, bgData: firebaseData?.bgData });
 
-  
-
-  useEffect(()=>{
-    const buttonCollectionRef = doc(db, "customTheming", "iotTheme" );
+  useEffect(() => {
+    const buttonCollectionRef = doc(db, "customTheming", "iotTheme");
     getDoc(buttonCollectionRef)
-    .then(response => {
-      
-      const btns = response.data()
-    
-      setFirebaseData(btns);
-      
-    })
-    .catch(error=> console.log(error.message));
-  },[])
+      .then((response) => {
+        const btns = response.data();
+
+        setFirebaseData(btns);
+      })
+      .catch((error) => console.log(error.message));
+  }, []);
 
   const [selectedTheme, setSelectedTheme] = useState(
     JSON.parse(localStorage.getItem("theme")!)
@@ -205,19 +207,18 @@ const Header: React.FC = (props: any) => {
 
   const getThemeData = async () => {
     try {
-      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc:any) => {
-          
-          setCustomLogo(doc.data())
-      });
-
-    } catch (error) {
-      
-    }
-  }
+      const unsub = onSnapshot(
+        doc(db, "customLogos", "iotSafeSite"),
+        (doc: any) => {
+          setCustomLogo(doc.data());
+        }
+      );
+    } catch (error) {}
+  };
 
   useEffect(() => {
-    getThemeData()
-  }, [])
+    getThemeData();
+  }, []);
 
   return (
     <Fragment>
@@ -225,7 +226,12 @@ const Header: React.FC = (props: any) => {
         <Grid item xs={12} sm={12} md={3} lg={4} xl={4}>
           <div className={logoSection}>
             <div className={logoImg}>
-              <img src={customLogo.header || Logo} alt="logo" width={300} height={50} />
+              <img
+                src={customLogo.header || Logo}
+                alt="logo"
+                width={300}
+                height={50}
+              />
             </div>
           </div>
         </Grid>
@@ -243,14 +249,18 @@ const Header: React.FC = (props: any) => {
         <Grid className={headerRight} item xs={12} sm={12} md={3} lg={4} xl={4}>
           <div>
             <div className={avatharSection}>
-              <Avatar className={avatharBackground}><Typography variant="h3">{name.initials}</Typography></Avatar>
+              <Avatar className={avatharBackground}>
+                <Typography variant="h6">{name.initials}</Typography>
+              </Avatar>
               <div className={avatharName}>
                 <div className={avatharUserName}>
-                <Typography variant="h5">
-                  {name?.firstName + " " + name?.lastName}
+                  <Typography variant="h5">
+                    {name?.firstName + " " + name?.lastName}
                   </Typography>
                 </div>
-                <div className={avatharUserRole}><Typography variant="h5">{name?.role}</Typography></div>
+                <div className={avatharUserRole}>
+                  <Typography variant="h5">{name?.role}</Typography>
+                </div>
               </div>
               <IconButton onClick={handleOpenUserMenu} className={avatharIcon}>
                 <KeyboardArrowDownIcon
