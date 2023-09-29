@@ -4,14 +4,10 @@ import muiTheme from "../../theme/muiTheme";
 
 // let data = JSON.parse(localStorage.getItem("colorScheme")!)
 
-
-
 // let logoSectionBgColor: string;
 // if(data && data?.bgData?.login?.color){
 //   logoSectionBgColor = data?.bgData?.login?.color
 // }
-
-
 
 const useStyles = makeStyles(() => ({
   loginBannerSection: (props: any) => ({
@@ -83,7 +79,9 @@ const useStyles = makeStyles(() => ({
   logoSection: (props: any) => ({
     textAlign: "center",
     padding: "35px 2px",
-    background: props?.loginHeaderBg ? props?.loginHeaderBg?.login?.color  : props?.palette?.login?.logoBg,
+    background: props?.loginHeaderBg
+      ? props?.loginHeaderBg?.login?.color
+      : props?.palette?.login?.logoBg,
 
     boxShadow: "0px 4px 15px rgb(0 0 0 / 5%)",
     borderRadius: "5px 5px 0px 0px",

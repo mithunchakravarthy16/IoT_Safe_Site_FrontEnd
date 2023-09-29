@@ -94,7 +94,7 @@ const App = () => {
         <link id="result" href={fontDetails?.fontLink} rel="stylesheet" />
       </Helmet>
       <BrowserRouter>
-        <Routes />
+        <Routes fontDetails={fontDetails} />
       </BrowserRouter>
     </RootContainer>
   );
