@@ -1,12 +1,12 @@
-import llaLoader from "assets/loader/llaLoader.gif";
+import llaLoader from "assets/loader/Safe site.gif";
 
-const Loader = (props:any) => {
-  const {isHundredVh, imgWidth} = props
+const Loader = (props: any) => {
+  const { isHundredVh, imgWidth } = props;
   return (
     <div
       style={{
         width: "100%",
-        height:  isHundredVh ? "100vh" : "100%",
+        height: isHundredVh ? "100vh" : "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
