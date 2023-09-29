@@ -52,7 +52,7 @@ const SAFE_SITE_Routes = (props: any) => {
         setFirebaseDataState(btns);
       })
       .catch((error) => console.log(error.message));
-  }, []);
+  }, [firebaseDataState]);
 
   useEffect(() => {
     const customTheming: any = {};
@@ -86,7 +86,7 @@ const SAFE_SITE_Routes = (props: any) => {
 
   return (
     <>
-      {!firebaseDataState || !fontDetails ? (
+      {!firebaseDataState || !fontDetails || !theme ? (
         <Loader isHundredVh={true} />
       ) : (
         <>

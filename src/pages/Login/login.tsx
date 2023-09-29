@@ -56,6 +56,7 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [firebaseLoginHeaderBg, setFirebaseLoginHeaderBg] = useState<any>({});
+  const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
 
   const {
     loginBannerSection,
@@ -149,9 +150,15 @@ const Login = () => {
     getThemeData();
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsDataLoaded(!isDataLoaded);
+    }, 4000);
+  }, []);
+
   return (
     <>
-      {firebaseLoginHeaderBg ? (
+      {firebaseLoginHeaderBg && isDataLoaded ? (
         <Grid container className={loginBannerSection}>
           <Grid item xs={12} className={loginFormSection}>
             <div className={loginWidth}>

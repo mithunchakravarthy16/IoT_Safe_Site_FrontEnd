@@ -8,6 +8,7 @@ import fbApp from "services/firebase";
 // @ts-ignore
 import { Helmet } from "react-helmet";
 import { getFirestore, onSnapshot, doc } from "firebase/firestore";
+import Loader from "elements/Loader";
 
 const App = () => {
   const [appTheme, setAppTheme] = useState(theme?.defaultTheme);
@@ -82,21 +83,27 @@ const App = () => {
   }, [fontDetails]);
 
   return (
-    <RootContainer id="rootContainer" fontFamily={fontDetails?.fontFamily}>
-      <Helmet>
-        <title>GD Safe Sites</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link id="result" href={fontDetails?.fontLink} rel="stylesheet" />
-      </Helmet>
-      <BrowserRouter>
-        <Routes fontDetails={fontDetails} />
-      </BrowserRouter>
-    </RootContainer>
+    <>
+      {fontDetails ? (
+        <RootContainer id="rootContainer" fontFamily={fontDetails?.fontFamily}>
+          <Helmet>
+            <title>GD Safe Sites</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link
+              rel="preconnect"
+              href="https://fonts.gstatic.com"
+              crossOrigin="anonymous"
+            />
+            <link id="result" href={fontDetails?.fontLink} rel="stylesheet" />
+          </Helmet>
+          <BrowserRouter>
+            <Routes fontDetails={fontDetails} />
+          </BrowserRouter>
+        </RootContainer>
+      ) : (
+        <Loader isHundredVh={true} />
+      )}
+    </>
   );
 };
 
