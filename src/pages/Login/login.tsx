@@ -22,6 +22,7 @@ import useStyles from "./styles";
 import Button from "elements/Button";
 import fbApp from "services/firebase";
 import { getFirestore, onSnapshot, doc } from "firebase/firestore";
+import Loader from "elements/Loader";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -46,9 +47,6 @@ const Login = () => {
         break;
       case "yellow":
         setAppTheme(theme?.yellowTheme);
-        break;
-      case "default":
-        setAppTheme(theme?.defaultTheme);
         break;
       default:
         setAppTheme(theme?.defaultTheme);
@@ -153,119 +151,129 @@ const Login = () => {
 
   return (
     <>
-      <Grid container className={loginBannerSection}>
-        <Grid item xs={12} className={loginFormSection}>
-          <div className={loginWidth}>
-            <Grid item xs={12} className={logoSection}>
-              <img src={customLogo.login || gdSafeSite} />
-            </Grid>
-            <Grid item xs={12}>
-              <Box className={innerForm}>
-                <form onSubmit={formik.handleSubmit}>
-                  <div className={zurichLogo}>
-                    <img src={zurich} />
-                  </div>
-                  <div className={welcomeSection}>
-                    <p className={welcomeContent}>
-                      {/* Test Build ( {width} X {height} ) */}
+      {firebaseLoginHeaderBg ? (
+        <Grid container className={loginBannerSection}>
+          <Grid item xs={12} className={loginFormSection}>
+            <div className={loginWidth}>
+              <Grid item xs={12} className={logoSection}>
+                <img src={customLogo.login || gdSafeSite} />
+              </Grid>
+              <Grid item xs={12}>
+                <Box className={innerForm}>
+                  <form onSubmit={formik.handleSubmit}>
+                    <div className={zurichLogo}>
+                      <img src={zurich} />
+                    </div>
+                    <div className={welcomeSection}>
+                      <p className={welcomeContent}>
+                        {/* Test Build ( {width} X {height} ) */}
 
-                      <Typography variant="h2">Welcome Admin Login</Typography>
-                    </p>
-                  </div>
-                  <div className={outlineInputField}>
-                    <p className={inputTitle}>
-                      <Typography variant="h3">Your Email</Typography>
-                    </p>
-
-                    <OutlinedInput
-                      className={inputField}
-                      fullWidth
-                      placeholder="username@zurichna.com"
-                      type="text"
-                      name="userid"
-                      value={formik.values.userid}
-                      onChange={formik.handleChange}
-                      endAdornment={
-                        <img className={attherate} src={AttherateIcon} />
-                      }
-                    />
-                    {formik.errors.userid && formik.touched.userid && (
-                      <p className={formikErrorClass}>{formik.errors.userid}</p>
-                    )}
-                  </div>
-                  <div className={outlineInputField}>
-                    <p className={inputTitle}>
-                      <Typography variant="h3">Password</Typography>
-                    </p>
-                    <OutlinedInput
-                      className={inputField}
-                      fullWidth
-                      placeholder="&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;"
-                      type="password"
-                      name="password"
-                      value={formik.values.password}
-                      onChange={formik.handleChange}
-                      endAdornment={
-                        <img
-                          className={eyeOff}
-                          src={showPassword ? OpenEyeIcon : EyeOff}
-                          onClick={handlePasswordVisibility}
-                        />
-                      }
-                    />
-                    {formik.errors.password && formik.touched.password && (
-                      <p className={formikErrorClass}>
-                        {formik.errors.password}
+                        <Typography variant="h2">
+                          Welcome Admin Login
+                        </Typography>
                       </p>
-                    )}
-                  </div>
-                  <div className={radioButtonSection}>
-                    <FormControlLabel
-                      value="rememberMe"
-                      control={<Radio />}
-                      label={<Typography variant="h3">Remember me</Typography>}
-                    />
-                    <p className={forgotPassword}>
-                      <Typography variant="h3">Forgot Password?</Typography>
-                    </p>
-                  </div>
-                  <div className={loginButton}>
-                    <Button
-                      variant={"contained"}
-                      fullWidth={true}
-                      type={"submit"}
-                      buttonStyles={loginButton}
-                      buttonVariant={"primary"}
-                      handleClick={() => {}}
-                    >
-                      Login
-                    </Button>
-                  </div>
-                  <div className={adminLoginLink} onClick={handleAdminLogin}>
-                    <Typography variant="h4">Admin Login</Typography>
-                  </div>
-                </form>
-              </Box>
-            </Grid>
+                    </div>
+                    <div className={outlineInputField}>
+                      <p className={inputTitle}>
+                        <Typography variant="h3">Your Email</Typography>
+                      </p>
+
+                      <OutlinedInput
+                        className={inputField}
+                        fullWidth
+                        placeholder="username@zurichna.com"
+                        type="text"
+                        name="userid"
+                        value={formik.values.userid}
+                        onChange={formik.handleChange}
+                        endAdornment={
+                          <img className={attherate} src={AttherateIcon} />
+                        }
+                      />
+                      {formik.errors.userid && formik.touched.userid && (
+                        <p className={formikErrorClass}>
+                          {formik.errors.userid}
+                        </p>
+                      )}
+                    </div>
+                    <div className={outlineInputField}>
+                      <p className={inputTitle}>
+                        <Typography variant="h3">Password</Typography>
+                      </p>
+                      <OutlinedInput
+                        className={inputField}
+                        fullWidth
+                        placeholder="&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;"
+                        type="password"
+                        name="password"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        endAdornment={
+                          <img
+                            className={eyeOff}
+                            src={showPassword ? OpenEyeIcon : EyeOff}
+                            onClick={handlePasswordVisibility}
+                          />
+                        }
+                      />
+                      {formik.errors.password && formik.touched.password && (
+                        <p className={formikErrorClass}>
+                          {formik.errors.password}
+                        </p>
+                      )}
+                    </div>
+                    <div className={radioButtonSection}>
+                      <FormControlLabel
+                        value="rememberMe"
+                        control={<Radio />}
+                        label={
+                          <Typography variant="h3">Remember me</Typography>
+                        }
+                      />
+                      <p className={forgotPassword}>
+                        <Typography variant="h3">Forgot Password?</Typography>
+                      </p>
+                    </div>
+                    <div className={loginButton}>
+                      <Button
+                        variant={"contained"}
+                        fullWidth={true}
+                        type={"submit"}
+                        buttonStyles={loginButton}
+                        buttonVariant={"primary"}
+                        handleClick={() => {}}
+                      >
+                        Login
+                      </Button>
+                    </div>
+                    <div className={adminLoginLink} onClick={handleAdminLogin}>
+                      <Typography variant="h4">Admin Login</Typography>
+                    </div>
+                  </form>
+                </Box>
+              </Grid>
+            </div>
+          </Grid>
+          <div className={copyRights}>
+            {customLogo?.footer?.type !== "text" ? (
+              <img src={customLogo?.footer?.value || saveSiteLogo} />
+            ) : (
+              <Typography
+                variant="h6"
+                sx={{
+                  color: customLogo?.footer?.color,
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                }}
+              >
+                {customLogo?.footer?.value}
+              </Typography>
+            )}
           </div>
         </Grid>
-        <div className={copyRights}>
-          {customLogo?.footer?.type !== "text" ? (
-            <img src={customLogo?.footer?.value || saveSiteLogo} />
-          ) : (
-            <Typography
-              variant="h6"
-              sx={{
-                color: customLogo?.footer?.color,
-                marginLeft: "10px",
-                marginRight: "10px",
-              }}
-            >
-              {customLogo?.footer?.value}
-            </Typography>
-          )}
-        </div>
-      </Grid>
+      ) : (
+        <Loader isHundredVh={true} />
+      )}
     </>
   );
 };
