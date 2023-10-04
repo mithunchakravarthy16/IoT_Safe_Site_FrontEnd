@@ -76,12 +76,16 @@ const useStyles = makeStyles(() => ({
       },
     },
   }),
+  footerText: (props: any) => ({
+    color: "#fff",
+    marginLeft: "10px",
+    marginRight: "10px",
+  }),
+
   logoSection: (props: any) => ({
     textAlign: "center",
     padding: "35px 2px",
-    background: props?.loginHeaderBg
-      ? props?.loginHeaderBg?.login?.color
-      : props?.palette?.login?.logoBg,
+    background: "linear-gradient(90.44deg, #1E7B99 -5.36%, #1C5C77 86.39%)",
 
     boxShadow: "0px 4px 15px rgb(0 0 0 / 5%)",
     borderRadius: "5px 5px 0px 0px",
@@ -121,9 +125,10 @@ const useStyles = makeStyles(() => ({
       marginBottom: 10,
     },
   }),
+  welcomeContentText: (props: any) => ({}),
   welcomeContent: (props: any) => ({
-    fontFamily: `'Nunito Sans', sans-serif'`,
-    fontWeight: " 700",
+    fontFamily: `'Noto Sans', sans-serif`,
+    fontWeight: "500 !important",
     fontSize: "34px",
     lineHeight: "42px",
     color: props?.palette?.login?.welcomeContent,
@@ -141,7 +146,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   inputTitle: (props: any) => ({
-    fontFamily: `'Nunito Sans', sans-serif'`,
+    fontFamily: `'Noto Sans', sans-serif`,
     fontWeight: " 400",
     fontSize: "18px",
     lineHeight: "22px",
@@ -159,7 +164,7 @@ const useStyles = makeStyles(() => ({
     },
 
     "& .MuiInputBase-input": {
-      fontFamily: `'Nunito Sans', sans-serif'`,
+      fontFamily: `'Noto Sans', sans-serif`,
       fontWeight: " 500",
       fontSize: "18px",
       lineHeight: "24px",
@@ -219,7 +224,7 @@ const useStyles = makeStyles(() => ({
       },
     },
     "& .MuiFormControlLabel-label": {
-      fontFamily: `'Nunito Sans', sans-serif'`,
+      fontFamily: `'Noto Sans', sans-serif`,
       fontWeight: " 500",
       fontSize: "16px",
       lineHeight: "24px",
@@ -231,7 +236,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   forgotPassword: (props: any) => ({
-    fontFamily: `'Nunito Sans', sans-serif'`,
+    fontFamily: `'Noto Sans', sans-serif`,
     fontWeight: " 400",
     fontSize: "16px",
     lineHeight: "19px",
@@ -246,7 +251,7 @@ const useStyles = makeStyles(() => ({
     "& .MuiButtonBase-root": {
       background: props?.palette?.login?.loginButton,
       borderRadius: "5px",
-      fontFamily: `'Nunito Sans', sans-serif'`,
+      fontFamily: `'Noto Sans', sans-serif`,
       fontWeight: "500",
       fontSize: "20px",
       lineHeight: "24px",
@@ -269,7 +274,7 @@ const useStyles = makeStyles(() => ({
     },
   }),
   formikErrorClass: (props: any) => ({
-    fontFamily: `'Nunito Sans', sans-serif'`,
+    fontFamily: `'Noto Sans', sans-serif`,
     color: "red",
     padding: 0,
     margin: 0,
@@ -291,13 +296,14 @@ const useStyles = makeStyles(() => ({
     transform: "translate(-50%, -50%)",
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
     "& span": {
-      fontFamily: `'Nunito Sans', sans-serif'`,
-      fontWeight: " 500",
+      fontFamily: `'Noto Sans', sans-serif`,
+      fontWeight: " 400",
       fontSize: "16px",
       lineHeight: "30px",
       [muiTheme.breakpoints.down(1350)]: {
-        fontWeight: " 500",
+        fontWeight: " 400",
         fontSize: "11px",
         lineHeight: "20px",
       },

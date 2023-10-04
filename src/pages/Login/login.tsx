@@ -79,6 +79,8 @@ const Login = () => {
     copyRights,
     zurichLogo,
     adminLoginLink,
+    welcomeContentText,
+    footerText,
   } = useStyles({ ...appTheme, loginHeaderBg: firebaseLoginHeaderBg?.bgData });
 
   useEffect(() => {
@@ -132,136 +134,141 @@ const Login = () => {
     navigate("/adminLogin");
   };
 
-  const getThemeData = async () => {
-    try {
-      const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
-        setCustomLogo(doc.data());
-      });
-      const customLoginTheme = onSnapshot(
-        doc(db, "customTheming", "iotTheme"),
-        (doc) => {
-          setFirebaseLoginHeaderBg(doc.data());
-        }
-      );
-    } catch (error) {}
-  };
+  // const getThemeData = async () => {
+  //   try {
+  //     const unsub = onSnapshot(doc(db, "customLogos", "iotSafeSite"), (doc) => {
+  //       setCustomLogo(doc.data());
+  //     });
+  //     const customLoginTheme = onSnapshot(
+  //       doc(db, "customTheming", "iotTheme"),
+  //       (doc) => {
+  //         setFirebaseLoginHeaderBg(doc.data());
+  //       }
+  //     );
+  //   } catch (error) {}
+  // };
 
-  useEffect(() => {
-    getThemeData();
-  }, []);
+  // useEffect(() => {
+  //   getThemeData();
+  // }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsDataLoaded(!isDataLoaded);
-    }, 4000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsDataLoaded(!isDataLoaded);
+  //   }, 4000);
+  // }, []);
 
   return (
     <>
-      {firebaseLoginHeaderBg && isDataLoaded ? (
-        <Grid container className={loginBannerSection}>
-          <Grid item xs={12} className={loginFormSection}>
-            <div className={loginWidth}>
-              <Grid item xs={12} className={logoSection}>
-                <img src={customLogo.login || gdSafeSite} />
-              </Grid>
-              <Grid item xs={12}>
-                <Box className={innerForm}>
-                  <form onSubmit={formik.handleSubmit}>
-                    <div className={zurichLogo}>
-                      <img src={zurich} />
-                    </div>
-                    <div className={welcomeSection}>
-                      <p className={welcomeContent}>
-                        {/* Test Build ( {width} X {height} ) */}
-
-                        <Typography variant="h2">
+      <Grid container className={loginBannerSection}>
+        <Grid item xs={12} className={loginFormSection}>
+          <div className={loginWidth}>
+            <Grid item xs={12} className={logoSection}>
+              <img src={customLogo.login || gdSafeSite} />
+            </Grid>
+            <Grid item xs={12}>
+              <Box className={innerForm}>
+                <form onSubmit={formik.handleSubmit}>
+                  <div className={zurichLogo}>
+                    <img src={zurich} />
+                  </div>
+                  <div className={welcomeSection}>
+                    <p className={welcomeContent}>
+                      {/* Test Build ( {width} X {height} ) */}
+                      {/* <Typography variant="h2">
                           Welcome Admin Login
-                        </Typography>
-                      </p>
-                    </div>
-                    <div className={outlineInputField}>
-                      <p className={inputTitle}>
+                        </Typography> */}
+                      <div className={welcomeContentText}>
+                        Welcome Admin Login
+                      </div>
+                    </p>
+                  </div>
+                  <div className={outlineInputField}>
+                    {/* <p className={inputTitle}>
                         <Typography variant="h3">Your Email</Typography>
-                      </p>
+                      </p> */}
+                    <p className={inputTitle}>Your Email</p>
 
-                      <OutlinedInput
-                        className={inputField}
-                        fullWidth
-                        placeholder="username@zurichna.com"
-                        type="text"
-                        name="userid"
-                        value={formik.values.userid}
-                        onChange={formik.handleChange}
-                        endAdornment={
-                          <img className={attherate} src={AttherateIcon} />
-                        }
-                      />
-                      {formik.errors.userid && formik.touched.userid && (
-                        <p className={formikErrorClass}>
-                          {formik.errors.userid}
-                        </p>
-                      )}
-                    </div>
-                    <div className={outlineInputField}>
-                      <p className={inputTitle}>
+                    <OutlinedInput
+                      className={inputField}
+                      fullWidth
+                      placeholder="username@zurichna.com"
+                      type="text"
+                      name="userid"
+                      value={formik.values.userid}
+                      onChange={formik.handleChange}
+                      endAdornment={
+                        <img className={attherate} src={AttherateIcon} />
+                      }
+                    />
+                    {formik.errors.userid && formik.touched.userid && (
+                      <p className={formikErrorClass}>{formik.errors.userid}</p>
+                    )}
+                  </div>
+                  <div className={outlineInputField}>
+                    {/* <p className={inputTitle}>
                         <Typography variant="h3">Password</Typography>
+                      </p> */}
+                    <p className={inputTitle}>Password</p>
+                    <OutlinedInput
+                      className={inputField}
+                      fullWidth
+                      placeholder="&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;"
+                      type="password"
+                      name="password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      endAdornment={
+                        <img
+                          className={eyeOff}
+                          src={showPassword ? OpenEyeIcon : EyeOff}
+                          onClick={handlePasswordVisibility}
+                        />
+                      }
+                    />
+                    {formik.errors.password && formik.touched.password && (
+                      <p className={formikErrorClass}>
+                        {formik.errors.password}
                       </p>
-                      <OutlinedInput
-                        className={inputField}
-                        fullWidth
-                        placeholder="&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;&nbsp;&#9913;"
-                        type="password"
-                        name="password"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
-                        endAdornment={
-                          <img
-                            className={eyeOff}
-                            src={showPassword ? OpenEyeIcon : EyeOff}
-                            onClick={handlePasswordVisibility}
-                          />
-                        }
-                      />
-                      {formik.errors.password && formik.touched.password && (
-                        <p className={formikErrorClass}>
-                          {formik.errors.password}
-                        </p>
-                      )}
-                    </div>
-                    <div className={radioButtonSection}>
-                      <FormControlLabel
-                        value="rememberMe"
-                        control={<Radio />}
-                        label={
-                          <Typography variant="h3">Remember me</Typography>
-                        }
-                      />
-                      <p className={forgotPassword}>
+                    )}
+                  </div>
+                  <div className={radioButtonSection}>
+                    <FormControlLabel
+                      value="rememberMe"
+                      control={<Radio />}
+                      // label={
+                      //   <Typography variant="h3">Remember me</Typography>
+                      // }
+                      label={<div>Remember me</div>}
+                    />
+                    {/* <p className={forgotPassword}>
                         <Typography variant="h3">Forgot Password?</Typography>
-                      </p>
-                    </div>
-                    <div className={loginButton}>
-                      <Button
-                        variant={"contained"}
-                        fullWidth={true}
-                        type={"submit"}
-                        buttonStyles={loginButton}
-                        buttonVariant={"primary"}
-                        handleClick={() => {}}
-                      >
-                        Login
-                      </Button>
-                    </div>
-                    <div className={adminLoginLink} onClick={handleAdminLogin}>
+                      </p> */}
+                    <p className={forgotPassword}>Forgot Password?</p>
+                  </div>
+                  <div className={loginButton}>
+                    <Button
+                      variant={"contained"}
+                      fullWidth={true}
+                      type={"submit"}
+                      buttonStyles={loginButton}
+                      buttonVariant={"primary"}
+                      handleClick={() => {}}>
+                      Login
+                    </Button>
+                  </div>
+                  {/* <div className={adminLoginLink} onClick={handleAdminLogin}>
                       <Typography variant="h4">Admin Login</Typography>
-                    </div>
-                  </form>
-                </Box>
-              </Grid>
-            </div>
-          </Grid>
-          <div className={copyRights}>
+                    </div> */}
+                  <div className={adminLoginLink} onClick={handleAdminLogin}>
+                    Admin Login
+                  </div>
+                </form>
+              </Box>
+            </Grid>
+          </div>
+        </Grid>
+        {/* <div className={copyRights}>
             {customLogo?.footer?.type !== "text" ? (
               <img src={customLogo?.footer?.value || saveSiteLogo} />
             ) : (
@@ -276,11 +283,13 @@ const Login = () => {
                 {customLogo?.footer?.value}
               </Typography>
             )}
-          </div>
-        </Grid>
-      ) : (
-        <Loader isHundredVh={true} />
-      )}
+          </div> */}
+        <div className={copyRights}>
+          <span>Powered by</span>
+          <img src={customLogo?.footer?.value || saveSiteLogo} />{" "}
+          <span className={footerText}>© 2023. All Rights Reserved</span>
+        </div>
+      </Grid>
     </>
   );
 };
