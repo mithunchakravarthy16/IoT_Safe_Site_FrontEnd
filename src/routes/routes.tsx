@@ -86,102 +86,96 @@ const SAFE_SITE_Routes = (props: any) => {
 
   return (
     <>
-      {!firebaseDataState || !fontDetails || !theme ? (
-        <Loader isHundredVh={true} />
-      ) : (
-        <>
-          {user?.userName && user?.currentRoleType === "USER" && (
+      {user?.userName && user?.currentRoleType === "USER" && (
+        <ThemeProvider theme={theme}>
+          <Header />
+        </ThemeProvider>
+      )}
+      <Routes>
+        {/** Protected Routes */}
+
+        {/** User Routes */}
+        <Route
+          path="/"
+          element={<ProtectedUserRoutes role={user?.currentRoleType} />}
+        >
+          <Route path="/" element={<Navigate replace to="login" />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ThemeProvider theme={theme}>
+                <DashBoard />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/alerts"
+            element={
+              <ThemeProvider theme={theme}>
+                <Alerts />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/grokeye"
+            element={
+              <ThemeProvider theme={theme}>
+                <GrokEye />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ThemeProvider theme={theme}>
+                <Profile />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/grokeye"
+            element={
+              <ThemeProvider theme={theme}>
+                <GrokEye />
+              </ThemeProvider>
+            }
+          />
+        </Route>
+
+        {/** Admin Routes */}
+        <Route
+          path="/"
+          element={<ProtectedRoutes role={user?.currentRoleType} />}
+        >
+          <Route path="/" element={<Navigate replace to="login" />} />
+          <Route path="/devTools" element={<DevTools />} />
+        </Route>
+
+        {/** Public Routes */}
+        <Route
+          path="/login"
+          element={
             <ThemeProvider theme={theme}>
-              <Header />
+              <Login />
             </ThemeProvider>
-          )}
-          <Routes>
-            {/** Protected Routes */}
-
-            {/** User Routes */}
-            <Route
-              path="/"
-              element={<ProtectedUserRoutes role={user?.currentRoleType} />}
-            >
-              <Route path="/" element={<Navigate replace to="login" />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <ThemeProvider theme={theme}>
-                    <DashBoard />
-                  </ThemeProvider>
-                }
-              />
-              <Route
-                path="/alerts"
-                element={
-                  <ThemeProvider theme={theme}>
-                    <Alerts />
-                  </ThemeProvider>
-                }
-              />
-              <Route
-                path="/grokeye"
-                element={
-                  <ThemeProvider theme={theme}>
-                    <GrokEye />
-                  </ThemeProvider>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ThemeProvider theme={theme}>
-                    <Profile />
-                  </ThemeProvider>
-                }
-              />
-              <Route
-                path="/grokeye"
-                element={
-                  <ThemeProvider theme={theme}>
-                    <GrokEye />
-                  </ThemeProvider>
-                }
-              />
-            </Route>
-
-            {/** Admin Routes */}
-            <Route
-              path="/"
-              element={<ProtectedRoutes role={user?.currentRoleType} />}
-            >
-              <Route path="/" element={<Navigate replace to="login" />} />
-              <Route path="/devTools" element={<DevTools />} />
-            </Route>
-
-            {/** Public Routes */}
-            <Route
-              path="/login"
-              element={
-                <ThemeProvider theme={theme}>
-                  <Login />
-                </ThemeProvider>
-              }
-            />
-            <Route
-              path="/adminLogin"
-              element={
-                <ThemeProvider theme={theme}>
-                  <AdminLogin />
-                </ThemeProvider>
-              }
-            />
-
-            {/** Permission denied route */}
-            <Route path="/denied" element={<div>No permission</div>} />
-          </Routes>
-          {user?.userName && user?.currentRoleType === "USER" && (
+          }
+        />
+        <Route
+          path="/adminLogin"
+          element={
             <ThemeProvider theme={theme}>
-              <Footer />
+              <AdminLogin />
             </ThemeProvider>
-          )}
-        </>
+          }
+        />
+
+        {/** Permission denied route */}
+        <Route path="/denied" element={<div>No permission</div>} />
+      </Routes>
+      {user?.userName && user?.currentRoleType === "USER" && (
+        <ThemeProvider theme={theme}>
+          <Footer />
+        </ThemeProvider>
       )}
     </>
   );
