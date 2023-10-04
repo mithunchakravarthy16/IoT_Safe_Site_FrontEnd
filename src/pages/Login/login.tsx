@@ -175,13 +175,18 @@ const Login = () => {
                   <div className={welcomeSection}>
                     <p className={welcomeContent}>
                       {/* Test Build ( {width} X {height} ) */}
-
+                      {/* <Typography variant="h2">
+                          Welcome Admin Login
+                        </Typography> */}
                       <div className={welcomeContentText}>
                         Welcome Admin Login
                       </div>
                     </p>
                   </div>
                   <div className={outlineInputField}>
+                    {/* <p className={inputTitle}>
+                        <Typography variant="h3">Your Email</Typography>
+                      </p> */}
                     <p className={inputTitle}>Your Email</p>
 
                     <OutlinedInput
@@ -201,6 +206,9 @@ const Login = () => {
                     )}
                   </div>
                   <div className={outlineInputField}>
+                    {/* <p className={inputTitle}>
+                        <Typography variant="h3">Password</Typography>
+                      </p> */}
                     <p className={inputTitle}>Password</p>
                     <OutlinedInput
                       className={inputField}
@@ -228,8 +236,14 @@ const Login = () => {
                     <FormControlLabel
                       value="rememberMe"
                       control={<Radio />}
+                      // label={
+                      //   <Typography variant="h3">Remember me</Typography>
+                      // }
                       label={<div>Remember me</div>}
                     />
+                    {/* <p className={forgotPassword}>
+                        <Typography variant="h3">Forgot Password?</Typography>
+                      </p> */}
                     <p className={forgotPassword}>Forgot Password?</p>
                   </div>
                   <div className={loginButton}>
@@ -243,6 +257,9 @@ const Login = () => {
                       Login
                     </Button>
                   </div>
+                  {/* <div className={adminLoginLink} onClick={handleAdminLogin}>
+                      <Typography variant="h4">Admin Login</Typography>
+                    </div> */}
                   <div className={adminLoginLink} onClick={handleAdminLogin}>
                     Admin Login
                   </div>
@@ -251,6 +268,22 @@ const Login = () => {
             </Grid>
           </div>
         </Grid>
+        {/* <div className={copyRights}>
+            {customLogo?.footer?.type !== "text" ? (
+              <img src={customLogo?.footer?.value || saveSiteLogo} />
+            ) : (
+              <Typography
+                variant="h6"
+                sx={{
+                  color: customLogo?.footer?.color,
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                }}
+              >
+                {customLogo?.footer?.value}
+              </Typography>
+            )}
+          </div> */}
         <div className={copyRights}>
           <span>Powered by</span>
           <img src={customLogo?.footer?.value || saveSiteLogo} />{" "}
